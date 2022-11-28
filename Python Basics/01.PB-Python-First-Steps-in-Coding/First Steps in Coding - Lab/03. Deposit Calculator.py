@@ -1,0 +1,5 @@
+deposit_amount = float(input())
+deposit_period = int(input())
+glp = float(input())
+total_amount = deposit_amount + deposit_period * ((deposit_amount * glp / 100) / 12)
+print(total_amount)
