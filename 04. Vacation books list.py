@@ -1,5 +1,0 @@
-pages_total = int(input())
-speed = int(input())
-days = int(input())
-hours_per_day = int(pages_total/speed/days)
-print(hours_per_day)
