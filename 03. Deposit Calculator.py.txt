@@ -1,5 +1,0 @@
-depozit_suma = float(input())
-depozit_srok = int(input())
-glp = float(input())
-suma = depozit_suma + depozit_srok*((depozit_suma*glp/100)/12)
-print (suma)
