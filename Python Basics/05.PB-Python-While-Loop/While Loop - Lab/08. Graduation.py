@@ -7,7 +7,7 @@ broken = 0
 while True:
 #Student mark input
     mark = float(input())
-#Mark check for grade 1 and above, if grade was 0, there is no logic in having a mark (ocenka)
+#Mark check for grade 1 and above, if grade was 0, there is no logic in having a mark
     if mark < 4:
         broken += 1
 #The second "if" is indented and checking for the first breakpoint, if the student is not passing to the next grade (broken == True), we must return to the beginning of the loop ( O4CHENIKAT POVTARIA) and we don't count a new grade!!! If there are 2 fails, the student is excluded, the loop finishes with 1st breakpoint.
