@@ -1,0 +1,7 @@
+movie = input()
+days = int(input())
+tickets = int(input())
+ticket_price = float(input())
+percent = int(input())
+profit = days * tickets * ticket_price * (1 - percent / 100)
+print(f"The profit from the movie {movie} is {profit:.2f} lv.")
