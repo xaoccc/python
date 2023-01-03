@@ -13,8 +13,9 @@ for i in range(len(events)):
             print(f"You gained {points} energy.")
             print(f"Current energy: {energy}.")
         else:
-            print(f"You gained 0 energy.")
-            print(f"Current energy: {energy}.")
+            print(f"You gained {points - (energy + points - 100)} energy.")
+            print(f"Current energy: 100.")
+            energy = 100
     elif action == "order":
         if energy >= 30:
             energy -= 30
@@ -34,4 +35,4 @@ for i in range(len(events)):
 if not fail:
     print("Day completed!")
     print(f"Coins: {coins}")
-    print(f"Energy: {energy}")
+    print(f"Energy: {energy}")       
