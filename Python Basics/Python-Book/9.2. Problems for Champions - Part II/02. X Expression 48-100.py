@@ -69,5 +69,5 @@ for i in range(0, len(problem) - 1):
         else:
             result = internal_result
         
-print(round(result,2))
+print(f"{result:.2f}")
 
