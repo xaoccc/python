@@ -18,19 +18,22 @@ for i in range(0, len(problem) - 1):
             result += int(problem[i+1])
         i += 1
     elif problem[i] == "-": 
-        result -= int(problem[i+1])
         if internal == True:
             internal_result -= int(problem[i+1])
+        else:
+            result -= int(problem[i+1])
         i += 1
     elif problem[i] == "/": 
-        result /= int(problem[i+1])
         if internal == True:
             internal_result /= int(problem[i+1])
+        else:
+            result /= int(problem[i+1])
         i += 1
-    elif problem[i] == "*": 
-        result *= int(problem[i+1])
+    elif problem[i] == "*":
         if internal == True:
             internal_result *= int(problem[i+1])
+        else:
+            result *= int(problem[i+1])
         i += 1
         
     elif problem[i] == "(":
@@ -51,11 +54,5 @@ for i in range(0, len(problem) - 1):
         else:
             result = internal_result
         
-        
-            
-        
-    print(result)
-        
-
-            
+print(result)
 
