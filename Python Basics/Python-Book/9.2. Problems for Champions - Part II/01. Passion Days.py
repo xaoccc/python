@@ -1,6 +1,8 @@
 #src: https://python-book.softuni.bg/chapter-09-problems-for-champions-part-2.html
 
-available_money = float(input())
+from decimal import Decimal
+
+available_money = Decimal(input())
 command = input()
  
 while command != "mall.Enter":
@@ -14,20 +16,20 @@ while action != "mall.Exit":
     for symbol in range(len(action)):
  
         if 65 <= ord(action[symbol]) <= 90:
-            cost_of_purchase = ord(action[symbol]) * 0.50
+            cost_of_purchase = ord(action[symbol]) * Decimal(0.50)
             if cost_of_purchase <= available_money:
                 available_money -= cost_of_purchase
                 number_purchases += 1
  
         elif 97 <= ord(action[symbol]) <= 122:
-            cost_of_purchase = ord(action[symbol]) * 0.30
+            cost_of_purchase = ord(action[symbol]) * Decimal(0.30)
             if cost_of_purchase <= available_money:
                 available_money -= cost_of_purchase
                 number_purchases += 1
  
         elif action[symbol] == "%":
             if available_money != 0:
-                available_money *= 0.50
+                available_money *= Decimal(0.50)
                 number_purchases += 1
  
         elif action[symbol] == "*":
