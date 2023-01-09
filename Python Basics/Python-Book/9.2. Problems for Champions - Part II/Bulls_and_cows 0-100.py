@@ -2,8 +2,9 @@ num = input()
 bulls = int(input())
 cows = int(input())
 num_stored = num
-
+solution_found = False
 numcheck = ""
+
 for i in range(1111, 9999):
     num = num_stored
     if str(i)[1] == "0" or str(i)[2] == "0" or str(i)[3] == "0":
@@ -67,4 +68,8 @@ for i in range(1111, 9999):
 
 
     if cows == cows_found and bulls == bulls_found:
+        solution_found = True
         print(numcheck[0], end="")
+        
+if not solution_found:
+    print("No")
