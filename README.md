@@ -1,2 +1,2 @@
-# python
-python_training
+
+Software University Python Basics and Fundamentals Courses
