@@ -1,8 +1,14 @@
-def add_and_subtract(num_one, num_two, num_three ):
-    def sum_numbers():
-        print(num_one + num_two)
-    #HOW THE FUCK CAN I TAKE THE VALUE FROM sum_numbers AND USE IT IN subtract???
-    def subtract():
-        print(num_one + num_two - num_three)
-    subtract()
-add_and_subtract(int(input()), int(input()), int(input()))
+def add_and_subtract():
+
+    def subtract(sum_num):
+        res = sum_num - int(input())
+        return res
+    
+    def sum_numbers(num_two):
+        res = num_two + int(input())
+        return res
+    
+    output = subtract(sum_numbers(int(input())))
+    print(output)
+
+add_and_subtract()
