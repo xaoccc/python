@@ -1,23 +1,23 @@
-gifts_list = input()
-gifts_list = gifts_list.split(" ")
+gifts_list = input().split()
 command = input()
-while True:
-    command = command.split(" ")
-    if "OutOfStock" in command:
+counter = 0
+
+while command != "No Money":
+    command = command.split()
+    if command[0] == "OutOfStock":
         for i in range(len(gifts_list)):
             if gifts_list[i] == command[1]:
                 gifts_list[i] = "None"
-    if "Required" in command:
-        if int(command[2]) < len(gifts_list) and int(command[2]) > -1:
+                counter += 1
+    elif command[0] == "Required":
+        if 0 <= int(command[2]) < len(gifts_list):
             gifts_list[int(command[2])] = command[1]
-    if "JustInCase" in command:
+    elif command[0] == "JustInCase":
         gifts_list[-1] = command[1]
     command = input()
-    if command == "No Money":
-        for j in gifts_list:
-            if j == "None":
-                gifts_list.remove(j)
-        break
     
+for j in range(counter):
+    if "None" in gifts_list:
+        gifts_list.remove("None")
 
-print(" ".join(gifts_list))
+print(*gifts_list)
