@@ -1,19 +1,22 @@
-cells_fire = input()
+cells_fire = input().split("#")
 water = int(input())
-cells_fire = cells_fire.split("#")
 fire = 0
+fire_type = ""
+fire_lvl = 0
 effort = 0
 print("Cells:")
-for i in range(len(cells_fire)):
-    cells_fire[i] = cells_fire[i].split(" ")
+ 
+for cell in cells_fire:
+    cell = cell.split()
+    fire_lvl = int(cell[2])
+    fire_type = cell[0]
     
-    cells_fire[i][-1] = int(cells_fire[i][-1])
-    if (cells_fire[i][0] == "Low" and (0 < cells_fire[i][-1] < 51)) or (cells_fire[i][0] == "Medium" and (50 < cells_fire[i][-1] < 81)) or (cells_fire[i][0] == "High" and (80 < cells_fire[i][-1] < 126)):
-        water -= cells_fire[i][-1]
+    if (fire_type == "Low" and (1 <= fire_lvl <= 50)) or (fire_type == "Medium" and (51 <= fire_lvl <= 80)) or (fire_type == "High" and (81 <= fire_lvl <= 125)):
+        water -= fire_lvl
         if water < 0:
             break
-        fire += cells_fire[i][-1]
-        effort += cells_fire[i][-1] * 0.25
-        print("- " + str(cells_fire[i][-1]))
+        fire += fire_lvl
+        effort += fire_lvl * 0.25
+        print("- " + str(fire_lvl))
 print(f"Effort: {effort:.2f}")
 print(f"Total Fire: {fire}")
