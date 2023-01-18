@@ -1,4 +1,4 @@
-year = int(input())
+year = int(input()) + 1
 i = 0
 while i < len(str(year)):
     if str(year).count(str(year)[i]) > 1:
