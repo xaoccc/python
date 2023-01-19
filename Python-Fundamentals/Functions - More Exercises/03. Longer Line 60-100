@@ -1,0 +1,20 @@
+from math import floor
+
+def longest_line():
+    x1, y1, x2, y2, x3, y3, x4, y4 = float(input()), float(input()), float(input()), float(input()), float(input()), float(input()), float(input()), float(input())
+
+    line1_length = ((abs(x1 - x2) ** 2) + (abs(y1 - y2) ** 2)) / 2
+    line2_length = ((abs(x3 - x4) ** 2) + (abs(y3 - y4) ** 2)) / 2
+    
+    if line1_length > line2_length:
+        if ((x1 ** 2) + (y1 ** 2)) / 2 < ((x2 ** 2) + (y2 ** 2)) / 2:
+            print(f"({int(floor(x1))}, {int(floor(y1))})({int(floor(x2))}, {int(floor(y2))})")
+        else:
+            print(f"({int(floor(x2))}, {int(floor(y2))})({int(floor(x1))}, {int(floor(y1))})")
+    else:
+        if ((x3 ** 2) + (y3 ** 2)) / 2 < ((x4 ** 2) + (y4 ** 2)) / 2:
+            print(f"({int(floor(x3))}, {int(floor(y3))})({int(floor(x4))}, {int(floor(y4))})")
+        else:
+            print(f"({int(floor(x4))}, {int(floor(y4))})({int(floor(x3))}, {int(floor(y3))})")
+
+longest_line()
