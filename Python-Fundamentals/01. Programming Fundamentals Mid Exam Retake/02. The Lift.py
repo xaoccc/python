@@ -16,7 +16,7 @@ for i in range(len(lift_state)):
         elif people_waiting == 0:
             break
         elif 0 < people_waiting < 4:
-            if people_waiting >= 4 - lift_state[i]:
+            if people_waiting > 4 - lift_state[i]:
                 people_waiting -= (4 - lift_state[i])
                 lift_taken_places += 4
             else:
