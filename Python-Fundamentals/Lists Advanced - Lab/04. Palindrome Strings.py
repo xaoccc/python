@@ -8,10 +8,13 @@ for word in pal_input_list:
         pal_word_count += 1
     
     if len(word) % 2 == 0:
+        #there are 6 methods to reverse a string, we can also do it like this:
+        #We can replace word[len(word) // 2:][::-1] with "".join(reversed(word[len(word) // 2:]))
         if word[:len(word) // 2] == word[len(word) // 2:][::-1]:
             pal_output_list.append(word)
 
     else:
+        #here we can also use the other solution, using join() and reversed() 
         if word[:len(word) // 2] == word[(len(word) // 2) + 1:][::-1]:
             pal_output_list.append(word)
 
