@@ -5,11 +5,8 @@ shot_targets_list = []
 command = input()
 while command != "End":
     shot_index = int(command)
-    if shot_index >= len(targets):
-        continue
-    else:
+    if shot_index < len(targets):
         if shot_index not in shots_index_list:
-            
             for i in range(len(targets)):
                 if i == shot_index:
                     continue
@@ -18,9 +15,7 @@ while command != "End":
                         targets[i] -= targets[shot_index]
                     elif targets[i] <= targets[shot_index]:
                         targets[i] += targets[shot_index]
-            
             targets[shot_index] = -1
-            
             shots_index_list.append(shot_index)
     command = input()
     
