@@ -85,3 +85,75 @@ The output values must be formatted to the second decimal place!
         </tr>
     </tbody>
 </table>
+
+# Problem 2 - Shopping List
+
+### Input
+
+You will receive an initial list with groceries separated by an exclamation mark "!".
+After that, you will be receiving 4 types of commands until you receive "Go Shopping!".
+
+•	"Urgent {item}" - add the item at the start of the list.  If the item already exists, skip this command.
+
+•	"Unnecessary {item}" - remove the item with the given name, only if it exists in the list. Otherwise, skip this command.
+
+•	"Correct {oldItem} {newItem}" - if the item with the given old name exists, change its name with the new one. Otherwise, skip this command.
+
+•	"Rearrange {item}" - if the grocery exists in the list, remove it from its current position and add it at the end of the list. Otherwise, skip this command.
+
+### Constraints
+
+•	There won't be any duplicate items in the initial list
+
+### Output
+
+•	Print the list with all the groceries, joined by ", ":
+"{firstGrocery}, {secondGrocery}, … {nthGrocery}"
+
+### Examples
+
+<table style="width: 0.0pt;border-collapse:collapse;border:none;">
+    <tbody>
+        <tr>
+            <td style="width: 242.75pt;border: 1pt solid windowtext;background: rgb(217, 217, 217);padding: 2.85pt 4.25pt;vertical-align: top;">
+                <p style='margin-top:4.0pt;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:150%;font-size:15px;font-family:"Calibri",sans-serif;margin:0in;text-align:center;'><strong>Input</strong></p>
+            </td>
+            <td style="width: 279pt;border-top: 1pt solid windowtext;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-image: initial;border-left: none;background: rgb(217, 217, 217);padding: 2.85pt 4.25pt;vertical-align: top;">
+                <p style='margin-top:4.0pt;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:150%;font-size:15px;font-family:"Calibri",sans-serif;margin:0in;text-align:center;'><strong>Output</strong></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 242.75pt;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-left: 1pt solid windowtext;border-image: initial;border-top: none;padding: 2.85pt 4.25pt;height: 42.8pt;vertical-align: top;">
+                <p style='margin-top:4.0pt;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:150%;font-size:15px;font-family:"Calibri",sans-serif;margin:0in;'><span style="font-family:Consolas;">Tomatoes!Potatoes!Bread</span></p>
+                <p style='margin-top:4.0pt;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:150%;font-size:15px;font-family:"Calibri",sans-serif;margin:0in;'><span style="font-family:Consolas;">Unnecessary Milk</span></p>
+                <p style='margin-top:4.0pt;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:150%;font-size:15px;font-family:"Calibri",sans-serif;margin:0in;'><span style="font-family:Consolas;">Urgent Tomatoes</span></p>
+                <p style='margin-top:4.0pt;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:150%;font-size:15px;font-family:"Calibri",sans-serif;margin:0in;'><span style="font-family:Consolas;">Go Shopping!</span></p>
+            </td>
+            <td style="width: 279pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 2.85pt 4.25pt;height: 42.8pt;vertical-align: top;">
+                <p style='margin-top:4.0pt;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:150%;font-size:15px;font-family:"Calibri",sans-serif;margin:0in;'><span style="font-family:Consolas;">Tomatoes, Potatoes, Bread</span></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 242.75pt;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-left: 1pt solid windowtext;border-image: initial;border-top: none;background: rgb(217, 217, 217);padding: 2.85pt 4.25pt;vertical-align: top;">
+                <p style='margin-top:4.0pt;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:150%;font-size:15px;font-family:"Calibri",sans-serif;margin:0in;text-align:center;'><strong>Input</strong></p>
+            </td>
+            <td style="width: 279pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;background: rgb(217, 217, 217);padding: 2.85pt 4.25pt;vertical-align: top;">
+                <p style='margin-top:4.0pt;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:150%;font-size:15px;font-family:"Calibri",sans-serif;margin:0in;text-align:center;'><strong>Output</strong></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 242.75pt;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-left: 1pt solid windowtext;border-image: initial;border-top: none;padding: 2.85pt 4.25pt;height: 20.3pt;vertical-align: top;">
+                <p style='margin-top:4.0pt;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:150%;font-size:15px;font-family:"Calibri",sans-serif;margin:0in;'><span style="font-family:Consolas;">Milk!Pepper!Salt!Water!Banana</span></p>
+                <p style='margin-top:4.0pt;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:150%;font-size:15px;font-family:"Calibri",sans-serif;margin:0in;'><span style="font-family:Consolas;">Urgent Salt</span></p>
+                <p style='margin-top:4.0pt;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:150%;font-size:15px;font-family:"Calibri",sans-serif;margin:0in;'><span style="font-family:Consolas;">Unnecessary Grapes&nbsp;</span></p>
+                <p style='margin-top:4.0pt;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:150%;font-size:15px;font-family:"Calibri",sans-serif;margin:0in;'><span style="font-family:Consolas;">Correct Pepper Onion</span></p>
+                <p style='margin-top:4.0pt;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:150%;font-size:15px;font-family:"Calibri",sans-serif;margin:0in;'><span style="font-family:Consolas;">Rearrange Grapes</span></p>
+                <p style='margin-top:4.0pt;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:150%;font-size:15px;font-family:"Calibri",sans-serif;margin:0in;'><span style="font-family:Consolas;">Correct Tomatoes Potatoes</span></p>
+                <p style='margin-top:4.0pt;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:150%;font-size:15px;font-family:"Calibri",sans-serif;margin:0in;'><span style="font-family:Consolas;">Go Shopping!</span></p>
+            </td>
+            <td style="width: 279pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 2.85pt 4.25pt;height: 20.3pt;vertical-align: top;">
+                <p style='margin-top:4.0pt;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:150%;font-size:15px;font-family:"Calibri",sans-serif;margin:0in;'><span style="font-family:Consolas;">Milk, Onion, Salt, Water, Banana</span></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
