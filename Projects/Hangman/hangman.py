@@ -13,19 +13,29 @@ words_list = ("python", "jumble", "easy", "difficult", "answer",  "xylophone")
 word = random.choice(words_list)
 
 
-
+computer_input = word[0] + (len(word)-2)*"_" + word[-1]
 try_count = 1
+prBlue(computer_input)
 user_guess = input("Guess the word :")
 def strike(user_guess):
     return ''.join([u'\u0336{}'.format(c) for c in user_guess])
 if user_guess == word:
     prGreen("Congratulations! You guessed it on the first try!")
-else:
-    print(user_guess)
+else:  
+    prRed(strike(user_guess))
     while user_guess != word:
-        prRed(strike(user_guess))
+        
         user_choice = input("You can try again [a], guess just a letter[l] or quit[q] :")
         try_count += 1
         if len(user_choice) > 1:
             if user_choice == word:
                 prGreen(f"Congratulations! You guessed it after {try_count} attempts")
+            else:
+                prRed(strike(user_choice))
+        elif  user_choice == "q":
+            break
+        elif  len(user_choice) == 1:
+          for i in range(len(word)):
+            if user_choice == word[i]:            
+              computer_input == computer_input.replace(computer_input[i], user_choice)
+          prBlue(computer_input)
