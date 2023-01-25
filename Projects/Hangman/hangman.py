@@ -1,4 +1,3 @@
-# Hangman by Tashev
 # import urllib.request
 import random
 def prRed(skk): print("\033[31m {}\033[00m" .format(skk))
@@ -9,9 +8,8 @@ def prBlue(skk): print("\033[34m {}\033[00m" .format(skk))
 #response = urllib.request.urlopen(word_site)
 #txt = response.read()
 #words_list = txt.splitlines()
-words_list = ("python", "jumble", "easy", "difficult", "answer",  "xylophone")
+words_list = ("python", "jumble", "easy", "difficult", "answer",  "xylophone", "automobile", "microscope", "catastrophy", "telephone", "computer")
 word = random.choice(words_list)
-
 
 computer_input = word[0] + (len(word)-2)*"_" + word[-1]
 try_count = 1
@@ -25,11 +23,12 @@ else:
     prRed(strike(user_guess))
     while user_guess != word:
         
-        user_choice = input("You can try again [a], guess just a letter[l] or quit[q] :")
+        user_choice = input("You can try again, guess just a letter or quit[q] :")
         try_count += 1
         if len(user_choice) > 1:
             if user_choice == word:
-                prGreen(f"Congratulations! You guessed it after {try_count} attempts")
+                prGreen(f"Congratulations! You guessed the word {word} after {try_count} attempts")
+                break
             else:
                 prRed(strike(user_choice))
         elif  user_choice == "q":
@@ -37,5 +36,9 @@ else:
         elif  len(user_choice) == 1:
           for i in range(len(word)):
             if user_choice == word[i]:            
-              computer_input == computer_input.replace(computer_input[i], user_choice)
-          prBlue(computer_input)
+              computer_input = computer_input[:i] + user_choice + computer_input[i+1:]
+          if computer_input != word:
+            prBlue(computer_input)
+          else:
+            prGreen(f"Congratulations! You guessed the word {word} after {try_count} attempts")
+            break
