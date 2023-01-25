@@ -1,0 +1,31 @@
+# Hangman by Tashev
+# import urllib.request
+import random
+def prRed(skk): print("\033[31m {}\033[00m" .format(skk))
+def prYellow(skk): print("\033[93m {}\033[00m" .format(skk))
+def prGreen(skk): print("\033[32m {}\033[00m" .format(skk))
+def prBlue(skk): print("\033[34m {}\033[00m" .format(skk))
+#word_site = "https://www.mit.edu/~ecprice/wordlist.10000"
+#response = urllib.request.urlopen(word_site)
+#txt = response.read()
+#words_list = txt.splitlines()
+words_list = ("python", "jumble", "easy", "difficult", "answer",  "xylophone")
+word = random.choice(words_list)
+
+
+
+try_count = 1
+user_guess = input("Guess the word :")
+def strike(user_guess):
+    return ''.join([u'\u0336{}'.format(c) for c in user_guess])
+if user_guess == word:
+    prGreen("Congratulations! You guessed it on the first try!")
+else:
+    print(user_guess)
+    while user_guess != word:
+        prRed(strike(user_guess))
+        user_choice = input("You can try again [a], guess just a letter[l] or quit[q] :")
+        try_count += 1
+        if len(user_choice) > 1:
+            if user_choice == word:
+                prGreen(f"Congratulations! You guessed it after {try_count} attempts")
