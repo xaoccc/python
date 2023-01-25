@@ -14,10 +14,10 @@ def prGreen(skk): print("\033[32m {}\033[00m".format(skk))
 def prBlue(skk): print("\033[34m {}\033[00m".format(skk))
 
 
-word_site = "https://www.mit.edu/~ecprice/wordlist.10000"
+word_site = "https://raw.githubusercontent.com/xaoccc/python/main/Projects/Hangman/words.txt"
 response = urllib.request.urlopen(word_site)
-txt = response.read()
-words_list = txt.splitlines()
+words_list = response.read().splitlines()
+
 for i in range(len(words_list)):
     words_list[i] = words_list[i].decode()
 word = random.choice(words_list)
