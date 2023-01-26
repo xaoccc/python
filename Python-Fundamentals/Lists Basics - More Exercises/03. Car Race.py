@@ -15,7 +15,8 @@ for j in range(len(car_two) - 1, -1, -1):
     car_two[j] = int(car_two[j])    
     car_two_sum_time += car_two[j]
     if car_two[j] == 0:
-        car_two_sum_time *= 0.8    
+        car_two_sum_time *= 0.8
+    
     
 if car_one_sum_time < car_two_sum_time:
     print(f"The winner is left with total time: {car_one_sum_time:.1f}")
