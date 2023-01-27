@@ -16,11 +16,10 @@ while command != "Yohoho!":
             treasure.remove(treasure[int(command[1])])
     
     elif command[0] == "Steal":
-        if len(treasure) <= int(command[1]):
-            stolen = treasure[-int(command[1]):]
+        stolen = treasure[-int(command[1]):]
+        if len(treasure) <= int(command[1]):            
             treasure = []
         else:
-            stolen = treasure[-int(command[1]):]
             del treasure[(len(treasure) - int(command[1])): ]
 
         print(", ".join(stolen))
