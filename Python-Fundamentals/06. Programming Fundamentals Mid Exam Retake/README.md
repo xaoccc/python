@@ -15,6 +15,51 @@ Both numbers should be formatted to the 2nd decimal place.
 ### Output
 •	 In the end, print whether the plunder was successful or not, following the format described above.
 ### Examples
+<table style="width:515.65pt;margin-left:8.5pt;border-collapse:collapse;border:none;">
+    <tbody>
+        <tr>
+            <td style="width: 253.5pt;border: 1pt solid windowtext;background: rgb(217, 217, 217);padding: 0in 5.4pt;height: 22.25pt;vertical-align: top;">
+                <p style='margin-top:4.0pt;margin-right:0in;margin-bottom:6.0pt;margin-left:0in;line-height:115%;font-size:15px;font-family:"Calibri",sans-serif;text-align:justify;'><strong>Input</strong></p>
+            </td>
+            <td style="width: 262.15pt;border-top: 1pt solid windowtext;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-image: initial;border-left: none;background: rgb(217, 217, 217);padding: 0in 5.4pt;height: 22.25pt;vertical-align: top;">
+                <p style='margin-top:4.0pt;margin-right:0in;margin-bottom:6.0pt;margin-left:0in;line-height:115%;font-size:15px;font-family:"Calibri",sans-serif;text-align:justify;'><strong>Output</strong></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 253.5pt;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-left: 1pt solid windowtext;border-image: initial;border-top: none;padding: 0in 5.4pt;height: 20.65pt;vertical-align: top;">
+                <p style='margin-top:4.0pt;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:  150%;font-size:15px;font-family:"Calibri",sans-serif;'><span style="font-family:Consolas;">5<br>40<br>100</span></p>
+            </td>
+            <td style="width: 262.15pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0in 5.4pt;height: 20.65pt;vertical-align: top;">
+                <p style='margin-top:4.0pt;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:  150%;font-size:15px;font-family:"Calibri",sans-serif;'><span style="font-family:Consolas;">Ahoy! 154.00 plunder gained.</span></p>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="width: 515.65pt;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-left: 1pt solid windowtext;border-image: initial;border-top: none;background: rgb(217, 217, 217);padding: 0in 5.4pt;height: 17.45pt;vertical-align: top;">
+                <p style='margin-top:4.0pt;margin-right:0in;margin-bottom:6.0pt;margin-left:0in;line-height:115%;font-size:15px;font-family:"Calibri",sans-serif;text-align:center;'><strong>Comments</strong></p>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="width: 515.65pt;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-left: 1pt solid windowtext;border-image: initial;border-top: none;padding: 0in 5.4pt;height: 68.1pt;vertical-align: top;">
+                <p style='margin-top:4.0pt;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:115%;font-size:15px;font-family:"Calibri",sans-serif;text-align:  justify;'>The days are 5, and the daily plunder is 40. On the third day, the total plunder is 120, and since it is a third day, they gain an additional 50% from the daily plunder, which adds up to 140. On the fifth day, the plunder is 220, but they battle with a warship and lose 30% of the collected cargo, and the total becomes 154. That is more than expected.</p>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="width: 515.65pt;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-left: 1pt solid windowtext;border-image: initial;border-top: none;background: rgb(217, 217, 217);padding: 0in 5.4pt;height: 21.1pt;vertical-align: top;">
+                <p style='margin-top:4.0pt;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:115%;font-size:15px;font-family:"Calibri",sans-serif;text-align:  justify;'>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 253.5pt;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-left: 1pt solid windowtext;border-image: initial;border-top: none;padding: 0in 5.4pt;height: 14.05pt;vertical-align: top;">
+                <p style='margin-top:4.0pt;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:115%;font-size:15px;font-family:"Calibri",sans-serif;'><span style="font-family:Consolas;">10</span>
+                <p style='margin-top:4.0pt;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:115%;font-size:15px;font-family:"Calibri",sans-serif;'><span style="font-family:Consolas;">20</span></p>
+                <p style='margin-top:4.0pt;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:115%;font-size:15px;font-family:"Calibri",sans-serif;'><span style="font-family:Consolas;">380</span></p>
+            </td>
+            <td style="width: 262.15pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0in 5.4pt;height: 14.05pt;vertical-align: top;">
+                <p style='margin-top:4.0pt;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:  150%;font-size:15px;font-family:"Calibri",sans-serif;'><span style="font-family:Consolas;">Collected only 36.29% of the plunder.</span></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
 
 # Problem 2 - Treasure Hunt
 
@@ -46,3 +91,65 @@ If the chest is empty, print the following message:
 *	The indexes will be integers in the range [-200…200]
 •	The count will be an integer in the range [1….100]
 ### Examples
+<table style="width:515.65pt;margin-left:8.5pt;border-collapse:collapse;border:none;">
+    <tbody>
+        <tr>
+            <td style="width: 198.25pt;border: 1pt solid windowtext;background: rgb(217, 217, 217);padding: 0in 5.4pt;height: 22.25pt;vertical-align: top;">
+                <p style='margin-top:4.0pt;margin-right:0in;margin-bottom:6.0pt;margin-left:0in;line-height:115%;font-size:15px;font-family:"Calibri",sans-serif;text-align:justify;'><strong>Input</strong></p>
+            </td>
+            <td style="width: 317.4pt;border-top: 1pt solid windowtext;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-image: initial;border-left: none;background: rgb(217, 217, 217);padding: 0in 5.4pt;height: 22.25pt;vertical-align: top;">
+                <p style='margin-top:4.0pt;margin-right:0in;margin-bottom:6.0pt;margin-left:0in;line-height:115%;font-size:15px;font-family:"Calibri",sans-serif;text-align:justify;'><strong>Output</strong></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 198.25pt;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-left: 1pt solid windowtext;border-image: initial;border-top: none;padding: 0in 5.4pt;height: 117.45pt;vertical-align: top;">
+                <p style='margin-top:4.0pt;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:  150%;font-size:15px;font-family:"Calibri",sans-serif;'><span style="font-family:Consolas;">Gold|Silver|Bronze|Medallion|Cup</span></p>
+                <p style='margin-top:4.0pt;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:  150%;font-size:15px;font-family:"Calibri",sans-serif;'><span style="font-family:Consolas;">Loot Wood Gold Coins</span></p>
+                <p style='margin-top:4.0pt;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:  150%;font-size:15px;font-family:"Calibri",sans-serif;'><span style="font-family:Consolas;">Loot Silver Pistol</span></p>
+                <p style='margin-top:4.0pt;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:  150%;font-size:15px;font-family:"Calibri",sans-serif;'><span style="font-family:Consolas;">Drop 3</span></p>
+                <p style='margin-top:4.0pt;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:  150%;font-size:15px;font-family:"Calibri",sans-serif;'><span style="font-family:Consolas;">Steal 3</span></p>
+                <p style='margin-top:4.0pt;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:  150%;font-size:15px;font-family:"Calibri",sans-serif;'><span style="font-family:Consolas;">Yohoho!</span></p>
+            </td>
+            <td style="width: 317.4pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0in 5.4pt;height: 117.45pt;vertical-align: top;">
+                <p style='margin-top:4.0pt;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:  150%;font-size:15px;font-family:"Calibri",sans-serif;'><span style="line-height:150%;font-family:Consolas;">Medallion, Cup, Gold</span></p>
+                <p style='margin-top:4.0pt;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:  150%;font-size:15px;font-family:"Calibri",sans-serif;'><span style="line-height:150%;font-family:Consolas;">Average treasure gain: 5.40 pirate credits.</span></p>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="width: 515.65pt;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-left: 1pt solid windowtext;border-image: initial;border-top: none;background: rgb(217, 217, 217);padding: 0in 5.4pt;height: 17.45pt;vertical-align: top;">
+                <p style='margin-top:4.0pt;margin-right:0in;margin-bottom:6.0pt;margin-left:0in;line-height:115%;font-size:15px;font-family:"Calibri",sans-serif;text-align:center;'><strong>Comments</strong></p>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="width: 515.65pt;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-left: 1pt solid windowtext;border-image: initial;border-top: none;padding: 0in 5.4pt;height: 99.35pt;vertical-align: top;">
+                <p style='margin-top:4.0pt;margin-right:0in;margin-bottom:5.0pt;margin-left:0in;line-height:  normal;font-size:15px;font-family:"Calibri",sans-serif;text-align:justify;'>The first command&nbsp;<strong><span style="font-family:Consolas;">&quot;Loot Wood Gold Coins&quot;</span></strong> adds <strong>Wood</strong> and <strong>Coins</strong> to the chest but <strong>omits</strong> Gold since it is already contained. The chest now has the following items:</p>
+                <p style='margin-top:4.0pt;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:  150%;font-size:15px;font-family:"Calibri",sans-serif;'><strong><span style="font-family:Consolas;">Coins Wood Gold Silver Bronze Medallion Cup</span></strong></p>
+                <p style='margin-top:4.0pt;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;text-align:  justify;'>The <strong>second</strong> command adds <strong>only Pistol</strong> to the chest</p>
+                <p style='margin-top:4.0pt;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:  150%;font-size:15px;font-family:"Calibri",sans-serif;'>The <strong>third</strong> command <strong>&quot;</strong><strong><span style="font-family:Consolas;">Drop 3</span></strong><strong>&quot;</strong> removes the <strong>Gold</strong> from the chest, but immediately adds it at the <strong>end</strong>:</p>
+                <p style='margin-top:4.0pt;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:  150%;font-size:15px;font-family:"Calibri",sans-serif;'><strong><span style="font-family:Consolas;">Pistol Coins Wood Silver Bronze Medallion Cup Gold</span></strong></p>
+                <p style='margin-top:4.0pt;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:  150%;font-size:15px;font-family:"Calibri",sans-serif;'>The <strong>fourth</strong> command <strong>&quot;Steal 3&quot;&nbsp;</strong>removes the <strong>last 3</strong> items <strong>Medallion</strong>, <strong>Cup</strong>, <strong>Gold</strong> from the chest and prints them.&nbsp;</p>
+                <p style='margin-top:4.0pt;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;text-align:  justify;'>In the end calculate the average treasure gain which is the sum of all items length Pistol(<strong>6</strong>) + Coins(<strong>5</strong>) + Wood(<strong>4</strong>) &nbsp;+ Silver(<strong>6</strong>) + Bronze(<strong>6</strong>) = <strong>27</strong> and <strong>divide</strong> it by the count 27 / 5 = <strong>5.4</strong> and format it to the <strong>second decimal</strong> point.</p>
+                <p style='margin-top:4.0pt;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;text-align:  justify;'>&nbsp;</p>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="width: 515.65pt;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-left: 1pt solid windowtext;border-image: initial;border-top: none;background: rgb(217, 217, 217);padding: 0in 5.4pt;height: 21.1pt;vertical-align: top;">
+                <p style='margin-top:4.0pt;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:115%;font-size:15px;font-family:"Calibri",sans-serif;text-align:  justify;'><strong>Input &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Output</strong></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 198.25pt;border-right: 1pt solid windowtext;border-bottom: 1pt solid windowtext;border-left: 1pt solid windowtext;border-image: initial;border-top: none;padding: 0in 5.4pt;height: 117.45pt;vertical-align: top;">
+                <p style='margin-top:4.0pt;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:115%;font-size:15px;font-family:"Calibri",sans-serif;'><span style="font-family:Consolas;">Diamonds|Silver|Shotgun|Gold</span></p>
+                <p style='margin-top:4.0pt;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:115%;font-size:15px;font-family:"Calibri",sans-serif;'><span style="font-family:Consolas;">Loot Silver Medals Coal</span></p>
+                <p style='margin-top:4.0pt;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:115%;font-size:15px;font-family:"Calibri",sans-serif;'><span style="font-family:Consolas;">Drop -1</span></p>
+                <p style='margin-top:4.0pt;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:115%;font-size:15px;font-family:"Calibri",sans-serif;'><span style="font-family:Consolas;">Drop 1</span></p>
+                <p style='margin-top:4.0pt;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:115%;font-size:15px;font-family:"Calibri",sans-serif;'><span style="font-family:Consolas;">Steal 6</span></p>
+                <p style='margin-top:4.0pt;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:115%;font-size:15px;font-family:"Calibri",sans-serif;'><span style="font-family:Consolas;">Yohoho!</span></p>
+            </td>
+            <td style="width: 317.4pt;border-top: none;border-left: none;border-bottom: 1pt solid windowtext;border-right: 1pt solid windowtext;padding: 0in 5.4pt;height: 117.45pt;vertical-align: top;">
+                <p style='margin-top:4.0pt;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:  150%;font-size:15px;font-family:"Calibri",sans-serif;'><span style="line-height:150%;font-family:Consolas;">Coal, Diamonds, Silver, Shotgun, Gold, Medals</span></p>
+                <p style='margin-top:4.0pt;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:  150%;font-size:15px;font-family:"Calibri",sans-serif;'><span style="line-height:150%;font-family:Consolas;">Failed treasure hunt.</span></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
