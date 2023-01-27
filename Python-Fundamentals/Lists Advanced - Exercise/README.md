@@ -47,18 +47,13 @@ On the first line, you will be given an integer n representing the number of roo
 Keep track of the free chairs:
 •	If there are not enough chairs in a specific room, print the following message: "{needed_chairs_in_room} more chairs needed in room {number_of_room}". The rooms start from 1.
 •	Otherwise, print: "Game On, {total_free_chairs} free chairs left".
-Example
-Input	Output
-4
-XXXX 4
-XX 1
-XXXXXX 3
-XXX 3	Game On, 4 free chairs left
-3
-XXXXXXX 5
-XXXX 5
-XXXXXX 8	1 more chairs needed in room 2
-2 more chairs needed in room 3
+
+#### Example
+
+| Input  | Output | 
+| ------------- | ------------- |
+| 4<br>XXXX 4<br>XX 1<br>XXXXXX 3<br>XXX 3 | Game On, 4 free chairs left | 
+| 3<br>XXXXXXX 5<br>XXXX 5<br>XXXXXX 8  | 1 more chairs needed in room 2<br>2 more chairs needed in room 3 | 
 
 ## 6.	Electron Distribution
 You are a mad scientist, and you have decided to play with electron distribution among atom shells. The basic idea of electron distribution is that electrons should fill a shell until it holds the maximum number of electrons.
@@ -67,10 +62,13 @@ You will receive a single integer - the number of electrons. Your task is to fil
 •	You should start filling the shells from the first one at the first position.
 •	If the electrons are enough to fill the first shell, the left unoccupied electrons should fill the following shell and so on.
 In the end, print a list with the filled shells.
-Example
-Input	Output
-10	[2, 8]
-44	[2, 8, 18, 16]
+
+#### Example
+
+| Input  | Output | 
+| ------------- | ------------- |
+| 10  | [2, 8] |
+| 44  | [2, 8, 18, 16] |
 
 ## 7.	Group of 10's
 Write a program that receives a sequence of numbers (a string containing integers separated by ", ") and prints the numbers sorted into lists of 10's in the format "Group of {group}'s: {list_of_numbers}".
@@ -78,31 +76,31 @@ Examples:
 •	The numbers 2, 8, 4, and 10 fall into the group of 10's.
 •	The numbers 13, 19, 14, and 15 fall into the group of 20's.
 For more clarification, see the examples below.
-Example
-Input	Output
-8, 12, 38, 3, 17, 19, 25, 35, 50	Group of 10's: [8, 3]
-Group of 20's: [12, 17, 19]
-Group of 30's: [25]
-Group of 40's: [38, 35]
-Group of 50's: [50]
-1, 3, 3, 4, 34, 35, 25, 21, 33	Group of 10's: [1, 3, 3, 4]
-Group of 20's: []
-Group of 30's: [25, 21]
-Group of 40's: [34, 35, 33]
-Hints
-•	Keep track of the group using a variable to store its max value.
-•	Create a loop and filter the elements that are less than or equal to the group boundary and remove them from the original list.
-•	Increase the boundary by 10.
-•	Loop until the given list is empty.
+
+#### Example
+
+| Input  | Output | 
+| ------------- | ------------- |
+| 8, 12, 38, 3, 17, 19, 25, 35, 50  | Group of 10's: [8, 3]<br>Group of 20's: [12, 17, 19]<br>Group of 30's: [25]<br>Group of 40's: [38, 35]<br>Group of 50's: [50] | 
+| 1, 3, 3, 4, 34, 35, 25, 21, 33  | Group of 10's: [1, 3, 3, 4]<br>Group of 20's: []<br>Group of 30's: [25, 21]<br>Group of 40's: [34, 35, 33]<br> | 
+
+#### Hints
+* Keep track of the group using a variable to store its max value.
+* Create a loop and filter the elements that are less than or equal to the group boundary and remove them from the original list.
+* Increase the boundary by 10.
+* Loop until the given list is empty.
 
 ## 8.	Decipher This!
-You are given a secret message you should decipher. To do that, you need to know that in each word:
-•	the second and the last letter are switched (e.g., Holle means Hello)
-•	the first letter is replaced by its character code (e.g., 72 means H)
-Example
-Input	Output
-72olle 103doo 100ya	Hello good day
-82yade 115te 103o	Ready set go
+You are given a secret message you should decipher. To do that, you need to know that in each word:  
+* the second and the last letter are switched (e.g., Holle means Hello)
+* the first letter is replaced by its character code (e.g., 72 means H)
+
+#### Example
+
+| Input  | Output | 
+| ------------- | ------------- |
+| 72olle 103doo 100ya  | Hello good day | 
+| 82yade 115te 103o  | Ready set go | 
 
 ## 9.	*Anonymous Threat
 Anonymous has created a hyper cyber virus, which steals data from the CIA. The virus is known for its innovative and unbelievably clever merging and dividing data into partitions. As the lead security developer in the CIA, you have been tasked to analyze the software of the virus and observe its actions on the data. 
