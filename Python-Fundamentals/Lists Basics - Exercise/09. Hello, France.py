@@ -1,10 +1,7 @@
-items_list = input()
+items_list = input().split("|")
 budget = float(input())
-items_list = items_list.split("|")
-money_spent = 0
-total_money = 0
-item_price = 0.0
-item = ""
+money_spent, total_money, item_price, item = 0, 0, 0.0, ""
+
 for i in range(len(items_list)):
     items_list[i] = items_list[i].split("->")
     item_price = float(items_list[i][1])
