@@ -2,12 +2,12 @@
 
 ## 1. Which Are In?
 You will be given two sequences of strings, separated by ", ". Print a new list containing only the strings from the first input line, which are substrings of any string in the second input line.
+
 #### Example
-Input	Output
-arp, live, strong
-lively, alive, harp, sharp, armstrong	['arp', 'live', 'strong']
-tarp, mice, bull
-lively, alive, harp, sharp, armstrong	[]
+| Input  | Output |
+| ------------- | ------------- |
+| arp, live, strong <br> lively, alive, harp, sharp, armstrong|['arp', 'live', 'strong']|
+| tarp, mice, bull <br> lively, alive, harp, sharp, armstrong|[]|
 
 ## 2. Next Version
 You are fed up with changing the version of your software manually. Instead, you will create a little script that will make it for you.  
@@ -15,33 +15,31 @@ You will be given a string representing the version of your software in the form
 The only rule is that the numbers cannot be greater than 9. If it happens, set the current number to 0 and increase the previous number. For more clarification, see the examples below.  
 Note: there will be no case in which the first number will become greater than 9.  
 #### Example
-Input	Output  
-1.2.3	1.2.4  
-1.3.9	1.4.0  
-3.9.9	4.0.0  
+
+| Input  | Output | 
+| ------------- | ------------- |
+| 1.2.3  | 1.2.4 | 
+| 1.3.9  | 1.4.0 | 
+| 3.9.9  | 4.0.0 | 
 
 ## 3. Word Filter
 Using comprehension, write a program that receives some text, separated by space, and take only those words whose length is even. Print each word on a new line.
 #### Examples
-Input	Output
-kiwi orange banana apple	kiwi
-orange
-banana
-pizza cake pasta chips	cake
+
+| Input  | Output | 
+| ------------- | ------------- |
+| kiwi orange banana apple  | kiwi<br>orange<br>banana | 
+| pizza cake pasta chips  | cake | 
 
 ## 4. Number Classification
 Using a list comprehension, write a program that receives numbers, separated by comma and space ", ", and prints all the positive, negative, even, and odd numbers on separate lines as shown below.
 Note: Zero is counted for a positive number
-Examples
-Input	Output
-1, -2, 0, 5, 3, 4, -100, -20, 12, 19, -33	Positive: 1, 0, 5, 3, 4, 12, 19
-Negative: -2, -100, -20, -33
-Even: -2, 0, 4, -100, -20, 12
-Odd: 1, 5, 3, 19, -33
-1, 2, 53, 2, 21	Positive: 1, 2, 53, 2, 21
-Negative:
-Even: 2, 2
-Odd: 1, 53, 21
+#### Examples
+
+| Input  | Output | 
+| ------------- | ------------- |
+| 1, -2, 0, 5, 3, 4, -100, -20, 12, 19, -33 | Positive: 1, 0, 5, 3, 4, 12, 19<br>Negative: -2, -100, -20, -33<br>Even: -2, 0, 4, -100, -20, 12<br>Odd: 1, 5, 3, 19, -33 | 
+| 1, 2, 53, 2, 21 | Positive: 1, 2, 53, 2, 21<br>Negative: <br>Even: 2, 2<br>Odd: 1, 53, 21 |
 
 ## 5.	Office Chairs
 You are a facility manager at a large business center. One of your responsibilities is to check if each conference room in the center has enough chairs for the visitors.
