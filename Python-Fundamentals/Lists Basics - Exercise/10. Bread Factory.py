@@ -1,5 +1,4 @@
-events = input()
-events = events.split("|")
+events = input().split("|")
 energy = 100
 coins = 100
 fail = False
