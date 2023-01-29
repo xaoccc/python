@@ -1,7 +1,7 @@
-nums = input()
-nums = nums.split(" ")
+nums = input().split(" ")
 message = input()
 final_message = ""
+
 for i in range(len(nums)):
     index_num = 0
     for j in range(len(nums[i])):
