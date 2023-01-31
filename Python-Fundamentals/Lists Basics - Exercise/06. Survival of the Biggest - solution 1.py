@@ -1,10 +1,7 @@
-nums_list = input()
+nums_list = input().split()
 biggest_num = int(input())
-nums_list = nums_list.split(" ")
-sorted_nums = []
-nums_list_int = []
-final_list = []
-biggest_str = ""
+sorted_nums, nums_list_int, final_list, biggest_str  = [], [], [], ""
+
 for _ in range(len(nums_list)):
   sorted_nums.append(int(nums_list[_]))
   nums_list_int.append(int(nums_list[_]))
