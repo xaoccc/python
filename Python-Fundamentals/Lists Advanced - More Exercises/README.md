@@ -77,5 +77,26 @@ Note: If there are two or more ways out, she always chooses the longest one.
 
 ## 4.	Battle Ships
 
+You will be given a number n representing the number of rows of the field. On the following n lines, you will receive each field row as a string with numbers separated by a space. Each number greater than zero represents a ship with health equal to the number value.  
+After that, you will receive the squares that are being attacked in the format: "{row}-{col} {row}-{col}". Each time a square is being attacked, if there is a ship (number greater than 0), you should reduce its value by 1. If a ship's health reaches zero, it is destroyed. After the attacks have ended, print how many ships were destroyed. 
 
+#### Example
+
+| Input  | Output | Comment |
+| ------------- | ------------- | ------------- |
+| 3<br />1 0 0 1<br />2 0 0 0<br />0 3 0 1<br />0-0 1-0 2-1 2-1 2-1 1-1 2-1  | 2 | States after each attack:<br />First attack -> 1 ship destroyed<br />0 0 0 1<br />2 0 0 0<br />0 3 0 1<br />Second attack -> reduce ship health<br />0 0 0 1<br />1 0 0 0<br />0 2 0 1<br />Third attack -> reduce ship health<br />0 0 0 1<br />2 0 0 0<br />0 2 0 1<br />Fourth attack -> reduce ship health<br />0 0 0 1<br />2 0 0 0<br />0 1 0 1<br />Fifth attack -> another ship destroyed<br />0 0 0 1<br />2 0 0 0<br />0 0 0 1<br />Sixth and Seventh attack -> no ship destroyed |
+| 5<br />1 0 5 0 1<br />6 3 9 0 0<br />7 9 4 3 2<br />1 0 0 4 9<br />5 6 0 3 5<br />0-1 0-2 0-2 0-2 0-2 0-2 3-0 | 2 |  |
+
+## 5.	Dots
+
+You will be given a number n representing the number of rows of a board of dots and dashes. On the following n lines, you will receive each row of the board as a string with symbols (dots and dashes only), separated by a single space.  
+Your task is to find and print the largest count of dots that could be connected at once. You could only connect horizontally or vertically.  
+
+#### Example
+
+| Input  | Output | 
+| ------------- | ------------- | 
+| 5<br />. . - - -<br />. . - - -<br />- - - - -<br />- - - . .<br />- - - . . | 4 | 
+| 6<br />. . - . - .<br />- . . . . . <br />- . - - - -<br />- . . - - -<br />- . . . . -<br />- - - . . - | 18 | 
+| 4<br />- . - . . –<br />. - . . - .<br />. - - - - -<br />- - - . - -  | 4 | 
 
