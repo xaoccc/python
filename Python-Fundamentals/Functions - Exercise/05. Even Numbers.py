@@ -1,8 +1,11 @@
-def another_function(nums_list):
-    nums_list = nums_list.split()
-    new_list = []
-    for i in range(len(nums_list)):
-        if int(nums_list[i]) % 2 == 0:
-            new_list.append(int(nums_list[i]))
-    print(new_list)
-another_function(input())
+input_list = [int(i) for i in input().split()]
+new_list = []
+def even_nums(num):
+    if num % 2 == 0:
+        return 1
+
+result = filter(even_nums, input_list)
+
+for num in result:
+     new_list.append(num)
+print(new_list)
