@@ -1,4 +1,4 @@
-def calculator(operator = input(), first_num = int(input()), second_num = int(input())):
+def calculator(operator, first_num, second_num ):
     if operator == "multiply":
         return first_num * second_num
     elif operator == "divide":
@@ -8,4 +8,4 @@ def calculator(operator = input(), first_num = int(input()), second_num = int(in
     elif operator == "add":
         return first_num + second_num
         
-print(calculator()) 
+print(calculator(input(),int(input()),int(input())))
