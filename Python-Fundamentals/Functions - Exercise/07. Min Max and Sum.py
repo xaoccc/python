@@ -1,8 +1,3 @@
-def max_min_sum():
-    nums_input = input().split()
-    for i in range(len(nums_input)):
-        nums_input[i] = int(nums_input[i])
-    print(f"The minimum number is {min(nums_input)}")
-    print(f"The maximum number is {max(nums_input)}")
-    print(f"The sum number is: {sum(nums_input)}")
-max_min_sum()
+def max_min_sum(nums_input):
+    return f"The minimum number is {min(nums_input)}\nThe maximum number is {max(nums_input)}\nThe sum number is: {sum(nums_input)}"
+print(max_min_sum([int(i) for i in input().split()]))
