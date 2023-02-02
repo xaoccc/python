@@ -1,5 +1,4 @@
-def pass_validator():
-    nums_input = input()
+def pass_validator(nums_input):    
     digits_num = 0
     
     for i in range(len(nums_input)):
@@ -14,4 +13,4 @@ def pass_validator():
     if (5 < len(nums_input) < 11) and nums_input.isalnum() and digits_num > 1:
         print("Password is valid")
 
-pass_validator()
+pass_validator(input())
