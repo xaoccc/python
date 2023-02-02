@@ -1,9 +1,6 @@
-def loading_bar(num_input = int(input())):
-    num_input_ = num_input // 10
+def loading_bar(num_input):
     if num_input != 100:
-        print(str(num_input) + "% [" + "%" * num_input_ + "." * (10 - num_input_) + "]")
-        print("Still loading...")
+        return str(num_input) + "% [" + "%" * (num_input // 10) + "." * (10 - (num_input // 10)) + "]""\nStill loading..."
     else:
-        print("100% Complete!")
-        print("[" + 10 * "%" + "]")
-loading_bar() 
+        return "100% Complete!\n[" + 10 * "%" + "]"
+print(loading_bar(int(input()))) 
