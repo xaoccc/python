@@ -1,4 +1,4 @@
-def odd_even_sum(num = input()):
+def odd_even_sum(num):
 
     def odd_sum_funk():
         odd_sum = 0
@@ -16,4 +16,4 @@ def odd_even_sum(num = input()):
         print(f"Even sum = {even_sum}")
     even_sum_funk()
     
-odd_even_sum()
+odd_even_sum(input())
