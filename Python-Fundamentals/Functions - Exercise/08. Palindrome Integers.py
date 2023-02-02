@@ -1,7 +1,5 @@
-def palidrome():
-    #First we create a list from the input
-    nums_input = input().split(", ")
-    
+def palidrome(nums_input):
+  
     #We have to check each number from the list if it is a palidrome number (as string)
     for num in range(len(nums_input)):
         #We have to divide the string number in two halves and compare them. That is why we create a variable for the second half
@@ -24,4 +22,4 @@ def palidrome():
             print(False)
             
 #Now we can call the function whenever we want :)
-palidrome()
+palidrome(input().split(", "))
