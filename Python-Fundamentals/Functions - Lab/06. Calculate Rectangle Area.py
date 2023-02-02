@@ -1,3 +1,3 @@
-def area(width = int(input()), height = int(input())):
+def area(width, height):
     return width * height
-print(area())
+print(area(int(input()), int(input())))
