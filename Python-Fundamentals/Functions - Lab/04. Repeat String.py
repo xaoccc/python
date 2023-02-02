@@ -1,3 +1,3 @@
-def test(a = input(), b = int(input())):
+def test(a, b):
     return a * b
-print(test())
+print(test(input(), int(input())))
