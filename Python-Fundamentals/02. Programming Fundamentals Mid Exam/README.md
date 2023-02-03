@@ -41,3 +41,23 @@ The output should be printed on the console and consist of elements of the modif
 | ----- | ------ | ------ |
 | 23 -2 321 87 42 90 -123<br />swap 1 3<br />swap 3 6<br />swap 1 0<br />multiply 1 2<br />multiply 2 1<br />decrease<br />end | 86, 7382, 2369942, -124, 41, 89, -3 | 23 -2 321 87 42 90 -123 – initial values<br />swap 1(-2) and 3(87) ▼<br />23 87 321 -2 42 90 -123<br />swap 3(-2) and 6(-123) ▼<br />23 87 321 -123 42 90 -2<br />swap 1(87) and 0(23) ▼<br />87 23 321 -123 42 90 -2<br />multiply 1(23) 2(321) = 7383 ▼<br />87 7383 321 -123 42 290 -2<br />multiply 2(321) 1(7383) = 2369943 ▼<br />87 7383 2369943 -123 42 90 -2<br />decrease – all - 1 ▼<br />86 7382 2369942 -124 41 89 -3 |
 | 1 2 3 4<br />swap 0 1<br />swap 1 2<br />swap 2 3<br />multiply 1 2<br />decrease<br />end | 1, 11, 3, 0 |  |
+
+# Problem 3 - Numbers
+Write a program to read a sequence of integers and find and print the top 5 numbers greater than the average value in the sequence, sorted in descending order.  
+### Input
+*	Read from the console a single line holding space-separated integers.
+### Output
+*	Print the above-described numbers on a single line, space-separated. 
+*	If less than 5 numbers hold the property mentioned above, print less than 5 numbers. 
+*	Print "No" if no numbers hold the above property.
+### Constraints
+*	All input numbers are integers in the range [-1 000 000 … 1 000 000]. 
+*	The count of numbers is in the range [1…10 000].
+
+| Input | Output | Comment |
+| ----- | ------ | ------ |
+| 10 20 30 40 50 | 50 40 | Average number = 30.<br />  Numbers greater than 30 are: {40, 50}.<br />  The top 5 numbers among them in descending order are: {50, 40}.  <br />Note that we have only 2 numbers, so all of them are included in the top 5.   |
+| 5 2 3 4 -10 30 40 50 20 50 60 60 51 | 60 60 51 50 50 | Average number = 28.08.<br />  Numbers greater than 28.08 are:  
+{30, 40, 50, 50, 60, 60, 51}.<br />  The top 5 numbers among them in descending order are: {60, 60, 51, 50, 50}.   |
+| 1 | No | Average number = 1.<br />There are no numbers greater than 1. |
+| -1 -2 -3 -4 -5 -6 | -1 -2 -3 | Average number = -3.5.<br />Numbers greater than -3.5 are: {-1, -2, -3}.<br />The top 5 numbers among them in descending order are: {-1, -2, -3}. |
