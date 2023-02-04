@@ -1,12 +1,5 @@
-line_one = input()
-line_two = input()
-line_three = input()
-
-line_one = line_one.split(" ")
-line_two = line_two.split(" ")
-line_three = line_three.split(" ")
-first_win = False
-second_win = False
+line_one, line_two, line_three = input().split(), input().split(), input().split()
+first_win, second_win  = False, False
 
 game_data = line_one + line_two + line_three
 game_data = [eval(i) for i in game_data]
