@@ -1,10 +1,6 @@
 #For iterating through a list with specific interval, a while loop is preferrable and we definitely need a break condition and the correct iterator
-
-
-soldiers_list = input()
 num = int(input())
-soldiers_list = soldiers_list.split(" ")
-soldiers_list_int = [eval(i) for i in soldiers_list]
+soldiers_list_int = [int(i) for i in input().split()]
 #Solution for list output: new_list = []
 i = 0
 new_string = "["
