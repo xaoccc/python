@@ -51,3 +51,21 @@ Print the corresponding messages described above.
 | ----- | ------ | 
 | rat 10\|bat 20\|potion 10\|rat 10\|chest 100\|boss 70\|chest 1000 | You slayed rat.<br />You slayed bat.<br />You healed for 10 hp.<br />Current health: 80 hp.<br />You slayed rat.<br />You found 100 bitcoins.<br />You died! Killed by boss.<br />Best room: 6 | 
 | cat 10\|potion 30\|orc 10\|chest 10\|snake 25\|chest 110 | You slayed cat.<br />You healed for 10 hp.<br />Current health: 100 hp.<br />You slayed orc.<br />You found 100 bitcoins.<br />You slayed snake.<br />You found 110 bitcoins.<br />You've made it!<br />Bitcoins: 120<br />Health: 65 | 
+
+# Problem 3. Inventory
+
+### Input / Constraints
+You will receive a journal with some collecting items, separated with a comma and a space (", "). After that, until receiving "Craft!" you will be receiving different commands split by " - ":  
+*	"Collect - {item}" - you should add the given item to your inventory. If the item already exists, you should skip this line.
+*	"Drop - {item}" - you should remove the item from your inventory if it exists.
+*	"Combine Items - {old_item}:{new_item}" - you should check if the old item exists. If so, add the new item after the old one. Otherwise, ignore the command.
+*	"Renew – {item}" – if the given item exists, you should change its position and put it last in your inventory.
+### Output
+After receiving "Craft!" print the items in your inventory, separated by ", ".  
+### Examples
+
+| Input | Output | 
+| ----- | ------ | 
+| Iron, Wood, Sword<br />Collect - Gold<br />Drop - Wood<br />Craft! | Iron, Sword, Gold  | 
+| Iron, Sword<br />Drop - Bronze<br />Combine Items - Sword:Bow<br />Renew - Iron<br />Craft! | Sword, Bow, Iron | 
+
