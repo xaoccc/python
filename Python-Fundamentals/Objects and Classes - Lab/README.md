@@ -100,3 +100,6 @@ print(f"{circle.calculate_area():.2f}")
 print(f"{circle.calculate_area_of_sector(angle):.2f}")	31.40
 78.50
 1.09
+
+![image](https://user-images.githubusercontent.com/114498517/217537840-e3a87856-969b-438e-98de-6ab37396dea7.png)
+
