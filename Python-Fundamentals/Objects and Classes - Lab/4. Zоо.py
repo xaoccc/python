@@ -5,9 +5,9 @@ class Zoo:
     # The __init__ method has 1 PARAMETER - name
     def __init__(self, name):
         self.name = name 
-        mammals = []
-        fishes = []
-        birds = []
+        self.mammals = []
+        self.fishes = []
+        self.birds = []
     def add_animal(self, species, name):
         if species == "mammal":
             self.mammals.append(name)
