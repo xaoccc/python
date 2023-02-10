@@ -1,6 +1,5 @@
 #We split the input into a list with integers
-nums = input().split(", ")
-nums = [int(i) for i in nums]
+nums = [int(i) for i in input().split(", ")]
 #Then we find the total number of groups, according to the biggest number in the list
 if max(nums) % 10 == 0:
     nums_groups = max(nums) // 10
