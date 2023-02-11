@@ -1,6 +1,5 @@
 #We split the input into a list with integers
-nums = input().split(", ")
-nums = [int(i) for i in nums]
+nums = [int(i) for i in input().split(", ")]
 #Then we find the total number of groups, according to the biggest number in the list
 if max(nums) % 10 == 0:
     nums_groups = max(nums) // 10
@@ -24,3 +23,12 @@ for i in range(nums_groups):
 #Now that we have all groups, stored in lists inside the list nums_groups, we simply print each element for each group
 for i in range(1, nums_groups + 1):  
     print(f"Group of {i}0\'s: {groups_list[i]}")
+
+    
+# numbers = [int(i) for i in input().split(", ")]
+# groups = 0
+# while numbers:
+#     groups += 10
+#     print_list = [i for i in numbers if i <= groups]
+#     numbers = [i for i in numbers if i > groups]
+#     print(f"Group of {groups}'s: {print_list}")
