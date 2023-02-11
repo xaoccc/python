@@ -24,3 +24,9 @@ if sum(couples) == 0:
 else:
     fail_count = len(list(filter(lambda x: (x > 0), couples)))
     print(f"Cupid has failed {fail_count} places.")
+<<<<<<< Updated upstream
+=======
+
+
+
+>>>>>>> Stashed changes
