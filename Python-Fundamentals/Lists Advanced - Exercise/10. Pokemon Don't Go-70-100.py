@@ -21,7 +21,5 @@ while len(pokemons) > 0:
             else:
                 pokemons[i] -= current
         removed += current
-    print(pokemons)
-
 
 print(removed)
