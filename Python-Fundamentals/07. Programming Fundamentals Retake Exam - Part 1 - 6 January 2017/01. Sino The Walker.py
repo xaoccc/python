@@ -9,4 +9,4 @@ hours = total_seconds // 60 // 60 % 24
 minutes = total_seconds // 60 % 60
 seconds = total_seconds % 60
 
-print("Time Arrival: " + "{:02d}".format(hours) + ":" + "{:02d}".format(minutes) + ":" + "{:02d}".format(seconds))
+print(f"Time Arrival: {hours:02d}:{minutes:02d}:{seconds:02d}")
