@@ -56,3 +56,47 @@ If the chest is empty, print the following message:
 | ----- | ------ | -------- |
 | Gold\|Silver\|Bronze\|Medallion\|Cup<br />Loot Wood Gold Coins<br />Loot Silver Pistol<br />Drop 3<br />Steal 3<br />Yohoho! | Medallion, Cup, Gold<br />Average treasure gain: 5.40 pirate credits. | The first command "Loot Wood Gold Coins" adds Wood and Coins to the chest but omits Gold since it is already contained. The chest now has the following items:<br />Coins Wood Gold Silver Bronze Medallion Cup<br />The second command adds only Pistol to the chest<br />The third command "Drop 3" removes the Gold from the chest, but immediately adds it at the end:<br />Pistol Coins Wood Silver Bronze Medallion Cup Gold<br />The fourth command "Steal 3" removes the last 3 items Medallion, Cup, Gold from the chest and prints them. <br />In the end calculate the average treasure gain which is the sum of all items length Pistol(6) + Coins(5) + Wood(4)  + Silver(6) + Bronze(6) = 27 and divide it by the count 27 / 5 = 5.4 and format it to the second decimal point. |
 | Diamonds\|Silver\|Shotgun\|Gold<br />Loot Silver Medals Coal<br />Drop -1<br />Drop 1<br />Steal 6<br />Yohoho! | Coal, Diamonds, Silver, Shotgun, Gold, Medals<br />Failed treasure hunt. |   |
+
+# Problem 3 - Man O War
+
+Create a program that tracks the battle and either chooses a winner or prints a stalemate. On the first line, you will receive the status of the pirate ship, which is a string representing integer sections separated by ">". On the second line, you will receive the same type of status, but for the warship:  
+"{section1}>{section2}>{section3}… {sectionn}"  
+On the third line, you will receive the maximum health capacity a section of the ship can reach.  
+The following lines represent commands until "Retire":  
+*	"Fire {index} {damage}" - the pirate ship attacks the warship with the given damage at that section. Check if the index is valid and if not, skip the command. If the section breaks (health <= 0) the warship sinks, print the following and stop the program: "You won! The enemy ship has sunken."  
+*	"Defend {startIndex} {endIndex} {damage}" - the warship attacks the pirate ship with the given damage at that range (indexes are inclusive). Check if both indexes are valid and if not, skip the command. If the section breaks (health <= 0) the pirate ship sinks, print the following and stop the program:
+"You lost! The pirate ship has sunken."  
+*	"Repair {index} {health}" - the crew repairs a section of the pirate ship with the given health. Check if the index is valid and if not, skip the command. The health of the section cannot exceed the maximum health capacity.  
+*	"Status" - prints the count of all sections of the pirate ship that need repair soon, which are all sections that are lower than 20% of the maximum health capacity. Print the following:  
+"{count} sections need repair."  
+In the end, if a stalemate occurs, print the status of both ships, which is the sum of their individual sections, in the following format:  
+"Pirate ship status: {pirateShipSum}  
+Warship status: {warshipSum}"  
+### Input
+*	On the 1st line, you are going to receive the status of the pirate ship (integers separated by '>')
+*	On the 2nd line, you are going to receive the status of the warship
+*	On the 3rd line, you will receive the maximum health a section of a ship can reach.
+*	On the following lines, until "Retire", you will be receiving commands.
+### Output
+*	Print the output in the format described above.
+### Constraints
+*	The section numbers will be integers in the range [1….1000]
+*	The indexes will be integers [-200….200]
+*	The damage will be an integer in the range [1….1000]
+*	The health will be an integer in the range [1….1000]
+### Examples
+
+| Input | Output | 
+| ----- | ------ | 
+| 12>13>11>20>66<br />12>22>33>44>55>32>18<br />70<br />Fire 2 11<br />Fire 8 100<br />Defend 3 6 11<br />Defend 0 3 5<br />Repair 1 33<br />Status<br />Retire<br /> | 2 sections need repair.<br />Pirate ship status: 135<br />Warship status: 205 | 
+
+### Comment
+First, we receive the command "Fire 2 11", and damage the warship at section index 2, which is currently 33, and after reduction, the status of the warship is the following:  
+12 22 22 44 55 32 18  
+The second and third commands have invalid indexes, so we skip them.   
+The fourth command, "Defend 0 3 5" damages 4 sections of the pirate ship with 5, which results in the following states:  
+7 8 6 15 66  
+The fifth command, "Repair 1 33" repairs the pirate ship section and adds 33 health to the current 8, which results in 41  
+Only 2 sections of the pirate ship (7 and 6) need repair soon.   
+In the end, there is a stalemate, so we print both ship statuses (sum of all sections).  
+
