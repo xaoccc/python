@@ -8,13 +8,12 @@ while input_data != "make migrations":
     del input_data[-1]
     for i in range(3):
         person_data.append(input_data[i].split(" "))
-
-    if person_data[0][-2][0].isupper() and person_data[0][-1][0].isupper() and person_data[0][-2].isalpha() and person_data[0][-1].isalpha() and 9 < int(person_data[1][2]) < 100 and person_data[2][-1][2] == "-" and person_data[2][-1][5] == "-":
+    if person_data[0][-2][0].isupper() and person_data[0][-1][0].isupper() and person_data[0][-2].isalpha() and person_data[0][-1].isalpha() and 9 < int(person_data[1][3]) < 100 and person_data[2][-1][2] == "-" and person_data[2][-1][5] == "-" and person_data[0][-3] == "is" and len(person_data[0][-1]) < 2:
         all_data[0] += person_data[0][-2] + " " + person_data[0][-1] + "."
-        all_data[1] += person_data[1][2] + "."
+        all_data[1] += person_data[1][3] + "."
         all_data[2] += person_data[2][-1] + "."
         global_data.append(all_data)
-    
+
     input_data = input()
     
 if not global_data:
