@@ -1,5 +1,5 @@
 
-## Software University Python Basics and Fundamentals Courses
+## Software University Python Courses
 <p align="center">
 <img src="https://github.com/xaoccc/python/blob/main/Library/IMG_9293.png" />
 </p>
