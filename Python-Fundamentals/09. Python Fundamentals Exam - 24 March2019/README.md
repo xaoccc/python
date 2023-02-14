@@ -30,11 +30,11 @@ Where {money} is the money you need to reach the planned budget, formatted two d
 # Problem 2. Command Center
 ### Input / Constraints
 We are going to receive a list of integers from console. After that we will start receive some of the following commands in format:
-•	swap {index1} {index2}
-•	enumerate_list
-•	max
-•	min
-•	get_divisible by {number}
+* swap {index1} {index2}
+* enumerate_list
+* max
+* min
+* get_divisible by {number}
 
 *If you receive command 'swap' you should check if the indexes are valid. A valid index is index which is 0 or higher and is less than list length. 
     -   If one of the indexes is not valid just print the list without changing it
@@ -42,14 +42,14 @@ We are going to receive a list of integers from console. After that we will star
 
 *If you receive ‘enumerate_list’ you should enumerate the list and print it in the following format:
 	[(0, {list[0]}), (1, list[1]), (2, list[2]), (3, list[3])]
-Where {list[n]} is the element corresponding to the given index (starting from zero)
+Where {list[n]} is the element corresponding to the given index (starting from zero)  
 
-*If you receive 'max', print the max number in the list
-*If you receive 'min', print the min number in the list
+* If you receive 'max', print the max number in the list
+* If you receive 'min', print the min number in the list
 
-*If you receive ‘get_divisible by’ you must print every element in the list which residue after division with {number} is 0 in format:
-[el1, el2, ….]
-It is guaranteed -  the {number} never will be 0, so you do not need to check it.
+* If you receive ‘get_divisible by’ you must print every element in the list which residue after division with {number} is 0 in format:
+[el1, el2, ….]  
+It is guaranteed -  the {number} never will be 0, so you do not need to check it.  
 
-Output
+### Output
 When you recieve a command which says 'end', you should print the count of commands you have performed. Note that invalid commands may appear. In this case do not print anything and do not count these commands as performed.
