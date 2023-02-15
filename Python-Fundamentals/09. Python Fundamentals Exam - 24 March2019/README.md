@@ -53,3 +53,31 @@ It is guaranteed -  the {number} never will be 0, so you do not need to check it
 
 ### Output
 When you recieve a command which says 'end', you should print the count of commands you have performed. Note that invalid commands may appear. In this case do not print anything and do not count these commands as performed.
+
+# Problem 3. Apartments
+### Input / Constraints
+We have the task to create database for a businessman, who buys apartments in different neighborhoods here in Sofia.  
+At the first stage he does a research for available apartments. He will give you a neighborhood name and a list of block numbers in format:
+
+{neighborhood} -> {block_num,block_num,block_num}
+
+When you receive the command ‘collectApartments’ you should stop adding research results and start assigning them with the real data. Note that the businessman can give you a neighborhood or a block number which haven’t been researched. In this case just do nothing, but if he gives you a researched neighborhood and a researched block number in this neighborhood assign the values for it. The data will come in the following format:
+
+{ neighborhood}&{block_number} -> {count_of_available_apartments}|{price_for_one_apartment}
+
+It’s  possible to receive existing neighborhood and block_number and already assigned count_of_available_apartments with given price. In this case REPLACE  the old info with the new one.  
+### Output
+When you recieve a command which says 'report', you should print all apartments data ordered by name of the neighborhood ascending after that by block_number ascending in the following format:
+
+Neighborhood: {neighborhood}  
+*Block number: {block_number} -> { count_of_available_apartments } apartments for sale. Price for one: {price_for_one_apartment }
+
+* If  there is no available apartments in this block in this neighborhood just print 0 for the available apartments count.
+* If there is no price, just print for price_for_one_apartment ‘None’.
+
+### Examples
+
+| Input | Output | Comments |
+| ----- | ------ | ----- |
+| Lozenec -> 11,2<br />Durvenica -> 4,3<br />Mladost1 -> 5,2<br />Mladost2 -> 7,8<br />collectApartments<br />Lozenec&11 -> 2\|100000<br />Lozenec&2 -> 1\|100000<br />Durvenica&3 -> 5\|80000<br />Durvenica&5 -> 15\|80000<br />Mladost2&13 -> 6\|80000<br />Mladost1&13 -> 7\|79000<br />report | Neighborhood: Durvenica<br /> \* Block number: 3 -> 5 apartments for sale. Price for one: 80000 <br />\* Block number: 4 -> 0 apartments for sale. Price for one: None <br />Neighborhood: Lozenec<br />\* Block number: 2 -> 1 apartments for sale. Price for one: 100000<br />\* Block number: 11 -> 2 apartments for sale. Price for one: 100000<br />Neighborhood: Mladost1<br />\* Block number: 2 -> 0 apartments for sale. Price for one: None<br />\* Block number: 5 -> 0 apartments for sale. Price for one: None<br />Neighborhood: Mladost2<br />\* Block number: 7 -> 0 apartments for sale. Price for one: None<br />\* Block number: 8 -> 0 apartments for sale. Price for one: None | Here we are just collecting data for researched apartments.<br /><br /> We receive the first data we should assign.We check that we have Lozenec in researched apartments and check that we have this block number. We have it so we store the info.We repeat the same for the next line.<br /><br />After that we receive another Neighborhood and again we check if we have the information for this block number in this neighborhood.We have it so we add it.<br /><br />On the next line we see we have the neighborhood, but we do not have this block number there, so we skip this info.We order everything and print it. Note that we have researched block numbers but there weren’t any apartments so the data for them is 0 and None! |
+| StudentskiGrad -> 11,2<br />KrasnaPolyana -> 5,2<br />Borovo -> 4,3<br />KrasnaPolyana -> 5,8<br />collectApartmentsv<br />StudentskiGrad&2 -> 3|100000<br />Lozenec&2 -> 1\|100000<br />Durvenica&3 -> 5\|80000<br />Durvenica&5 -> 15\|80000<br />Mladost2&13 -> 6\|80000<br />Mladost1&13 -> 7\|79000<br />report | Neighborhood: Borovo<br />\* Block number: 3 -> 0 apartments for sale. Price for one: None<br />\* Block number: 4 -> 0 apartments for sale. Price for one: None<br />Neighborhood: KrasnaPolyana<br />\* Block number: 2 -> 0 apartments for sale. Price for one: None<br />\* Block number: 5 -> 0 apartments for sale. Price for one: None<br />\* Block number: 8 -> 0 apartments for sale. Price for one: None<br />Neighborhood: StudentskiGrad<br />\* Block number: 2 -> 3 apartments for sale. Price for one: 100000<br />\* Block number: 11 -> 0 apartments for sale. Price for one: None |  |
