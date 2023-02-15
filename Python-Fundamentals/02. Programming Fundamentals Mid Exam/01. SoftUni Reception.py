@@ -1,7 +1,4 @@
-efficiency_one = int(input())
-efficiency_two = int(input())
-efficiency_three = int(input())
-total_efficiency = efficiency_one + efficiency_two + efficiency_three
+total_efficiency = int(input()) + int(input()) + int(input())
 students_num = int(input())
 time_needed = 0
 while students_num > 0:
