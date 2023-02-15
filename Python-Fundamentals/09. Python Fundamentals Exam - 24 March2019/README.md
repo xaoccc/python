@@ -37,8 +37,8 @@ We are going to receive a list of integers from console. After that we will star
 * get_divisible by {number}
 
 *If you receive command 'swap' you should check if the indexes are valid. A valid index is index which is 0 or higher and is less than list length.  
-    -   If one of the indexes is not valid just print the list without changing it  
-    -   If both indexes are valid swap the two elements on these indexes  
+    -   If one or both of the indexes is not valid just print the list without changing it  
+    -   If both indexes are valid swap the two elements on these indexes and print the list  
 
 *If you receive ‘enumerate_list’ you should enumerate the list and print it in the following format:
 	[(0, {list[0]}), (1, list[1]), (2, list[2]), (3, list[3])]
