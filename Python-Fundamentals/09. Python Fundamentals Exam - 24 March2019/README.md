@@ -36,23 +36,29 @@ We are going to receive a list of integers from console. After that we will star
 * min
 * get_divisible by {number}
 
-*If you receive command 'swap' you should check if the indexes are valid. A valid index is index which is 0 or higher and is less than list length. 
-    -   If one of the indexes is not valid just print the list without changing it
-    -   If both indexes are valid swap the two elements on these indexes
+*If you receive command 'swap' you should check if the indexes are valid. A valid index is index which is 0 or higher and is less than list length.  
+    -   If one of the indexes is not valid just print the list without changing it  
+    -   If both indexes are valid swap the two elements on these indexes  
 
 *If you receive ‘enumerate_list’ you should enumerate the list and print it in the following format:
 	[(0, {list[0]}), (1, list[1]), (2, list[2]), (3, list[3])]
 Where {list[n]} is the element corresponding to the given index (starting from zero)  
 
-* If you receive 'max', print the max number in the list
-* If you receive 'min', print the min number in the list
+*If you receive 'max', print the max number in the list  
+*If you receive 'min', print the min number in the list  
 
-* If you receive ‘get_divisible by’ you must print every element in the list which residue after division with {number} is 0 in format:
-[el1, el2, ….]  
+*If you receive ‘get_divisible by’ you must print every element in the list which residue after division with {number} is 0 in format:  
+[el1, el2, ….]   
 It is guaranteed -  the {number} never will be 0, so you do not need to check it.  
 
 ### Output
 When you recieve a command which says 'end', you should print the count of commands you have performed. Note that invalid commands may appear. In this case do not print anything and do not count these commands as performed.
+### Examples
+
+| Input | Output | Comments |
+| ----- | ------ | -------- |
+| 1 3 2 4 5<br />swap 1 15<br />enumerate_list<br />max<br />get_divisible by 13<br />get_divisible by 2<br />swap 1 4<br />enumerate_listtt<br />end | [1, 3, 2, 4, 5]<br />[(0, 1), (1, 3), (2, 2), (3, 4), (4, 5)]<br />5<br />[]<br />[2, 4]<br />[1, 5, 2, 4, 3] <br />6 | The first command is with invalid index (15), so we just print the list. <br /><br />We receive enumerate_list so we print it in the required format.<br /><br />We print the max element in our list 5.There is no element which is divisible by 13 so we print an empty list. <br /><br />We see that 2 and 4 are divisible by 2 so we returned a list of these numbers.<br /><br />We receive a valid indexes so we swap element at index 1 to element at index 4 and print the changed list. <br /><br />We receive an invalid command so we do nothing and we do not count it. We have performed 6 valid commands so we print the number. |
+| 15 -1 3 0 19 -15 24<br />swap 0 1<br />swap 4 6<br />enumerate_list<br />swap 6 1<br />swap 7 -1<br />get divisible by -15<br />get_divisible by 15<br />get_divisibleee by 15<br />end | [-1, 15, 3, 0, 19, -15, 24]<br />[-1, 15, 3, 0, 24, -15, 19]<br />[(0, -1), (1, 15), (2, 3), (3, 0), (4, 24), (5, -15), (6, 19)]<br />[-1, 19, 3, 0, 24, -15, 15]<br />[-1, 19, 3, 0, 24, -15, 15]<br />[0, -15, 15]<br />6 |   |
 
 # Problem 3. Apartments
 ### Input / Constraints
