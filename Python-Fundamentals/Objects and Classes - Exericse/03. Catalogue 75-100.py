@@ -5,12 +5,12 @@ class Catalogue:
         
     def __repr__(self):
         output = '\n'.join(sorted(self.products))
-        return f"Items in the {self.name} catalogue: {output}"
+        return f"Items in the {self.name} catalogue:\n{output}"
         
-    def add_product(self, product_name):
+    def add_product(self, product_name: str):
         self.products.append(str(product_name))
         
-    def get_by_letter(self, first_letter):
+    def get_by_letter(self, first_letter: str):
         return [x for x in self.products if x.startswith(first_letter)]
             
         
