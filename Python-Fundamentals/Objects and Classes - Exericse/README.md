@@ -67,7 +67,7 @@ The students must be separated by a comma and a space: ", ".
 | a_class = Class("11B")<br />a_class.add_student("Peter", 4.80)<br />a_class.add_student("George", 6.00)<br />a_class.add_student("Amy", 3.50)<br />print(a_class) | The students in 11B: Peter, George, Amy. Average grade: 4.77 |
 
 ## 6.	Inventory
-Create a class Inventory. The \_\_init\_\_ method should accept only the \_\_capacity: int (private attribute) of the inventory. You can read more about private attributes here. Each inventory should also have an attribute called items - empty list, where all the items will be stored. The class should also have 3 methods:
+Create a class Inventory. The \_\_init\_\_ method should accept only the \_\_capacity: int (private attribute) of the inventory. You can read more about private attributes <a href="https://www.tutorialsteacher.com/python/public-private-protected-modifiers">here</a>. Each inventory should also have an attribute called items - empty list, where all the items will be stored. The class should also have 3 methods:
 *	add_item(item: str) - adds the item in the inventory if there is space for it. Otherwise, returns 
 "not enough room in the inventory"
 *	get_capacity() - returns the value of \_\_capacity
