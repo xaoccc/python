@@ -17,7 +17,7 @@ Create a class Weapon. The \_\_init\_\_ method should receive a number of bullet
     *	If there are no bullets left, return: "no bullets left"
 *	\_\_repr\_\_()
     *	Returns "Remaining bullets: {amount_of_bullets}"
-    *	You can read more about the method here: <a href:"https://www.digitalocean.com/community/tutorials/python-str-repr-functions">link</a>
+    *	You can read more about the method <a href="https://www.digitalocean.com/community/tutorials/python-str-repr-functions">here</a>
 #### Example
 
 | Test Code | Output |
