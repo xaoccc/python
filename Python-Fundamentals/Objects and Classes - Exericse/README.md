@@ -11,13 +11,13 @@ The class should have two additional methods:
 | storage = Storage(4)<br />storage.add_product("apple")<br />storage.add_product("banana")<br />storage.add_product("potato")<br />storage.add_product("tomato")<br />storage.add_product("bread")<br />print(storage.get_products()) | ["apple", "banana", "potato", "tomato"] |
 
 ## 2.	Weapon
-Create a class Weapon. The __init__ method should receive a number of bullets (integer). Create an attribute called bullets to store that number. The class should also have the following methods:
+Create a class Weapon. The \_\_init\_\_ method should receive a number of bullets (integer). Create an attribute called bullets to store that number. The class should also have the following methods:
 *	shoot()
     *	If there are bullets in the weapon, reduce them by 1 and return a message "shooting..."
     *	If there are no bullets left, return: "no bullets left"
-*	__repr__()
+*	\_\_repr\_\_()
     *	Returns "Remaining bullets: {amount_of_bullets}"
-    *	You can read more about the method here: link
+    *	You can read more about the method here: <a href:"https://www.digitalocean.com/community/tutorials/python-str-repr-functions">link</a>
 #### Example
 
 | Test Code | Output |
