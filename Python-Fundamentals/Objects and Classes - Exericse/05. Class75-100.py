@@ -1,26 +1,24 @@
 class Class:
     __students_count = 22
     
-    def __init__(self, class_name):
-        self.class_name = class_name
+    def __init__(self, name):
+        self.name = name
         self.students = []
         self.grades = []
-        self.average_grade = 0
         
-    def add_student(self, name, grade):
-        if len(self.students) < Class.__students_count: 
-            self.students.append(name)
+    def add_student(self, student_name, grade):
+        Class.__students_count -= 1
+        if Class.__students_count >= 0: 
+            self.students.append(student_name)
             self.grades.append(grade)
         
     def get_average_grade(self):
-        self.average_grade = sum(self.grades) / len(self.grades)
-        return self.average_grade
-
+        return sum(self.grades) / len(self.grades)
+ 
     def __repr__(self):
-        return f"The students in {self.class_name}: {', '.join(self.students)}. Average grade: {self.get_average_grade():.2f}"
-
+        return f"The students in {self.name}: {', '.join(self.students)}. Average grade: {Class.get_average_grade(self):.2f}"
         
-        
+#test code       
 name = input()
 class_name = Class(name)
 class_name.add_student("Peter", 4.80)
