@@ -1,6 +1,5 @@
 import re
-text_input = input().lower()
-string_check = input().lower()
-text_input = re.sub(r'[\W_]', ' ', text_input)
-text_input = text_input.split()
-print(text_input.count(string_check))
+main_string = input().lower()
+pattern = input().lower()
+scanner = re.findall(pattern, main_string)
+print(len(scanner))
