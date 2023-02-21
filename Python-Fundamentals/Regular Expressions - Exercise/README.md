@@ -84,7 +84,7 @@ Example of correct links:
 * "Some textwww.softuni.bg"
 * "Just a link in a www.sea-of-text.bg-swimming around"
 * "Instruments www.Instruments.rom.com.trombone2000 Instrument here"
-* "All your ice cream flavors-www.scream.for.ice.cream(We  also have squirrels)"
+* "All your ice cream flavors-www.scream.for.ice.cream (We also have squirrels)"
  The output is all valid links you have found, printed – each on a new line.
 #### Examples
 
