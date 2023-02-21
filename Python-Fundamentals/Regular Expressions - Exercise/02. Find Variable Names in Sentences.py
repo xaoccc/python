@@ -14,8 +14,10 @@ print(",".join(text_output_list))
 
 
 import re
-text_input = input()
-scanner1 = re.findall("\S+", text_input)
-print(scanner1)
-scanner = ",".join(re.findall("r\\b\_[a-zA-Z]+|[0-9]+", text_input))
-print(",".join(re.findall("[a-zA-Z]+|[0-9]+", scanner)))
+text_input = input().split()
+scanner = ""
+for i in text_input:
+    scanner += ",".join(re.findall(r"^_[a-zA-Z0-9]+[a-zA-Z0-9]$", i))
+scanner = scanner.split("_")
+del scanner[0]
+print(",".join(scanner))
