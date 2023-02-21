@@ -11,3 +11,11 @@ for i in range(len(text_input_list)):
         text_output_list.append(text_input_list[i])
 
 print(",".join(text_output_list)) 
+
+
+import re
+text_input = input()
+scanner1 = re.findall("\S+", text_input)
+print(scanner1)
+scanner = ",".join(re.findall("r\\b\_[a-zA-Z]+|[0-9]+", text_input))
+print(",".join(re.findall("[a-zA-Z]+|[0-9]+", scanner)))
