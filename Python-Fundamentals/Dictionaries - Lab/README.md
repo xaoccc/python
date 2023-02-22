@@ -21,4 +21,20 @@ You will be given key-value pairs of products and quantities (on a single line s
 | cheese 10 bread 5 ham 10 chocolate 3<br />jam cheese ham tomatoes | Sorry, we don't have jam<br />We have 10 of cheese left<br />We have 10 of ham left<br />Sorry, we don't have tomatoes |
 | eggs 5 bread 10<br />bread eggs | We have 10 of bread left<br />We have 5 of eggs left |
  
- 
+## 3.	Statistics
+You seem to be doing great at your first job, so your boss decides to give you as your next task something more challenging. You have to accept all the new products coming in the bakery and finally gather some statistics.  
+You will be receiving key-value pairs on separate lines separated by ": " until you receive the command "statistics". Sometimes you may receive a product more than once. In that case, you have to add the new quantity to the existing one. When you receive the "statistics" command, print the following:  
+"Products in stock:  
+- {product1}: {quantity1}  
+- {product2}: {quantity2}  
+…  
+- {productN}: {quantityN}  
+Total Products: {count_all_products}  
+Total Quantity: {sum_all_quantities}"  
+#### Example
+
+| Input | Output |
+| ----- | ------ |
+| bread: 4<br />cheese: 2<br />ham: 1<br />bread: 1<br />statistics | Products in stock:<br />- bread: 5<br />- cheese: 2<br />- ham: 1<br />Total Products: 3<br />Total Quantity: 8 |
+| eggs: 10<br />bread: 6<br />cheese: 8<br />milk: 7<br />statistics | Products in stock:<br />- eggs: 10<br />- bread: 6<br />- cheese: 8<br />- milk: 7<br />Total Products: 4<br />Total Quantity: 31 |
+
