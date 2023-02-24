@@ -156,3 +156,89 @@ Format the average grade to the 2nd decimal place.
 | ----- | ------ | ----- | ------ |
 | 5<br />John<br />5.5<br />John<br />4.5<br />Alice<br />6<br />Alice<br />3<br />George<br />5| John -> 5.00<br />Alice -> 4.50<br />George -> 5.00 | 5<br />Amanda<br />3.5<br />Amanda<br />4<br />Rob<br />5.5<br />Christian<br />5<br />Robert<br />6 | Rob -> 5.50<br />Christian -> 5.00<br />Robert -> 6.00 |
 
+## 10. Company Users
+Write a program that keeps the information about companies and their employees.  
+You will be receiving company names and an employees' id until you receive the command "End" command. Add each employee to the given company. Keep in mind that a company cannot have two employees with the same id.  
+Print the company name and each employee's id in the following format:  
+"{company_name}  
+-- {id1}  
+-- {id2}  
+…  
+-- {idN}"  
+#### Input / Constraints
+*	Until you receive the "End" command, you will be receiving input in the format: 
+"{company_name} -> {employee_id}".
+*	The input always will be valid.
+#### Examples
+
+| Input | Output |
+| ----- | ------ |
+| SoftUni -> AA12345<br />SoftUni -> BB12345<br />Microsoft -> CC12345<br />HP -> BB12345<br />End | SoftUni <br />-- AA12345<br />-- BB12345<br />Microsoft<br />-- CC12345<br />HP<br />-- BB12345 |
+| SoftUni -> AA12345<br />SoftUni -> CC12344<br />Lenovo -> XX23456<br />SoftUni -> AA12345<br />Movement -> DD11111<br />End | SoftUni<br />-- AA12345<br />-- CC12344<br />Lenovo<br />-- XX23456<br />Movement<br />-- DD11111 |
+
+## 11. \*Force Book
+The force users struggle to remember which side is the different force users from because they switch them too often. So you are tasked to create a web application to manage their profiles. You should store information for every unique force user registered in the application.  
+You will receive several input lines in one of the following formats:  
+"{force_side} | {force_user}"  
+"{force_user} -> {force_side}"  
+The "force_user" and "force_side" are strings, containing any character.  
+If you receive "force_side | force_user":  
+*	If there is no such force user and no such force side -> create a new force side and add the force user to the corresponding side.
+*	Only if there is no such force user in any force side -> add the force user to the corresponding side. 
+*	If there is such force user already -> skip the command and continue to the next operation.  
+If you receive a "force_user -> force_side":  
+*	If there is such force user already -> change their side. 
+*	If there is no such force user in any force side -> add the force user to the corresponding force side.  
+*	If there is no such force user and no such force side -> create new force side and add the force user to the corresponding side.  
+*	Then you should print on the console: "{force_user} joins the {force_side} side!".  
+You should end your program when you receive the command "Lumpawaroo". At that point, you should print each force side. For each side, print the force users.  
+In case there are no force users on a side, you shouldn't print the side information.  
+#### Input / Constraints
+*	The input comes in the form of commands in one of the formats specified above.
+*	The input ends when you receive the command "Lumpawaroo".
+#### Output
+*	As output for each force side, you must print all the force users.  
+*	The output format is:  
+"Side: {force_side}, Members: {force_users_count}  
+! {force_user1}  
+! {force_user2}  
+…  
+! {force_userN}"  
+*	In case there are NO force users on a side, don't print this side.  
+#### Examples
+
+| Input | Output | Comments |
+| ----- | ------ |------ |
+| Light \| Peter<br />Dark \| Kim<br />Light \| Kim<br />Lumpawaroo | Side: Light, Members: 1<br />! Peter<br />Side: Dark, Members: 1<br />! Kim | We register Peter on the Light side and Kim on the Dark side. After receiving "Lumpawaroo", we print both sides. |
+| Lighter \| Royal<br />Darker \| DCay<br />Ivan Ivanov -> Lighter<br />DCay -> Lighter<br />Lumpawaroo | Ivan Ivanov joins the Lighter side!<br />DCay joins the Lighter side!<br />Side: Lighter, Members: 3<br />! Royal<br />! Ivan Ivanov<br />! DCay | Although Ivan Ivanov doesn't have a profile, we register him and add him to the Lighter side.<br />We remove DCay from the Darker side and add him to the Lighter side.<br />We print only the Lighter side because the Darker side has no members. |
+
+## 12.	*SoftUni Exam Results
+Judge statistics on the last Programing Fundamentals exam were not working correctly, so you have the task of taking all the submissions and analyzing them properly. You should collect all the submissions and print the final results and statistics about each language in which the participants submitted their solutions.  
+You will be receiving lines in the following format: "{username}-{language}-{points}" until you receive "exam finished". You should store each username and their submissions and points. If a student has two or more submissions for the same language, save only his maximum points.  
+You can receive a command to ban a user for cheating in the following format: "{username}-banned". In that case, you should remove the user from the contest but preserve his submissions in the total count of submissions for each language.  
+After receiving "exam finished", print each of the participants in the following format:  
+"Results:  
+{username1} | {points}  
+{username2} | {points}  
+…  
+{usernameN} | {points}"  
+After that, print each language used in the exam in the following format:  
+"Submissions:  
+{language1} - {submissions_count}  
+{language2} - {submissions_count}  
+…  
+{language3} - {submissions_count}"  
+#### Input / Constraints
+Until you receive "exam finished" you will be receiving participant submissions in the following format: "{username}-{language}-{points}"  
+You can receive a ban command -> "{username}-banned"  
+The points of the participant will always be a valid integer in the range [0-100];  
+#### Output
+*	Print the exam results for each participant
+*	After that, print each language in the format shown above
+*	Allowed working time / memory: 100ms / 16MB
+#### Examples
+
+| Input | Output |
+| ----- | ------ |
+| Peter-Java-84<br />George-C#-84<br />George-C#-70<br />Katy-C#-94<br />exam finished | Results:<br />Peter \| 84<br />George \| 84<br />Katy \| 94<br />Submissions:<br />Java - 1<br />C# - 3 |
+| Peter-Java-91<br />George-C#-84<br />Katy-Java-90<br />Katy-C#-50<br />Katy-banned<br />exam finished | Results:<br />Peter \| 91<br />George \| 84<br />Submissions:<br />Java - 2<br />C# - 2 |
