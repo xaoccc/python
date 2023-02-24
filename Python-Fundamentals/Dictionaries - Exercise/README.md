@@ -122,5 +122,37 @@ The input will always be valid, and you do not need to check it explicitly.
 | 4<br />register Jony AA4132BB<br />register Jony AA4132BB<br />register Linda AA9999BB<br />unregister Jony | Jony registered AA4132BB successfully<br />ERROR: already registered with plate number AA4132BB<br />Linda registered AA9999BB successfully<br />Jony unregistered successfully<br />Linda => AA9999BB |
 | 6<br />register Jacob MM1111XX<br />register Anthony AB1111XX<br />unregister Jacob<br />register Joshua DD1111XX<br />unregister Lily<br />register Samantha AA9999BB | Jacob registered MM1111XX successfully<br />Anthony registered AB1111XX successfully<br />Jacob unregistered successfully<br />Joshua registered DD1111XX successfully<br />ERROR: user Lily not found<br />Samantha registered AA9999BB successfully<br />Anthony => AB1111XX<br />Joshua => DD1111XX<br />Samantha => AA9999BB |
 
+## 8.	Courses
+Write a program that keeps the information about courses. Each course has a name and registered students.  
+You will be receiving a course name and a student name until you receive the command "end".  
+You should register each user into the corresponding course. If the given course does not exist, add it.  
+When you receive the command "end", print the courses with their names and total registered users. For each course, print the registered users.  
+#### Input
+*	Until the "end" command is received, you will be receiving input lines in the format: 
+"{course_name} : {student_name}"
+*	The product data is always delimited by " : "
+#### Output
+*	Print the information about each course in the following format: 
+"{course_name}: {registered_students}"
+*	Print the information about each student in the following format:
+"-- {student_name}"
+#### Examples
 
+| Input | Output |
+| ----- | ------ |
+| Programming Fundamentals : John Smith<br />Programming Fundamentals : Linda Johnson<br />JS Core : Will Wilson<br />Java Advanced : Harrison White<br />end | Programming Fundamentals: 2<br />-- John Smith<br />-- Linda Johnson<br />JS Core: 1<br />-- Will Wilson<br />Java Advanced: 1<br />-- Harrison White |
+| Algorithms : Jay Moore<br />Programming Basics : Martin Taylor<br />Python Fundamentals : John Anderson<br />Python Fundamentals : Andrew Robinson<br />Algorithms : Bob Jackson<br />Python Fundamentals : Clark Lewis<br />end | Algorithms: 2<br />-- Jay Moore<br />-- Bob Jackson<br />Programming Basics: 1<br />-- Martin Taylor<br />Python Fundamentals: 3<br />-- John Anderson<br />-- Andrew Robinson<br />-- Clark Lewis |
+
+## 9.	 Student Academy
+Write a program that keeps the information about students and their grades.  
+On the first line, you will receive an integer number representing the next pair of rows. On the next lines, you will be receiving each student's name and their grade. 
+Keep track of all grades for each student and keep only the students with an average grade higher than or equal to 4.50.  
+Print the final dictionary with students and their average grade in the following format:  
+"{name} -> {averageGrade}"  
+Format the average grade to the 2nd decimal place.  
+#### Examples
+
+| Input | Output | Input | Output |
+| ----- | ------ | ----- | ------ |
+| 5<br />John<br />5.5<br />John<br />4.5<br />Alice<br />6<br />Alice<br />3<br />George<br />5| John -> 5.00<br />Alice -> 4.50<br />George -> 5.00 | 5<br />Amanda<br />3.5<br />Amanda<br />4<br />Rob<br />5.5<br />Christian<br />5<br />Robert<br />6 | Rob -> 5.50<br />Christian -> 5.00<br />Robert -> 6.00 |
 
