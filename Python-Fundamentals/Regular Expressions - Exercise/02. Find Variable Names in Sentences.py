@@ -8,4 +8,3 @@ scanner = scanner.split("_")
 del scanner[0]
 print(",".join(scanner))
 
-

@@ -18,7 +18,7 @@ The output consists of all variable names extracted and printed on a single line
 | ----- | ------ |
 | The _id and _age variables are both integers. | id,age |
 | Calculate the _area of the _perfectRectangle object. | area,perfectRectangle |
-| __invalidVariable _evenMoreInvalidVariable_ _validVariable | validVariable |
+| _\_invalidVariable \_evenMoreInvalidVariable\_ \_validVariable | validVariable |
 	
 ## 3.	Find Occurrences of Word in Sentence
 Write a program that finds how many times a word is used in a string. The output is a single number indicating the number of times the string contains the word. Note that letter case does not matter – it is case-insensitive.
