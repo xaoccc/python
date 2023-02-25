@@ -9,7 +9,7 @@ while command != "Lumpawaroo":
         force_side = command[0]
         if force_side not in all_users:
             all_users[force_side] = []
-            if force_user not in all_users:
+            if force_user not in all_users.values():
                 all_users[force_side].append(force_user)
 
     else:
