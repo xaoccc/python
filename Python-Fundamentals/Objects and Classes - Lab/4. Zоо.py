@@ -30,7 +30,11 @@ class Zoo:
             result += f"Fishes in {self.name}: {', '.join(self.fishes)}\n"
         elif species == "bird":
             result += f"Birds in {self.name}: {', '.join(self.birds)}\n"
+<<<<<<< Updated upstream
         # 11.3 Then add common data in the variable result    
+=======
+            
+>>>>>>> Stashed changes
         result += f"Total animals: {Zoo.__animals}"
         # 12. Return the result
         return result
