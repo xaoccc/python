@@ -16,8 +16,9 @@ while command != "Lumpawaroo":
         command = command.split(" -> ")
         force_user = command[0]
         force_side = command[1]
-        if force_side not in all_users:
+        if force_side not in all_users.keys():
             all_users[force_side] = []
+
         for (key, value) in all_users.items():
             if force_user in value:
                 value.remove(force_user)
