@@ -3,7 +3,7 @@ all_users = {}
 
 
 while command != "Lumpawaroo":
-    if "|" in command:
+    if " | " in command:
         command = command.split(" | ")
         force_user = command[1]
         force_side = command[0]
