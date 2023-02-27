@@ -1,6 +1,6 @@
 command = input()
 all_users = {}
-
+force_user_check = []
 
 while command != "Lumpawaroo":
     if " | " in command:
@@ -9,9 +9,10 @@ while command != "Lumpawaroo":
         force_side = command[0]
         if force_side not in all_users:
             all_users[force_side] = []
-        if force_user not in all_users.values():
-            all_users[force_side].append(force_user)
 
+        if force_user not in force_user_check:
+            force_user_check.append(force_user)
+            all_users[force_side].append(force_user)
     else:
         command = command.split(" -> ")
         force_user = command[0]
