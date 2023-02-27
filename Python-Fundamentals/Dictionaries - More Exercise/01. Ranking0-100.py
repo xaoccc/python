@@ -1,46 +1,49 @@
-command_one = input()
-contest_entry_info = {}
-students_info = {}
-students_grades = {}
+command = input()
+all_data = {}
+contest_data = {}
 
-while command_one != "end of contests":
-    command_one = command_one.split(":")
-    contest = command_one[0]
-    password = command_one[1]
-    if contest not in contest_entry_info:
-        contest_entry_info[contest] = password
-    command_one = input()
+while command != "no more time":
+    command = command.split(" -> ")
+    username = command[0]
+    contest = command[1]
+    points = int(command[2])
+    if username not in all_data:
+        all_data[username] = {}
+        all_data[username][contest] = points
+        
+    if contest not in contest_data:
+        contest_data[contest] = {}
+        contest_data[contest][username] = points
+    
+    for i in all_data.copy():
+        for j in all_data[i].copy():
+            if contest not in j:
+                all_data[username][contest] = points
+            else:
+                if points > all_data[i][j]:
+                    all_data[i][j] = points
+                    break
+    
+    for i in contest_data.copy():
+        for j in contest_data[i].copy():
+            if username not in j:
+                contest_data[contest][username] = points
+            else:
+                if points > contest_data[i][j]:
+                    contest_data[i][j] = points
+                    break       
+            
+    command = input()
+sorted_data = {}
 
-command_two = input()
-
-while command_two != "end of submissions":
-    command_two = command_two.split("=>")
-    contest = command_two[0]
-    if contest in contest_entry_info and len(command_two) == 4:
-        password = command_two[1]
-        if password in contest_entry_info[contest]:
-            username = command_two[2]
-            points = command_two[3]
-            if username not in students_info:
-                students_info[username] = []
-            students_grades[contest] = int(points)
-            students_info[username] = students_grades
-
-    command_two = input()
-print(students_info)
-
-total = {}
-
-for i in students_info:
-    sorted_data = dict(sorted(students_info[i].items(), key=lambda x:x[1], reverse=True))
-    if i not in total:
-        total[i] = sum(sorted_data.values())
-
-max_grade = max(total, key=total.get)      
-print(f"Best candidate is {max_grade} with {max(total.values())} points\nRanking:")
-
-for i in students_info:
-    print(i)
-    sorted_data = dict(sorted(students_info[i].items(), key=lambda x:x[1], reverse=True))
+for i in all_data: 
+    sorted_data = dict(sorted(all_data[i].items(), key=lambda y:y[1], reverse=True))        
     for (key, value) in sorted_data.items():
-        print(f"# {key} -> {value}")
+        print(f"#{i}  {key} -> {value}") 
+    
+print(contest_data)
+
+for i in contest_data: 
+    sorted_data = dict(sorted(contest_data[i].items(), key=lambda y:y[1], reverse=True))        
+    for (key, value) in sorted_data.items():
+        print(f"#{i}  {key} -> {value}") 
