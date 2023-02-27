@@ -1,5 +1,6 @@
 command = input()
 all_data = {}
+users_data = {}
 contest_data = {}
 
 while command != "no more time":
@@ -36,14 +37,20 @@ while command != "no more time":
     command = input()
 sorted_data = {}
 
-for i in all_data: 
-    sorted_data = dict(sorted(all_data[i].items(), key=lambda y:y[1], reverse=True))        
-    for (key, value) in sorted_data.items():
-        print(f"#{i}  {key} -> {value}") 
-    
-print(contest_data)
-
 for i in contest_data: 
-    sorted_data = dict(sorted(contest_data[i].items(), key=lambda y:y[1], reverse=True))        
+    sorted_data = dict(sorted(contest_data[i].items(), key=lambda y:y[1], reverse=True))  
+    print(f"{i}: {len(contest_data[i])} participants")
+    el = 1
     for (key, value) in sorted_data.items():
-        print(f"#{i}  {key} -> {value}") 
+        print(f"{el}. {key} <::> {value}") 
+        el += 1
+        
+for i in all_data:
+    users_data[i] = sum(all_data[i].values())
+
+sorted_data = dict(sorted(users_data.items(), key=lambda y:y[1], reverse=True)) 
+el = 1
+print("Individual standings:")
+for i in sorted_data:
+    print(f"{el}. {i} -> {sorted_data[i]}") 
+    el += 1
