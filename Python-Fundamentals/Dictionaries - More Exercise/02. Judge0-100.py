@@ -10,15 +10,18 @@ while command != "no more time":
         all_data[username] = {}
         all_data[username][contest] = points
     
-    for i in all_data:
+    for i in all_data.copy():
         for j in all_data[i].copy():
-
+            print(j)
+            print(all_data[i][j])
+            
             if contest not in j:
-                all_data[contest] = points
+                all_data[username][contest] = points
             else:
-                if points > all_data[i][contest]:
-                    all_data[i][contest] = points
-            print(all_data)
+                if points > all_data[i][j]:
+                    all_data[i][j] = points
+                    break
+            
             
             
     command = input()
