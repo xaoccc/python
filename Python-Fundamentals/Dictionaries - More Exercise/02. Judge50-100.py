@@ -48,7 +48,7 @@ for i in contest_data:
 for i in all_data:
     users_data[i] = sum(all_data[i].values())
 
-sorted_data = dict(sorted(users_data.items(), key=lambda y:y[1], reverse=True)) 
+sorted_data = dict(sorted(users_data.items(), key=lambda y: y[1], reverse=True))
 el = 1
 print("Individual standings:")
 for i in sorted_data:
