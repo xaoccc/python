@@ -1,6 +1,7 @@
 command_one = input()
 contest_entry_info = {}
 students_info = {}
+students_grades = {}
 
 while command_one != "end of contests":
     command_one = command_one.split(":")
@@ -22,14 +23,24 @@ while command_two != "end of submissions":
             points = command_two[3]
             if username not in students_info:
                 students_info[username] = []
-            students_info[username].append([contest, int(points)])
+            students_grades[contest] = int(points)
+            students_info[username] = students_grades
 
     command_two = input()
-print(contest_entry_info)
 print(students_info)
 
-for (key, value) in students_info.items():
-    for i in range(len(value)):
+total = {}
 
+for i in students_info:
+    sorted_data = dict(sorted(students_info[i].items(), key=lambda x:x[1], reverse=True))
+    if i not in total:
+        total[i] = sum(sorted_data.values())
 
-print(f"Best candidate is {thebest} with total {max(points_list)} points.")
+max_grade = max(total, key=total.get)      
+print(f"Best candidate is {max_grade} with {max(total.values())} points\nRanking:")
+
+for i in students_info:
+    print(i)
+    sorted_data = dict(sorted(students_info[i].items(), key=lambda x:x[1], reverse=True))
+    for (key, value) in sorted_data.items():
+        print(f"# {key} -> {value}")
