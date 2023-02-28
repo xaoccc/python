@@ -54,4 +54,4 @@ print("Ranking:")
 for (user, result) in sorted_data.items():
     print(user)
     for (contest, points) in result.items():
-        print(f"# {contest} -> {points}")
+        print(f"#  {contest} -> {points}")
