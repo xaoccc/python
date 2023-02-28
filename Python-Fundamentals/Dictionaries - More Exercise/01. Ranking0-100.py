@@ -26,18 +26,24 @@ while contest_input != "end of submissions":
             if username not in users_data:
                 users_data[username] = contest_data
             else:
-                if users_data[username][contest] < points:
+                if contest not in users_data[username]:
+                    users_data[username][contest] = points
+                elif users_data[username][contest] < points:
                     users_data[username][contest] = points
                     
-        print(contest_data)
-        print(users_data)
-              
         contest_input = input()
     else:
         contest_input = input()
 
-for user in users_data:
-    for contests in user:
-        total_score[user] = sum(contests.values())
+for (user, contestdata) in users_data.items():
+    total_score[user] = sum(contestdata.values())
         
 print(total_score)
+
+best_score = max(total_score.values())
+best_user = list(my_dict.keys())[list(my_dict.values()).index(best_score)]
+
+print(max(total_score.values()))
+print(list(my_dict.keys())[list(my_dict.values()).index(best_score)])
+
+print(users_data)
