@@ -2,6 +2,7 @@ passwords = {}
 users_data = {}
 contest_data = {}
 total_score = {}
+sorted_data = {}
 
 command = input()
 while command != "end of contests":
@@ -37,13 +38,14 @@ while contest_input != "end of submissions":
 
 for (user, contestdata) in users_data.items():
     total_score[user] = sum(contestdata.values())
-        
-print(total_score)
 
 best_score = max(total_score.values())
-best_user = list(my_dict.keys())[list(my_dict.values()).index(best_score)]
+best_user = list(total_score.keys())[list(total_score.values()).index(best_score)]
+print(f"Best candidate is {best_user} with total {best_score} points.")
 
-print(max(total_score.values()))
-print(list(my_dict.keys())[list(my_dict.values()).index(best_score)])
 
-print(users_data)
+
+for i in users_data:
+    sorted_data[i] = dict(sorted(users_data[i].items(), key=lambda x: (x, x[1]), reverse=True)) 
+print(sorted_data)
+print("Ranking:")
