@@ -43,9 +43,15 @@ best_score = max(total_score.values())
 best_user = list(total_score.keys())[list(total_score.values()).index(best_score)]
 print(f"Best candidate is {best_user} with total {best_score} points.")
 
+myKeys = list(users_data.keys())
+myKeys.sort()
+sorted_data = {i: users_data[i] for i in myKeys}
 
+for i in sorted_data:
+    sorted_data[i] = dict(sorted(sorted_data[i].items(), key=lambda x: x[1], reverse=True)) 
 
-for i in users_data:
-    sorted_data[i] = dict(sorted(users_data[i].items(), key=lambda x: (x, x[1]), reverse=True)) 
-print(sorted_data)
 print("Ranking:")
+for (user, result) in sorted_data.items():
+    print(user)
+    for (contest, points) in result.items():
+        print(f"# {contest} -> {points}")
