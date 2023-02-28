@@ -38,7 +38,7 @@ while command != "no more time":
 sorted_data = {}
 
 for i in contest_data: 
-    sorted_data = dict(sorted(contest_data[i].items(), key=lambda y:y[1], reverse=True))  
+    sorted_data = dict(sorted(contest_data[i].items(), key=lambda y: (-y[1],y[0])))  
     print(f"{i}: {len(contest_data[i])} participants")
     el = 1
     for (key, value) in sorted_data.items():
@@ -48,7 +48,7 @@ for i in contest_data:
 for i in all_data:
     users_data[i] = sum(all_data[i].values())
 
-sorted_data = dict(sorted(users_data.items(), key=lambda y: y[1], reverse=True))
+sorted_data = dict(sorted(users_data.items(), key=lambda y: (-y[1],y[0])))
 el = 1
 print("Individual standings:")
 for i in sorted_data:
