@@ -1,6 +1,7 @@
 command = input()
 players_data = {}
-
+total_skills = {}
+sorted_data = {}
 
 while command != "Season end":
     if " -> " in command:
@@ -29,9 +30,19 @@ while command != "Season end":
                         elif players_data[player1][position1] < players_data[player2][position2]:
                             players_data.pop(player1)
                         break
-                            
+    command = input()
     
-    print(players_data)
+for player in  players_data:
+    total_skills[player] = sum(players_data[player][i] for i in players_data[player])
+    sorted_data[player] = dict(sorted(players_data[player].items(), key=lambda y: -y[1]))
+    
+for i in total_skills:
+    sorted_total = dict(sorted(total_skills.items(), key=lambda y: -y[1]))
+    
+for i in sorted_total:
+    print(f"{i}: {sorted_total[i]} skill")
+    for j in sorted_data[i]:
+        print(f"- {j} <::> {sorted_data[i]}")
         
         
     command = input()
