@@ -18,6 +18,18 @@ while command != "Season end":
         
     else:
         command = command.split(" vs ")
+        player1 = command[0]
+        player2 = command[1]
+        if player1 in players_data and player2 in players_data:
+            for position1 in players_data[player1]:
+                for position2 in players_data[player2]:
+                    if position1 == position2:
+                        if players_data[player1][position1] > players_data[player2][position2]:
+                            players_data.pop(player2)
+                        elif players_data[player1][position1] < players_data[player2][position2]:
+                            players_data.pop(player1)
+                        break
+                            
     
     print(players_data)
         
