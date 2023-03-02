@@ -24,4 +24,4 @@ for i in range(len(hat_color_num)):
 dwarves_sorted = sorted(dwarves_total, key=lambda x: (-x[2], -x[3]))        
 
 for i in dwarves_sorted:
-    print(f"({i[1]")
+    print(f"({i[1]}) {i[0]} <-> {i[2]}")
