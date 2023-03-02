@@ -5,12 +5,12 @@ def add_players(player, position, skill):
     if player not in players_data:
         players_data[player] = position_skill
     else:
-        if position not in players_data[player] or skill > players_data[player][position]:
+        if position not in players_data.get(player, {}) or skill > players_data[player].get(position, 0):
             players_data[player][position] = skill
             
 def duel(player1, player2):
-    for position1 in players_data[player1]:
-        for position2 in players_data[player2]:
+    for position1 in players_data[player1].keys():
+        for position2 in players_data[player2].keys():
             if position1 == position2:
                 if sum(list(players_data[player1].values())) > sum(list(players_data[player2].values())):
                     players_data.pop(player2)
