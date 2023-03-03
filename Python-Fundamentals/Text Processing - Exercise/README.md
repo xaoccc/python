@@ -38,7 +38,7 @@ Write a program that returns an encrypted version of the same text. Encrypt the 
 | Input | Output |
 | ----- | ------ |
 | Programming is cool! | Surjudpplqj#lv#frro$ |
-| One year has 365 days. | Rqh#|hdu#kdv#698#gd|v1 |
+| One year has 365 days. | Rqh#\|hdu#kdv#698#gd\|v1 |
 
 ## 5.	 Emoticon Finder
 Find all emoticons in the text. An emoticon always starts with ":" and is followed by a symbol.  
