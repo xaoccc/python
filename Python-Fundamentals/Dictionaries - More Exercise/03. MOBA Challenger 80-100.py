@@ -1,13 +1,15 @@
 command = input()
-players_data, total_skills, sorted_data, sorted_total  = {}, {}, {}, {}
+players_data, total_skills, sorted_data, sorted_total = {}, {}, {}, {}
+
 
 def add_players(player, position, skill):
     if player not in players_data:
         players_data[player] = position_skill
     else:
-        if position not in players_data.get(player, {}) or skill > players_data[player].get(position, 0):
+        if position not in players_data.get(player) or skill > players_data[player].get(position):
             players_data[player][position] = skill
-            
+
+
 def duel(player1, player2):
     for position1 in players_data[player1].keys():
         for position2 in players_data[player2].keys():
@@ -18,6 +20,7 @@ def duel(player1, player2):
                     players_data.pop(player1)
                 break
 
+
 while command != "Season end":
     if " -> " in command:
         position_skill = {}
@@ -27,12 +30,14 @@ while command != "Season end":
         
     else:
         player1, player2 = command.split(" vs ")
-        if player1 in players_data and player2 in players_data:
+        if player1 in players_data.keys() and player2 in players_data.keys():
             duel(player1, player2)
+        else:
+            pass
 
     command = input()
     
-for player in  players_data:
+for player in players_data:
     total_skills[player] = sum(players_data[player][i] for i in players_data[player])
     sorted_data[player] = dict(sorted(players_data[player].items(), key=lambda y: (-y[1], y[0])))
     
