@@ -1,8 +1,4 @@
-passwords = {}
-users_data = {}
-contest_data = {}
-total_score = {}
-sorted_data = {}
+passwords, users_data, contest_data, total_score, sorted_data = {}, {}, {}, {}, {}
 
 command = input()
 while command != "end of contests":
@@ -27,9 +23,7 @@ while contest_input != "end of submissions":
             if username not in users_data:
                 users_data[username] = contest_data
             else:
-                if contest not in users_data[username]:
-                    users_data[username][contest] = points
-                elif users_data[username][contest] < points:
+                if contest not in users_data[username] or users_data[username][contest] < points:
                     users_data[username][contest] = points
                     
         contest_input = input()

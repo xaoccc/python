@@ -1,12 +1,14 @@
 command = input()
 dwarfery, dwarves_total, hat_color_num = {}, [], []
 
+
 def dwarfery_entry(dwarf_name, dwarf_hat_color, dwarf_physics):
     if dwarf_name not in dwarfery:
         dwarfery[dwarf_name] = {dwarf_hat_color: dwarf_physics}
     else:
         if dwarf_hat_color not in dwarfery[dwarf_name] or dwarfery[dwarf_name][dwarf_hat_color] < dwarf_physics:
             dwarfery[dwarf_name][dwarf_hat_color] = dwarf_physics
+
 
 while command != "Once upon a time":
     dwarf_name, dwarf_hat_color, dwarf_physics = [int(el) if el.isdigit() else el for el in command.split(" <:> ")]
