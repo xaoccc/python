@@ -19,3 +19,25 @@ for i in range(len(string)):
         result += ">"
         
 print(result)
+
+
+# string = input()
+# result = ""
+# explosion_strength = 0
+# for i in range(len(string)):
+
+#     if string[i].isdigit():
+#         explosion_strength += int(string[i])
+#         if explosion_strength == 0:
+#             result += "0"
+#         else:
+#             explosion_strength -= 1
+#     else:  
+#         if string[i] == ">":
+#             result += ">"
+#         elif string[i] != ">" and explosion_strength == 0:
+#             result += string[i]
+#         else:
+#             explosion_strength -= 1
+        
+# print(result)
