@@ -1,6 +1,15 @@
 tickets = ' '.join(input().split()).split(", ")
 
+def winner(symbol):
+    for i in range(11, 5, -1):
+        if symbol * i in ticket[ :10] and symbol * i in ticket[10: ]:
+            print(f'ticket "{ticket}" - {i}{symbol}')
+            break
+    else:
+        print(f'ticket "{ticket}" - no match')
+
 for ticket in tickets:
+    ticket = ticket.replace(" ", "")
     if len(ticket) != 20:
         print("invalid ticket")
     else:
@@ -8,12 +17,16 @@ for ticket in tickets:
             print(f'ticket "{ticket}" - 10{ticket[0]} Jackpot!')
         
         elif ticket.count("@") >= 12:
-            if "@" * 6 in ticket[ :11] and "@" * 6 in ticket[10: ]:
-                print(f'ticket "{ticket}" - {ticket[10: ].count("@")}{"@"}')
+            winner("@")
+            
         elif ticket.count("$") >= 12:
-            for i in range(5, 10, -1):
-                if "$" * i in ticket[ :11] and "$" * i in ticket[10: ]:
-                    print(f'ticket "{ticket}" - {i}{"$"}')
-                    break
+            winner("$")
+            
+        elif ticket.count("#") >= 12:
+            winner("#")
+            
+        elif ticket.count("^") >= 12:
+            winner("^")
+            
         else:
             print(f'ticket "{ticket}" - no match')
