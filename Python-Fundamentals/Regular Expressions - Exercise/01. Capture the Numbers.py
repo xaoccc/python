@@ -1,9 +1,10 @@
 import re
-input_data = []
-pattern = "\d+"
-
+output = []
 while True:
-    text_input = input()
-    input_data.append(text_input)
-    matches = re.findall(pattern, " ".join(input_data))
-print(" ".join(matches))
+    command = input()
+    if command:
+        output += re.findall(r'\d+', command)
+    else:
+        break
+
+print(" ".join(output))
