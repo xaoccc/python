@@ -34,7 +34,7 @@ For each line print the type and the coordinates in the format "Found {type} at 
 | 1 2 1 3<br />ikegfp'jpne)bv=41P83X@<br />ujfufKt)Tkmyft'duEprsfjqbvfv=53V55XA<br />find | Found gold at 10N70W<br />Found Silver at 32S43W | We start looping through the first string and the key. When we reach the end of the key, we start looping from the beginning of the key, but we continue looping through the string. (until the string is over) The first message is: "hidden&gold&at<10N70W>" so we print we found gold at the given coordinates.We do the same for the second string "thereIs&Silver&atCoordinates<32S43W>"(starting from the beginning of the key and the beginning of the string) |
 
 ## 4. Morse Code Translator
-Write a program that translates messages from Morse code to English (capital letters). Use <а href="https://commons.wikimedia.org/wiki/File:International_Morse_Code.svg">this</a> page to help you (without the numbers). The words will be separated by a space (' '). Each word is separated by a ' | '.  
+Write a program that translates messages from Morse code to English (capital letters). Use  [this](https://commons.wikimedia.org/wiki/File:International_Morse_Code.svg">) page to help you (without the numbers). The words will be separated by a space (' '). Each word is separated by a ' | '.  
 Print the found words on one line, separated by a space.  
 #### Example  
 
