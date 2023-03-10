@@ -1,7 +1,7 @@
 import re
 
 text_input = input().split()
-pattern = re.compile('^[A-Za-z0-9]+([\.\-\_][A-Za-z0-9]+)*@[A-Za-z-]+\.[A-Za-z-]+[\.A-Za-z-]*[\.A-Za-z]$')
+pattern = re.compile('(^|(?<=\s))([A-Za-z]+[\.\-\_]*[A-Za-z]+)@[A-Za-z]+(\-[A-Za-z]+)*([\.{1}][A-Za-z]+(\-[A-Za-z]+)*)+($|(?=[\s\W]))')
 
 for i in text_input:
     for match in re.finditer(pattern, i):
