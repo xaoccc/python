@@ -108,6 +108,7 @@ In this example the title is "News" and the content is "SoftUni aims to provide 
 *	When you extract the title and the content, you should print the result in the following format:
     *	"Title: {extracted title}"
     *	"Content: {extracted content}"
+    
 | Input | Output | Comment |
 | ----- | ------ | ------- |
 | \<html>\n\<head>\<title>Some title\</title>\</head>\n\<body>Here\<p> is some \</p>content \<a href="www.somesite.com">\nclick\</body>\n\</html> | Title: Some title<br />Content: Here is some content click | We take the title and ignore all the tags to get the content |
