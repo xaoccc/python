@@ -34,7 +34,7 @@ When you receive "end of shift" print the total amount of money for the day roun
 | %George%<Croissant>|2|10.3$<br />%Peter%<Gum>\|1\|1.3$<br />%Maria%<Cola>\|1\|2.4$<br />end of shift | George: Croissant - 20.60<br />Peter: Gum - 1.30<br />Maria: Cola - 2.40<br />Total income: 24.30 | Each line is valid, so we print each order, calculating the total price of the product bought.<br />At the end we print the total income for the day |
 | %InvalidName%<Croissant>\|2\|10.3$<br />%Peter%<Gum>1.3$<br />%Maria%<Cola>\|1\|2.4<br />%Valid%<Valid>valid\|10\|valid20$<br />end of shift | Valid: Valid - 200.00<br />Total income: 200.00 | On the first line, the customer name isn`t valid, so we skip that line.<br />The second line is missing product count.<br />The third line don`t have a valid price.<br />And only the forth line is valid |
   
-#### 3.	Star Enigma
+## 3.	Star Enigma
 The war is in its peak, but you, young Padawan, can turn the tides with your programming skills. You are tasked to create a program to decrypt the messages of The Order and prevent the death of hundreds of lives.  
 You will receive several messages, which are encrypted using the legendary star enigma. You should decrypt the messages, following these rules:  
 To properly decrypt a message, you should count all the letters [s, t, a, r] – case insensitive and remove the count from the current ASCII value of each symbol of the encrypted message.  
