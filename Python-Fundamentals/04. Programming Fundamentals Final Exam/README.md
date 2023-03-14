@@ -24,7 +24,7 @@ Write a password reset program that performs a series of commands upon a predefi
 | Siiceercaroetavm!:?:ahsott.:i:nstupmomceqr <br />TakeOdd<br />Cut 15 3<br />Substitute :: -<br />Substitute \| ^<br />Done | icecream::hot::summer<br />icecream::hot::mer<br />icecream-hot-mer<br />Nothing to replace!<br />Your password is: icecream-hot-mer |
 | up8rgoyg3r1atmlmpiunagt!-irs7!1fgulnnnqy<br />TakeOdd<br />Cut 18 2<br />Substitute ! \*\*\*<br />Substitute ? .!.<br />Done | programming!is!funny<br />programming!is!fun<br />programming\*\*\*is\*\*\*fun<br />Nothing to replace!<br />Your password is: programming\*\*\*is\*\*\*fun |
 
-№ Problem 2 - Fancy Barcodes
+# Problem 2 - Fancy Barcodes
 
 Your first task is to determine if the given sequence of characters is a valid barcode or not. 
 Each line must not contain anything else but a valid barcode. A barcode is valid when:
