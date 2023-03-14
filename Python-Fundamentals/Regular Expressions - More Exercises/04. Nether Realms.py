@@ -1,6 +1,7 @@
 import re
 demons = [x.strip() for x in input().split(",")]
 pattern = r'([\-\+\*\/])|([0-9]+\.[0-9]+)|([1-9][0-9]*)'
+not_in_name = ["-", "+", "*", "/", "."]
 demons_data = {}
 
 def isfloat(num):
@@ -12,10 +13,7 @@ def isfloat(num):
 
 
 for demon in demons:
-    demon_health = 0
-    demon_damage = 0
-    decode_list = []
-    damage_decode = ""
+    demon_health, demon_damage, decode_list, damage_decode = 0, 0, [], ""
     decode = re.finditer(pattern, demon)
 
     for i in decode:
@@ -23,21 +21,24 @@ for demon in demons:
     for i in range(len(decode_list)):
         if isfloat(decode_list[i]) and i == 0:
             demon_damage = float(decode_list[i])
-        elif decode_list[i] == "-":
-            demon_damage -= float(decode_list[i + 1])
-        elif decode_list[i] == "+":
-            demon_damage += float(decode_list[i + 1])
-        elif decode_list[i] == "*":
+        elif isfloat(decode_list[i]) and decode_list[i - 1] == "-":
+            demon_damage -= float(decode_list[i])
+        elif isfloat(decode_list[i]) and decode_list[i - 1] != "-":
+            demon_damage += float(decode_list[i])
+            
+    for i in range(len(decode_list)):    
+        if decode_list[i] == "*":
             demon_damage *= 2
         elif decode_list[i] == "/":
             demon_damage /= 2
-        else:
-            demon_damage += float(decode_list[i])
 
     for j in demon:
-        if j.isalpha():
+        if not j.isdigit() and j not in not_in_name:
             demon_health += ord(j)
     demons_data[demon] = [demon_health, demon_damage]
+   
+sorted_demons_data = dict(sorted(demons_data.items(), key=lambda x: x[0]))
 
-print(demons_data)
+for demon_name, demon_stats in sorted_demons_data.items():
+    print(f"{demon_name} - {demon_stats[0]} health, {demon_stats[1]:.2f} damage")
 
