@@ -19,7 +19,8 @@ After the "Travel" command, print the following: "Ready for world tour! Planned 
 
 | Input | Output |
 | ----- | ------ |
-| Hawai::Cyprys-Greece<br />Add Stop:7:Rome<br />Remove Stop:11:16<br />Switch:Hawai:Bulgaria<br />Travel<br />Albania:Bulgaria:Cyprus:Deuchland<br />Add Stop:3:Nigeria<br />Remove Stop:4:8<br />Switch:Albania: Azərbaycan<br />Travel | Hawai::RomeCyprys-Greece<br />Hawai::Rome-Greece<br />Bulgaria::Rome-Greece<br />Ready for world tour! Planned stops: Bulgaria::Rome-Greece<br />AlbNigeriaania:Bulgaria:Cyprus:Deuchland<br />AlbNaania:Bulgaria:Cyprus:Deuchland<br />AlbNaania:Bulgaria:Cyprus:Deuchland<br />Ready for world tour!<br />Planned stops: AlbNaania:Bulgaria:Cyprus:Deuchland |
+| Hawai::Cyprys-Greece<br />Add Stop:7:Rome<br />Remove Stop:11:16<br />Switch:Hawai:Bulgaria<br />Travel<br />| Hawai::RomeCyprys-Greece<br />Hawai::Rome-Greece<br />Bulgaria::Rome-Greece<br />Ready for world tour! Planned stops: Bulgaria::Rome-Greece |
+| Albania:Bulgaria:Cyprus:Deuchland<br />Add Stop:3:Nigeria<br />Remove Stop:4:8<br />Switch:Albania: Azərbaycan<br />Travel | AlbNigeriaania:Bulgaria:Cyprus:Deuchland<br />AlbNaania:Bulgaria:Cyprus:Deuchland<br />AlbNaania:Bulgaria:Cyprus:Deuchland<br />Ready for world tour!<br />Planned stops: AlbNaania:Bulgaria:Cyprus:Deuchland |
 
 # Problem 2 - Destination Mapper
 
