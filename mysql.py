@@ -1,3 +1,5 @@
+#Created by Desislava Pavlova AKA DeepPpz
+
 import mysql.connector
 
 mydb = mysql.connector.connect(
