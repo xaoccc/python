@@ -28,7 +28,7 @@ while command != "Exhibition":
         else:
             print("error")
     command = input()
-print("Plants for the exhibition")
+print("Plants for the exhibition:")
 for plant, plant_stats in plants.items():
     average_rating = sum(plant_stats[1]) / len(plant_stats[1])
-    print(f"{plant}; Rarity: {plant_stats[0]}; Rating: {average_rating:.2f}")
+    print(f"- {plant}; Rarity: {plant_stats[0]}; Rating: {average_rating:.2f}")
