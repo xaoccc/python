@@ -59,3 +59,66 @@ else:
         
     if not solution_found:
         print("No")
+        
+        
+# num = input()
+# cows = int(input())
+# bulls = int(input())
+# cows_num_list = [0, 0, 0, 0, 0]
+# bulls_num_list = [0, 0, 0, 0, 0]
+# cows_list = []
+# bulls_list = []
+
+# for i in range(10000):
+    
+#     if len(str(i)) < 4:
+#         i = str(i).zfill(4)
+#     else:
+#         i = str(i)
+        
+#     b = [i[0] == num[0], i[1] == num[1], i[2] == num[2], i[3] == num[3]]
+#     c = [i[0] == num[1], 
+#     i[0] == num[2], 
+#     i[0] == num[3], 
+#     i[1] == num[0], 
+#     i[1] == num[2], 
+#     i[1] == num[3], 
+#     i[2] == num[0], 
+#     i[2] == num[1], 
+#     i[2] == num[3], 
+#     i[3] == num[0], 
+#     i[3] == num[1], 
+#     i[3] == num[2]]
+
+#     if i == num:
+#         bulls_num_list[4] = 1
+#         if bulls == 4:
+#             bulls_list.append(i)
+#     elif (b[0] and b[2] and b[3]) or (b[1] and b[2] and b[3]) or (b[0] and b[1] and b[3]) or (b[0] and b[1] and b[2]):
+#         bulls_num_list[3] += 1
+#         if bulls == 3:
+#             bulls_list.append(i)
+#     elif (b[0] and b[1]) or (b[0] and b[2]) or (b[0] and b[3]) or (b[1] and b[0]) or (b[1] and b[2]) or (b[1] and b[3]) or (b[2] and b[0]) or (b[2] and b[1]) or (b[2] and b[3]):
+#         bulls_num_list[2] += 1
+#         if bulls == 2:
+#             bulls_list.append(i)
+#     elif b[0] or b[1] or b[2] or b[3]:
+#         bulls_num_list[1] += 1
+#         if bulls == 1:
+#             bulls_list.append(i)
+#     else:
+#         bulls_num_list[0] += 1
+#         if bulls == 0:
+#             bulls_list.append(i)
+            
+#     if (c[0] and c[3] and c[8] and c[11]) or (c[1] and c[3] and c[8] and c[10]) or (c[2] and c[3] and c[7] and c[11]) or (c[0] and c[4] and c[8] and c[9]):
+#         cows_num_list[4] += 1
+#         print(i)
+#         if cows == 4:
+#             cows_list.append(i)
+
+        
+# print(cows_num_list)
+# print(bulls_num_list)
+# print(cows_list)
+# print(bulls_list)
