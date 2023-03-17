@@ -54,7 +54,7 @@ If the second word, spelled backward, is the same as the first word and vice ver
 | #po0l##l0op# @bAc##cAB@ @LM@ML@ #xxxXxx##xxxXxx# @aba@@ababa@ | 2 word pairs found!<br />No mirror words! |"xxxXxx" backward is not the same as "xxxXxx"<br />@aba@@ababa@ is a valid pair, but the word lengths are different - these are definitely not mirror words |
 | #lol#lol# @#God@@doG@# #abC@@Cba# @Xyu@#uyX# | No word pairs found!<br />No mirror words! |   |
 
-Problem 3 - Need for Speed III
+# Problem 3 - Need for Speed III
 
 You have just bought the latest and greatest computer game – Need for Seed III. Pick your favorite cars and drive them all you want! We know that you can't wait to start playing.  
 On the first line of the standard input, you will receive an integer n – the number of cars that you can obtain. On the next n lines, the cars themselves will follow with their mileage and fuel available, separated by "|" in the following format:  
