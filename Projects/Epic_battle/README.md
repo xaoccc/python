@@ -1,2 +1,3 @@
-### A simple console game
+### A simple game
 ##### Defeat the monsters in the dungeons
+
