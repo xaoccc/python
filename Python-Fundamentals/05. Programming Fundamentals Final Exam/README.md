@@ -68,7 +68,7 @@ There will always be at least one digit in the text!
 
 | Comments |
 | -----  |
-| You can see all the valid emojis in green. There are various reasons why the rest are not valid, examine them carefully. The "cool threshold" is 3*1*1*3*1*1*2*3*5*2*1 = 540.<br />::Smiley:: -> 83 + 109 + 105 + 108 + 101 + 121 = 627 > 540 -> cool<br />**Tigers** -> 84 + 105 + 103 + 101 + 114 + 115 = 622 > 540 -> cool<br />::Mooning:: -> 77 + 111 + 111 + 110 + 105 + 110 + 103 = 727 > 540 -> cool <br />**Shy** -> 83 + 104 + 121 = 308 < 540 -> not cool<br />In the end, we print the count of all valid emojis found and each of the cool ones on a new line. |
+|  The "cool threshold" is 3*1*1*3*1*1*2*3*5*2*1 = 540.<br />::Smiley:: -> 83 + 109 + 105 + 108 + 101 + 121 = 627 > 540 -> cool<br />**Tigers** -> 84 + 105 + 103 + 101 + 114 + 115 = 622 > 540 -> cool<br />::Mooning:: -> 77 + 111 + 111 + 110 + 105 + 110 + 103 = 727 > 540 -> cool <br />**Shy** -> 83 + 104 + 121 = 308 < 540 -> not cool<br />In the end, we print the count of all valid emojis found and each of the cool ones on a new line. |
 
 | Input | Output |
 | ----- | ------ |
