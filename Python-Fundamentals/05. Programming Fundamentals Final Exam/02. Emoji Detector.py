@@ -10,7 +10,7 @@ for num in text:
 for emoji in match:
     emojis_count += 1
     emoji_coolness = 0
-    for char in emoji.group():
+    for char in emoji.group()[2:-2]:
         emoji_coolness += ord(char)
     if emoji_coolness >= cool_threshold:
         cool_emojis.append(emoji.group())
