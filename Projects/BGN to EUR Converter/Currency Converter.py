@@ -1,4 +1,7 @@
 import tkinter as tk
+from tkinter import *
+root = Tk()
+
 
 class Application(tk.Frame):
     def __init__(self, master=None):
@@ -19,7 +22,6 @@ class Application(tk.Frame):
         self.label.place(x=10, y=30)
         self.bgn_eur_entry.place(x=100, y=30)
         self.convert_button.place(x=250, y=30)
-
 
         self.label1 = tk.Label(text="BGN to USD", bg="#123456", fg="white")
         self.bgn_usd_entry = tk.Entry()
@@ -50,8 +52,7 @@ class Application(tk.Frame):
             self.output.config(
                 text="That's not a number!",
                 bg="red", fg="black")
-from tkinter import *
-root = Tk()
+
 
 root.geometry('500x150')
 
