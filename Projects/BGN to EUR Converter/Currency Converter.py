@@ -8,26 +8,28 @@ class Application(tk.Frame):
 
 
     def create_widgets(self):
-        self.warning = tk.Label(text="Currensy converter. Please delete old input values(if any) before converting.")
-        self.label = tk.Label(text="BGN to EUR")
+        self.warning = tk.Label(text="Currency converter. Please delete old input values(if any) before converting.")
+        self.label = tk.Label(text="BGN to EUR", bg="#123456", fg="white")
         self.bgn_eur_entry = tk.Entry()
         self.convert_button = tk.Button(text="Convert", command=self.convert)
         self.output = tk.Label()
 
         self.warning.pack(side="top")
 
-        self.label.pack(side="left")
-        self.bgn_eur_entry.pack(side="left")
-        self.convert_button.pack(side="left")
-        self.label1 = tk.Label(text="BGN to USD")
+        self.label.place(x=10, y=30)
+        self.bgn_eur_entry.place(x=100, y=30)
+        self.convert_button.place(x=250, y=30)
+
+
+        self.label1 = tk.Label(text="BGN to USD", bg="#123456", fg="white")
         self.bgn_usd_entry = tk.Entry()
         self.convert_button1 = tk.Button(text="Convert", command=self.convert)
 
-        self.label1.pack(side="left")
-        self.bgn_usd_entry.pack(side="left")
-        self.convert_button1.pack(side="left")
+        self.label1.place(x=10, y=60)
+        self.bgn_usd_entry.place(x=100, y=60)
+        self.convert_button1.place(x=250, y=60)
 
-        self.output.pack(side="left")
+        self.output.place(x=100, y=110)
 
     def convert(self):
         bgn_eur = self.bgn_eur_entry.get()
@@ -48,7 +50,10 @@ class Application(tk.Frame):
             self.output.config(
                 text="That's not a number!",
                 bg="red", fg="black")
+from tkinter import *
+root = Tk()
 
+root.geometry('500x150')
 
 app = Application()
 app.master.title("Currency converter")
