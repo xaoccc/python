@@ -75,6 +75,7 @@ Then you will start receiving requests for books. If the bookstore has that book
 When you receive the command 'end work' you should print all sold books and after that the amount of money.  
 A valid book will always be in format: 
 "{title} {author} {price} -> {chapter1}, {chapter2}, {chapter3} ..."
+A valid price is an integer or float number greater than 0.
 A requests for a book always will be in format: "{title}"
 ### Output  
 The output should be printed on the console.  
