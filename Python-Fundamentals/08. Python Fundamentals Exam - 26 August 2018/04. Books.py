@@ -1,0 +1,46 @@
+import re
+
+book = input()
+all_books = {}
+sold_books = []
+money_collected = 0
+
+while book != "on work":
+    book = book.split(" -> ")
+    book[0] = book[0].split()
+    book[1] = book[1].split(", ")
+
+    if len(book[0]) == 3:
+        match = re.match(r"^\d+\.\d+$|^\d+$", book[0][2])
+        if match:
+            book_name = book[0][0]
+            book_author = book[0][1]
+            book_price = float(book[0][2])
+            chapters = book[1]
+            if book_name not in all_books and book_price > 0:
+                all_books[book_name] = [book_author, book_price, chapters]
+
+    book = input()
+
+command = input()
+while command != "end work":
+    found = False
+    for book, book_info in all_books.items():
+        if book == command:
+            found = True
+            break
+    if not found:
+        print("No such book here")
+    else:
+        sold_books.append([command, all_books[command][0], all_books[command][1], all_books[command][2]])
+        money_collected += all_books[command][1]
+
+    command = input()
+
+for book in sold_books:
+    print(f"SOLD: {book[0]} with author {book[1]}. Chapters in the book {len(book[3])}")
+
+if len(sold_books) > 0:
+    print(f"Money: {money_collected:.2f}")
+else:
+    print("Bad day :(")
