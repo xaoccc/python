@@ -100,10 +100,10 @@ A basic apartment will have:
 There are only two types of apartments the agency can manage: LivingApartments and OfficeApartments. Both types has the same parameters as a basic.  
 You will start receiving input data in format:  
 /* LivingApartment(“{id}”, {rooms}, {baths }, {square_meters }, {price})  
--if there is no fifth parameter you should print “__init__() missing 1 required positional argument: 'price'”  
+-if there is no fifth parameter you should print “\_\_init\_\_() missing 1 required positional argument: 'price'”  
 In this case you do not add the apartment in DB  
 /* OfficeApartment(“{id}”, {rooms}, {baths }, {square_meters }, {price})  
--if there is no fifth parameter you should print “__init__() missing 1 required positional argument: 'price'”  
+-if there is no fifth parameter you should print “\_\_init\_\_() missing 1 required positional argument: 'price'”  
 In this case you do not add the apartment in DB  
 Is it possible a request for basic apartment to reach the database:  
 *Apartment (“{id}”, {rooms}, {baths }, {square_meters }, {price})  
