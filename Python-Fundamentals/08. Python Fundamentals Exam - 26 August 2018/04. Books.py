@@ -44,3 +44,39 @@ if len(sold_books) > 0:
     print(f"Money: {money_collected:.2f}")
 else:
     print("Bad day :(")
+    
+    
+# import re
+# books, sold_books, money_collected = {}, [], 0
+# pattern = r"(?P<name>[a-zA-Z0-9]+) +(?P<author>[a-zA-Z0-9]+) +(?P<price>([0-9]+\.[0-9]+)|([0-9]+)) "
+
+# book = input()
+# while book != "on work":
+#     book = book.split("-> ")
+#     book_name, author, price = None, None, None
+#     match = re.finditer(pattern, book[0])
+#     for i in match:
+#         book_name = i["name"]
+#         author = i["author"]
+#         price = float(i["price"])
+#     if author and price > 0 and book_name:
+#         chapters = book[1].split(", ")
+#         books[book_name] = [author, price, chapters]
+#     book = input()
+
+# command = input()
+# while command != "end work":
+#     if command not in books.keys():
+#         print("No such book here")
+#     else:
+#         sold_books.append([command, books[command][0], books[command][1], books[command][2]])
+#         money_collected += books[command][1]
+#     command = input()
+
+# for book in sold_books:
+#     print(f"SOLD: {book[0]} with author {book[1]}. Chapters in the book {len(book[3])}")
+
+# if len(sold_books) > 0:
+#     print(f"Money: {money_collected:.2f}")
+# else:
+#     print("Bad day :(")
