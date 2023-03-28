@@ -15,7 +15,7 @@
 
 Print formatting:
 
-:<        Left aligns the result (within the available space)  
+:<   Left aligns the result (within the available space)  
 :>        Right aligns the result (within the available space)  
 :^        Center aligns the result (within the available space)  
 :=        Places the sign to the left most position  
