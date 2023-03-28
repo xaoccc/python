@@ -106,8 +106,8 @@ In this case you do not add the apartment in DB
 -if there is no fifth parameter you should print “\_\_init\_\_() missing 1 required positional argument: 'price'”  
 In this case you do not add the apartment in DB  
 Is it possible a request for basic apartment to reach the database:  
-*Apartment (“{id}”, {rooms}, {baths }, {square_meters }, {price})  
-You must print “Can't instantiate abstract class Apartment with abstract methods __str__”  and you must  not add it in the DB.  
+\* Apartment (“{id}”, {rooms}, {baths }, {square_meters }, {price})  
+You must print “Can't instantiate abstract class Apartment with abstract methods \_\_str\_\_”  and you must  not add it in the DB.  
 
 The core difference between OfficeApartments and LivingApartments is that the LivingApartment’s price is for buying and these apartment could not be hired and the OfficeApartmnets could only be hired not bought.  
 When you receive the command ‘start_selling’ you should stop adding apartments to the DB. From this moment you will start receive a commands in format:
