@@ -46,17 +46,23 @@ while action != "taken" and action != "free":
         del all_data["LivingApartment"][action[1]]
     action = input()
     
-print(taken)    
+  
 if (action == "taken" and len(taken) == 0) or (action == "free" and len(all_data) == 0):
     print("No information for this query")
 elif action == "taken":
     taken = dict(sorted(taken.items(), key = lambda x: x[0], reverse=True))
     for i in taken:
         taken[i] = dict(sorted(taken[i].items(), key = lambda x: (x[1][3], -int(x[1][2]))))
-    print(taken)
+    for key, value in taken.items():
+        for ap, ap_data in value.items():
+            print(f"{ap_data[0]} rooms place with {ap_data[1]} bathroom/s.")
+            print(f"{float(ap_data[2])} sq. meters for {float(ap_data[3])} lv.")
 
 elif command == "free":
     all_data = dict(sorted(all_data.items(), key = lambda x: x[0], reverse=True))
     for i in all_data:
         all_data[i] = dict(sorted(all_data[i].items(), key = lambda x: (x[1][3], -int(x[1][2]))))
-    print(all_data)
+    for key, value in all_data.items():
+        for ap, ap_data in value.items():
+            print(f"{ap_data[0]} rooms place with {ap_data[1]} bathroom/s.")
+            print(f"{float(ap_data[2])} sq. meters for {float(ap_data[3])} lv.")
