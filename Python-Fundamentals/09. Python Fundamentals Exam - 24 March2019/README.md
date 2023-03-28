@@ -116,7 +116,7 @@ Where {id} is the id of the apartment that the client wants to rent/buy.
 * If the DB is not an apartment with the given id print “Apartment with id - {id} does not exist!”
 * If there is such apartment, but it is already taken print “Apartment with id - {id} is already taken!”
 * If the apartment is available but the command is ‘rent’ and the apartment is of type LivingApartment print “Apartment with id - {id} is only for selling!”
-* If the apartment is available but the command is ‘hire’ and the apartment is of type OfficeApartment print “Apartment with id - {id} is only for renting!”
+* If the apartment is available but the command is ‘buy’ and the apartment is of type OfficeApartment print “Apartment with id - {id} is only for renting!”
 * If none of the above cases are true, then just mark the apartment as taken.
 
 ### Output
