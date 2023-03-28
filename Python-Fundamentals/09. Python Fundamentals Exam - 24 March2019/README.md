@@ -122,7 +122,7 @@ Where {id} is the id of the apartment that the client wants to rent/buy.
 ### Output
 When you receive ‘free’ or ‘taken’ you should stop selling apartments and make report.
 * If you have received the ‘taken’ command you should print just the taken apartments sorted first by price ascending and then by square meters descending
-* If you have received the ‘free’ command you should print just the free apartments sorted first by price descending and then by square meters ascending
+* If you have received the ‘free’ command you should print just the free apartments sorted first by price descending and then by square meters ascending  
 In both cases you should print the sorted apartments in the following format:  
 {rooms} rooms place with {bathrooms} bathroom/s.  
 {square_meters} sq. meters for {price} lv.  
