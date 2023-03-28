@@ -50,10 +50,13 @@ print(taken)
 if (action == "taken" and len(taken) == 0) or (action == "free" and len(all_data) == 0):
     print("No information for this query")
 elif action == "taken":
+    taken = dict(sorted(taken.items(), key = lambda x: x[0], reverse=True))
     for i in taken:
-        taken = dict(sorted(taken[i].items(), key = lambda x: (x[1][3], x[1][2])))
+        taken[i] = dict(sorted(taken[i].items(), key = lambda x: (x[1][3], -int(x[1][2]))))
     print(taken)
 
-# elif command == "free":
-#     for ap_type, ap_data in taken.items():
-#         print()
+elif command == "free":
+    all_data = dict(sorted(all_data.items(), key = lambda x: x[0], reverse=True))
+    for i in all_data:
+        all_data[i] = dict(sorted(all_data[i].items(), key = lambda x: (x[1][3], -int(x[1][2]))))
+    print(all_data)
