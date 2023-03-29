@@ -1,3 +1,3 @@
 ### A simple game
-##### Defeat the monsters in the dungeons
+##### Defeat the monsters in the dungeon
 
