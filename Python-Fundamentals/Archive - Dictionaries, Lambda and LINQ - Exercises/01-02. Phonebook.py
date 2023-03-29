@@ -9,4 +9,8 @@ while command != "END":
             print(f"{command[1]} -> {phonebook[command[1]]}")
         else:
             print(f"Contact {command[1]} does not exist.")
+    elif command[0] == "ListAll":
+        phonebook = dict(sorted(phonebook.items(), key=lambda x: x[0]))
+        for person, phone_num in phonebook.items():
+            print(f"{person} -> {phone_num}")
     command = input()
