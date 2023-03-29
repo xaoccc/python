@@ -12,8 +12,12 @@ def landing_page(request):
 def create_phone_number(request):
     name = request.POST['name']
     number = request.POST['number']
-    contact = Contact(name=name, number=number)
-    contact.save()
+    try:
+        contact = Contact(name=name, number=number)
+        contact.save()
+    except Exception as exc:
+        pass
+
     return redirect('landing-page')
 
 
