@@ -1,10 +1,11 @@
+
 import random
-dungeons_number = random.randint(5, 15)
+dungeons_number = random.randint(5, 25)
 
 health = 1000
 coins = 0
 
-print("You'll going to fight terrible monsters! Prepare yourself!")
+print(f"You'll going to fight terrible monsters in {dungeons_number} dangerous dungeon rooms! Prepare yourself!")
 dungeon_rooms = []
 for i in range(dungeons_number):
     dungeons_contents = random.choice(["small_potion", "big_potion", "chest", "rat", "bat", "orc", "wild_dog", "demon", "dinosaur", "lawyer", "mad_woman", "archdemon", "angry_teenager", "harpy", "small_chest", "big_chest"])
@@ -28,7 +29,7 @@ for i in range(dungeons_number):
     dungeon_rooms.append(dungeons_contents + " " + str(qty))
 
 for room in range(1, len(dungeon_rooms) + 1):
-
+    print(f"Room {room}:")
     current_room = dungeon_rooms[room-1].split()
     if current_room[0].find("potion") > -1:
         initial_health = health
@@ -36,8 +37,10 @@ for room in range(1, len(dungeon_rooms) + 1):
             health += int(current_room[1])
             if health > 1000:
                 health = 1000
-        print(f"You healed for {health - initial_health} hp.")
-        print(f"Current health: {health} hp.")
+            print(f"You found a healing potion and healed for {health - initial_health} hp.")
+            print(f"Current health: {health} hp.")
+        else:
+            print(f"You found a healing potion, but your health is at max.")
     elif current_room[0].find("chest") > -1:
         coins += int(current_room[1])
         print(f"You found {int(current_room[1])} bitcoins.")
@@ -54,4 +57,3 @@ for room in range(1, len(dungeon_rooms) + 1):
             print(f"Health remaining: {health} hp.")
 if health > 0:
     print(f"You've made it!\nBitcoins: {coins}\nHealth: {health}")
-        
