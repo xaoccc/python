@@ -47,7 +47,7 @@
 <!--  end visualizing contacts table  -->
 
 <!--  adding contact form  -->
-         <form class="form-horizontal" method="POST">
+         <form class="form-horizontal" method="POST" action="{% url 'new-contact' %}">
             {% csrf_token %}
             <fieldset>
                <legend>New Contact</legend>
