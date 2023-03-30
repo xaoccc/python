@@ -27,4 +27,4 @@ for user, conn in log.items():
     print(f"{user}: ")
     for ip_num, visit_num in conn.items():
         current_result.append(f"{ip_num} => {visit_num}")
-    print(*current_result, sep=",\n", end=".\n")
+    print(*current_result, sep=", ", end=".\n")
