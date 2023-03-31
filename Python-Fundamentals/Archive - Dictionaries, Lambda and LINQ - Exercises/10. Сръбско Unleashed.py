@@ -1,22 +1,22 @@
+import re
 payneer = {}
 command = input()
+pattern = r"(?P<singer>.+) @(?P<place>[\w ]+) (?P<ticket_price>\d+) (?P<ticket_count>\d+)"
+
 while command != "End":
-    command = command.split("@")
-    singer = command[0].strip(" ")
-    command[1] = command[1].split()
-    if len(command[1]) >= 3 and command[1][-2].isdigit():
-        place = " ".join(command[1][ :len(command[1])-2])
-        ticket_price = int(command[1][-2])
-        ticket_count = int(command[1][-1])
-        if place not in payneer:
-            payneer[place] = {singer: ticket_price * ticket_count}
-        else:
-            if singer not in payneer[place]:
-                payneer[place][singer] = ticket_price * ticket_count
-            else:
-                payneer[place][singer] += ticket_price * ticket_count
     
+    match = re.finditer(pattern, command)
+    for i in match:
+        if i["place"] not in payneer:
+            payneer[i["place"]] = {i["singer"]: int(i["ticket_price"]) * int(i["ticket_count"])}
+        else:
+            if i["singer"] not in payneer[i["place"]]:
+                payneer[i["place"]][i["singer"]] = int(i["ticket_price"]) * int(i["ticket_count"])
+            else:
+                payneer[i["place"]][i["singer"]] += int(i["ticket_price"]) * int(i["ticket_count"])
+
     command = input()
+    
 for chalga in payneer:
     payneer[chalga] = dict(sorted(payneer[chalga].items(), key=lambda x: -x[1]))
     
