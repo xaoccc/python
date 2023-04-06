@@ -12,3 +12,9 @@ def fibonacci(num = int(input())):
         fib_seq = list(map(int, fib_seq))
         print(fib_seq[-1] + fib_seq[-2])
 fibonacci()
+
+# num1, num2, num = 0, 1, int(input())
+# for i in range(num):
+#     result = num1 + num2
+#     num1, num2 = num2, result
+# print(result)
