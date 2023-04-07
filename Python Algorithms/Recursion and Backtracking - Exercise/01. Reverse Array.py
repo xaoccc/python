@@ -16,7 +16,7 @@ else:
 
 
 # elements = input().split()
-# 
+#
 # def swap(idx, elements):
 #     if len(elements) == 1:
 #         return elements[idx]
