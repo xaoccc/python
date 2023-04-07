@@ -5,7 +5,6 @@ if len(elements) == 1:
 
 else:
     def reverse_array(idx, elements):
-
         if idx <= (len(elements) // 2) - 1:
             swap_idx = len(elements) - 1 - idx
             elements[idx], elements[swap_idx] = elements[swap_idx], elements[idx]
