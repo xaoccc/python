@@ -22,14 +22,14 @@ matrix = []
 for i in range(rows):
     matrix.append(list(input()))
 total_areas = 0
-res = []
+result = []
 for row in range(rows):
     for col in range(cols):
         area = find_area(row, col, matrix)
         if area > 0:
             total_areas += 1
-            res.append(f"Area #{total_areas} at ({row}, {col}), size: {area}")
-print(total_areas)
+            result.append([row, col, area])
+result.sort(key=lambda x: x[2], reverse=True)
 print(f"Total areas found: {total_areas}")
 for i in range(total_areas):
-    print(res[i])
+    print(result[i])
