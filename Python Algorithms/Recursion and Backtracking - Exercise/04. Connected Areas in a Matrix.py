@@ -32,4 +32,4 @@ for row in range(rows):
 result.sort(key=lambda x: x[2], reverse=True)
 print(f"Total areas found: {total_areas}")
 for i in range(total_areas):
-    print(result[i])
+    print(f"Area #{i + 1} at ({result[i][0]}, {result[i][1]}), size: {result[i][2]}")
