@@ -7,6 +7,7 @@ for i in range(rows):
     if "k" in current_row:
         start_row = i
         start_column = current_row.index("k")
+
      
 if start_row == 0 or start_row == rows - 1 or start_column == 0 or start_column == columns - 1:
     print(f"Kate got out in 1 moves")
@@ -34,6 +35,7 @@ else:
         find_path(row, col + 1, maze, path)
     
         maze[row][col] = " "
+        path.pop()
     
     find_path(start_row, start_column, maze, [])
     
