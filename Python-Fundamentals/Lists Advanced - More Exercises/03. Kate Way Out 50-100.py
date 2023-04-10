@@ -1,5 +1,6 @@
 rows = int(input())
 maze, solutions = [], []
+start_row, start_column, columns = 0, 0, 0
 for i in range(rows):
     current_row = input()
     columns = len(current_row)
@@ -16,10 +17,7 @@ else:
     def find_path(row, col, maze, path):
 
         if row < rows and col < columns and row > -1 and columns > -1:
-            if maze[row][col] == "visited":
-                return
-        if row < rows and col < columns and row > -1 and columns > -1:
-            if maze[row][col] == "#":
+            if maze[row][col] == "visited" or maze[row][col] == "#":
                 return
         if row == rows or row == -1 or col == columns or col == -1:
             #debug code solutions.append(path)
