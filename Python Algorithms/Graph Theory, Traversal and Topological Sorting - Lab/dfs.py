@@ -1,3 +1,4 @@
+# Depth First Search algorithm for finding all nodes in a graph is recursive
 # For ordered nodes we use set()
 visited = set()
 def dfs(node, graph, visited):
