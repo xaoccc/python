@@ -1,3 +1,5 @@
+from collections import deque
+
 graph = {
     1: [19, 21, 14],
     19: [7, 12, 31, 21],
@@ -9,9 +11,19 @@ graph = {
     23: [21],
     6: []
 }
-result = []
+visited = set()
 
-for key, value in graph:
-  for i in value:
-  if i not in result:
-    result.append(i)
+
+def bfs(node, graph, vosoted):
+    if node in visited:
+        return
+    queue = deque([node])
+    visited.add(node)
+    while queue:
+        current_node = queue.popleft()
+
+    return
+
+
+for node in graph:
+    bfs(node, graph, vosoted)
