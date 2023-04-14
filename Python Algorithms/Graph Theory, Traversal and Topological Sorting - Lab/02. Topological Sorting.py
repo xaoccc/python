@@ -42,8 +42,10 @@ while dependencies_by_nude:
     for child in graph[nude_to_remove]:
         dependencies_by_nude[child] -= 1
 
-print(sorted_nudes)
 
 if loop:
     print("Invalid topological sorting")
+else:
+    print(f"Topological sorting: {', '.join(sorted_nudes)}")
+
 
