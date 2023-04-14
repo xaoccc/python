@@ -19,7 +19,7 @@ def bfs(node, graph, visited):
         # We check all the node's children / values and add the to the queue if any...
         for child in graph[current_node]:
             # ...or if not visited and add them to visited set so we don't add them anymore
-            if child not in visited:                
+            if child not in visited:
                 visited.add(child)
                 queue.append(child)
 
