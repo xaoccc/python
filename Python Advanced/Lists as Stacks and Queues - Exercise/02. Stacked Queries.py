@@ -4,8 +4,8 @@ numbers = deque()
 map_functions = {
     1: lambda x: numbers.append(x[1]),
     2: lambda x: numbers.pop() if numbers else None,
-    3: lambda x: print(max(numbers)),
-    4: lambda x: print(min(numbers))
+    3: lambda x: print(max(numbers)) if numbers else print(),
+    4: lambda x: print(min(numbers)) if numbers else print()
 }
 
 for i in range(int(input())):
