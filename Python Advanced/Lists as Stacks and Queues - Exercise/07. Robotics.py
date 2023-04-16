@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 
 # User inputs
 # create a dictionary from the input:
-# input().split(";") divires the input into different robots, for each robot, we split into "-"
+# input().split(";") divides the input into different robots, for each robot, we split into "-"
 # and take the key(str) and the value(list, consisting of 2 int)
 # The key is the robot name, values are total time for completing the task and the time used for current task
 robots = {r.split("-")[0]: [int(r.split("-")[1]), 0] for r in input().split(";")}
