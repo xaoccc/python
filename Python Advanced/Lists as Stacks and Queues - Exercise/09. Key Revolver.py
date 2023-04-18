@@ -19,10 +19,8 @@ while locks:
             locks.appendleft(locks.popleft())
         elif len(bullets) == 0:
             break
-        print(bullets)
-        print(gun_barrel_size)
+        
     bullets = bullets[gun_barrel_size: ]
-
     if bullets:
         print("Reloading!")
     if not locks:
