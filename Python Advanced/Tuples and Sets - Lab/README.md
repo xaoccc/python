@@ -54,5 +54,4 @@ In the end, print the number of guests who did not come to the party and their r
 
 | Input | Output | Input | Output |
 | ----- | ------ | ----- | ------ |
-| 5<br />7IK9Yo0h<br />9NoBUajQ<br />Ce8vwPmE<br />SVQXQCbc<br />tSzE5t0p<br />9NoBUajQ<br />Ce8vwPmE<br />SVQXQCbc<br />END | 2<br />7IK9Yo0h<br />tSzE5t0p | 6
-m8rfQBvl<br />fc1oZCE0<br />UgffRkOn<br />7ugX7bm0<br />9CQBGUeJ<br />2FQZT3uC<br />2FQZT3uC<br />9CQBGUeJ<br />fc1oZCE0<br />END | 3<br />7ugX7bm0<br />UgffRkOn<br />m8rfQBvl |
+| 5<br />7IK9Yo0h<br />9NoBUajQ<br />Ce8vwPmE<br />SVQXQCbc<br />tSzE5t0p<br />9NoBUajQ<br />Ce8vwPmE<br />SVQXQCbc<br />END | 2<br />7IK9Yo0h<br />tSzE5t0p | 6 m8rfQBvl<br />fc1oZCE0<br />UgffRkOn<br />7ugX7bm0<br />9CQBGUeJ<br />2FQZT3uC<br />2FQZT3uC<br />9CQBGUeJ<br />fc1oZCE0<br />END | 3<br />7ugX7bm0<br />UgffRkOn<br />m8rfQBvl |
