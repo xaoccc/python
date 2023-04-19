@@ -10,14 +10,10 @@ while True:
         found = False
         if nums[i] + nums[j] == target and i != j:
             print(f"{nums[i]} + {nums[j]} = {target}")
-            if i > j:
-                nums.pop(i)
-                nums.pop(j)
-            else:
-                nums.pop(j)
-                nums.pop(i)
+            nums.pop(max([i, j]))
+            nums.pop(min([i, j]))
             found = True
-            j = 0
+            j = i
         if j == len(nums) - 1 or i >= len(nums):
             break
         if not found:
