@@ -14,6 +14,9 @@ while locks:
         if bullets[-1] <= locks[0]:
             print("Bang!")
             locks.popleft()
+            if len(locks) == 0:
+                bullets.pop()
+                break
         elif bullets[-1] > locks[0]:
             print("Ping!")
             locks.appendleft(locks.popleft())
@@ -21,7 +24,7 @@ while locks:
             break
         bullets.pop()
         
-    if bullets:
+    if bullets and i == (gun_barrel_size - 1):
         print("Reloading!")
     if not locks:
         print(f"{len(bullets)} bullets left. Earned ${budget - (bullet_price * (total_bullets - len(bullets)))}")
