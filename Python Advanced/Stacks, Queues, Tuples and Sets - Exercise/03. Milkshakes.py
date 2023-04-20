@@ -4,12 +4,15 @@ milk = deque([int(i) for i in input().split(", ")])
 milkshakes = 0
 
 while choco and milk and milkshakes < 5:
+    flag = False
     if milk[0] <= 0:
         milk.popleft()
+        flag = True
     if choco[-1] <= 0:
         choco.pop()
-    if not choco or not milk:
-        break
+        flag = True
+    if flag:
+        continue
     if choco[-1] == milk[0]:
         milkshakes += 1
         milk.popleft()
