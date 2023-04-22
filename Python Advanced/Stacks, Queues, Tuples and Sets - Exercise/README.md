@@ -69,5 +69,9 @@ needed!"
 
 | Input | Output |
 | ----- | ------ |
-| 20, 24, -5, 17, 22, 60, 26<br /> | 1 | 
+| 20, 24, -5, 17, 22, 60, 26<br />26, 60, 22, 17, 24, 10, 55 | Great! You made all the chocolate milkshakes needed!<br />Chocolate: 20<br />Milk: 10, 55 |
+
+| Comment |
+| ------ |
+| 1) 26 == 26 -> You made chocolate milkshake. Remove both ingredients.<br />2) 60 == 60 -> You made chocolate milkshake. Remove both ingredients.<br />3) 22 == 22 -> You made chocolate milkshake. Remove both ingredients.<br />4) 17 == 17 -> You made chocolate milkshake. Remove both ingredients.<br />5) -5 is invalid, so it is removed before mixing.<br />6) 24 == 24 -> You made chocolate milkshake. Remove both ingredients. You made enough chocolate milkshakes.<br />The program ends. |
 
