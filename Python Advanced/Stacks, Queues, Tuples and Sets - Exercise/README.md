@@ -38,3 +38,6 @@ All the numbers will always be integers, and the possible operators are "\*", "+
 | 2 2 - 1 * | 0 | 2 - 2 = 0<br />0 * 1 = 0 |
 | 10 23 * 4 2 / 30 10 + 100 50 - 2 -1 * | 164 | 10 * 23 = 230<br />230 / 4 / 2 = 28<br />28 + 30 + 10 = 68<br />68 - 100 - 50 = -82<br />-82 * 2 * -1 = 164 |
 
+## 3. Milkshakes
+You are learning how to make milkshakes.  
+First, you will be given two sequences of integers representing chocolates and cups of milk  
