@@ -21,7 +21,6 @@ while text:
             else: 
                 text.pop()
             
-            
         else:
             text.insert(len(text)//2, text[0][:-1] + text[-1][:-1])
             text.popleft()
