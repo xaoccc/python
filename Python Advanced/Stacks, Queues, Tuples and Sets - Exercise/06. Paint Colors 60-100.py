@@ -53,8 +53,6 @@ while text:
     if len(text) > 1:
         word_one = text.popleft()
         word_two = text.pop()
-
-        print(word_two + word_one)
         if word_one + word_two in main_colors or word_one + word_two in secondary_colors:
             colors_found.append(word_one + word_two)
         elif word_two + word_one in main_colors or word_two + word_one in secondary_colors:
