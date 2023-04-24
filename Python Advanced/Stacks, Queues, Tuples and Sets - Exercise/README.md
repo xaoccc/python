@@ -159,6 +159,36 @@ Your task is considered done if you manage to craft either one of the pairs:
 
 | Input | Output | Comment |
 | ----- | ------ | ------ |
-| 10 -5 20 15 -30 10<br />40 60 10 4 10 0 | The presents are crafted! Merry Christmas!<br />Materials left: 20, -5, 10<br />Bicycle: 1<br />Teddy bear: 2 | First, we have 40*10=400, which is the needed magic for a bicycle. Remove both.<br />60*(-30) = -1800 (negative). 60+(-30) = 30. Remove 60 and -30. Add 30 to materials.<br />30*10=300 (bear). Remove both.<br />4*15=60, so remove 4, and the material is increased by 15 (15+15=30).<br />10*30=300 (bear).<br />Print desired text. |
+| 10 -5 20 15 -30 10<br />40 60 10 4 10 0 | The presents are crafted! Merry Christmas!<br />Materials left: 20, -5, 10<br />Bicycle: 1<br />Teddy bear: 2 | First, we have 40\*10=400, which is the needed magic for a bicycle. Remove both.<br />60\*(-30) = -1800 (negative). 60+(-30) = 30. Remove 60 and -30. Add 30 to materials.<br />30\*10=300 (bear). Remove both.<br />4\*15=60, so remove 4, and the material is increased by 15 (15+15=30).<br />10\*30=300 (bear).<br />Print desired text. |
 | 30 5 15 60 0 30<br />-15 10 5 -15 25 | No presents this Christmas!<br />Materials left: 20, 30<br />Doll: 1<br />Teddy bear: 1 |  |
 | 30 10<br />15 10 5 0 10 | No presents this Christmas!<br />Magic left: 5, 0, 10<br />Doll: 1<br />Teddy bear: 1 |  |
+
+6.	Paint Colors
+You will have to find all possible color combinations that can be used.  
+Write a program that finds colors in a string. You will be given a string on a single line containing substrings (separated by a single space) from which you will be able to form the following colors:  
+Main colors: "red", "yellow", "blue"  
+Secondary colors: "orange", "purple", "green"  
+To form a color, you should concatenate the first and the last substrings and check if you can get any of the above colors' names. If there is only one substring left, you should use it to do the same check.  
+You can only keep a secondary color if the two main colors needed for its creation could be formed from the given substrings:  
+*	orange = red + yellow
+*	purple = red + blue
+*	green = yellow + blue
+Note: You could find some of the main colors needed to keep a secondary color after it is found.  
+When you form a color, remove both substrings. Otherwise, you should remove the last character of each substring and return them in the middle of the original string. If the string contains an odd number of substrings, you should put the substrings one position ahead.  
+For example, if you are given the string "re yellow bye" you could not form a color with the substring "re" and "bye", so you should remove the last character and return them in the middle of the string: "r by yellow".  
+In the end, print out the list with colors in the order in which they are found.  
+#### Input
+*	Single line string
+#### Output
+*	The list with the collected colors
+#### Constrains
+*	You will not receive an empty string
+*	Please consider only the colors mentioned above
+*	There won't be any cases with repeating colors
+#### Examples
+
+| Input | Output |
+| ----- | ------ |
+| d yel blu e low redd | ['yellow', 'blue', 'red'] |
+| r ue nge ora bl ed | ['red', 'blue'] |
+| re ple blu pop e pur d | ['red', 'purple', 'blue'] |
