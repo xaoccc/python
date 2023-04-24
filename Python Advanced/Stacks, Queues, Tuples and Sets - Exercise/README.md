@@ -163,7 +163,7 @@ Your task is considered done if you manage to craft either one of the pairs:
 | 30 5 15 60 0 30<br />-15 10 5 -15 25 | No presents this Christmas!<br />Materials left: 20, 30<br />Doll: 1<br />Teddy bear: 1 |  |
 | 30 10<br />15 10 5 0 10 | No presents this Christmas!<br />Magic left: 5, 0, 10<br />Doll: 1<br />Teddy bear: 1 |  |
 
-6.	Paint Colors
+## 6.	Paint Colors
 You will have to find all possible color combinations that can be used.  
 Write a program that finds colors in a string. You will be given a string on a single line containing substrings (separated by a single space) from which you will be able to form the following colors:  
 Main colors: "red", "yellow", "blue"  
