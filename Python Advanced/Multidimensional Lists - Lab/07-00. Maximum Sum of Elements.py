@@ -1,3 +1,5 @@
+#This program find the biggest sum of two pairs of elements in a matrix, prints them and their total sum 
+
 import copy
 matrix_size = [int(i) for i in input().split(", ")]
 matrix = []
