@@ -6,7 +6,8 @@ for row in range(matrix_size):
 bombs = [[int(j) for j in i.split(",")] for i in input().split()]
 for bomb in bombs:
     explosion = matrix[bomb[0]][bomb[1]]
-    
+    if explosion <= 0:
+        continue
     if bomb[0] >= 1:
         if matrix[bomb[0] - 1][bomb[1]] > 0:
             matrix[bomb[0] - 1][bomb[1]] -= explosion
