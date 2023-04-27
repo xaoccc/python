@@ -22,6 +22,7 @@ for move in moves:
         current_position[1] -= 1
     elif move == "R":
         current_position[1] += 1
+        
     
     for row in range(rows):
         for col in range(cols):
@@ -39,13 +40,8 @@ for move in moves:
         for col in range(cols):  
             if lair_map[row][col] == "C":
                 lair_map[row][col] = "B"
-    
-    if lair_map[current_position[0]][current_position[1]] == "B":
-        killed = True
-        break
-    elif 0 <= current_position[0] < rows and 0 <= current_position[1] < cols:
-        lair_map[current_position[0]][current_position[1]] = "P"
-    else:
+                
+    if 0 > current_position[0] or current_position[0] >= rows or 0 > current_position[1] or current_position[1] >= cols:
         if move == "U":
             current_position[0] += 1
         elif move == "D":
@@ -56,9 +52,15 @@ for move in moves:
             current_position[1] -= 1
         escaped = True
         break
+    elif lair_map[current_position[0]][current_position[1]] == "B":
+        killed = True
+        break
+    elif 0 <= current_position[0] < rows and 0 <= current_position[1] < cols:
+        lair_map[current_position[0]][current_position[1]] = "P"
+
     
 for row in lair_map:
-    print(*row)  
+    print(''.join(row))  
     
 if escaped:
     print(f"won: {' '.join([str(i) for i in current_position])}")
