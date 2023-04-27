@@ -1,2 +1,4 @@
 matrix = [i.split() for i in input().split("|")[::-1]]
-print(*(' '.join(i) for i in matrix))
+for i in matrix:
+    for j in i:
+        print(j, end=" ")
