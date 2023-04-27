@@ -22,7 +22,6 @@ for move in moves:
         current_position[1] -= 1
     elif move == "R":
         current_position[1] += 1
-        
     
     for row in range(rows):
         for col in range(cols):
@@ -55,10 +54,7 @@ for move in moves:
     elif lair_map[current_position[0]][current_position[1]] == "B":
         killed = True
         break
-    elif 0 <= current_position[0] < rows and 0 <= current_position[1] < cols:
-        lair_map[current_position[0]][current_position[1]] = "P"
 
-    
 for row in lair_map:
     print(''.join(row))  
     
