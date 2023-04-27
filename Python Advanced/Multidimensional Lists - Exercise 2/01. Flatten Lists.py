@@ -1,3 +1,2 @@
-matrix = [i.split() for i in input().split("|")]
-matrix.reverse()
+matrix = [i.split() for i in input().split("|")[::-1]]
 print(*(' '.join(i) for i in matrix))
