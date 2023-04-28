@@ -36,6 +36,10 @@ for i in range(bunny_position[1] + 1, matrix_size):
         movement["right"].append([bunny_position[0], i])
     else:
         break  
+#remove empty routes
+for key, value in movement.items():
+    if not value:
+        del collected_eggs[key]
 
 max_direction = list(collected_eggs.keys())[list(collected_eggs.values()).index(max(collected_eggs.values()))]
 max_eggs = max(collected_eggs.values())
@@ -43,4 +47,4 @@ max_eggs = max(collected_eggs.values())
 print(max_direction)
 for coord in movement[max_direction]:
     print(coord)
-print(max_eggs) 
+print(max_eggs)  
