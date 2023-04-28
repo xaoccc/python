@@ -29,7 +29,7 @@ while True:
             alice_alive = False
             
     elif direction == "down":
-        if current_position[0] < map_size:
+        if current_position[0] < map_size - 1:
             current_position[0] += 1
             if wonder_map[current_position[0]][current_position[1]] == "R":
                 alice_alive = False
@@ -53,7 +53,7 @@ while True:
             alice_alive = False
             
     elif direction == "right":
-        if current_position[1] < map_size:
+        if current_position[1] < map_size - 1:
             current_position[1] += 1
             if wonder_map[current_position[0]][current_position[1]] == "R":
                 alice_alive = False
