@@ -30,6 +30,7 @@ for move in directions:
         break
     
     elif field_map[current_position[0]][current_position[1]] == "h":
+        field_map[current_position[0]][current_position[1]] = "*"
         hazelnuts += 1
     
     if hazelnuts == 3:
