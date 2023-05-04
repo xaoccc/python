@@ -30,13 +30,11 @@ while textiles and medicaments:
         break
 first_aid_kit = dict(sorted(first_aid_kit.items(), key=lambda x: (-x[1][1], x[0])))
 
-
 for key, value in first_aid_kit.items():
     if value[1] > 0:
         print(f"{key} - {value[1]}")
 
-medicaments = sorted(list(medicaments), reverse=True) 
 if len(medicaments) > 0:
-    print(f"Medicaments left: {', '.join([str(i) for i in medicaments])}")
+    print(f"Medicaments left: {', '.join([str(i) for i in reversed(medicaments)])}")
 if len(textiles) > 0:
     print(f"Textiles left: {', '.join([str(i) for i in textiles])}")
