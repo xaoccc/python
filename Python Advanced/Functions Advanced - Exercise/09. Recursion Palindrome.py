@@ -6,8 +6,7 @@ def palindrome(text, idx):
     elif idx == len(text) - 1:
         return f"{text} is a palindrome"
     # Here we start checking the first and the last letter for each iteration. 
-    else:
-        return palindrome(text, idx + 1)
+    return palindrome(text, idx + 1)
     
 print(palindrome("abcba", 0)) 
 
