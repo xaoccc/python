@@ -34,7 +34,9 @@ for move in moves:
                     lair_map[row][col - 1] = "C"
                 if col < cols -1:
                     lair_map[row][col + 1] = "C"
-            
+
+
+
     for row in range(rows):
         for col in range(cols):  
             if lair_map[row][col] == "C":

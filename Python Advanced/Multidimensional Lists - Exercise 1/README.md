@@ -41,4 +41,7 @@ Write a program that reads a rectangular matrix's dimensions and finds the 3x3 s
 * On the following 3 lines, print each element of the found submatrix, separated by a single space
 #### Examples
 
+| Input | Output | Comments |
+| ----- | ------ | -------- |
+
 

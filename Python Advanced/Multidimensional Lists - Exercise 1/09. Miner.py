@@ -1,8 +1,8 @@
 mine_size = int(input())
 mine_map = []
 start_found = False
-coal_collected = 0
-total_coal = 0
+coal_collected, total_coal = 0, 0
+
 directions = input().split()
 
 for row in range(mine_size):
@@ -14,7 +14,6 @@ for row in range(mine_size):
         total_coal += mine_map[row].count("c")
       
 current_position = start
-
 for move in directions:
     
     if move == "up" and current_position[0] > 0:
