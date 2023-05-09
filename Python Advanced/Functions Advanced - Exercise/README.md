@@ -78,3 +78,82 @@ Create a function called grocery_store() that receives a different number of key
 {product_nameN}: {product_quantityN}"  
 #### Examples
 
+| Test Code | Output |
+| ----- | ------ |
+| print(grocery_store(bread=5, pasta=12, eggs=12,)) | pasta: 12<br />eggs: 12<br />bread: 5 |
+| print(grocery_store(bread=2, pasta=2, eggs=20, carrot=1,)) | eggs: 20<br />bread: 2<br />pasta: 2<br />carrot: 1 |
+
+## 8. Age Assignment
+Create a function called age_assignment() that receives a different number of names and a different number of key-value pairs. The key will be a single letter (the first letter of each name) and the value - a number (age). Find its first letter in the key-value pairs for each name and assign the age to the person's name.  
+Then, sort the names in ascending order (alphabetically) and return the information for each person on a new line in the format: "{name} is {age} years old."  
+Submit only the function in the judge system.  
+#### Examples
+
+| Test Code | Output |
+| ----- | ------ |
+| print(age_assignment("Peter", "George", G=26, P=19)) | George is 26 years old.<br />Peter is 19 years old. |
+| print(age_assignment("Amy", "Bill", "Willy", W=36, A=22, B=61)) | Amy is 22 years old.<br />Bill is 61 years old.<br />Willy is 36 years old. |
+
+9. Recursion Palindrome
+Write a recursive function called palindrome() that will receive a word and an index (always 0). Implement the function, so it returns "{word} is a palindrome" if the word is a palindrome and "{word} is not a palindrome" if the word is not a palindrome using recursion. Submit only the function in the judge system.
+#### Examples
+
+| Test Code | Output |
+| ----- | ------ |
+| print(palindrome("abcba", 0)) | abcba is a palindrome |
+| print(palindrome("peter", 0)) | peter is not a palindrome |
+
+10. \*Fill the Box
+Write a function called fill_the_box that receives a different number of arguments representing:  
+* the height of a box
+* the length of a box
+* the width of a box
+* different numbers - each representing the quantity of cubes. Each cube has an exact size of 1 x 1 x 1
+* a string "Finish"
+Your task is to fill the box with the given cubes until the current argument equals "Finish".  
+Note: Submit only the function in the judge system  
+#### Input
+* There will be no input. Just parameters passed to your function.
+#### Output
+The function should return a string in the following format:  
+* If, in the end, there is free space left in the box, print:
+    * "There is free space in the box. You could put {free space in cubes} more cubes."
+* If there is no free space in the box, print:
+    * "No more free space! You have {cubes left} more cubes."
+#### Examples
+
+| Test Code | Output |
+| ----- | ------ |
+| print(fill_the_box(2, 8, 2, 2, 1, 7, 3, 1, 5, "Finish")) | There is free space in the box. You could put 13 more cubes. |
+| print(fill_the_box(5, 5, 2, 40, 11, 7, 3, 1, 5, "Finish")) | No more free space! You have 17 more cubes. |
+| print(fill_the_box(10, 10, 10, 40, "Finish", 2, 15, 30)) | There is free space in the box. You could put 960 more cubes. |
+
+11. \*Math Operations
+Write a function named math_operations that receives a different number of floats as arguments and 4 keyword arguments. The keys will be single letters: "a", "s", "d", "m", and the values will be numbers. You need to take each float argument from the sequence and do mathematical operations as follows:  
+* The first element should be added to the value of the key "a"
+* The second element should be subtracted from the value of the key "s"
+* The third element should be divisor to the value of the key "d"
+* The fourth element should be multiplied by the value of the key "m"
+* Each result should replace the value of the corresponding key
+* You must repeat the same steps consecutively until you run out of numbers
+Beware: You cannot divide by 0. If the operation could throw an error, you should skip the operation and continue
+to the next one.
+After you finish calculating all numbers, sort the four elements by their values in descending order. If two or more
+values are equal, sort them by their keys in ascending order (alphabetically).
+In the end, return each key-value pair in the format "{key}: {value}" on separate lines. Each value should be
+formatted to the first decimal point.
+For more clarifications, see the examples below.
+Note: Submit only the function in the judge system
+#### Input
+* There will be no input. Just parameters passed to your function.
+* All of the given numbers will be valid integers in the range [-100, 100]
+#### Output
+* The function should return the final dictionary
+#### Examples
+
+
+| Test Code | Output |
+| ----- | ------ |
+| print(math_operations(2.1, 12.56, 0.0, -3.899, 6.0, -20.65, a=1, s=7, d=33, m=15)) | d: 33.0<br />s: 15.1<br />a: 9.1<br />m: -58.5 |
+| print(math_operations(-1.0, 0.5, 1.6, 0.5, 6.1, -2.8, 80.0, a=0, s=(-2.3), d=0, m=0)) | a: 5.1<br />d: 0.0<br />m: 0.0<br />s: 0.0 |
+| print(math_operations(6.0, a=0, s=0, d=5, m=0)) | a: 6.0<br />d: 5.0<br />m: 0.0<br />s: 0.0 |
