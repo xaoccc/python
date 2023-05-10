@@ -7,23 +7,25 @@ needed_presents_two = set(["Teddy bear", "Bicycle"])
 presents = {"Doll": 150, "Wooden train": 250, "Teddy bear": 300, "Bicycle": 400}
 
 while materials and magic:
-    if materials[-1] * magic[0] in presents.values():
+    current_material = materials.pop()
+    current_magic = magic.popleft()
+    if current_material * current_magic in presents.values():
         for key, value in presents.items():
-            if value == materials[-1] * magic[0]:
+            if value == current_material * current_magic:
                 crafted_presents.append(key)
                 break
-        materials.pop()
-        magic.popleft()
-    elif materials[-1] * magic[0] < 0:
-        materials.append(materials.pop() + magic.popleft())
-    elif materials[-1] == 0:
-        materials.pop()
-    elif magic[0] == 0:
-        magic.popleft()
-    else:
-        magic.popleft()
-        materials[-1] += 15
         
+    elif current_magic * current_material < 0:
+        materials.append(current_magic + current_material)
+    
+    elif current_material > 0 and current_magic > 0:
+            materials.append(current_material + 15)
+    else:
+        if current_material > 0:
+            materials.append(current_material)
+        if current_magic > 0:
+            magic.appendleft(current_magic)
+
 if set(crafted_presents) >= needed_presents_one or set(crafted_presents) >= needed_presents_two:
     print("The presents are crafted! Merry Christmas!")
 else:
