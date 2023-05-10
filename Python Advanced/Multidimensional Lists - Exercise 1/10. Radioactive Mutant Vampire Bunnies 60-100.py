@@ -1,19 +1,14 @@
 rows, cols = [int(i) for i in input().split()]
 lair_map = []
-start_found = False
 escaped = False
 killed = False
 
 for row in range(rows):
     lair_map.append(list(input()))
-    if "P" in lair_map[row] and not start_found:
-        start_found = True
+    if "P" in lair_map[row]:
         start_coordinates = [row, lair_map[row].index("P")]
 moves = input()
-
-current_position = start_coordinates
-for move in moves:
-    lair_map[current_position[0]][current_position[1]] = "."
+def rabbit_move(move):
     if move == "U":
         current_position[0] -= 1
     elif move == "D":
@@ -22,20 +17,24 @@ for move in moves:
         current_position[1] -= 1
     elif move == "R":
         current_position[1] += 1
+    return current_position
+    
+current_position = start_coordinates
+for move in moves:
+    lair_map[current_position[0]][current_position[1]] = "."
+    rabbit_move(move)
     
     for row in range(rows):
         for col in range(cols):
             if lair_map[row][col] == "B":
-                if row < rows -1:
+                if row < rows -1 and lair_map[row + 1][col] != "B":
                     lair_map[row + 1][col] = "C"
-                if row > 0:
+                if row > 0 and lair_map[row - 1][col] != "B":
                     lair_map[row - 1][col] = "C"
-                if col > 0:
+                if col > 0 and lair_map[row][col - 1] != "B":
                     lair_map[row][col - 1] = "C"
-                if col < cols -1:
+                if col < cols -1 and lair_map[row][col + 1] != "B":
                     lair_map[row][col + 1] = "C"
-
-
 
     for row in range(rows):
         for col in range(cols):  
