@@ -116,7 +116,7 @@ Stop making honey when you are out of bees or nectar.
 | 20 62 99 35 0 150<br />120 60 10 1 70 10<br />+ - + + / * - - / | Total honey made: 148<br />Bees left: 99, 35, 0, 150 |
 | 30<br />15 9 5 150 8<br />* + + * - | Total honey made: 4500<br />Nectar left: 15, 9, 5 |
 
-5.	Santa's Present Factory
+## 5.	Santa's Present Factory
 This year Santa has decided to share his secret with you. Get ready to learn how his elves craft all the presents.  
 First, you will receive a sequence of integers representing the number of materials for crafting toys in one box. After that, you will be given another sequence of integers – their magic level.  
 Your task is to mix materials with magic so you can craft presents, listed in the table below with the exact magic level:  
