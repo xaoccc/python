@@ -1,8 +1,5 @@
 shoot_area = [input().split() for i in range(5)]
-count_targets = 0
-total_targets = 0
-curr_pos = []
-shot_targets = []
+count_targets, total_targets, curr_pos, shot_targets  = 0, 0, [], []
 for i in range(5):
     if "A" in shoot_area[i]:
         curr_pos = [i, shoot_area[i].index("A")]
@@ -33,42 +30,7 @@ def move(direction, steps, curr_pos):
             shoot_area[curr_pos[0]][curr_pos[1]] = "."
             curr_pos[0] += steps
             shoot_area[curr_pos[0]][curr_pos[1]] = "A"
-    return 
-
-def shoot(direction, curr_pos, count_targets, shot_targets):
-    if direction == "right":
-        for i in range(curr_pos[1], 5):
-            if shoot_area[curr_pos[0]][i] == "x":
-                shot_targets.append([curr_pos[0], i])
-                count_targets += 1
-                shoot_area[curr_pos[0]][i] = "."
-                break
-
-    elif direction == "left":
-        for i in range(curr_pos[1] - 1, -1, -1):
-            if shoot_area[curr_pos[0]][i] == "x":
-                shot_targets.append([curr_pos[0], i])
-                count_targets += 1
-                shoot_area[curr_pos[0]][i] = "."
-                break
-                
-    elif direction == "up":
-        for i in range(curr_pos[0] - 1, -1, -1):
-            if shoot_area[i][curr_pos[1]] == "x":
-                shot_targets.append([i, curr_pos[1]])
-                count_targets += 1
-                shoot_area[i][curr_pos[1]] = "."
-                break
-                
-    elif direction == "down":
-        for i in range(curr_pos[0], 5):
-            if shoot_area[i][curr_pos[1]] == "x":
-                shot_targets.append([i, curr_pos[1]])
-                count_targets += 1
-                shoot_area[i][curr_pos[1]] = "."
-                break
-    print(count_targets)
-    return 
+    return     
 
 for i in range(int(input())):
     command = input().split()
@@ -76,7 +38,38 @@ for i in range(int(input())):
         move(command[1], int(command[2]), curr_pos)
 
     elif command[0] == "shoot":
-        shoot(command[1], curr_pos, count_targets, shot_targets)
+        direction = command[1]
+        if direction == "right":
+            for i in range(curr_pos[1], 5):
+                if shoot_area[curr_pos[0]][i] == "x":
+                    shot_targets.append([curr_pos[0], i])
+                    count_targets += 1
+                    shoot_area[curr_pos[0]][i] = "."
+                    break
+
+        elif direction == "left":
+            for i in range(curr_pos[1] - 1, -1, -1):
+                if shoot_area[curr_pos[0]][i] == "x":
+                    shot_targets.append([curr_pos[0], i])
+                    count_targets += 1
+                    shoot_area[curr_pos[0]][i] = "."
+                    break
+                    
+        elif direction == "up":
+            for i in range(curr_pos[0] - 1, -1, -1):
+                if shoot_area[i][curr_pos[1]] == "x":
+                    shot_targets.append([i, curr_pos[1]])
+                    count_targets += 1
+                    shoot_area[i][curr_pos[1]] = "."
+                    break
+                    
+        elif direction == "down":
+            for i in range(curr_pos[0], 5):
+                if shoot_area[i][curr_pos[1]] == "x":
+                    shot_targets.append([i, curr_pos[1]])
+                    count_targets += 1
+                    shoot_area[i][curr_pos[1]] = "."
+                    break
 
     if count_targets == total_targets:
         print(f"Training completed! All {count_targets} targets hit.")
@@ -84,5 +77,5 @@ for i in range(int(input())):
 
 else:       
     print(f"Training not completed! {total_targets - count_targets} targets left.")
-        
-print(shot_targets)
+for target in shot_targets:         
+    print(target)
