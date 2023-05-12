@@ -21,7 +21,7 @@ def move(direction, steps, curr_pos):
         if curr_pos[0] - steps >= 0 and shoot_area[curr_pos[0] - steps][curr_pos[1]] != "x":
             mark_visited(0, -steps)
     elif direction == "down":
-        if curr_pos[0] + steps < 5 and shoot_area[curr_pos[0] + steps][curr_pos[1] + steps] != "x":
+        if curr_pos[0] + steps < 5 and shoot_area[curr_pos[0] + steps][curr_pos[1]] != "x":
             mark_visited(0, steps)
     return 
 
@@ -65,7 +65,6 @@ for i in range(int(input())):
     if count_targets == total_targets:
         print(f"Training completed! All {count_targets} targets hit.")
         break
-
 else:       
     print(f"Training not completed! {total_targets - count_targets} targets left.")
     
