@@ -30,3 +30,15 @@ if min_num != None and max_num != None:
     for i in range(min_num, max_num + 1):
         longest.append(i)
 print(f"Longest intersection is {longest} with length {max_len}")
+
+
+# longest = set()
+# longest_intersection = 0
+# for i in range(int(input())):
+#     first, second = [el.split(",") for el in input().split("-")]
+#     first_range = set(range(int(first[0]), int(first[1]) + 1))
+#     second_range = set(range(int(second[0]), int(second[1]) + 1))
+#     intersection = first_range.intersection(second_range)
+#     if len(intersection) > len(longest):
+#         longest = intersection
+# print(f"Longest intersection is {list(longest)} with length {len(longest)}")
