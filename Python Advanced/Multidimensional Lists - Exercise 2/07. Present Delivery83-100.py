@@ -29,9 +29,7 @@ while True:
     neigh_map[santa[0]][santa[1]] = "-"
     santa[0], santa[1] = santa[0] + directions[command][0], santa[1] + directions[command][1]
 
-    if neigh_map[santa[0]][santa[1]] == "XXX":
-        santa[0], santa[1] = cookie_location
-        neigh_map[santa[0]][santa[1]] = "S"
+
 
     if neigh_map[santa[0]][santa[1]] == "C":
         cookie_location = [santa[0], santa[1]]
@@ -65,6 +63,11 @@ while True:
                 printer()
                 print(f"Good job, Santa! {good_kids} happy nice kid/s.")
                 break
+                
+    elif neigh_map[santa[0]][santa[1]] == "XXX":
+        santa[0], santa[1] = cookie_location
+        neigh_map[santa[0]][santa[1]] = "S"
+
     neigh_map[santa[0]][santa[1]] = "S"
     if presents == 0:
         print("Santa ran out of presents!")
