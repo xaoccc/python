@@ -63,7 +63,7 @@ while True:
                 printer()
                 print(f"Good job, Santa! {good_kids} happy nice kid/s.")
                 break
-                
+
     elif neigh_map[santa[0]][santa[1]] == "XXX":
         santa[0], santa[1] = cookie_location
         neigh_map[santa[0]][santa[1]] = "S"
