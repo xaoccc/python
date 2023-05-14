@@ -71,3 +71,7 @@ The game is over when you manage to touch all other opponents or the given comma
 *	The playground will always have three opponents in it - 'P'.
 *	The obstacles on the playground will always be random count, and there will be cases without any obstacles.
 ### Examples
+
+| Input | Output |
+| ----- | ------ |
+| 5 8<br />- - - O - P - O<br /- P - O O - - -<br />- - - - - - O -<br />- P B - O - - O<br />- - - O - - - -<br />up<br />up<br />left<br />Finish | 
