@@ -23,3 +23,14 @@ nums_one = sorted(nums_one)
 nums_two = sorted(nums_two)
 print(", ".join([str(i) for i in nums_one]))
 print(", ".join([str(i) for i in nums_two]))
+
+
+# nums_one = set([int(i) for i in input().split()])
+# nums_two = set([int(i) for i in input().split()])
+# n = int(input())
+#
+# for i in range(n):
+#     first_command, second_command, *data = input().split()
+#
+#     command = first_command + " " + second_command
+# todo with dict
