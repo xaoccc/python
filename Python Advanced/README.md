@@ -9,4 +9,3 @@ test functions
 solve exams problems  
 test time/datetime/timedelta functions   
 optimize code and test times  
-learno more about sets here: https://realpython.com/python-sets/  
