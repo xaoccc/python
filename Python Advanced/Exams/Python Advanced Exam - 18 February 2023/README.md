@@ -74,4 +74,5 @@ The game is over when you manage to touch all other opponents or the given comma
 
 | Input | Output |
 | ----- | ------ |
-| 5 8<br />- - - O - P - O<br /- P - O O - - -<br />- - - - - - O -<br />- P B - O - - O<br />- - - O - - - -<br />up<br />up<br />left<br />Finish | 
+| 5 8<br />- - - O - P - O<br />- P - O O - - -<br />- - - - - - O -<br />- P B - O - - O<br />- - - O - - - -<br />up<br />up<br />left<br />Finish | Game over!<br />Touched opponents: 1 Moves made: 3 |
+| 4 4<br />O B O -<br />- P O P<br />- - P -<br />- - - - <br />left<br />right<br />down<br />right<br />down<br />right<br />up<br />right<br />up<br />down<br />Finish | Game over!<br />Touched opponents: 3 Moves made: 5 |
