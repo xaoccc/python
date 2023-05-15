@@ -29,17 +29,43 @@
 #
 # print(result)
 
-from collections import deque
+# from collections import deque
+#
+# from math import floor
+# expression = deque(input().split())
+# idx = 0
+#
+# while idx < len(expression):
+#     element = expression[idx]
+#     if element in "-+/*":
+#         for i in range(idx - 1):
+#             expression.appendleft(eval(f"{int(expression.popleft())} {element} {int(expression.popleft())}"))
+#         del expression[1]
+#         idx = 1
+#     idx += 1
+#
+# print(floor(int(expression[0])))
+
+
+
 from math import floor
-expression = deque(input().split())
+from functools import reduce
+
+expression = input().split()
 idx = 0
+
+functions = {
+    "*": lambda i: reduce(lambda a, b: a * b, map(int, expression[:i])),
+    "/": lambda i: reduce(lambda a, b: a / b, map(int, expression[:i])),
+    "+": lambda i: reduce(lambda a, b: a + b, map(int, expression[:i])),
+    "-": lambda i: reduce(lambda a, b: a - b, map(int, expression[:i])),
+}
 
 while idx < len(expression):
     element = expression[idx]
     if element in "-+/*":
-        for i in range(idx - 1):
-            expression.appendleft(eval(f"{int(expression.popleft())} {element} {int(expression.popleft())}"))
-        del expression[1]
+        expression[0] = functions[element](idx)
+        [expression.pop(1) for i in range(idx)]
         idx = 1
     idx += 1
 
