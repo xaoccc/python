@@ -1,13 +1,14 @@
 def shop_from_grocery_list(budget, grocery_list, *args):
-    product = 0
-    while product < len(args) and budget >= 0:
+    i = 0
+    while i < len(args) and budget >= 0:
+        product, price = args[i][0], args[i][1]
         
-        if budget >= 0 and grocery_list:
-            budget -= args[product][1]
-            if args[product][0] in grocery_list and budget >= 0:
-                grocery_list.remove(args[product][0])
+        if grocery_list:
+            budget -= price
+            if product in grocery_list and budget >= 0:
+                grocery_list.remove(product)
 
-        product += 1 
+        i += 1 
         if not grocery_list:
             return f"Shopping is successful. Remaining budget: {budget:.2f}."
            
