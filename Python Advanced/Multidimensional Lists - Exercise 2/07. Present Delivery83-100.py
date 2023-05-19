@@ -2,9 +2,6 @@ presents, n = int(input()), int(input())
 neigh_map, good_kids, good_kids_with_presents, cookies = [], 0, 0, 0
 def printer():
     for row in range(n):
-        for i in range(n):
-            if neigh_map[row][i] == "XXX":
-                neigh_map[row][i] = "-"
         print(*neigh_map[row])
 
 for i in range(n):
@@ -23,36 +20,32 @@ directions = {
     "right": (0, 1),
     }
 command = input()
-while True:
-    if command == "Christmas morning":
-        break
+while command != "Christmas morning":
     neigh_map[santa[0]][santa[1]] = "-"
     santa[0], santa[1] = santa[0] + directions[command][0], santa[1] + directions[command][1]
 
-
-
     if neigh_map[santa[0]][santa[1]] == "C":
         cookie_location = [santa[0], santa[1]]
-        if (neigh_map[santa[0] - 1][santa[1]] == "X" or neigh_map[santa[0] - 1][santa[1]] == "V") and presents >= 1:
-            if neigh_map[santa[0] - 1][santa[1]] == "V":
-                good_kids_with_presents += 1
-            presents -= 1
-            neigh_map[santa[0] - 1][santa[1]] = "XXX"
-        if (neigh_map[santa[0] + 1][santa[1]] == "X" or neigh_map[santa[0] + 1][santa[1]] == "V") and presents >= 1:
-            if neigh_map[santa[0] + 1][santa[1]] == "V":
-                good_kids_with_presents += 1
-            presents -= 1
-            neigh_map[santa[0] + 1][santa[1]] = "XXX"
-        if (neigh_map[santa[0]][santa[1] - 1] == "X" or neigh_map[santa[0]][santa[1] - 1] == "V") and presents >= 1:
+        if (neigh_map[santa[0]][santa[1] - 1] == "X" or neigh_map[santa[0]][santa[1] - 1] == "V") and presents > 0:
             if neigh_map[santa[0]][santa[1] - 1] == "V":
                 good_kids_with_presents += 1
             presents -= 1
-            neigh_map[santa[0]][santa[1] - 1] = "XXX"
-        if (neigh_map[santa[0]][santa[1] + 1] == "X" or neigh_map[santa[0]][santa[1] + 1] == "V") and presents >= 1:
+            neigh_map[santa[0]][santa[1] - 1] = "-"
+        if (neigh_map[santa[0]][santa[1] + 1] == "X" or neigh_map[santa[0]][santa[1] + 1] == "V") and presents > 0:
             if neigh_map[santa[0]][santa[1] + 1] == "V":
                 good_kids_with_presents += 1
             presents -= 1
-            neigh_map[santa[0]][santa[1] + 1] = "XXX"
+            neigh_map[santa[0]][santa[1] + 1] = "-"
+        if (neigh_map[santa[0] - 1][santa[1]] == "X" or neigh_map[santa[0] - 1][santa[1]] == "V") and presents > 0:
+            if neigh_map[santa[0] - 1][santa[1]] == "V":
+                good_kids_with_presents += 1
+            presents -= 1
+            neigh_map[santa[0] - 1][santa[1]] = "-"
+        if (neigh_map[santa[0] + 1][santa[1]] == "X" or neigh_map[santa[0] + 1][santa[1]] == "V") and presents > 0:
+            if neigh_map[santa[0] + 1][santa[1]] == "V":
+                good_kids_with_presents += 1
+            presents -= 1
+            neigh_map[santa[0] + 1][santa[1]] = "-"
 
     elif neigh_map[santa[0]][santa[1]] == "V":
         if presents > 0:
@@ -63,10 +56,6 @@ while True:
                 printer()
                 print(f"Good job, Santa! {good_kids} happy nice kid/s.")
                 break
-
-    elif neigh_map[santa[0]][santa[1]] == "XXX":
-        santa[0], santa[1] = cookie_location
-        neigh_map[santa[0]][santa[1]] = "S"
 
     neigh_map[santa[0]][santa[1]] = "S"
     if presents == 0:
