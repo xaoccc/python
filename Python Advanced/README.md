@@ -3,9 +3,8 @@
 ##### © SoftUni – about.softuni.bg. Copyrighted directory. Unauthorized copy, reproduction or use is not permitted.
 
 Todo:  
-test map instead of if-else   
-test dictionaries with lambda/tuples instead of if-else  
+Optimize this code using map + itertools.permutations(iterable, r=None)
+[https://judge.softuni.org/Contests/Compete/Index/3194#2 ](https://judge.softuni.org/Contests/Compete/Index/3194#2)
 test functions  
-solve exams problems  
 test time/datetime/timedelta functions   
 optimize code and test times  
