@@ -1,8 +1,11 @@
 presents, n = int(input()), int(input())
 neigh_map, good_kids, good_kids_with_presents, cookies = [], 0, 0, 0
-def printer():
-    for row in range(n):
-        print(*neigh_map[row])
+directions = {
+    "up": (-1, 0),
+    "down": (1, 0),
+    "left": (0, -1),
+    "right": (0, 1),
+    }
 
 for i in range(n):
     neigh_map.append(input().split())
@@ -13,12 +16,12 @@ for i in range(n):
     if "C" in neigh_map[i]:
         cookies += neigh_map[i].count("C")
   
-directions = {
-    "up": (-1, 0), 
-    "down": (1, 0), 
-    "left": (0, -1),  
-    "right": (0, 1),
-    }
+
+def printer():
+    for row in range(n):
+        print(*neigh_map[row])
+
+
 command = input()
 while command != "Christmas morning":
     neigh_map[santa[0]][santa[1]] = "-"
@@ -63,6 +66,6 @@ while command != "Christmas morning":
         break
     command = input()
 
-if good_kids_with_presents != good_kids:
+if good_kids_with_presents < good_kids:
     printer()
     print(f"No presents for {good_kids - good_kids_with_presents} nice kid/s.")
