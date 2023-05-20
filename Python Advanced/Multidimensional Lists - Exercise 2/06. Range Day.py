@@ -25,7 +25,7 @@ def move(direction, steps, curr_pos):
             mark_visited(0, steps)
     return 
 
-def shoot(a, b, count_):
+def shoot(a, b):
     global count_targets
     shot_targets.append([a, b])
     count_targets += 1
