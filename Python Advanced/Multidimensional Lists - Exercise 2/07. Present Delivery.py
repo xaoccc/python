@@ -32,15 +32,16 @@ while command != "Christmas morning":
         if presents > 0:
             presents -= 1
             good_kids_with_presents += 1
-            if good_kids_with_presents == good_kids:
-                neigh_map[santa[0]][santa[1]] = "S"
-                for row in range(n):
-                    print(*neigh_map[row])
-                print(f"Good job, Santa! {good_kids} happy nice kid/s.")
-                break
+            
+    if good_kids_with_presents == good_kids:
+        neigh_map[santa[0]][santa[1]] = "S"
+        for row in range(n):
+            print(*neigh_map[row])
+        print(f"Good job, Santa! {good_kids} happy nice kid/s.")
+        break
 
     neigh_map[santa[0]][santa[1]] = "S"
-    if presents == 0:
+    if presents == 0 and good_kids_with_presents < good_kids:
         print("Santa ran out of presents!")
         break
     command = input()
