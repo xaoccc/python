@@ -1,9 +1,9 @@
 def palindrome(text, idx):
     # If we find a char, which is not the same as the mirror char in the word, we end the loop
-    if text[idx] != text[len(text) - idx - 1]:
+    if text[idx] != text[- idx - 1]:
         return f"{text} is not a palindrome"
     # If we check all chars and we do not find a non-palidrome char, we assume the word is a palindrome
-    elif idx == len(text) - 1:
+    elif idx == len(text) // 2:
         return f"{text} is a palindrome"
     # Here we start checking the first and the last letter for each iteration. 
     return palindrome(text, idx + 1)
