@@ -4,4 +4,5 @@ def even_odd_filter(**nums):
         result['even'] = list(filter(lambda x: x % 2 == 0, nums["even"]))
     if "odd" in nums:
         result['odd'] = list(filter(lambda x: x % 2 != 0, nums["odd"]))
-    return result
+
+    return dict(sorted(result.items(), key=lambda x: -len(x[1])))
