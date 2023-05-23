@@ -1,4 +1,6 @@
 ### This directory contains all solved problems, during my Python Advanced course at SoftUni.
+Scope in python:
+<img src="https://res.cloudinary.com/dyd911kmh/image/upload/f_auto,q_auto:best/v1588956604/Scope_fbrzcw.png" width=100% />
 
 ##### © SoftUni – about.softuni.bg. Copyrighted directory. Unauthorized copy, reproduction or use is not permitted.
 
