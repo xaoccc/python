@@ -8,11 +8,6 @@ def palindrome(text, idx):
     # Here we start checking the first and the last letter for each iteration. 
     return palindrome(text, idx + 1)
     
-print(palindrome("abcba", 0)) 
-
-
-
-
 
 # def palindrome(*args):
 #     palindrome = True
