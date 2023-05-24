@@ -19,4 +19,3 @@ def math_operations(*nums, **actions):
         result += f"{key}: {value:.1f}\n"
     return result
 
-print(math_operations(2.1, 12.56, 0.0, -3.899, 6.0, -20.65, a=1, s=7, d=33, m=15))
