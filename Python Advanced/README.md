@@ -13,4 +13,5 @@ Scope in python:
 
 # Recursive Function
 <img src="https://github.com/xaoccc/python/blob/main/Library/python-recursion-function.png?raw=true" />
+
 ##### © SoftUni – about.softuni.bg. Copyrighted directory. Unauthorized copy, reproduction or use is not permitted.
