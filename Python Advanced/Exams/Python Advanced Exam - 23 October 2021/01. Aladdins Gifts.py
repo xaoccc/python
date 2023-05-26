@@ -1,10 +1,10 @@
 from collections import deque
 materials, magic = deque([int(i) for i in input().split()]), deque([int(i) for i in input().split()])
 gifts = {
-    "Gemstone": [100, 0],
-    "Porcelain Sculpture": [200, 0],
-    "Gold": [300, 0],
     "Diamond Jewellery": [400, 0],
+    "Gemstone": [100, 0],
+    "Gold": [300, 0],
+    "Porcelain Sculpture": [200, 0],
 }
 while materials and magic:
     current_material = materials.pop()
@@ -19,11 +19,11 @@ while materials and magic:
             mm_sum *= 2
             
     if mm_sum > 499:
-        mm_sum //= 2
+        mm_sum /= 2
             
     if 100 <= mm_sum <= 499:
         for item in gifts.keys():
-            if 0 < mm_sum - gifts[item][0] < 100:
+            if 0 <= mm_sum - gifts[item][0] < 100:
                 gifts[item][1] += 1
                 break
     
@@ -36,7 +36,7 @@ if materials:
     print(f"Materials left: {', '.join([str(i) for i in materials])}")
 if magic:
     print(f"Magic left: {', '.join([str(i) for i in magic])}")
-gifts = dict(sorted(gifts.items(), key=lambda x: x[0]))    
+   
 for key, value in gifts.items():
     if value[1] > 0:
         print(f"{key}: {value[1]}")
