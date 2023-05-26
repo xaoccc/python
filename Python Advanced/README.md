@@ -1,5 +1,4 @@
 ### This directory contains all solved problems, during my Python Advanced course at SoftUni.
-Scope in python:
 
 # Sets
 ## Union / Intersection
