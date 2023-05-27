@@ -1,5 +1,5 @@
 try:
-    file = open("numbers.txt")
+    file = open("numbers.txt", "r")
     nums = file.readlines()
     for i in range(len(nums)):
         nums[i] = nums[i].replace("\n", "")
