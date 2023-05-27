@@ -1,5 +1,5 @@
 try:
-    file = open("text.txt")
+    file = open("text.txt", "r")
     print("File found")
     file.close()
 except FileNotFoundError:
