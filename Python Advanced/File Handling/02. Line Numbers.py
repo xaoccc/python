@@ -1,5 +1,5 @@
 try:
-    file = open("text.txt")
+    file = open("text.txt", "r")
 except FileNotFoundError:
     print("Path not correct or file not found!")
 
