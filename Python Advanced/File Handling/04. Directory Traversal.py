@@ -2,30 +2,29 @@ import os
 
 
 def find_extensions(dir_name, first_level=True):
-    for file_folder in dir_name:
-        if os.path.isfile(file_folder):
+    # Traverse all files and folders in the directory
+    for file_folder in os.listdir(dir_name):
+        # Store full path in a variable and check if this is a file or a folder
+        file = os.path.join(dir_name, file_folder)
+        if os.path.isfile(file):
+            # If it is file, we store it in a dictionary
             if file_folder.split(".")[-1] not in filenames:
                 filenames[file_folder.split(".")[-1]] = []
             filenames[file_folder.split(".")[-1]].append(file_folder)
-
-        elif os.path.isdir(file_folder):
-            sub_directory = os.listdir(f"./{file_folder}")
-            for file in sub_directory:
-                if "." in file:
-                    if file.split(".")[-1] not in filenames:
-                        filenames[file.split(".")[-1]] = []
-                    filenames[file.split(".")[-1]].append(file)
+        # If the file/folder is directory, we call the function recursively for each sub-folder
+        # Remove "and not first_level" if you want to find all files in all sub-folders
+        elif os.path.isdir(file) and not first_level:
+            find_extensions(file, first_level=False)
 
 
 filenames = {}
 result = ""
-directory = os.listdir(input("Enter dir name (./ for current dir): "))
-find_extensions(directory)
+find_extensions(input("Enter dir name (./ for current dir): "))
+
 for extension, filename in filenames.items():
     result += f".{extension}\n"
     for i in filename:
         result += f"- - - {i}\n"
-
 
 with open("report.txt", "w") as log:
     log.write(result)
