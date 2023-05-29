@@ -16,4 +16,8 @@
 os.path.dirname(os.path.abspath(__file__)) - пътя на директорията
 os.path.abspath(__file__) - пътя на файла
 
+file = open("text.txt", "r")
+file.read() - прочита файла
+file.seek(0) - след прочитане на файла се връща пак отначало
+file.read() - отново прочита файла
 ##### © SoftUni – about.softuni.bg. Copyrighted directory. Unauthorized copy, reproduction or use is not permitted.
