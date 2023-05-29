@@ -13,4 +13,7 @@
 # Recursive Function
 <img src="https://github.com/xaoccc/python/blob/main/Library/python-recursion-function.png?raw=true" />
 
+os.path.dirname(os.path.abspath(__file__)) - пътя на директорията
+os.path.abspath(__file__) - пътя на файла
+
 ##### © SoftUni – about.softuni.bg. Copyrighted directory. Unauthorized copy, reproduction or use is not permitted.
