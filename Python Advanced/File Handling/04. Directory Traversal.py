@@ -21,7 +21,10 @@ filenames = {}
 result = ""
 find_extensions(input("Enter dir name (./ for current dir): "))
 
+filenames = dict(sorted(filenames.items(), key=lambda x: x[0]))
+
 for extension, filename in filenames.items():
+    filenames[extension] = sorted(filename)
     result += f".{extension}\n"
     for i in filename:
         result += f"- - - {i}\n"
