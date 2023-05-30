@@ -1,7 +1,7 @@
 import os
 
 
-def find_extensions(dir_name, first_level=True):
+def find_extensions(dir_name, first_level=False):
     # Traverse all files and folders in the directory
     for file_folder in os.listdir(dir_name):
         # Store full path in a variable and check if this is a file or a folder
@@ -14,7 +14,7 @@ def find_extensions(dir_name, first_level=True):
         # If the file/folder is directory, we call the function recursively for each sub-folder
         # Remove "and not first_level" if you want to find all files in all sub-folders
         elif os.path.isdir(file) and not first_level:
-            find_extensions(file, first_level=False)
+            find_extensions(file, first_level=True)
 
 
 filenames = {}
