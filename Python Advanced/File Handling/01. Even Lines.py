@@ -1,6 +1,6 @@
 
-file = open('text.txt')
-text = file.readlines()
+with open('text.txt') as file:
+    text = file.readlines()
 symbols = ["-", ",", ".", "!", "?"]
 
 for i in range(len(text)):
@@ -11,5 +11,3 @@ for i in range(len(text)):
         result = text[i].split()
         result.reverse()
         print(" ".join(result))
-
-file.close()
