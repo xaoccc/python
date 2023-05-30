@@ -1,10 +1,8 @@
-try:
-    file = open("text.txt", "r")
-except FileNotFoundError:
-    print("Path not correct or file not found!")
+
+with open("text.txt", "r") as file:
+    text = file.readlines()
 
 symbols = ["-", ",", ".", "!", "?", "'"]
-text = file.readlines()
 
 result = open('output.txt', 'w')
 i = 1
