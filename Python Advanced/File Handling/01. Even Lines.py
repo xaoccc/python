@@ -11,5 +11,5 @@ for i in range(len(text)):
         result = text[i].split()
         result.reverse()
         print(" ".join(result))
-        
+
 file.close()
