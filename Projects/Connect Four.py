@@ -140,8 +140,9 @@ while True:
                     elif new_game == "n":
                         raise SystemExit("Good game!")
                     else:
-                        while new_game != "y" or new_game != "n":
+                        while new_game != "y" and new_game != "n":
                             print("Invalid input!")
+                            new_game = input("Do you want an new game? y/n:")
                         if new_game == "y":
                             playground = reset_game
                             break
@@ -159,8 +160,9 @@ while True:
                     elif new_game == "n":
                         raise SystemExit("Good game!")
                     else:
-                        while new_game != "y" or new_game != "n":
+                        while new_game != "y" and new_game != "n":
                             print("Invalid input!")
+                            new_game = input("Do you want an new game? y/n:")
                         if new_game == "y":
                             playground = reset_game
                             break
@@ -171,6 +173,8 @@ while True:
                     break
             if playground == reset_game:
                 i = 0
+                player_one_coords, player_two_coords = [], []
+                player_one_win, player_two_win = False, False
                 break
 
     for row in playground:
