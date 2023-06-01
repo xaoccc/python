@@ -137,7 +137,7 @@ while True:
                     if new_game == "y":
                         playground = reset_game
                         break
-                    elif game == "n":
+                    elif new_game == "n":
                         raise SystemExit("Good game!")
                     else:
                         while new_game != "y" or new_game != "n":
@@ -156,7 +156,7 @@ while True:
                     if new_game == "y":
                         playground = reset_game
                         break
-                    elif game == "n":
+                    elif new_game == "n":
                         raise SystemExit("Good game!")
                     else:
                         while new_game != "y" or new_game != "n":
@@ -164,7 +164,7 @@ while True:
                         if new_game == "y":
                             playground = reset_game
                             break
-                        elif game == "n":
+                        elif new_game == "n":
                             raise SystemExit("Good game!")
                 
                 if playground == reset_game:
