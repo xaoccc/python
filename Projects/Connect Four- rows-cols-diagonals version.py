@@ -1,6 +1,7 @@
 cols, rows = [int(input()), int(input())]
 playground = [[0 for j in range(cols)] for i in range(rows)]
 player_one_coords, player_two_coords = [], []
+player = ""
 
 directions = {
     1: (-1, 0),
@@ -44,9 +45,15 @@ i = 0
 while True:
     reset_game = False
     i += 1
-    coords = [int(i) for i in input().split()]
-    row = coords[0]
-    col = coords[1]
+    if i % 2 != 0: 
+        player = "one"
+    else:
+        player = "two"
+        
+    row = int(input(f"Player {player} choose a row: "))
+    col = int(input(f"Player {player} choose a column: "))
+    coords = [row, col]
+    
     if out_of_playground(row, col) or coords in player_one_coords or coords in player_two_coords:
         print("Invalid coordinates!")
         continue
