@@ -1,5 +1,8 @@
+from copy import deepcopy
+
 cols, rows = [int(input()), int(input())]
 playground = [[0 for j in range(cols)] for i in range(rows)]
+reset_game = deepcopy(playground)
 player_one_coords, player_two_coords = [], []
 player_one_win, player_two_win = False, False
 
@@ -129,10 +132,46 @@ while True:
             for k in range(cols):
                 if win_check(player_one_win, 1):
                     print("Player one wins!")
+                    new_game = input("Do you want an new game? y/n:")
+                    print(new_game)
+                    if new_game == "y":
+                        playground = reset_game
+                        break
+                    elif game == "n":
+                        raise SystemExit("Good game!")
+                    else:
+                        while new_game != "y" or new_game != "n":
+                            print("Invalid input!")
+                        if new_game == "y":
+                            playground = reset_game
+                            break
+                        elif game == "n":
+                            raise SystemExit("Good game!")
+                        
                     break
-                if win_check(player_two_win, 2):
+                elif win_check(player_two_win, 2):
                     print("Player two wins!")
+                    new_game = input("Do you want an new game? y/n:")
+                    print(new_game)
+                    if new_game == "y":
+                        playground = reset_game
+                        break
+                    elif game == "n":
+                        raise SystemExit("Good game!")
+                    else:
+                        while new_game != "y" or new_game != "n":
+                            print("Invalid input!")
+                        if new_game == "y":
+                            playground = reset_game
+                            break
+                        elif game == "n":
+                            raise SystemExit("Good game!")
+                
+                if playground == reset_game:
                     break
+            if playground == reset_game:
+                i = 0
+                break
 
     for row in playground:
         print(*row, sep="|")
