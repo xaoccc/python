@@ -112,7 +112,6 @@ def win_check(player_win, n):
 i = 0
 while True:
     i += 1
-    player_one, player_two = 0, 0
     coords = [int(i) for i in input().split()]
     row = coords[0]
     col = coords[1]
