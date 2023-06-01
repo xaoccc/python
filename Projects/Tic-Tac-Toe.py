@@ -39,7 +39,7 @@ def play(current, board):
     choice = int(input(f"{current[0]}, choose a free position [0-9]: "))
     if choice < 1 or choice > 9:
         while 1 > choice or choice > 9:
-            choice = int(input(f"Invalid choice. {current[0]}, chooce a VALID free position [0-9]: "))
+            choice = int(input(f"Invalid choice. {current[0]}, choose a VALID free position [0-9]: "))
             
     row = ceil(choice / 3) - 1
     col = choice % 3 - 1
@@ -48,7 +48,7 @@ def play(current, board):
             choice = int(input(f"Invalid choice. {current[0]}, choose a FREE position [0-9]: "))
             if choice < 1 or choice > 9:
                 while 1 > choice or choice > 9:
-                    choice = int(input(f"Invalid choice. {current[0]}, chooce a VALID free position [0-9]: "))
+                    choice = int(input(f"Invalid choice. {current[0]}, choose a VALID free position [0-9]: "))
             row = ceil(choice / 3) - 1
             col = choice % 3 - 1
     
