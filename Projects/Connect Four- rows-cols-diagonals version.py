@@ -3,13 +3,6 @@ playground = [[0 for j in range(cols)] for i in range(rows)]
 player_one_coords, player_two_coords = [], []
 player = ""
 
-directions = {
-    1: (-1, 0),
-    2: (1, 0),
-    3: (0, -1),
-    4: (0, 1)
-}
-
 def out_of_playground(row, col):
     if row >= rows or col >= cols or row < 0 or col < 0:
         return True
