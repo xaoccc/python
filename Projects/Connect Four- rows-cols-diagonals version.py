@@ -15,7 +15,14 @@ def out_of_playground(row, col):
     return False
 
 def win_check(n):
-    player_win_row, player_win_col = False, False
+    player_win_row, player_win_col, player_win_diag = False, False, False
+    if playground[j][k] == n and j + 3 < rows and k + 3 < cols:
+        player_win_diag = True
+        for r in range(4):
+            if playground[j + r][k + r] != n:
+                player_win_diag = False
+                break
+            
     if playground[j][k] == n and j + 3 < rows:
         player_win_row = True
         for r in range(j, j + 4):
@@ -30,7 +37,7 @@ def win_check(n):
                 player_win_col = False
                 break
 
-    if player_win_row == True or player_win_col == True: 
+    if player_win_row == True or player_win_col == True or player_win_diag == True: 
         return True
 
 i = 0
