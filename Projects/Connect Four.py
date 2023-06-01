@@ -10,7 +10,6 @@ directions = {
     4: (0, 1)
 }
 
-
 def out_of_playground(row, col):
     if row >= rows or col >= cols or row < 0 or col < 0:
         return True
@@ -39,90 +38,90 @@ while True:
         for j in range(rows):
             for k in range(cols):
                 if playground[j][k] == 1:
-                    if playground[j][k + 1] == 1 and k + 1 < cols:
-                        if playground[j][k + 2] == 1 and k + 2 < cols:
-                            if playground[j][k + 3] == 1 and k + 3 < cols:
+                    if k + 1 < cols and playground[j][k + 1] == 1:
+                        if k + 2 < cols and playground[j][k + 2] == 1:
+                            if k + 3 < cols and playground[j][k + 3] == 1:
                                 player_one_win = True
-                            elif playground[j + 1][k + 2] == 1 and k + 2 < cols and j + 1 < rows:
+                            elif k + 2 < cols and j + 1 < rows and playground[j + 1][k + 2] == 1:
                                 player_one_win = True
-                            elif playground[j - 1][k + 2] == 1 and k + 2 < cols and j > 0:
+                            elif k + 2 < cols and j > 0 and playground[j - 1][k + 2] == 1:
                                 player_one_win = True
-                        elif playground[j + 1][k + 1] == 1:
-                            if playground[j + 1][k + 2] == 1:
+                        elif k + 1 < cols and j + 1 < rows and playground[j + 1][k + 1] == 1:
+                            if k + 1 < cols and j + 1 < rows and playground[j + 1][k + 2] == 1:
                                 player_one_win = True
-                            elif playground[j + 2][k + 1] == 1:
+                            elif j + 2 < rows and k + 1 < cols and playground[j + 2][k + 1] == 1:
                                 player_one_win = True
-                        elif playground[j - 1][k + 1] == 1:
-                            if playground[j + 1][k] == 1:
+                        elif j > 0 and k + 1 < cols and playground[j - 1][k + 1] == 1:
+                            if j + 1 < rows and playground[j + 1][k] == 1:
                                 player_one_win = True
-                            elif playground[j - 2][k + 1] == 1:
+                            elif j > 1 and k + 1 < cols and playground[j - 2][k + 1] == 1:
                                 player_one_win = True
-                            elif playground[j - 1][k + 2] == 1:
-                                player_one_win = True
-
-                    elif playground[j][k - 1] == 1:
-                        if playground[j][k - 2] == 1:
-                            if playground[j][k - 3] == 1:
-                                player_one_win = True
-                            elif playground[j + 1][k - 2] == 1:
-                                player_one_win = True
-                            elif playground[j - 1][k - 2] == 1:
-                                player_one_win = True
-                        elif playground[j - 1][k - 1] == 1:
-                            if playground[j - 2][k - 1] == 1:
-                                player_one_win = True
-                            elif playground[j - 1][k - 2] == 1:
-                                player_one_win = True
-                        elif playground[j + 1][k - 1] == 1:
-                            if playground[j + 1][k] == 1:
-                                player_one_win = True
-                            elif playground[j + 2][k - 1] == 1:
-                                player_one_win = True
-                            elif playground[j + 1][k - 2] == 1:
+                            elif j > 0 and k + 2 < cols and playground[j - 1][k + 2] == 1:
                                 player_one_win = True
 
-                    elif playground[j + 1][k] == 1:
-                        if playground[j + 2][k] == 1:
-                            if playground[j + 3][k] == 1:
+                    elif k > 0 and playground[j][k - 1] == 1:
+                        if k > 1 and playground[j][k - 2] == 1:
+                            if k > 2 and playground[j][k - 3] == 1:
                                 player_one_win = True
-                            elif playground[j + 2][k + 1] == 1:
+                            elif j + 1 < rows and playground[j + 1][k - 2] == 1:
                                 player_one_win = True
-                            elif playground[j + 2][k - 1] == 1:
+                            elif j > 0 and playground[j - 1][k - 2] == 1:
                                 player_one_win = True
-                        elif playground[j + 1][k + 1] == 1:
-                            if playground[j + 1][k + 2] == 1:
+                        elif j > 0 and playground[j - 1][k - 1] == 1:
+                            if j > 1 and playground[j - 2][k - 1] == 1:
                                 player_one_win = True
-                            elif playground[j + 2][k + 1] == 1:
+                            elif k > 1 and playground[j - 1][k - 2] == 1:
                                 player_one_win = True
-                        elif playground[j + 1][k - 1] == 1:
+                        elif j + i < rows and playground[j + 1][k - 1] == 1:
+                            if playground[j + 1][k] == 1:
+                                player_one_win = True
+                            elif j + 2 < rows and playground[j + 2][k - 1] == 1:
+                                player_one_win = True
+                            elif k > 1 and playground[j + 1][k - 2] == 1:
+                                player_one_win = True
+
+                    elif j + 1 < rows and playground[j + 1][k] == 1:
+                        if j + 2 < rows and playground[j + 2][k] == 1:
+                            if j + 3 < rows and playground[j + 3][k] == 1:
+                                player_one_win = True
+                            elif k + 1 < cols and playground[j + 2][k + 1] == 1:
+                                player_one_win = True
+                            elif k > 0 and playground[j + 2][k - 1] == 1:
+                                player_one_win = True
+                        elif k + 1 < cols and playground[j + 1][k + 1] == 1:
+                            if k + 2 < cols and playground[j + 1][k + 2] == 1:
+                                player_one_win = True
+                            elif j + 2 < rows and playground[j + 2][k + 1] == 1:
+                                player_one_win = True
+                        elif k > 0 and playground[j + 1][k - 1] == 1:
                             if playground[j][k - 1] == 1:
                                 player_one_win = True
-                            elif playground[j + 1][k - 2] == 1:
+                            elif k > 1 and playground[j + 1][k - 2] == 1:
                                 player_one_win = True
-                            elif playground[j + 2][k - 1] == 1:
+                            elif j + 2 < rows and playground[j + 2][k - 1] == 1:
                                 player_one_win = True
 
-                    elif playground[j - 1][k] == 1:
-                        if playground[j - 2][k] == 1:
-                            if playground[j - 3][k] == 1:
+                    elif j > 0 and playground[j - 1][k] == 1:
+                        if j > 1 and playground[j - 2][k] == 1:
+                            if j > 2 and playground[j - 3][k] == 1:
                                 player_one_win = True
-                            elif playground[j - 2][k + 1] == 1:
+                            elif k + 1 < cols and playground[j - 2][k + 1] == 1:
                                 player_one_win = True
-                            elif playground[j - 2][k - 1] == 1:
+                            elif k > 0 and playground[j - 2][k - 1] == 1:
                                 player_one_win = True
-                        elif playground[j - 1][k + 1] == 1:
+                        elif k + 1 < cols and playground[j - 1][k + 1] == 1:
                             if playground[j][k + 1] == 1:
                                 player_one_win = True
-                            elif playground[j - 1][k + 2] == 1:
+                            elif k + 2 < cols and playground[j - 1][k + 2] == 1:
                                 player_one_win = True
-                            elif playground[j - 2][k + 1] == 1:
+                            elif j > 1 and playground[j - 2][k + 1] == 1:
                                 player_one_win = True
-                        elif playground[j - 1][k - 1] == 1:
+                        elif k > 0 and playground[j - 1][k - 1] == 1:
                             if playground[j][k - 1] == 1:
                                 player_one_win = True
-                            elif playground[j - 1][k - 2] == 1:
+                            elif k > 1 and playground[j - 1][k - 2] == 1:
                                 player_one_win = True
-                            elif playground[j - 1][k - 1] == 1:
+                            elif j > 1 and playground[j - 2][k - 1] == 1:
                                 player_one_win = True
 
         if player_one_win:
