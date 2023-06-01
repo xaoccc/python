@@ -6,12 +6,6 @@ reset_game = deepcopy(playground)
 player_one_coords, player_two_coords = [], []
 player_one_win, player_two_win = False, False
 
-directions = {
-    1: (-1, 0),
-    2: (1, 0),
-    3: (0, -1),
-    4: (0, 1)
-}
 
 def out_of_playground(row, col):
     if row >= rows or col >= cols or row < 0 or col < 0:
