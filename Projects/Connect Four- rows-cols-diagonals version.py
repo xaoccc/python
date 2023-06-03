@@ -63,7 +63,7 @@ while True:
             for k in range(cols):
                 if win_check(1):
                     print("Player one wins!")
-                    new_game = input("Do you want an new game? y/n:")
+                    new_game = input("Do you want new game? y/n:")
                     print(new_game)
                     if new_game == "y":
                         reset_game = True
@@ -76,7 +76,7 @@ while True:
                     else:
                         while new_game != "y" and new_game != "n":
                             print("Invalid input!")
-                            new_game = input("Do you want an new game? y/n:")
+                            new_game = input("Do you want new game? y/n:")
                         if new_game == "y":
                             reset_game = True
                             playground = [[0 for j in range(cols)] for i in range(rows)]
@@ -89,7 +89,7 @@ while True:
                     break
                 elif win_check(2):
                     print("Player two wins!")
-                    new_game = input("Do you want an new game? y/n:")
+                    new_game = input("Do you want new game? y/n:")
                     print(new_game)
                     if new_game == "y":
                         reset_game = True
@@ -102,7 +102,7 @@ while True:
                     else:
                         while new_game != "y" and new_game != "n":
                             print("Invalid input!")
-                            new_game = input("Do you want an new game? y/n:")
+                            new_game = input("Do you want new game? y/n:")
                         if new_game == "y":
                             reset_game = True
                             playground = [[0 for j in range(cols)] for i in range(rows)]
