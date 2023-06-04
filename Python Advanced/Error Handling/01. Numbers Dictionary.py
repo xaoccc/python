@@ -2,17 +2,14 @@ numbers_dictionary = {}
 line = input()
 
 while line != "Search":
-    number_as_string = line
     try:
         number = int(input())
-    except TypeError:
+        numbers_dictionary[line] = number
+    except ValueError:
         print("The variable number must be an integer")
-    try:
-        numbers_dictionary[number_as_string] = number
-    except KeyError:
-        print("Number does not exist in dictionary")
     line = input()
-    
+
+
 line = input()    
 while line != "Remove":
     searched = line
