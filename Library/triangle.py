@@ -13,4 +13,4 @@ def print_triangle(n):
         print_line(1, i)  
     
     
-print_triangle(int(input()))
+# print_triangle(int(input()))
