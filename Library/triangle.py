@@ -3,7 +3,7 @@ def print_line(start, end):
         print(str(i) + " ", end="")
     print("")
     
-def triangle(n):
+def print_triangle(n):
     for i in range(0, n):
         print_line(1, i)
     
@@ -13,4 +13,4 @@ def triangle(n):
         print_line(1, i)  
     
     
-triangle(int(input()))
+print_triangle(int(input()))
