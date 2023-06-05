@@ -20,15 +20,15 @@ def diag_check(row_start, row_end, col_start, col_end):
     for row in range(row_start, row_end):
         for col in range(col_start, col_end):
             if board[row][col] == "Q":
-                if row_start == 0:
-                    if col_start == 0:
+                if row_start == 0 and king[0] != 0:
+                    if col_start == 0 and king[1] != 0:
                         if row_end - row == col_end - col:
                             return [row, col]
                     else:
                         if row_end - row ==  col - col_start:
                             return [row, col]
                 else:
-                    if col_start == 0:
+                    if col_start == 0 and king[1] != 0:
                         if row - row_start == col_end - col:
                             return [row, col]
                     else:
@@ -45,6 +45,7 @@ result.append(diag_check(0, king[0], 0, king[1]))
 result.append(diag_check(king[0], 8, king[1], 8))
 result.append(diag_check(0, king[0], king[1], 8))
 result.append(diag_check(king[0], 8, 0, king[1]))
+
 
 if result == 8 * [None]:
     print("The king is safe!")
