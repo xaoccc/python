@@ -7,3 +7,4 @@
 - Famous actor
 - beer
 ...
+2. buttons == img
