@@ -3,18 +3,17 @@ from tkinter import Tk, Canvas
 
 def create_window():
     window = Tk()
-    window.geometry("800x600")
+    window.geometry(f"800x600")
     window.title("Tashev's Shop for Everything")
     window.resizable(False, False)
-    window.iconbitmap('icon.ico')
-    window.mainloop()
-
+    window.iconbitmap("icon.ico")
     return window
 
 
 def create_frame():
-    frame = Canvas(window, width=800, height=800)
-    frame.grid(row=0, col=0)
+    frame = Canvas(window, width=700, height=600)
+    frame.grid(row=0, column=0)
+    return frame
 
 
 window = create_window()
