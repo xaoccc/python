@@ -12,7 +12,7 @@ def create_window():
 
 
 def create_frame():
-    frame = Canvas(window, width=700, height=600)
+    frame = Canvas(window, width=800, height=600, bg="#868ea3")
     frame.grid(row=0, column=0)
     return frame
 

@@ -1,12 +1,23 @@
+from json import dump, loads
 from tkinter import Button, Entry
 from canvas import window, frame
 # from shop import display_products
-# from helpers import clean_screen, get_password_hash
-# from json import loads, dump
-#
-#
+from helpers import clean_screen
+
+
 def render_entry():
     register_button = Button(
+        window,
+        text="Register",
+        bg="#7a99f5",
+        fg="#1b1c1f",
+        borderwidth=0,
+        width=20,
+        height=3,
+        command=register
+    )
+
+    login_button = Button(
         window,
         text="Login",
         bg="#7a99f5",
@@ -15,43 +26,47 @@ def render_entry():
         width=20,
         height=3
     )
-    frame.create_window(200, 300, window=register_button)
-#
-#     login_button = Button(
-#         window,
-#         text="Login",
-#         bg="blue",
-#         fg="white",
-#         borderwidth=0,
-#         width=20,
-#         height=3,
-#         command=login,
-#     )
-#
-#     frame.create_window(350, 260, window=register_button)
-#     frame.create_window(350, 320, window=login_button)
-#
-#
-# def get_users_data():
-#     info_data = []
-#
-#     with open("db/users_information.txt", "r") as users_file:
-#         for line in users_file:
-#             info_data.append(loads(line))
-#
-#     return info_data
-#
-#
+    def login_hover(e):
+        login_button['background'] = '#6e6ccc'
+
+    def login_dehover(e):
+        login_button['background'] = '#7a99f5'
+
+    def register_hover(e):
+        register_button['background'] = '#6e6ccc'
+
+    def register_dehover(e):
+        register_button['background'] = '#7a99f5'
+
+    frame.create_window(400, 250, window=register_button)
+    frame.create_window(400, 320, window=login_button)
+    register_button.bind('<Enter>', register_hover)
+    register_button.bind('<Leave>', register_dehover)
+    login_button.bind('<Enter>', login_hover)
+    login_button.bind('<Leave>', login_dehover)
+
+
+
+def get_users_data():
+    info_data = []
+
+    with open("db/users_info.txt", "r") as users_file:
+        for line in users_file:
+            info_data.append(loads(line))
+
+    return info_data
+
+
 # def login():
 #     clean_screen()
 #
-#     frame.create_text(100, 50, text="Username:")
-#     frame.create_text(100, 100, text="Password:")
-#
-#     frame.create_window(200, 50, window=username_box)
-#     frame.create_window(200, 100, window=password_box)
-#
-#     frame.create_window(250, 150, window=login_button)
+#     frame.create_text(300, 200, text="Username:")
+#     frame.create_text(300, 250, text="Password:")
+
+    # frame.create_window(200, 50, window=username_box)
+    # frame.create_window(200, 100, window=password_box)
+    #
+    # frame.create_window(250, 150, window=login_button)
 #
 #
 # def logging():
@@ -77,77 +92,90 @@ def render_entry():
 #     return False
 #
 #
-# def register():
-#     clean_screen()
-#
-#     frame.create_text(100, 50, text="First name:")
-#     frame.create_text(100, 100, text="Last name:")
-#     frame.create_text(100, 150, text="Username:")
-#     frame.create_text(100, 200, text="Password:")
-#
-#     frame.create_window(200, 50, window=first_name_box)
-#     frame.create_window(200, 100, window=last_name_box)
-#     frame.create_window(200, 150, window=username_box)
-#     frame.create_window(200, 200, window=password_box)
-#
-#     register_button = Button(
-#         window,
-#         text="Register",
-#         bg="green",
-#         fg="white",
-#         borderwidth=0,
-#         command=registration
-#     )
-#
-#     frame.create_window(300, 250, window=register_button)
-#
-#
-# def registration():
-#     info_dict = {
-#         "First name": first_name_box.get(),
-#         "Last name": last_name_box.get(),
-#         "Username": username_box.get(),
-#         "Password": password_box.get(),
-#     }
-#
-#     if check_registration(info_dict):
-#         with open("db/users_information.txt", "a") as users_file:
-#             info_dict["Password"] = get_password_hash(info_dict["Password"])
-#             dump(info_dict, users_file)
-#             users_file.write("\n")
-#             display_products()
-#
-#
-# def check_registration(info):
-#     frame.delete("error")
-#
-#     for key, value in info.items():
-#         if not value.strip():
-#             frame.create_text(
-#                 300,
-#                 300,
-#                 text=f"{key} cannot be empty!",
-#                 fill="red",
-#                 tags="error",
-#             )
-#
-#             return False
-#
-#     info_data = get_users_data()
-#
-#     for record in info_data:
-#         if record["Username"] == info["Username"]:
-#             frame.create_text(
-#                 300,
-#                 300,
-#                 text="Username is already taken!",
-#                 fill="red",
-#                 tags="error",
-#             )
-#
-#             return False
-#
-#     return True
+def register():
+    clean_screen()
+
+    frame.create_text(250, 200, text="First name:")
+    frame.create_text(250, 250, text="Last name:")
+    frame.create_text(250, 300, text="Username:")
+    frame.create_text(250, 350, text="Password:")
+
+    frame.create_window(350, 200, window=first_name_box)
+    frame.create_window(350, 250, window=last_name_box)
+    frame.create_window(350, 300, window=username_box)
+    frame.create_window(350, 350, window=password_box)
+
+
+
+    register_button = Button(
+        window,
+        text="Register",
+        bg="#7a99f5",
+        fg="#1b1c1f",
+        borderwidth=0,
+        width=20,
+        height=2,
+        command=registration
+    )
+
+    def register_hover(e):
+        register_button['background'] = '#6e6ccc'
+
+    def register_dehover(e):
+        register_button['background'] = '#7a99f5'
+
+    register_button.bind('<Enter>', register_hover)
+    register_button.bind('<Leave>', register_dehover)
+
+    frame.create_window(400, 450, window=register_button)
+
+
+def registration():
+    info_dict = {
+        "First name": first_name_box.get(),
+        "Last name": last_name_box.get(),
+        "Username": username_box.get(),
+        "Password": password_box.get(),
+    }
+
+    if check_registration(info_dict):
+        with open("db/users_info.txt", "a") as users_file:
+            # info_dict["Password"] = get_password_hash(info_dict["Password"])
+            dump(info_dict, users_file)
+            users_file.write("\n")
+            # display_products()
+
+
+def check_registration(info):
+    frame.delete("error")
+
+    for key, value in info.items():
+        if not value.strip():
+            frame.create_text(
+                300,
+                300,
+                text=f"{key} cannot be empty!",
+                fill="red",
+                tags="error",
+            )
+
+            return False
+
+    info_data = get_users_data()
+
+    for record in info_data:
+        if record["Username"] == info["Username"]:
+            frame.create_text(
+                300,
+                300,
+                text="Username is already taken!",
+                fill="red",
+                tags="error",
+            )
+
+            return False
+
+    return True
 #
 #
 # def print_event(event):
@@ -164,10 +192,10 @@ def render_entry():
 #         login_button["state"] = "normal"
 #
 #
-# first_name_box = Entry(window, bd=0)
-# last_name_box = Entry(window, bd=0)
-# username_box = Entry(window, bd=0)
-# password_box = Entry(window, bd=0, show="*")
+first_name_box = Entry(window, bd=0)
+last_name_box = Entry(window, bd=0)
+username_box = Entry(window, bd=0)
+password_box = Entry(window, bd=0, show="*")
 #
 # login_button = Button(
 #     window,
