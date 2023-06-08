@@ -9,7 +9,6 @@ def date_format_check(date_input):
         date_string = match.string
         date_format = "%d/%m/%Y"
         datetime_object = datetime.strptime(date_string, date_format)
-        print(datetime_object)
         return True
     else:
         print("Please enter a valid date fomat!")
