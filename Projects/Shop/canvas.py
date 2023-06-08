@@ -7,6 +7,7 @@ def create_window():
     window.title("Tashev's Shop for Everything")
     window.resizable(False, False)
     window.iconbitmap("icon.ico")
+
     return window
 
 
