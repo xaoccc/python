@@ -53,13 +53,12 @@ class Task:
         
 
 # Test code:        
-# task = Task("Make bed", "27/05/2020")
 # print(task.change_name("Go to University"))
-# print(task.change_due_date("29/05/2020"))
-# print(task.change_due_date("29/05/2025"))
-# print(task.change_due_date("asd"))
-# print(task.change_due_date("19/11/1960"))
-# print(task.change_due_date("29/05/2040"))
+# print(task.change_due_date(input()))
+# print(task.change_due_date(input()))
+# print(task.change_due_date(input()))
+# print(task.change_due_date(input()))
+# print(task.change_due_date(input()))
 # task.add_comment("Don't forget laptop")
 # print(task.change_due_date("09/06/2023"))
 # print(task.edit_comment(0, "Don't forget laptop and notebook"))
