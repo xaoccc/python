@@ -4,7 +4,6 @@ def prYellow(skk): print("\033[93m {}\033[00m" .format(skk))
 def prGreen(skk): print("\033[32m {}\033[00m" .format(skk))
 def prBlue(skk): print("\033[34m {}\033[00m" .format(skk))
 
-
 computer_number = random.randint(1, 100)
 tries_num = 0
 
