@@ -14,14 +14,17 @@ class Task:
     def date_format_check(self, input_date):
         
         match = re.search(self.date_pattern, input_date)
-        if match != None:
-            datetime_object = datetime.strptime(match.string, self.date_format)
-            current_date = datetime.now()
-            if current_date <= datetime_object:
-                new_date = datetime_object.strftime("%m/%d/%Y")
-                return new_date
-            return "Choose a future date!"
-        return "Please enter a valid date fomat!"
+        if match == None:
+            return "Please enter a valid date fomat!"
+            
+        datetime_object = datetime.strptime(match.string, self.date_format)
+        current_date = datetime.now()
+        if current_date <= datetime_object:
+            new_date = datetime_object.strftime("%d/%m/%Y")
+            return new_date
+            
+        print("Choose a future date!")
+        return False
     
     def change_name(self, new_name: str):
         if self.name != new_name:
