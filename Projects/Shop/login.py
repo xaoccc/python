@@ -4,7 +4,6 @@ from canvas import window, frame
 from shop import display_products
 from helpers import clean_screen, get_password_hash
 
-
 def render_entry():
     register_button = Button(
         window,
@@ -47,8 +46,6 @@ def render_entry():
     login_button.bind('<Enter>', login_hover)
     login_button.bind('<Leave>', login_dehover)
 
-
-
 def get_users_data():
     info_data = []
 
@@ -60,7 +57,6 @@ def get_users_data():
             info_data.append(loads(line))
 
     return info_data
-
 
 def login():
     clean_screen()

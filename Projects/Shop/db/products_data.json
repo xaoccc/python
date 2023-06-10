@@ -1,1 +1,8 @@
-{"puma blue t-shirt": {"quantity": 8, "image": "images/blue_t_shirt.png"}, "BDSM mask": {"quantity": 100, "image": "images/bdsm_mask.png"}, "Unicorn": {"quantity": 15, "image": "images/unicorn.png"}, "David Haselhoff": {"quantity": 0, "image": "images/david-h.png"}}
+{"A small planet": {"quantity": 1, "image": "images/planet.png"},
+  "BDSM mask": {"quantity": 99, "image": "images/bdsm_mask.png"},
+  "A Perfect Woman": {"quantity": 15, "image": "images/unicorn.png"},
+  "David Haselhoff": {"quantity": 0, "image": "images/david-h.png"},
+  "Cat": {"quantity": 5000, "image": "images/cat.png"},
+  "Beer": {"quantity": 666, "image": "images/beer.png",
+  "Cat": {"quantity": 5000, "image": "images/cat.png"}}
+}

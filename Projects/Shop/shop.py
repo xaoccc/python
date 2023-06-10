@@ -21,30 +21,30 @@ def display_stock():
         item_img = ImageTk.PhotoImage(Image.open(item_info["image"]))
         images.append(item_img)
 
-        frame.create_text(x, y, text=item_name, font=("Calibri", 15))
+        frame.create_text(x, y, text=item_name, font=("Calibri", 14))
         frame.create_image(x, y + 100, image=item_img)
 
         if item_info["quantity"] > 0:
-            color = "green"
+            color = "#200645"
             text = f"In stock: {item_info['quantity']}"
-#
+
             item_button = Button(
                 window,
                 text="Buy",
                 bg="green",
                 fg="white",
-                font=("Calibri", 12),
+                font=("Calibri", 14),
                 width=5,
                 # we don no call buy_product() directly, but put it in lambda, so it can be called when needed
                 command=lambda x=item_name, y=info: buy_product(x, y),
             )
-#
+
             frame.create_window(x, y + 230, window=item_button)
         else:
             color = "red"
             text = "Out of Stock"
-#
-        frame.create_text(x, y + 180, text=text, fill=color, font=("Calibri", 12))
+
+        frame.create_text(x, y + 180, text=text, fill=color, font=("Calibri", 14))
 
         x += 160
 
