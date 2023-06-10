@@ -2,7 +2,7 @@ from json import dump, loads
 from tkinter import Button, Entry
 from canvas import window, frame
 from shop import display_products
-from helpers import clean_screen
+from helpers import clean_screen, get_password_hash
 
 
 def render_entry():
@@ -93,7 +93,7 @@ def check_logging():
     info_data = get_users_data()
 
     user_username = username_box.get()
-    user_password = password_box.get()
+    user_password = get_password_hash(password_box.get())
 
     for record in info_data:
         record_username = record["Username"]
@@ -156,10 +156,10 @@ def registration():
 
     if check_registration(info_dict):
         with open("db/users_info.txt", "a") as users_file:
-            # info_dict["Password"] = get_password_hash(info_dict["Password"])
+            info_dict["Password"] = get_password_hash(info_dict["Password"])
             # From json we use dump, which saves to file dict from string (the user data after validation pass)
-            users_file.write("\n")
             dump(info_dict, users_file)
+            users_file.write("\n")
             display_products()
 
 
