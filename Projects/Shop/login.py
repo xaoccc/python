@@ -71,14 +71,6 @@ def login():
     frame.create_window(400, 200, window=username_box)
     frame.create_window(400, 250, window=password_box)
 
-    def register_hover(e):
-        login_button['background'] = "#6e6ccc"
-
-    def register_dehover(e):
-        login_button['background'] = "#7a99f5"
-    login_button.bind('<Enter>', register_hover)
-    login_button.bind('<Leave>', register_dehover)
-
     frame.create_window(400, 300, window=login_button)
 
 
@@ -193,22 +185,31 @@ def check_registration(info):
             return False
 
     return True
-#
-#
-# def print_event(event):
-#     info = [
-#         username_box.get(),
-#         password_box.get()
-#     ]
-#
-#     for el in info:
-#         if not el.strip():
-#             login_button["state"] = "disabled"
-#             break
-#     else:
-#         login_button["state"] = "normal"
-#
-#
+
+
+def print_event(event):
+    info = [
+        username_box.get(),
+        password_box.get()
+    ]
+
+    for el in info:
+        if not el.strip():
+            login_button["state"] = "disabled"
+            break
+    else:
+        login_button["state"] = "normal"
+
+        def register_hover(e):
+            login_button['background'] = "#6e6ccc"
+
+        def register_dehover(e):
+            login_button['background'] = "#7a99f5"
+
+        login_button.bind('<Enter>', register_hover)
+        login_button.bind('<Leave>', register_dehover)
+
+
 first_name_box = Entry(window, bd=0)
 last_name_box = Entry(window, bd=0)
 username_box = Entry(window, bd=0)
@@ -224,10 +225,5 @@ login_button = Button(
     borderwidth=0,
     command=logging
 )
-
-
-
-
-# login_button["state"] = "disabled"
-#
-# window.bind("<KeyRelease>", print_event)
+login_button["state"] = "disabled"
+window.bind("<KeyRelease>", print_event)
