@@ -24,8 +24,10 @@ def render_entry():
         fg="#1b1c1f",
         borderwidth=0,
         width=20,
-        height=3
+        height=3,
+        command=login
     )
+
     def login_hover(e):
         login_button['background'] = '#6e6ccc'
 
@@ -51,21 +53,24 @@ def get_users_data():
     info_data = []
 
     with open("db/users_info.txt", "r") as users_file:
+        # For each line of text, convert text to dict, using json and add it to info_data as element
+        # loads - take a string and turn it to an object, load - take an object and turn it to a string
+        # Here we need json loads
         for line in users_file:
             info_data.append(loads(line))
 
     return info_data
 
 
-# def login():
-#     clean_screen()
-#
-#     frame.create_text(300, 200, text="Username:")
-#     frame.create_text(300, 250, text="Password:")
+def login():
+    clean_screen()
 
-    # frame.create_window(200, 50, window=username_box)
-    # frame.create_window(200, 100, window=password_box)
-    #
+    frame.create_text(300, 200, text="Username:")
+    frame.create_text(300, 250, text="Password:")
+
+    frame.create_window(400, 200, window=username_box)
+    frame.create_window(400, 250, window=password_box)
+
     # frame.create_window(250, 150, window=login_button)
 #
 #
@@ -141,6 +146,7 @@ def registration():
     if check_registration(info_dict):
         with open("db/users_info.txt", "a") as users_file:
             # info_dict["Password"] = get_password_hash(info_dict["Password"])
+            # From json we use dump, which saves to file dict from string (the user data after validation pass)
             dump(info_dict, users_file)
             users_file.write("\n")
             # display_products()
@@ -152,8 +158,8 @@ def check_registration(info):
     for key, value in info.items():
         if not value.strip():
             frame.create_text(
-                300,
-                300,
+                400,
+                500,
                 text=f"{key} cannot be empty!",
                 fill="red",
                 tags="error",
@@ -166,8 +172,8 @@ def check_registration(info):
     for record in info_data:
         if record["Username"] == info["Username"]:
             frame.create_text(
-                300,
-                300,
+                400,
+                500,
                 text="Username is already taken!",
                 fill="red",
                 tags="error",
