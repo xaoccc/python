@@ -142,13 +142,27 @@ def registration():
         "Password": password_box.get(),
     }
 
-    if check_registration(info_dict):
+    if check_registration(info_dict) and check_username(info_dict):
         with open("db/users_info.txt", "a") as users_file:
             info_dict["Password"] = get_password_hash(info_dict["Password"])
             # From json we use dump, which saves to file dict from string (the user data after validation pass)
             dump(info_dict, users_file)
             users_file.write("\n")
             display_products()
+
+
+def check_username(info_dict):
+    frame.delete("error")
+    if len(info_dict["Username"]) < 5:
+        frame.create_text(
+            400,
+            500,
+            text="Username too short!",
+            fill="red",
+            tags="error"
+        )
+        return False
+    return True
 
 
 def check_registration(info):
