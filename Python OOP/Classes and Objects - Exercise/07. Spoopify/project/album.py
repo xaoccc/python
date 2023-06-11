@@ -30,4 +30,11 @@ class Album:
         self.published = True
         return f"Album {self.name} has been published."
 
+    def details(self):
+        result = f"Album {self.name}"
+        for song in self.songs:
+            result += f"== {song.get_info()}"
+        return result
+
+
 
