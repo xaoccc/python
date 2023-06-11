@@ -4,4 +4,5 @@ class Song:
         self.length = length
         self.single = single
 
-    def 
+    def get_info(self):
+        return f"{self.name} - {self.length}"
