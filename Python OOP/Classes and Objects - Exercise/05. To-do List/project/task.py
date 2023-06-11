@@ -26,7 +26,7 @@ class Task:
             return ', '.join(self.comments)
         return "Cannot find comment."
         # WTF????????
-        # if not 0 <= comment_number < len(self.comments):
+        # if  comment_number < 0 or comment_number >= len(self.comments):
         #     return f"Cannot find comment."
         #
         # self.comments[comment_number] = new_comment
