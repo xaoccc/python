@@ -18,3 +18,14 @@ def students_credits(*args):
     for course, score in courses.items():
         result += f"{course} - {score:.1f}\n"
     return result
+
+print(
+    students_credits(
+        "Python Development-15-200-200",
+        "Python Development-20-300-300",
+        "Python Development-15-200-200",
+        "JavaScript Development-12-500-480",
+        "C++ Development-30-500-405",
+        "Java Development-10-300-150"
+    )
+)
