@@ -43,3 +43,30 @@ def naughty_or_nice_list(fargs, *args, **kwargs):
             result += f"{key}: {', '.join(names)}\n"
 
     return result
+
+# def naughty_or_nice_list(kids, *args, **kwargs):
+#     santa_list = {
+#         "Nice": [],
+#         "Naughty": [],
+#         "Not found": []
+#     }
+#     kids_dict = {}
+#     for kid in kids:
+#         if kid[0] not in kids_dict:
+#             kids_dict[kid[0]] = []
+#         kids_dict[kid[0]].append(kid[1])
+    
+#     if args:
+#         for i in args:
+#             current = [int(i) if i.isdigit() else i for i in i.split("-")]
+#             if len(kids_dict[current[0]]) == 1:
+#                 santa_list["Naughty"].append(kids_dict[current[0]][0])
+        
+#     # if kwargs:
+#     #     for key, value in kwargs.items():
+#     #         pass
+    
+    
+    
+    
+#     return santa_list
