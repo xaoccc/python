@@ -142,7 +142,7 @@ def registration():
         "Password": password_box.get(),
     }
 
-    if check_registration(info_dict) and check_username(info_dict):
+    if check_registration(info_dict) and check_username(info_dict) and check_password(info_dict):
         with open("db/users_info.txt", "a") as users_file:
             info_dict["Password"] = get_password_hash(info_dict["Password"])
             # From json we use dump, which saves to file dict from string (the user data after validation pass)
@@ -158,6 +158,29 @@ def check_username(info_dict):
             400,
             500,
             text="Username too short!",
+            fill="red",
+            tags="error"
+        )
+        return False
+    return True
+
+
+def check_password(info_dict):
+    frame.delete("error")
+    if len(info_dict["Password"]) < 8:
+        frame.create_text(
+            400,
+            500,
+            text="Password too short!",
+            fill="red",
+            tags="error"
+        )
+        return False
+    elif info_dict["Password"].isdigit() or info_dict["Password"].isalpha() or info_dict["Password"] == info_dict["Password"].lower() or info_dict["Password"] == info_dict["Password"].upper():
+        frame.create_text(
+            400,
+            500,
+            text="Password must contain at least one small letter, one capital letter and one digit!",
             fill="red",
             tags="error"
         )
