@@ -8,7 +8,7 @@ def shop_from_grocery_list(budget, groceries_list, *products):
                 groceries_list.remove(product[0])
                 bought_products.append(product[0])
             else:
-                return f"You did not buy all the products. Missing products: {', '.join(groceries_list)}."
+                break
         if not groceries_list:
             return f"Shopping is successful. Remaining budget: {budget:.2f}."
         
