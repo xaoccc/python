@@ -7,25 +7,17 @@ tom_wall, jerry_wall = False, False
 
 while True:
     move = [int(i) for i in input()[1:-1].split(", ")]
-    if tom_wall and jerry_wall:
-        if player_one == "Tom":
-            tom_wall = False
-        elif player_one == "Jerry":
-            jerry_wall = False
+
+    if player_one == "Tom" and tom_wall:
+        tom_wall = False
+        player_one, player_two = player_two, player_one
         continue
     
-    if tom_wall and not jerry_wall:
-        if player_one == "Tom":
-            tom_wall = False
-        player_one = "Jerry"
-        player_two = "Tom"
+    if player_one == "Jerry" and jerry_wall:
+        jerry_wall = False
+        player_one, player_two = player_two, player_one
+        continue      
     
-    if jerry_wall and not tom_wall:
-        if player_one == "Jerry":
-            jerry_wall = False
-        player_one = "Tom"
-        player_two = "Jerry"
-
     if matrix[move[0]][move[1]] == "T":
         print(f"{player_one} is out of the game! The winner is {player_two}.")
         break
