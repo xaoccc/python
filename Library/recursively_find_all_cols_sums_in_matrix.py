@@ -8,3 +8,4 @@ def cols_sum(j, grid, result):
 # j - starting col
 # grid == matrix
 # result - a list with the sum of each column
+# another way to do this:  cols_sum = [sum(c) for c in chain(zip(*grid))]
