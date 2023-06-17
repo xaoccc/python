@@ -17,10 +17,9 @@ while True:
     move = input() 
     position = [position[0] + directions[move][0], position[1] + directions[move][1]]
     if position[0] < 0 or position[0] >= len(matrix) or position[1] < 0 or position[1] >= len(matrix):
+        pass
         # logic for out of the map
-    elif:
         # Some other logic
-    else:
         # Some more logic
 
 matrix[position[0]][position[1]] = "P"   
