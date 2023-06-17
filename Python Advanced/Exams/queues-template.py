@@ -7,6 +7,6 @@ while deque_one and deque_two:
   #logic...
 
 if deque_one:
-  print(f"Some text {''.join([str(i) for i in deque_one]}")
+  print(f"Some text {''.join([str(i) for i in deque_one])}")
 if deque_two:
-  print(f"Some text {''.join([str(i) for i in deque_two]}")
+  print(f"Some text {''.join([str(i) for i in deque_two])}")
