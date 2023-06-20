@@ -1,9 +1,4 @@
-class Solution(object):
-    def getRow(self, rowIndex):
-        """
-        :type rowIndex: int
-        :rtype: List[int]
-        """     
+
         outer_list = []
         inner_list = []
         for i in range(0, rowIndex+1):
