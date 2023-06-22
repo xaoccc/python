@@ -20,3 +20,6 @@ for star_count in range(1, size):
 # loop2 - print second half
 for star_count in range(size, 0, -1):
     print_stars(size, star_count)
+    
+    
+# todo: def print_rhombus(n)
