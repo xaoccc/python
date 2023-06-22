@@ -1,9 +1,5 @@
 class Solution(object):
     def convertToTitle(self, columnNumber):
-        """
-        :type columnNumber: int
-        :rtype: str
-        """
         import string
         column_name = ""
         #We write -1, due to the 1-based excel numbering (A = 1, not A = 0)
