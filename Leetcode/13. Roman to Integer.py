@@ -2,7 +2,6 @@ class Solution(object):
     def romanToInt(self, s):
         num = 0
         
- 
         for i in range(len(s)):
             if s[i] == "I":
                 num += 1
