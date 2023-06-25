@@ -1,9 +1,5 @@
 class Solution(object):
     def sumOddLengthSubarrays(self, arr):
-        """
-        :type arr: List[int]
-        :rtype: int
-        """
         sum = 0
         for i in range(len(arr)):
             for j in range(0, len(arr), 2):
