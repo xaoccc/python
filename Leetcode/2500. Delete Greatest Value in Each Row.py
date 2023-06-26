@@ -1,8 +1,6 @@
 class Solution:
     def deleteGreatestValue(self, grid: List[List[int]]) -> int:
-        i = 0
-        result = 0
-        max_num = 0
+        i, result, max_num= 0, 0, 0
         while True:
             result += max_num
             if len(grid[i]) == 0:
