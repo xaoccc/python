@@ -19,9 +19,9 @@ def outer():
     print("outer:", x)
     # 4. Call the inner() funcion
     inner()
-    # 7. x should be changed here by the function inner(), so we print inner: nonlocal
+    # 7. x should be changed here by the function inner(), so the result should be "inner: nonlocal"
     print("outer:", x)
-    # 8. Call the change_global() funcion 
+    # 8. Call the change_global() function 
     change_global()
 
 # 1. print the global variable    
