@@ -1,17 +1,33 @@
-class Stack:
-    def __init__(self, data: list):
-        self.data = data
+from typing import List
 
-    def push(self, element):
-        self.data.append(element)
 
-    def pop(self):
-        return self.data.pop()
-
-    def top(self):
-        return self.data[-1]
+class BaseStack:
+    def __init__(self):
+        self.data: List[str] = []
 
     def is_empty(self):
         if self.data:
-            return True
-        return False
+            return False
+        return True
+
+    def __str__(self):
+        return f"[{', '.join(reversed(self.data))}]"
+
+
+class AddStack(BaseStack):
+    def push(self, element: str):
+        self.data.append(element)
+
+
+class RemoveStack(BaseStack):
+    def pop(self):
+        return self.data.pop()
+
+
+class TopStack(BaseStack):
+    def top(self):
+        return self.data[-1]
+
+
+class Stack(AddStack, RemoveStack, TopStack):
+    pass
