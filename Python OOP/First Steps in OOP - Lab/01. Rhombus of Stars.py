@@ -12,14 +12,15 @@ def print_stars(size, star_count):
         print("*", end=" ")
     #we always add "*", otherwise the size has height/lenght size-1
     print("*")
-
+    
+def print_rhombus(size):
+    # print first half
+    for star_count in range(1, size):
+        print_stars(size, star_count)
+    # print second half
+    for star_count in range(size, 0, -1):
+        print_stars(size, star_count)
+        
 size = int(input())
-# loop1 - print first half
-for star_count in range(1, size):
-    print_stars(size, star_count)
-# loop2 - print second half
-for star_count in range(size, 0, -1):
-    print_stars(size, star_count)
-    
-    
-# todo: def print_rhombus(n)
+
+print_rhombus(size)
