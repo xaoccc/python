@@ -7,11 +7,6 @@
       <sourceFolder url="file://$MODULE_DIR$/Python OOP/Inheritance - Lab/04. Multilevel Inheritance" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Python OOP/Inheritance - Lab/05. Hierarchical Inheritance" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Python OOP/Inheritance - Lab/06. Stack of Strings" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Python OOP/Inheritance - Exercise/01. Person" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Python OOP/Inheritance - Exercise/02. Zoo" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Python OOP/Inheritance - Exercise/03. Players and Monsters" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Python OOP/Inheritance - Exercise/04. Need for Speed" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Python OOP/Inheritance - Exercise/05. Shop" isTestSource="false" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.9 (2)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
