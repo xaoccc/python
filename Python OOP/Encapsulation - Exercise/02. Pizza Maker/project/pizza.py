@@ -22,7 +22,7 @@ class Pizza:
         
     @name.setter
     def name(self, value):
-        if not value:
+        if value == "":
             raise ValueError("The name cannot be an empty string")
         self.__name = value
             
