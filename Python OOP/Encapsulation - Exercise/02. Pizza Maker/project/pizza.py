@@ -1,6 +1,7 @@
 from project.topping import Topping
 from project.dough import Dough
 
+
 class Pizza:
     def __init__(self, name: str, dough: Dough, max_number_of_toppings: int):
         self.name = name
@@ -37,7 +38,6 @@ class Pizza:
         if value <= 0:
             raise ValueError("The maximum number of toppings cannot be less or equal to zero")
         self.__max_number_of_toppings = value
-        
         
     def add_topping(self, topping: Topping):
         if self.__max_number_of_toppings <= len(self.toppings):
