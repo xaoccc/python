@@ -28,7 +28,7 @@ class Pizza:
             
     @dough.setter
     def dough(self, value):
-        if value == None:
+        if value is None:
             raise ValueError("You should add dough to the pizza")
         self.__dough = value
         
