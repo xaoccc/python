@@ -6,9 +6,7 @@ class Food(Product):
         self.__grams = grams
 
     @property
-    def __grams(self):
-        return self.grams
-        
-    @__grams.setter
-    def __grams(self, value):
-        self.grams = value
+    def grams(self):
+        return self.__grams
+
+
