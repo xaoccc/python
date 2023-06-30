@@ -6,9 +6,7 @@ class Beverage(Product):
         self.__milliliters = milliliters
 
     @property
-    def __milliliters(self):
-        return self.milliliters
+    def milliliters(self):
+        return self.__milliliters
         
-    @__milliliters.setter
-    def __milliliters(self, value):
-        self.milliliters = value
+
