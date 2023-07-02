@@ -9,7 +9,6 @@ class Shop:
     def small_shop(cls, name, type):
         return cls(name, type, 10)
         
-
     def add_item(self, item_name):
         if self.capacity > sum(self.items.values()):
             if item_name not in self.items:
