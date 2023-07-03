@@ -24,7 +24,6 @@ class Integer:
                 num += roman[value[i:i + 2]]
                 i += 2
             else:
-
                 num += roman[value[i]]
                 i += 1
         return cls(num)
@@ -33,7 +32,6 @@ class Integer:
     def from_string(cls, value):
         if type(value) != str:
             return "wrong type"
-            
         try:
             return cls(int(value))
         except:
