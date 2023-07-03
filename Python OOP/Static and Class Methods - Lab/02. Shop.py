@@ -19,8 +19,10 @@ class Shop:
     
     def remove_item(self, item_name, amount):
         if item_name in self.items.keys():
+            if self.items[item_name] < amount:
+                return f"Cannot remove {amount} {item_name}"
             self.items[item_name] -= amount
-            if self.items[item_name] <= 0:
+            if self.items[item_name] == 0:
                 del self.items[item_name]
             return  f"{amount} {item_name} removed from the shop"
         return f"Cannot remove {amount} {item_name}"
