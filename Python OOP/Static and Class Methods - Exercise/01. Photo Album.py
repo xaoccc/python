@@ -14,12 +14,4 @@ class PhotoAlbum:
         for i in range(len(self.photos)):
             if len(self.photos[i]) < 4:
                 self.photos[i].append(label)
-                return f"{label} photo added successfully on page {i} slot {i}".
-            
-    def display(self):
-        result = "-----------"
-        return "-----------"
-        
-
-album = PhotoAlbum.from_photos_count(8)
-print(album.pages)
+                return f"{label} photo added successfully on page {i + 1} slot {self.photos[i].index(label) + 1}."
