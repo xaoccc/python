@@ -25,7 +25,6 @@ class Hotel:
                 self.guests -= room.guests
                 room.free_room()
                 
-                
     def status(self):
         free, taken = [], []
         for room in self.rooms:
