@@ -24,7 +24,7 @@ class Shop:
             self.items[item_name] -= amount
             if self.items[item_name] == 0:
                 del self.items[item_name]
-            return  f"{amount} {item_name} removed from the shop"
+            return f"{amount} {item_name} removed from the shop"
         return f"Cannot remove {amount} {item_name}"
         
     def __repr__(self):
