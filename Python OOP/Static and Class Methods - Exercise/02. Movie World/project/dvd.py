@@ -14,7 +14,7 @@ class DVD:
     def from_date(cls, id, name, date, age_restriction):
         dt_object = datetime.strptime(date, "%d.%m.%Y")
         creation_month = dt_object.strftime('%B')
-        creation_year = dt_object.strftime('%Y')
+        creation_year = int(dt_object.strftime('%Y'))
         return cls(name, id, creation_year, creation_month, age_restriction)
     
     def __repr__(self):
