@@ -2,9 +2,9 @@ from abc import ABC, abstractmethod
 
 
 class Animal(ABC):
-    def __init__(self, age, name, gender):
-        self.age = age
+    def __init__(self, name, age, gender):
         self.name = name
+        self.age = age
         self.gender = gender
 
     @abstractmethod
@@ -14,3 +14,6 @@ class Animal(ABC):
     @abstractmethod
     def make_sound(self):
         pass
+
+
+
