@@ -1,4 +1,4 @@
-from abc import ABC
+from abc import ABC, abstractmethod
 
 
 class FormulaTeam(ABC):
@@ -14,3 +14,8 @@ class FormulaTeam(ABC):
         if value < 1000000:
             raise ValueError("F1 is an expensive sport, find more sponsors!")
         self.__budget = value
+        
+    @abstractmethod
+    def calculate_revenue_after_race(self, race_pos):
+        pass
+
