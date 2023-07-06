@@ -1,6 +1,7 @@
 import math
 from abc import ABC, abstractmethod
 
+
 class Shape(ABC):
     @abstractmethod
     def calculate_area(self):
@@ -9,6 +10,7 @@ class Shape(ABC):
     @abstractmethod
     def calculate_perimeter(self):
         pass
+
 
 class Rectangle(Shape):
     def __init__(self, width, height):
@@ -20,6 +22,7 @@ class Rectangle(Shape):
     
     def calculate_perimeter(self):
         return (self.__width + self.__height) * 2
+
 
 class Circle(Shape):
     def __init__(self, radius):
