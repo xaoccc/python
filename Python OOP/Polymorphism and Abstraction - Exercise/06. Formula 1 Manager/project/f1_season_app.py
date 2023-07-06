@@ -9,13 +9,11 @@ class F1SeasonApp:
 
     def register_team_for_season(self, team_name, budget):
         if team_name == "Red Bull":
-            self.red_bull_team = RedBullTeam
-            RedBullTeam.budget = budget
+            self.red_bull_team = RedBullTeam(budget)
             return f"{team_name} has joined the new F1 season."
 
         if team_name == "Mercedes":
-            self.mercedes_team = MercedesTeam
-            MercedesTeam.budget = budget
+            self.mercedes_team = MercedesTeam(budget)
             return f"{team_name} has joined the new F1 season."
 
         return ValueError("Invalid team name!")
@@ -24,4 +22,4 @@ class F1SeasonApp:
         if self.red_bull_team is None or self.mercedes_team is None:
             raise Exception("Not all teams have registered for the season.")
 
-        return f"Red Bull: { RedBullTeam.calculate_revenue_after_race(red_bull_pos) }. Mercedes: { MercedesTeam.calculate_revenue_after_race(mercedes_pos) }. {max([red_bull_pos, mercedes_pos])} is ahead at the { race_name } race."
+        return f"Red Bull: { self.red_bull_team.calculate_revenue_after_race(red_bull_pos) }. Mercedes: { self.mercedes_team.calculate_revenue_after_race(mercedes_pos) }. {min([red_bull_pos, mercedes_pos])} is ahead at the { race_name } race."
