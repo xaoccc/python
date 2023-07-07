@@ -16,14 +16,6 @@ class ImageArea:
     def __eq__(self, other):
         return self.area == other.area
 
-    def __ne__(self, other):
-        return self.area != other.area
-
-    def __gt__(self, other):
-        return self.area > other.area
-
-    def __ge__(self, other):
-        return self.area >= other.area
 
 
 
