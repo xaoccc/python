@@ -18,7 +18,6 @@ class F1SeasonApp:
 
         else:
             raise ValueError("Invalid team name!")
-         
 
     def new_race_results(self, race_name, red_bull_pos, mercedes_pos):
         if self.red_bull_team is None or self.mercedes_team is None:
