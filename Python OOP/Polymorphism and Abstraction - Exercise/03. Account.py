@@ -14,7 +14,7 @@ class Account:
     def add_transaction(self, amount):
         if type(amount) != int:
             raise ValueError("please use int for amount")
-        self.handle_transaction(amount)
+        return self.handle_transaction(amount)
     
     def __str__(self):
         return f"Account of {self.owner} with starting amount: {self.amount}"
