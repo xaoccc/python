@@ -43,16 +43,7 @@ class Account:
         
     def __eq__(self, other):
         return self.amount == other.amount
-        
-    def __ge__(self, other):
-        return self.amount >= other.amount
-    
-    def __gt__(self, other):
-        return self.amount > other.amount
-        
-    def __ne__(self, other):
-        return self.amount != other.amount
-        
+
     def __add__(self, other):
         combined_transactions = self._transactions + other._transactions
         new_acc = Account(f"{self.owner}&{other.owner}", self.amount + other.amount)
