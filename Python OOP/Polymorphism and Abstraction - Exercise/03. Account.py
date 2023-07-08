@@ -45,7 +45,4 @@ class Account:
         return self.amount == other.amount
 
     def __add__(self, other):
-        combined_transactions = self._transactions + other._transactions
-        new_acc = Account(f"{self.owner}&{other.owner}", self.amount + other.amount)
-        new_acc._transactions = combined_transactions
-        return new_acc
+        return Account(f"{self.owner}&{other.owner}", self.amount + other.amount)
