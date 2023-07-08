@@ -14,11 +14,7 @@ class Account:
     def add_transaction(self, amount):
         if type(amount) != int:
             raise ValueError("please use int for amount")
-        if self.amount + amount < 0:
-            raise ValueError("sorry cannot go in debt!")
-        self.amount += amount
-        self._transactions.append(amount)
-        return f"New balance: {self.amount}"
+        self.handle_transaction(amount)
     
     def __str__(self):
         return f"Account of {self.owner} with starting amount: {self.amount}"
