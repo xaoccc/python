@@ -1,5 +1,3 @@
-from abc import ABC, abstractmethod
-
 
 class Animal:
     def __init__(self, species):
