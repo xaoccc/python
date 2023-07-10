@@ -23,7 +23,7 @@ class Route:
     @end_point.setter
     def end_point(self, value):
         if len(value.strip()) == 0:
-            raise ValueError("Start point cannot be empty!")
+            raise ValueError("End point cannot be empty!")
         self.__end_point = value 
         
     @property
@@ -32,6 +32,6 @@ class Route:
         
     @length.setter
     def length(self, value):
-        if value < 1:
+        if value < 1.00:
             raise ValueError("Length cannot be less than 1.00 kilometer!")
         self.__length = value
