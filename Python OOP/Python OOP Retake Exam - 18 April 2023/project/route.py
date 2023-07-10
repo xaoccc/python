@@ -1,5 +1,5 @@
 class Route:
-    def __init__(self, start_point: str, end_point: str, length: str, route_id: int):
+    def __init__(self, start_point: str, end_point: str, length: float, route_id: int):
         self.start_point = start_point
         self.end_point = end_point
         self.length = length

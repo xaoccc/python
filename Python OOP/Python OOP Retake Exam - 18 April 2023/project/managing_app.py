@@ -39,7 +39,6 @@ class ManagingApp:
         route_id = len(self.routes) + 1
         self.routes.append(Route(start_point, end_point, length, route_id))
         return f"{start_point}/{end_point} - {length} km is unlocked and available to use."
-        
     
     def make_trip(self, driving_license_number: str, license_plate_number: str, route_id: int,  is_accident_happened: bool):
         current_user, current_vehicle, current_route = self.users[0], self.vehicles[0], self.routes[0]
@@ -71,8 +70,7 @@ class ManagingApp:
         current_vehicle.drive(current_route.length)
         current_status = "Damaged" if current_vehicle.is_damaged else "OK"    
         return f"{current_vehicle.brand} {current_vehicle.model} License plate: {current_vehicle.license_plate_number} Battery: {current_vehicle.battery_level}% Status: {current_status}"
-            
-    
+
     def repair_vehicles(self, count: int):
         damaged_vehicles = sorted([v for v in self.vehicles if v.is_damaged], key=lambda x: (x.brand, x.model))
         first_count_vehicles = damaged_vehicles[:count]
@@ -82,7 +80,6 @@ class ManagingApp:
             v.battery_level = 100
 
         return f"{len(first_count_vehicles)} vehicles were successfully repaired!"
-
 
     def users_report(self):
         result = "*** E-Drive-Rent ***"
