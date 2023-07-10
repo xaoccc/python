@@ -21,12 +21,12 @@ class RubberDuck(Duck, ABC):
 
     def walk(self):
         """Rubber duck can walk only if you move it"""
-        raise Exception('I cannot walk by myself')
+        return "I cannot walk by myself"
 
 
     def fly(self):
         """Rubber duck can fly only if you throw it"""
-        raise Exception('I cannot fly by myself')
+        return 'I cannot fly by myself'
 
 
 class RobotDuck(Duck, ABC):
