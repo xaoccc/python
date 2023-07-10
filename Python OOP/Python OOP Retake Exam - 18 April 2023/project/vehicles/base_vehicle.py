@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 
+
 class BaseVehicle(ABC):
     def __init__(self, brand: str, model: str, license_plate_number: str, max_mileage: float):
         self.brand = brand
