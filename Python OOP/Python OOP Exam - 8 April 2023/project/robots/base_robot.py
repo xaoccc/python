@@ -13,7 +13,7 @@ class BaseRobot(ABC):
         
     @name.setter
     def name(self, value):
-        if len(name.strip()) == 0:
+        if len(value.strip()) == 0:
             raise ValueError("Robot name cannot be empty!")
         self.__name = value
         
@@ -23,7 +23,7 @@ class BaseRobot(ABC):
         
     @kind.setter
     def kind(self, value):
-        if len(kind.strip()) == 0:
+        if len(value.strip()) == 0:
             raise ValueError("Robot kind cannot be empty!")
         self.__kind = value    
         
