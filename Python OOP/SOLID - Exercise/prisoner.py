@@ -1,10 +1,14 @@
 import copy
+from abc import ABC, abstractmethod
 
-class Person:
 
+class Person(ABC):
+    @abstractmethod
     def __init__(self, position):
         self.position = position
 
+
+class FreePerson(Person):
     def walk_north(self, dist):
         self.position[1] += dist
 
