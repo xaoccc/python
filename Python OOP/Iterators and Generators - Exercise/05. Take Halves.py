@@ -1,6 +1,6 @@
 def solution():
     def integers():
-        i = 0
+        i = 1
         while True:
             yield i
             i += 1
@@ -10,15 +10,11 @@ def solution():
             yield i / 2
 
     def take(n, seq):
-        m = 0
-        while m <  n:
-            yield seq[m]
-            m += 1
-
-    return take, halves, integers
+        result = []
+        for i in range(n):
+            result.append(next(seq))
+        return result
 
 
-take = solution()[0]
-halves = solution()[1]
-print(take(5, halves()))
+    return (take, halves, integers)
 
