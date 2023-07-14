@@ -9,14 +9,12 @@ def solution():
         for i in integers():
             yield i / 2
 
-    # TODO: Implement
     def take(n, seq):
         m = 0
         while m <  n:
             yield seq[m]
             m += 1
 
-    # TODO: Implement
     return take, halves, integers
 
 
