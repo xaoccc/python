@@ -1,8 +1,10 @@
+from math import sqrt
+
 def get_primes(nums):
     for num in nums:
         if num <= 1:
             continue
-        for i in range(2, num):
+        for i in range(2, int(sqrt(num)) + 1):
             if num % i == 0:
                 break
         else:
