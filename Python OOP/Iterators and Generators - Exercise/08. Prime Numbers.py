@@ -1,5 +1,6 @@
 from math import sqrt
 
+
 def get_primes(nums):
     for num in nums:
         if num <= 1:
