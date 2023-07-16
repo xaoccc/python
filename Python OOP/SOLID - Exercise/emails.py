@@ -89,6 +89,6 @@ email.set_sender(this_sender)
 email.set_receiver(that_recipient)
 email.set_content(my_content)
 print(email)
-email.set_content(my_web_page)
-print(email)
+
+
 
