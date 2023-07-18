@@ -25,7 +25,7 @@ class Computer(ABC):
     @model.setter
     def model(self, value):
         if len(value.strip()) == 0:
-            raise ValueError("Manufacturer name cannot be empty.")
+            raise ValueError("Model name cannot be empty.")
         self.__model = value
             
     @abstractmethod        
