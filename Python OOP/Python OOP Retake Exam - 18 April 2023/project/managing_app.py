@@ -18,12 +18,14 @@ class ManagingApp:
         return f"{first_name} {last_name} was successfully registered under DLN-{driving_license_number}"
     
     def upload_vehicle(self, vehicle_type: str, brand: str, model: str, license_plate_number: str):
-        if vehicle_type != "PassengerCar" and vehicle_type != "CargoVan":
+        vehicle_types = {"PassengerCar": PassengerCar, "CargoVan": CargoVan}
+        if vehicle_type not in vehicle_types:
             return f"Vehicle type {vehicle_type} is inaccessible."
+        
         for vehicle in self.vehicles:
             if vehicle.license_plate_number == license_plate_number:
                 return f"{license_plate_number} belongs to another vehicle."
-        vehicle_types = {"PassengerCar": PassengerCar, "CargoVan": CargoVan}
+
         self.vehicles.append(vehicle_types[vehicle_type](brand, model, license_plate_number))
         return f"{brand} {model} was successfully uploaded with LPN-{license_plate_number}."
             
