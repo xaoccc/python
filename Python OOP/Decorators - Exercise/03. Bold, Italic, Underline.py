@@ -3,7 +3,7 @@ def make_bold(function):
         return f"<b>{function(*text)}</b>"
     return wrapper
 
-    
+
 def make_italic(function):
     def wrapper(*text):
         return f"<i>{function(*text)}</i>"
