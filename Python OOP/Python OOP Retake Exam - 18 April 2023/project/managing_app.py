@@ -21,7 +21,7 @@ class ManagingApp:
         vehicle_types = {"PassengerCar": PassengerCar, "CargoVan": CargoVan}
         if vehicle_type not in vehicle_types:
             return f"Vehicle type {vehicle_type} is inaccessible."
-        
+
         for vehicle in self.vehicles:
             if vehicle.license_plate_number == license_plate_number:
                 return f"{license_plate_number} belongs to another vehicle."
