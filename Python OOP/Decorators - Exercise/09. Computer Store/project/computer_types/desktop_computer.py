@@ -13,7 +13,7 @@ class DesktopComputer(Computer):
             raise ValueError(f"{processor} is not compatible with desktop computer {self.manufacturer} {self.model}!")
             
         valid_ram = [2, 4, 8, 16, 32, 64, 128]
-        if ram > 128 or ram not in valid_ram:
+        if ram not in valid_ram:
             raise ValueError(f"{ram}GB RAM is not compatible with desktop computer {self.manufacturer} {self.model}!")
             
         for r in range(len(valid_ram)):
