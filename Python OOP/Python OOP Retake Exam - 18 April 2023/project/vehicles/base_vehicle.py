@@ -37,7 +37,7 @@ class BaseVehicle(ABC):
     @license_plate_number.setter
     def license_plate_number(self, value):
         if len(value.strip()) == 0:
-            raise ValueError("License plate cannot be empty!")
+            raise ValueError("License plate number is required!")
         self.__license_plate_number = value
         
     @abstractmethod
