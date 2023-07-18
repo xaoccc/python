@@ -61,7 +61,7 @@ class ManagingApp:
                     return f"Route {route_id} is locked! This trip is not allowed."
                 
         if is_accident_happened:
-            current_vehicle.is_damaged = True
+            current_vehicle.change_status()
             current_user.decrease_rating()
         
         else:
@@ -76,7 +76,7 @@ class ManagingApp:
         first_count_vehicles = damaged_vehicles[:count]
 
         for v in first_count_vehicles:
-            v.is_damaged = False
+            v.change_status()
             v.battery_level = 100
 
         return f"{len(first_count_vehicles)} vehicles were successfully repaired!"
