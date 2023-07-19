@@ -121,6 +121,35 @@ class CarTests(unittest.TestCase):
             self.car.fuel_capacity = 0
         self.assertEqual("Fuel capacity cannot be zero or negative!", str(context.exception))
         
+    def test_refuel_valid(self):
+        self.car.refuel(69)
+        result = self.car.fuel_amount
+        expected_result = 69
+        self.assertEqual(result, expected_result)
+        
+    def test_refuel_more(self):
+        self.car.refuel(666)
+        result = self.car.fuel_amount
+        expected_result = 150
+        self.assertEqual(result, expected_result)
+        
+    def test_refuel_invalid(self):
+        with self.assertRaises(Exception) as context:
+            self.car.refuel(-69)
+        self.assertEqual("Fuel amount cannot be zero or negative!", str(context.exception))
+        
+    def test_drive_valid(self):
+        self.car.refuel(100)
+        self.car.drive(150)
+        result = self.car.fuel_amount
+        expected_result = 77.5
+        self.assertEqual(result, expected_result)
+        
+    def test_drive_invalid(self):
+        with self.assertRaises(Exception) as context:
+            self.car.drive(150)
+        self.assertEqual("You don't have enough fuel to drive!", str(context.exception))
+        
 
         
         
