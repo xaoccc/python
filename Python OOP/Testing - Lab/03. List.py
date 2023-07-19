@@ -2,16 +2,18 @@ import unittest
 
 
 class IntegerList:
-    def __init__(self):
+    def __init__(self, *args):
         self.integers = []
+        for x in args:
+            if isinstance(x, int):
+                self.integers.append(x)
         
     def add(self, num):
-        try:
-            self.integers.append(num)
-            return self.integers
-        except:
-            raise ValueError()
-            
+        if not isinstance(num, int):
+            raise ValueError("Element is not Integer")
+        self.integers.append(num)
+        return self.integers
+
     def remove_index(self, idx):
         try:
             self.integers.pop(idx)
@@ -28,7 +30,9 @@ class IntegerList:
         try: 
             self.integers.insert(idx, num)
         except:
-            raise ValueError() if not isinstance(num, int) else raise IndexError()
+            if not isinstance(num, int):
+                raise ValueError("Element is not Integer")  
+            raise IndexError()
             
     def get_biggest(self):
         return max(self.integers)
@@ -42,8 +46,14 @@ class IntegerList:
 
         
 
-class CatTests(unittest.TestCase):
+class ListTests(unittest.TestCase):
     def setUp(self):
+        self.my_list = IntegerList(1,2,3)
+        
+    def test_constructor(self):
+        result = self.my_list.integers
+        expected_result = [1,2,3]
+        self.assertEqual(result, expected_result)
         
         
 if __name__ == "__main__":
