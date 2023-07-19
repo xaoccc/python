@@ -6,4 +6,4 @@ class PassengerCar(BaseVehicle):
         super().__init__(brand, model, license_plate_number, max_mileage)
 
     def drive(self, mileage: float):
-        self.battery_level -= int((self.battery_level * (mileage / self.max_mileage)))
+        self.battery_level -= int((100 * (mileage / self.max_mileage)))
