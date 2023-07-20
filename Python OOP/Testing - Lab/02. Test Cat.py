@@ -43,7 +43,6 @@ class CatTests(unittest.TestCase):
             self.cat.eat()
         self.assertEqual(str(context.exception), 'Already fed.')
         
-        
     def test_sleep_if_not_fed(self):
         with self.assertRaises(Exception) as context:
             self.cat.sleep()
