@@ -24,6 +24,12 @@ class Cat:
 class CatTests(unittest.TestCase):
     def setUp(self):
         self.cat = Cat("Frodo")
+
+    def test_init(self):
+        self.assertEqual("Frodo", self.cat.name)
+        self.assertFalse(self.cat.fed)
+        self.assertFalse(self.cat.sleepy)
+        self.assertEqual(0, self.cat.size)
     
     def test_cat_size(self):
         self.cat.eat()
