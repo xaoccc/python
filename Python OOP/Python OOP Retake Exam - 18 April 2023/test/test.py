@@ -21,6 +21,7 @@ class RobotTests(unittest.TestCase):
     def test_invalid_price(self):
         with self.assertRaises(ValueError) as context:
             self.robot.price = -200
+        self.assertEqual("Price cannot be negative!", str(context.exception))
         
     def test_upgrade_has_upgrade(self):
         self.robot.upgrade("Machine Gun", 600)
