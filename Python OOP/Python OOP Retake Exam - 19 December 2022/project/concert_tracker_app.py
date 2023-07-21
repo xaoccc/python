@@ -64,14 +64,14 @@ class ConcertTrackerApp:
         if not current_band:
             raise Exception(f"{band_name} isn't a band!")
             
-        for musician in current_band.musicians:
+        for musician in current_band.members:
             if musician.name == musician_name:
                 current_musician = musician
                 
         if not current_musician:
             raise Exception(f"{musician_name} isn't a member of {band_name}!")
             
-        current_band.musicians.remove(current_musician)
+        current_band.members.remove(current_musician)
         return f"{musician_name} was removed from {band_name}."
     
     def start_concert(self, concert_place: str, band_name: str):
