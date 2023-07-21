@@ -28,24 +28,36 @@ class TestToyStore(unittest.TestCase):
 
     def test_add_toy_nonexistent_shelf(self):
         toy_store = ToyStore()
-        with self.assertRaises(Exception):
+        with self.assertRaises(Exception) as ex:
             toy_store.add_toy('H', 'Teddy Bear')
+        self.assertEqual("Shelf doesn't exist!", str(ex.exception))
 
     def test_add_toy_occupied_shelf(self):
         toy_store = ToyStore()
         toy_store.add_toy('A', 'Teddy Bear')
-        with self.assertRaises(Exception):
+        with self.assertRaises(Exception) as ex:
             toy_store.add_toy('A', 'Barbie Doll')
+        self.assertEqual("Shelf is already taken!", str(ex.exception))
+
+    def test_add_toy_already_in_shelf(self):
+        toy_store = ToyStore()
+        toy_store.add_toy('A', 'Teddy Bear')
+        with self.assertRaises(Exception) as ex:
+            toy_store.add_toy('A', 'Teddy Bear')
+        self.assertEqual("Toy is already in shelf!", str(ex.exception))
+
 
     def test_remove_toy_nonexistent_shelf(self):
         toy_store = ToyStore()
-        with self.assertRaises(Exception):
+        with self.assertRaises(Exception) as ex:
             toy_store.remove_toy('H', 'Teddy Bear')
+        self.assertEqual("Shelf doesn't exist!", str(ex.exception))
 
     def test_remove_nonexistent_toy_from_shelf(self):
         toy_store = ToyStore()
-        with self.assertRaises(Exception):
+        with self.assertRaises(Exception) as ex:
             toy_store.remove_toy('A', 'Teddy Bear')
+        self.assertEqual("Toy in that shelf doesn't exists!", str(ex.exception))
 
     def test_remove_toy_from_all_shelves(self):
         toy_store = ToyStore()
