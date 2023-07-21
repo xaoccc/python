@@ -19,5 +19,6 @@ class Booth(ABC):
             raise ValueError("Capacity cannot be a negative number!")
         self.__capacity = value
         
-    def reserve(self):
+    @abstractmethod
+    def reserve(self, number_of_people):
         pass
