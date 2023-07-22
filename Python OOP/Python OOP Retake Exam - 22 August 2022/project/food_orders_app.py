@@ -32,6 +32,9 @@ class FoodOrdersApp:
         return "\n".join(result)
 
     def add_meals_to_shopping_cart(self, client_phone_number: str, **meal_names_and_quantities):
+        if len(self.menu) < 5:
+            raise Exception("The menu is not ready!")
+
         current_client = ""
         for client in self.clients:
             if client.phone_number == client_phone_number:
@@ -41,9 +44,27 @@ class FoodOrdersApp:
             current_client = Client(client_phone_number)
             self.clients.append(current_client)
 
-        for name, quantity in meal_names_and_quantities.items():
+        available_meals = []
+        for meal in self.menu:
+            available_meals.append(meal.name)
+
+        ordered_meals_names = []
+        for meal_name, quantity in meal_names_and_quantities.items():
+            if meal_name not in available_meals:
+                #to-do: remove just the current bill/meals
+                current_client.shopping_cart =[]
+                current_client.bill = 0.0
+                raise Exception(f"{meal_name} is not on the menu!")
+
             for meal in self.menu:
-                if meal.name == name:
-                    if meal.quantity >= quantity:
+                if meal.name == meal_name:
+                    if meal.quantity < quantity:
+                        # to-do: remove just the current bill/meals
+                        current_client.shopping_cart = []
+                        current_client.bill = 0.0
+                        raise Exception(f"Not enough quantity of {meal.__class__.__name__}: {meal_name}!")
+                    current_client.shopping_cart.append(meal)
+                    current_client.bill += quantity * meal.price
+
 
 
