@@ -31,3 +31,19 @@ class FoodOrdersApp:
             result.append(meal.details())
         return "\n".join(result)
 
+    def add_meals_to_shopping_cart(self, client_phone_number: str, **meal_names_and_quantities):
+        current_client = ""
+        for client in self.clients:
+            if client.phone_number == client_phone_number:
+                current_client = client
+                break
+        if not current_client:
+            current_client = Client(client_phone_number)
+            self.clients.append(current_client)
+
+        for name, quantity in meal_names_and_quantities.items():
+            for meal in self.menu:
+                if meal.name == name:
+                    if meal.quantity >= quantity:
+
+
