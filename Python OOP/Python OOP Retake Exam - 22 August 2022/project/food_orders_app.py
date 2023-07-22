@@ -16,6 +16,7 @@ class FoodOrdersApp:
                 raise Exception("The client has already been registered!")
 
         self.clients.append(Client(client_phone_number))
+        return f"Client {client_phone_number} registered successfully."
 
     def add_meals_to_menu(self, *meals: Meal):
         acceptable_meals = {"Starter": Starter, "MainDish": MainDish, "Dessert": Dessert}
@@ -67,8 +68,11 @@ class FoodOrdersApp:
                     current_client.shopping_cart.append(meal)
                     current_client_bill += quantity * meal.price
                     ordered_meals_names.append(meal.name)
-            current_client.bill += current_client_bill
-            return f"Client {client_phone_number} successfully ordered {ordered_meals_names} for {current_client_bill}lv."
+        current_client.bill += current_client_bill
+        total_ordered_meals_from_client = []
+        for meal in current_client.shopping_cart:
+            total_ordered_meals_from_client.append(meal.name)
+        return f"Client {client_phone_number} successfully ordered {', '.join(total_ordered_meals_from_client)} for {current_client.bill:.2f}lv."
 
     def cancel_order(self, client_phone_number: str):
         for client in self.clients:
@@ -101,14 +105,9 @@ class FoodOrdersApp:
         return f"Food Orders App has {len(self.menu)} meals on the menu and {len(self.clients)} clients."
 
 
-food_orders_app = FoodOrdersApp()
-print(food_orders_app.register_client("0899999999"))
-french_toast = Starter("French toast", 6.50, 5)
-hummus_and_avocado_sandwich = Starter("Hummus and Avocado Sandwich", 7.90)
-tortilla_with_beef_and_pork = MainDish("Tortilla with Beef and Pork", 12.50, 12)
-risotto_with_wild_mushrooms = MainDish("Risotto with Wild Mushrooms", 15)
-chocolate_cake_with_mascarpone = Dessert("Chocolate Cake with Mascarpone", 4.60, 17)
-chocolate_and_violets = Dessert("Chocolate and Violets", 5.20)
+
+
+
 
 
 
