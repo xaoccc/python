@@ -93,11 +93,22 @@ class FoodOrdersApp:
             if client.phone_number == client_phone_number:
                 current_client = client
                 break
-                
+
         self.receipt_id += 1
-        return f"Receipt #{self.receipt_id} with total amount of {current_client.bill} was successfully paid for {client_phone_number}."
+        return f"Receipt #{self.receipt_id} with total amount of {current_client.bill:.2f} was successfully paid for {client_phone_number}."
+
+    def __str__(self):
+        return f"Food Orders App has {len(self.menu)} meals on the menu and {len(self.clients)} clients."
 
 
+food_orders_app = FoodOrdersApp()
+print(food_orders_app.register_client("0899999999"))
+french_toast = Starter("French toast", 6.50, 5)
+hummus_and_avocado_sandwich = Starter("Hummus and Avocado Sandwich", 7.90)
+tortilla_with_beef_and_pork = MainDish("Tortilla with Beef and Pork", 12.50, 12)
+risotto_with_wild_mushrooms = MainDish("Risotto with Wild Mushrooms", 15)
+chocolate_cake_with_mascarpone = Dessert("Chocolate Cake with Mascarpone", 4.60, 17)
+chocolate_and_violets = Dessert("Chocolate and Violets", 5.20)
 
 
 
