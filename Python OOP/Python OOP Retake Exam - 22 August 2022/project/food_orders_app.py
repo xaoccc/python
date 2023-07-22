@@ -5,6 +5,7 @@ from project.meals.main_dish import MainDish
 from project.meals.dessert import Dessert
 
 class FoodOrdersApp:
+    receipt_id = 0
     def __init__(self):
         self.menu = []
         self.clients = []
@@ -36,6 +37,7 @@ class FoodOrdersApp:
             raise Exception("The menu is not ready!")
 
         current_client = ""
+        current_client_bill = 0
         for client in self.clients:
             if client.phone_number == client_phone_number:
                 current_client = client
@@ -50,10 +52,10 @@ class FoodOrdersApp:
 
         ordered_meals_names = []
         for meal_name, quantity in meal_names_and_quantities.items():
+
             if meal_name not in available_meals:
                 #to-do: remove just the current bill/meals
                 current_client.shopping_cart =[]
-                current_client.bill = 0.0
                 raise Exception(f"{meal_name} is not on the menu!")
 
             for meal in self.menu:
@@ -61,10 +63,41 @@ class FoodOrdersApp:
                     if meal.quantity < quantity:
                         # to-do: remove just the current bill/meals
                         current_client.shopping_cart = []
-                        current_client.bill = 0.0
                         raise Exception(f"Not enough quantity of {meal.__class__.__name__}: {meal_name}!")
                     current_client.shopping_cart.append(meal)
-                    current_client.bill += quantity * meal.price
+                    current_client_bill += quantity * meal.price
+                    ordered_meals_names.append(meal.name)
+            current_client.bill += current_client_bill
+            return f"Client {client_phone_number} successfully ordered {ordered_meals_names} for {current_client_bill}lv."
+
+    def cancel_order(self, client_phone_number: str):
+        for client in self.clients:
+            if client.phone_number == client_phone_number:
+                current_client = client
+                break
+        if not current_client.shopping_cart:
+            raise Exception("There are no ordered meals!")
+
+        # update the quantity of the meals on the menu list after the cancellation
+        for meal in current_client.shopping_cart:
+            self.menu.append(meal)
+
+        current_client.shopping_cart = []
+        current_client.bill = 0
+
+        return f"Client {client_phone_number} successfully canceled his order."
+
+    def finish_order(self, client_phone_number: str):
+        receipt_id = 1
+        for client in self.clients:
+            if client.phone_number == client_phone_number:
+                current_client = client
+                break
+                
+        self.receipt_id += 1
+        return f"Receipt #{self.receipt_id} with total amount of {current_client.bill} was successfully paid for {client_phone_number}."
+
+
 
 
 
