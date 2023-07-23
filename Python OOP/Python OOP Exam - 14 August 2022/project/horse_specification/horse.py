@@ -26,3 +26,7 @@ class Horse(ABC):
         if value > self.maximum_speed:
             raise ValueError("Horse speed is too high!")
         self.__speed = value
+
+    @abstractmethod
+    def train(self):
+        pass
