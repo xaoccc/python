@@ -2,11 +2,7 @@
 <module type="PYTHON_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/Python OOP/Inheritance - Lab/02. Single Inheritance" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Python OOP/Inheritance - Lab/03. Multiple Inheritance" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Python OOP/Inheritance - Lab/04. Multilevel Inheritance" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Python OOP/Inheritance - Lab/05. Hierarchical Inheritance" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Python OOP/Inheritance - Lab/06. Stack of Strings" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Python OOP/Python OOP Retake Exam - 18 April 2022" isTestSource="false" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.9 (2)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />

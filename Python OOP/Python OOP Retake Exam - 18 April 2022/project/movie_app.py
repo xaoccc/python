@@ -48,14 +48,13 @@ class MovieApp:
         if movie.owner.username != username:
             raise Exception(f"{username} is not the owner of the movie {movie.title}!")
 
+
         for movie_attribute, new_attribute_value in kwargs.items():
-            if movie_attribute == movie.title:
+            if movie_attribute == "title":
                 movie.title = new_attribute_value
-
-            elif movie_attribute == movie.year:
+            elif movie_attribute == "year":
                 movie.year = new_attribute_value
-
-            elif movie_attribute == movie.age_restriction:
+            elif movie_attribute == "age_restriction":
                 movie.age_restriction = new_attribute_value
 
         return f"{username} successfully edited {movie.title} movie."
@@ -68,6 +67,7 @@ class MovieApp:
             raise Exception(f"The movie {movie.title} is not uploaded!")
 
         current_user = self.find_user(self.users_collection, username)
+
         current_user.movies_owned.remove(movie)
         self.movies_collection.remove(movie)
         return f"{username} successfully deleted {movie.title} movie."
@@ -135,13 +135,20 @@ class MovieApp:
 # user2 = movie_app.users_collection[1]
 # movie2 = Action('Free Guy', 2021, user2, 16)
 # print(movie_app.upload_movie('Alexandra', movie2))
+#
 # print(movie_app.edit_movie('Alexandra', movie2, title="Free Guy 2"))
+# print(movie_app.edit_movie('Alexandra', movie2, title="Free Guy 3"))
+# print(movie_app.edit_movie('Alexandra', movie2, title="Free Guy 4"))
+#
 # print(movie_app.like_movie('Martin', movie2))
+# print(movie_app.edit_movie('Martin', movie2, title="Die Hard", ))
+
+
 # print(movie_app.like_movie('Alexandra', movie))
 # print(movie_app.dislike_movie('Martin', movie2))
 # print(movie_app.like_movie('Martin', movie2))
 # print(movie_app.delete_movie('Alexandra', movie2))
-# movie2 = Fantasy('The Lord of the Rings', 1988, user2, 14)
+# movie2 = Fantasy('The Lord of the Rings', 2023, user2, 14)
 # print(movie_app.upload_movie('Alexandra', movie2))
 # print(movie_app.display_movies())
 # print(movie_app)
