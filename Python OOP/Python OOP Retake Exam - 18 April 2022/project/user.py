@@ -32,6 +32,8 @@ class User:
                 result.append(movie.details())
         else:
             result.append("No movies liked.")
+            
+        result.append("Owned movies:")
 
         if self.movies_owned:
             for movie in self.movies_owned:
