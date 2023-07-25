@@ -28,7 +28,7 @@ class Controller:
 
     def sustain(self, player_name: str, sustenance_type: str):
         current_player = self.find_player(self.players, player_name)
-        if not current_player:
+        if not current_player or sustenance_type not in ["Food", "Drink"]:
             return
         if not current_player.need_sustenance:
             return f"{player_name} have enough stamina."
