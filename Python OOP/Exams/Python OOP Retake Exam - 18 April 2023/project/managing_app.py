@@ -43,7 +43,7 @@ class ManagingApp:
         return f"{start_point}/{end_point} - {length} km is unlocked and available to use."
     
     def make_trip(self, driving_license_number: str, license_plate_number: str, route_id: int,  is_accident_happened: bool):
-        current_user, current_vehicle, current_route = self.users[0], self.vehicles[0], self.routes[0]
+        current_user, current_vehicle, current_route = None, None, None
         for user in self.users:
             if user.driving_license_number == driving_license_number:
                 current_user = user
@@ -70,7 +70,7 @@ class ManagingApp:
             current_user.increase_rating()
             
         current_vehicle.drive(current_route.length)
-        return current_vehicle
+        return str(current_vehicle)
 
     def repair_vehicles(self, count: int):
 
@@ -92,3 +92,27 @@ class ManagingApp:
 
 
 
+app = ManagingApp()
+print(app.register_user( 'Tisha', 'Reenie', '7246506' ))
+print(app.register_user( 'Bernard', 'Remy', 'CDYHVSR68661'))
+print(app.register_user( 'Mack', 'Cindi', '7246506'))
+print(app.upload_vehicle('PassengerCar', 'Chevrolet', 'Volt', 'CWP8032'))
+print(app.upload_vehicle( 'PassengerCar', 'Volkswagen', 'e-Up!', 'COUN199728'))
+print(app.upload_vehicle('PassengerCar', 'Mercedes-Benz', 'EQS', '5UNM315'))
+print(app.upload_vehicle('CargoVan', 'Ford', 'e-Transit', '726QOA'))
+print(app.upload_vehicle('CargoVan', 'BrightDrop', 'Zevo400', 'SC39690'))
+print(app.upload_vehicle('EcoTruck', 'Mercedes-Benz', 'eActros', 'SC39690'))
+print(app.upload_vehicle('PassengerCar', 'Tesla', 'CyberTruck', '726QOA'))
+print(app.allow_route('SOF', 'PLD', 144))
+print(app.allow_route('BUR', 'VAR', 87))
+print(app.allow_route('BUR', 'VAR', 87))
+print(app.allow_route('SOF', 'PLD', 184))
+print(app.allow_route('BUR', 'VAR', 86.999))
+print(app.make_trip('CDYHVSR68661', '5UNM315', 3, False))
+print(app.make_trip('7246506', 'CWP8032', 1, True))
+print(app.make_trip('7246506', 'COUN199728', 1, False))
+print(app.make_trip('CDYHVSR68661', 'CWP8032', 3, False))
+print(app.make_trip('CDYHVSR68661', '5UNM315', 2, False))
+print(app.repair_vehicles(2))
+print(app.repair_vehicles(20))
+print(app.users_report())
