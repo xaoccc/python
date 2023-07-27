@@ -1,7 +1,6 @@
 from project.astronaut.astronaut import Astronaut
-from project.astronaut.biologist import Biologist
-from project.astronaut.meteorologist import Meteorologist
-from project.astronaut.geodesist import Geodesist
+
+
 class AstronautRepository:
     def __init__(self):
         self.astronauts = []
@@ -15,4 +14,4 @@ class AstronautRepository:
     def find_by_name(self, name: str):
         for astronaut in self.astronauts:
             if astronaut.name == name:
-                return astronaut.name
+                return astronaut
