@@ -38,7 +38,11 @@ class HashTable:
             raise KeyError("No such key in hash table!")
 
     def get(self, key):
-        return self.__getitem__(key)
+        try:
+            index = self.__keys.index(key)
+            return self.__values[index]
+        except ValueError:
+            return "Nema kliuch ama ne e problem"
 
     def __resize(self):
         self.__keys +=  [None] * self.__size
@@ -69,6 +73,6 @@ table["has_bear"] = False
 table.add("car","Golf")
 
 print(table)
-print(table.get("age"))
+print(table.get("aaage"))
 print(table["name"])
 
