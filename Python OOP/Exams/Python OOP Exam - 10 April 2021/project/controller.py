@@ -16,7 +16,6 @@ class Controller:
         self.decorations_repository = DecorationRepository()
         self.aquariums = []
 
-
     @staticmethod
     def find_aquarium(aquarium_name, aquariums):
         for aquarium in aquariums:
