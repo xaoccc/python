@@ -16,7 +16,10 @@ class BaseAquarium(ABC):
         if len(self.fish) == self.capacity:
             return "Not enough capacity."
 
-        if fish.__class__.__name__[:7] == self.__class__.__name__[:7] and fish.__class__.__name__ in ["FreshwaterFish", "SaltwaterFish"]:
+        if fish.__class__.__name__[:7] != self.__class__.__name__[:7]:
+            return "Water not suitable."
+
+        if fish.__class__.__name__ in ["FreshwaterFish", "SaltwaterFish"]:
             self.fish.append(fish)
             return f"Successfully added {fish.__class__.__name__} to {self.name}."
 
