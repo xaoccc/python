@@ -44,13 +44,13 @@ class Controller:
     def insert_decoration(self, aquarium_name: str, decoration_type: str):
         aquarium = self.find_aquarium(aquarium_name, self.aquariums)
         decoration = self.find_decoration(decoration_type, self.decorations_repository.decorations)
-        if not decoration or not aquarium:
-            return f"There isn't a decoration of type {decoration_type}."
 
+        if decoration and aquarium:
+            self.decorations_repository.decorations.remove(decoration)
+            aquarium.add_decoration(decoration)
+            return f"Successfully added {decoration_type} to {aquarium_name}."
 
-        self.decorations_repository.decorations.remove(decoration)
-        aquarium.add_decoration(decoration)
-        return f"Successfully added {decoration_type} to {aquarium_name}."
+        return f"There isn't a decoration of type {decoration_type}."
 
     def add_fish(self, aquarium_name: str, fish_type: str, fish_name: str, fish_species: str, price: float):
         if fish_type not in self.fish_types:
