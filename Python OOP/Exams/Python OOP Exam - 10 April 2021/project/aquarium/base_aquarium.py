@@ -36,6 +36,6 @@ class BaseAquarium(ABC):
 
     def __str__(self):
         if self.fish:
-            return f"{self.name}:\nFish: {' '.join([fish.name for fish in self.fish])}"
-        return f"{self.name}:\nFish: none"
+            return f"{self.name}:\nFish: {' '.join([fish.name for fish in self.fish])}\nDecorations: {len(self.decorations)}\nComfort: {sum([dec.comfort for dec in self.decorations])}"
+        return f"{self.name}:\nFish: none\nDecorations: {len(self.decorations)}\nComfort: {sum([dec.comfort for dec in self.decorations])}"
 

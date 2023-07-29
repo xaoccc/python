@@ -82,9 +82,6 @@ class Controller:
         result = []
         for aqua in self.aquariums:
             result.append(str(aqua))
-            result.append(f"Decorations: {len(aqua.decorations)}")
-            result.append(f"Comfort: {sum([dec.comfort for dec in aqua.decorations])}")
-
         return "\n".join(result)
 
 
