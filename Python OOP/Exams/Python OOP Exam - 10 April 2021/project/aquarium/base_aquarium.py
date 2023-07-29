@@ -19,9 +19,8 @@ class BaseAquarium(ABC):
         if fish.__class__.__name__[:7] != self.__class__.__name__[:7]:
             return "Water not suitable."
 
-        if fish.__class__.__name__ in ["FreshwaterFish", "SaltwaterFish"]:
-            self.fish.append(fish)
-            return f"Successfully added {fish.__class__.__name__} to {self.name}."
+        self.fish.append(fish)
+        return f"Successfully added {fish.__class__.__name__} to {self.name}."
 
     def remove_fish(self, fish):
         if fish in self.fish:
