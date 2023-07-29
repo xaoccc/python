@@ -7,7 +7,7 @@ class HashTable:
 
 
     def find_index(self, test):
-        current_index = sum([ord(char) for char in test]) % self.__size
+        current_index = sum([int(ord(char) * 3.6) for char in test]) % self.__size
 
         while True:
             if not self.__keys[current_index % self.__size]:
