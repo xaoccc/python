@@ -2,11 +2,12 @@ from abc import ABC, abstractmethod
 
 
 class BaseFish(ABC):
-    def __init__(self, name, species, size, price):
+    def __init__(self, name, species, price, size):
         self.name = name
         self.species = species
-        self.size = size
         self.price = price
+        self.size = size
+
 
     @property
     def name(self):
@@ -34,7 +35,7 @@ class BaseFish(ABC):
 
     @price.setter
     def price(self, value):
-        if value < 0:
+        if value <= 0:
             raise ValueError("Price cannot be equal to or below zero.")
         self.__price = value
 
