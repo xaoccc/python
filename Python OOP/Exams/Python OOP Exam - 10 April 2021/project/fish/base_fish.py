@@ -37,3 +37,7 @@ class BaseFish(ABC):
         if value < 0:
             raise ValueError("Price cannot be equal to or below zero.")
         self.__price = value
+
+    @abstractmethod
+    def eat(self):
+        self.size += 5
