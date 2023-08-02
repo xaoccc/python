@@ -1,4 +1,5 @@
 class HorseRace:
+    VALID_RACES = ["Winter", "Spring", "Autumn", "Summer"]
     def __init__(self, race_type: str):
         self.race_type = race_type
         self.jockeys = []
@@ -9,7 +10,7 @@ class HorseRace:
 
     @race_type.setter
     def race_type(self, value):
-        if value not in ["Winter", "Summer", "Autumn", "Spring"]:
+        if value not in self.VALID_RACES:
             raise ValueError("Race type does not exist!")
         self.__race_type = value
 
