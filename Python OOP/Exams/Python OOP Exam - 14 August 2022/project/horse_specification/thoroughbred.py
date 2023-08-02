@@ -9,6 +9,6 @@ class Thoroughbred(Horse):
 
     def train(self):
         if self.speed + 3 > 140:
-            self.speed = 120
+            self.speed = 140
         else:
             self.speed += 3
