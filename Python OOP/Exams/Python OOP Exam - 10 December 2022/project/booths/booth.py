@@ -9,10 +9,10 @@ class Booth(ABC):
         self.price_for_reservation = 0
         self.is_reserved = False
         
-    @property    
+    @property
     def capacity(self):
         return self.__capacity
-        
+
     @capacity.setter
     def capacity(self, value):
         if value <= 0:
