@@ -16,7 +16,8 @@ class Hardware:
         self.software_components.append(software)
 
     def uninstall(self, software):
-        if software in self.software_components:
-            self.software_components.remove(software)
+        for s in self.software_components:
+            if s.name == software.name:
+                self.software_components.remove(s)
 
 
