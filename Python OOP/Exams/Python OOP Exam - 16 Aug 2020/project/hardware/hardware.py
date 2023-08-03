@@ -3,7 +3,7 @@ from project.software.light_software import LightSoftware
 from project.software.express_software import ExpressSoftware
 
 class Hardware:
-    def __init__(self, name,  capacity, memory, hardware_type):
+    def __init__(self, name,  hardware_type, capacity, memory):
         self.name = name
         self.capacity = capacity
         self.memory = memory
