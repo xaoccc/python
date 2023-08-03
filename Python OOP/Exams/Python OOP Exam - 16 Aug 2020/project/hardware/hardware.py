@@ -3,11 +3,11 @@ from project.software.light_software import LightSoftware
 from project.software.express_software import ExpressSoftware
 
 class Hardware:
-    def __init__(self, name, hardware_type, capacity, memory):
+    def __init__(self, name,  capacity, memory, hardware_type):
         self.name = name
-        self.hardware_type = hardware_type
         self.capacity = capacity
         self.memory = memory
+        self.hardware_type = hardware_type
         self.software_components = []
 
     def install(self, software):
