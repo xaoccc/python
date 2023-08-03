@@ -11,10 +11,12 @@ class System:
     @staticmethod
     def register_power_hardware(name: str, capacity: int, memory: int):
         System._hardware.append(PowerHardware(name, capacity, memory))
+        
 
     @staticmethod
     def register_heavy_hardware(name: str, capacity: int, memory: int):
         System._hardware.append(HeavyHardware(name, capacity, memory))
+
 
     @staticmethod
     def register_express_software(hardware_name: str, name: str, capacity_consumption: int, memory_consumption: int):
@@ -27,6 +29,7 @@ class System:
                 current_hardware = hardware
         current_hardware.install(ExpressSoftware(name, capacity_consumption, memory_consumption))
         System._software.append(ExpressSoftware(name, capacity_consumption, memory_consumption))
+
 
 
     @staticmethod
