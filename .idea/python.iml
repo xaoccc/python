@@ -2,7 +2,6 @@
 <module type="PYTHON_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/Python OOP/Exams/Python OOP Exam - 10 April 2021" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Python OOP/Python OOP Retake Exam - 18 April 2022" isTestSource="false" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.9 (2)" jdkType="Python SDK" />
