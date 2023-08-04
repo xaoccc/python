@@ -69,15 +69,17 @@ class Controller:
             attacker = second_player
             attacked = first_player
 
-        attacked.stamina -= attacker.stamina / 2
-        if attacked.stamina <= 0:
+        if attacked.stamina - attacker.stamina / 2 <= 0:
             attacked.stamina = 0
             return f"Winner: {attacker.name}"
 
-        attacker.stamina -= attacked.stamina / 2
-        if attacker.stamina <= 0:
+        attacked.stamina -= attacker.stamina / 2
+
+        if attacker.stamina - attacked.stamina / 2 <= 0:
             attacker.stamina = 0
             return f"Winner: {attacked.name}"
+
+        attacker.stamina -= attacked.stamina / 2
 
         if max([first_player.stamina, second_player.stamina]) == first_player.stamina:
             return f"Winner: {first_player.name}"
