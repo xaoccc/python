@@ -59,7 +59,7 @@ class Controller:
         if not current_driver:
             raise Exception(f"Driver {driver_name} could not be found!")
 
-        if car_type not in self.VALID_CAR_TYPES or car_type not in [car.__class__.__name__ for car in self.cars]:
+        if car_type not in self.VALID_CAR_TYPES or car_type not in [car.__class__.__name__ for car in self.cars if not car.is_taken]:
             raise Exception(f"Car {car_type} could not be found!")
 
         for i in range(len(self.cars) - 1, -1, -1):
