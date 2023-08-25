@@ -3,7 +3,7 @@
 
 nodes = int(input())
 graph = {}
-visited = set()
+visited = []
 
 for n in range(nodes):
     graph[n] = [int(i) for i in input().split()]
@@ -12,13 +12,13 @@ def dfs(node, graph, visited, current_graph):
     if node in visited:
         return
 
-    visited.add(node)
+    visited.append(node)
     dfs(node, graph, visited, current_graph)
 
     for child in graph[node]:
         dfs(child, graph, visited, current_graph)
     current_graph.append(node)
-    # print(node)
+
 
 for node in graph.keys():
     current_graph = []
