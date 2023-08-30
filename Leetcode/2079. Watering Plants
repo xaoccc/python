@@ -1,0 +1,26 @@
+plants = [3,2,4,2,1]
+capacity = 6
+result = 0
+
+
+for i in range(len(plants)):
+    if 0 < plants[i] <= capacity:
+        capacity -= plants[i]
+        plants[i] = 0
+        result += 1
+        if i + 1 < len(plants) and capacity <= plants[i + 1]:
+            result += 2 * i + 2
+            capacity = 5
+            continue
+
+    elif plants[i] == 0:
+        result += i + 1
+
+    elif plants[i] > capacity:
+        result += i + 1 + i
+        capacity = 5
+
+    if sum(plants) == 0 and i == len(plants) - 1:
+        break
+
+print(result)
