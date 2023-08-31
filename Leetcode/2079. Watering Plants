@@ -1,26 +1,27 @@
-plants = [3,2,4,2,1]
-capacity = 6
-result = 0
+class Solution:
+    def wateringPlants(self, plants: List[int], capacity: int) -> int:
+        capacity_ = capacity
+        result = 0
 
 
-for i in range(len(plants)):
-    if 0 < plants[i] <= capacity:
-        capacity -= plants[i]
-        plants[i] = 0
-        result += 1
-        if i + 1 < len(plants) and capacity <= plants[i + 1]:
-            result += 2 * i + 2
-            capacity = 5
-            continue
+        for i in range(len(plants)):
+            if 0 < plants[i] <= capacity:
+                capacity -= plants[i]
+                plants[i] = 0
+                result += 1
+                if i + 1 < len(plants) and capacity < plants[i + 1]:
+                    result += 2 * (i + 1)
+                    capacity = capacity_
+                    continue
 
-    elif plants[i] == 0:
-        result += i + 1
+            elif plants[i] == 0:
+                result += i + 1
 
-    elif plants[i] > capacity:
-        result += i + 1 + i
-        capacity = 5
+            elif plants[i] > capacity:
+                result += i + 1 + i
+                capacity = capacity_
 
-    if sum(plants) == 0 and i == len(plants) - 1:
-        break
+            if sum(plants) == 0 and i == len(plants) - 1:
+                break
 
-print(result)
+        return result
