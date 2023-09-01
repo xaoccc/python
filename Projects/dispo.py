@@ -10,8 +10,9 @@ class Dispo:
         self.km = -1
 
     def get_km(self):
+
         while self.km != 0:
-            self.km = int(input("Enter km:"))
+            self.km = int(input("Enter km (0 if the driver stopped):"))
             self.total_km += self.km
             self.days += 1
 
