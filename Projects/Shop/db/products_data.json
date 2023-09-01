@@ -1,8 +1,1 @@
-{"A small planet": {"quantity": 0, "image": "images/planet.png"},
-  "BDSM mask": {"quantity": 99, "image": "images/bdsm_mask.png"},
-  "A Perfect Woman": {"quantity": 15, "image": "images/unicorn.png"},
-  "David Haselhoff": {"quantity": 0, "image": "images/david-h.png"},
-  "Cat": {"quantity": 4800, "image": "images/cat.png"},
-  "Beer": {"quantity": 666, "image": "images/beer.png",
-  "Cat": {"quantity": 5000, "image": "images/cat.png"}}
-}
+{"A small planet": {"quantity": 0, "image": "images/planet.png"}, "BDSM mask": {"quantity": 98, "image": "images/bdsm_mask.png"}, "A Perfect Woman": {"quantity": 15, "image": "images/unicorn.png"}, "David Haselhoff": {"quantity": 0, "image": "images/david-h.png"}, "Cat": {"quantity": 4800, "image": "images/cat.png"}, "Beer": {"quantity": 666, "image": "images/beer.png", "Cat": {"quantity": 5000, "image": "images/cat.png"}}}
