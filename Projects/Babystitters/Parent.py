@@ -1,7 +1,6 @@
-from abc import ABC, abstractmethod
 
-class Parent(ABC):
-    @abstractmethod
+class Parent:
+
     def __init__(self, first_name, last_name, id_number, age, gender, neighbourhood, rating):
         self.first_name = first_name
         self.last_name = last_name
