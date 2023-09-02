@@ -1,6 +1,7 @@
-from abc import ABC
+from abc import ABC, abstractmethod
 
 class Parent(ABC):
+    @abstractmethod
     def __init__(self, first_name, last_name, id_number, age, gender, neighbourhood, rating):
         self.first_name = first_name
         self.last_name = last_name
@@ -75,6 +76,10 @@ class Parent(ABC):
         if not -10000 <= value <= 10000:
             raise ValueError("Invalid rating! Rating cannot be less than -10000 or more than 10000!")
         self.__rating = value
+
+
+
+
 
 
 
