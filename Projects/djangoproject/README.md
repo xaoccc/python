@@ -1,6 +1,6 @@
 ### A simple phonebook web app with two input fields - name and phone number.
 
-### You can view it [here](https://8000-winter-sunset-71452461.eu-ws3.runcode.io/).
+
 
 <p align="center">
 <img src="https://github.com/xaoccc/python/blob/main/Library/django-project.png" />
