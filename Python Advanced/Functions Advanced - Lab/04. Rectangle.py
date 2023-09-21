@@ -1,5 +1,4 @@
 def rectangle(*size):
-
     if int(size[0]) == size[0] and int(size[1]) == size[1]:
         def area():
             return size[0] * size[1]
