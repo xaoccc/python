@@ -1,9 +1,7 @@
 import math
-
 r = 5
 a = 20
 b = 10
-
 circle_area = math.pi * r ** 2
 rect_area = a * b
 area_between_circles_and_rect = rect_area - (2 * circle_area)
