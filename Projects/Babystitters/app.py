@@ -13,8 +13,9 @@ class BabysitterApp:
             self.children.append(child)
 
 
-    def add_neighbourhood(self):
-        pass
+    def add_neighbourhood(self, neighbourhood):
+        if neighbourhood not in self.neighbourhoods:
+            self.neighbourhoods.append(neighbourhood)
 
 
     def add_child_to_parent(self):
