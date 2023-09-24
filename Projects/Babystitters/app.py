@@ -18,7 +18,8 @@ class BabysitterApp:
             self.neighbourhoods.append(neighbourhood)
 
 
-    def add_child_to_parent(self):
+    def add_child_to_parent(self, parent, child):
+        if 
         #check if parent and child are in the same neghbourhood, if not - error!
         pass
 
