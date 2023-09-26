@@ -1,4 +1,5 @@
 from Parent import Parent
+from Neighbourhood import Neighbourhood
 
 class Child:
     def __init__(self, name, age, neighbourhood, parent, other):
@@ -44,7 +45,8 @@ class Child:
         self.__age = value
 
 #tests
-parent = Parent("Maria", "Petrova", "1234567890", 34, "female", "Obelya", 100)
+neighbourhood = Neighbourhood(2, 3)
+parent = Parent("Maria", "Petrova", "1234567890", 34, "female", neighbourhood, 100)
 child = Child("Ivancho", 3, "ewfwe", parent, ["deaf"])
 
 print(child.age)
