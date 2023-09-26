@@ -1,4 +1,4 @@
-from parent import Parent
+from Parent import Parent
 
 class Child:
     def __init__(self, name, age, neighbourhood, parent, other):
