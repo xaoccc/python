@@ -30,3 +30,4 @@ for f in filtered_data:
             '''
     cur.execute(query, (file_name, file_path))
 con.commit()
+con.close()
