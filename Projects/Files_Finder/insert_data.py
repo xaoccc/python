@@ -24,7 +24,7 @@ for f in filtered_data:
 
     file_name = f.parts[-1][:-5]
     file_path = '\\'.join(f.parts[:-1])
-    query = '''INSERT INTO music(file_name, file_path)
+    query = '''INSERT INTO files(file_name, file_path)
             VALUES
                 (%s, %s, %s)
             '''
