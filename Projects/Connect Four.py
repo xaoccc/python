@@ -6,12 +6,10 @@ reset_game = deepcopy(playground)
 player_one_coords, player_two_coords = [], []
 player_one_win, player_two_win = False, False
 
-
 def out_of_playground(row, col):
     if row >= rows or col >= cols or row < 0 or col < 0:
         return True
     return False
-
 
 def win_check(player_win, n):
     if playground[j][k] == n:
