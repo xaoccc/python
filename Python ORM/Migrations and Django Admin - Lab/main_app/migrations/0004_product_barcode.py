@@ -13,7 +13,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='product',
             name='barcode',
-            field=models.IntegerField(default=0),
+            field=models.IntegerField(),
             preserve_default=False,
         ),
     ]
