@@ -1,3 +1,9 @@
 from django.contrib import admin
-
-# Register your models here.
+# from .models import Shoe, UniqueBrands
+# @admin.register(Shoe)
+# class ShoeAdmin(admin.ModelAdmin):
+#     pass
+#
+# @admin.register(UniqueBrands)
+# class UniqueBrandsAdmin(admin.ModelAdmin):
+#     pass

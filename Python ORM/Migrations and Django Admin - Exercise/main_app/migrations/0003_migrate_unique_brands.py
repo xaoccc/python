@@ -3,11 +3,28 @@
 from django.db import migrations
 
 
+def create_unique_shoe(apps, schema_editor):
+    # We get the two models - Shoe and UniqueBrands
+    shoe = apps.get_model("main_app", "Shoe")
+    unique_shoes = apps.get_model("main_app", "UniqueBrands")
+
+    # We connect to the db by creating an alias which points to the actual db alias
+    db_alias = schema_editor.connection.alias
+
+    # We filter just the unique brands from column "brand" of table/model "Shoe" in the current db
+    unique_shoes_names = shoe.objects.values_list("brand", flat=True).distinct()
+
+    #  In this code we create new records in the "UniqueBrands" table, and for each record,
+    #  we set the "brand_name" column to the value of s_n (as shoe_name),
+    #  which represents the distinct brand names from the "Shoe" model.
+    for s_n in unique_shoes_names:
+        unique_shoes.objects.using(db_alias).create(brand_name=s_n)
+
+
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('main_app', '0002_uniquebrands'),
+        ('main_app', '0002_uniquebrands')
     ]
 
-    operations = [
-    ]
+    operations = [migrations.RunPython(create_unique_shoe)]
