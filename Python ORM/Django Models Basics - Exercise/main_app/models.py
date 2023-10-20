@@ -23,14 +23,14 @@ class Recipe(models.Model):
     description = models.TextField()
     ingredients = models.TextField()
     cook_time = models.PositiveIntegerField()
-    created_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
 
 class Product(models.Model):
     name = models.CharField(max_length=70)
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    created_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
 
 class UserProfile(models.Model):
@@ -40,7 +40,7 @@ class UserProfile(models.Model):
     email = models.EmailField(unique=True, default="students@softuni.bg")
     bio = models.TextField(max_length=120)
     profile_image_url = models.URLField()
-    created_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
 
 class Exercise(models.Model):
@@ -65,7 +65,7 @@ class Book(models.Model):
         ("Horror", "Horror"))
 
     genre = models.CharField(max_length=20, choices=movies_genres)
-    publication_date = models.DateField(editable=False, auto_now=True)
+    publication_date = models.DateField(editable=False, auto_now_add=True)
     price = models.DecimalField(max_digits=8, decimal_places=2)
     is_available = models.BooleanField(default=True)
     rating = models.FloatField()
