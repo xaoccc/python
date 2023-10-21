@@ -3,7 +3,7 @@
 from django.db import migrations
 
 
-def create_unique_shoe(apps, schema_editor):
+def create_unique_brands(apps, schema_editor):
     # We get the two models - Shoe and UniqueBrands
     shoe = apps.get_model("main_app", "Shoe")
     unique_shoes = apps.get_model("main_app", "UniqueBrands")
@@ -19,12 +19,17 @@ def create_unique_shoe(apps, schema_editor):
     #  which represents the distinct brand names from the "Shoe" model.
     for s_n in unique_shoes_names:
         unique_shoes.objects.using(db_alias).create(brand_name=s_n)
+def reverse_create_unique_brands(apps, schema_editor):
+    print("Success")
+
 
 
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('main_app', '0002_uniquebrands')
+        ('main_app', '0001_initial'),
     ]
 
-    operations = [migrations.RunPython(create_unique_shoe)]
+    operations = [
+        migrations.RunPython(create_unique_brands, reverse_code=reverse_create_unique_brands),
+    ]
