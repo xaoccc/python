@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import EventRegistration, Movie, Student
+from .models import EventRegistration, Movie, Student, Supplier
 @admin.register(EventRegistration)
 class EventRegistrationAdmin(admin.ModelAdmin):
     list_display = ["event_name", "participant_name", "registration_date" ]
@@ -21,4 +21,14 @@ class StudentAdmin(admin.ModelAdmin):
     fieldsets = [
         ["Personal Information", {"fields": ["first_name", "last_name", "age", "date_of_birth"]}],
         ["Academic Information", {"fields": ["grade"]}]
+    ]
+
+@admin.register(Supplier)
+class SupplierAdmin(admin.ModelAdmin):
+    list_per_page = 20
+    list_display = ["name", "email", "phone" ]
+    list_filter = ["name", "phone"]
+    search_fields = ["email", "contact_person", "phone"]
+    fieldsets = [
+        ["Information", {"fields": ["name", "contact_person", "email", "address"]}]
     ]
