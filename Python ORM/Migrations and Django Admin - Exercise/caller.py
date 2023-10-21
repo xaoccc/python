@@ -7,9 +7,9 @@ django.setup()
 
 
 from main_app.models import Shoe
-# Import your models here
+
 def add_shoes():
-    # Adding the first product
+
     shoe1 = Shoe(
         brand="Nike",
         size=34
@@ -44,4 +44,4 @@ def add_shoes():
     return "5 Shoes added to the database"
 
 # Create queries within functions
-print(add_shoes())
+# print(add_shoes())

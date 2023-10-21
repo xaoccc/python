@@ -1,9 +1,9 @@
 from django.contrib import admin
-# from .models import Shoe, UniqueBrands
-# @admin.register(Shoe)
-# class ShoeAdmin(admin.ModelAdmin):
-#     pass
-#
-# @admin.register(UniqueBrands)
-# class UniqueBrandsAdmin(admin.ModelAdmin):
-#     pass
+from .models import EventRegistration
+@admin.register(EventRegistration)
+class EventRegistrationAdmin(admin.ModelAdmin):
+    list_display = ["event_name", "participant_name", "registration_date" ]
+    list_filter = ["event_name", "registration_date"]
+    search_fields = [ "event_name", "participant_name"]
+
+
