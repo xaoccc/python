@@ -6,7 +6,7 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "orm_skeleton.settings")
 django.setup()
 
 
-from main_app.models import Shoe
+from main_app.models import Shoe, Person
 
 def add_shoes():
 
@@ -43,5 +43,14 @@ def add_shoes():
 
     return "5 Shoes added to the database"
 
+def add_person():
+    person1 = Person(
+        name = "Vanessa",
+        age = 4
+    )
+    person1.save()
+
+    return "Person added to the database"
+
 # Create queries within functions
-# print(add_shoes())
+print(add_person())
