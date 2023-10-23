@@ -1,4 +1,4 @@
-# migrate Item model. Migration 0010_item.py
+# migrate JUST Item model. Migration 0010_item.py
 # create empty migration 0011_migrate_price_categories.py:
 # python manage.py makemigrations main_app --name migrate_price_categories --empty
 # Do not migrate yet! First create functions in 0011_migrate_price_categories.py as follows:
@@ -30,12 +30,12 @@ def unset_price_category(apps, schema_editor):
         item.save()
 
 # Do not forget to add dependencies and operations into 0011_migrate_price_categories.py
-# Double check filenames
+# Double check filenames !!!
 
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('main_app', '0011_item'),
+        ('main_app', '0010_item'),
     ]
 
     operations = [
@@ -48,7 +48,7 @@ class Migration(migrations.Migration):
 
 # ----------------------------------------------------------------------------------------
 
-# create and migrate Smartphone model
+# create and migrate JUST Smartphone model. Migration 0012_smartphone.py
 # Repeat steps as described above
 # Do not migrate yet! First create functions in 0013_migrate_price_categories_smartphones.py as follows:
-#
+
