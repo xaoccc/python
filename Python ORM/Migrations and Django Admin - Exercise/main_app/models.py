@@ -59,6 +59,7 @@ class Course(models.Model):
     def __str__(self):
         return f"{self.title} - {self.lecturer}"
 
+
 class Person(models.Model):
     name = models.CharField(max_length=40)
     age = models.PositiveIntegerField()
@@ -66,5 +67,12 @@ class Person(models.Model):
 
     def __str__(self):
         return f"Name: {self.name}"
+
+
+class Item(models.Model):
+    name = models.CharField(max_length=100)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    quantity = models.PositiveIntegerField(default=0)
+    rarity = models.CharField(max_length=20, default="empty")
 
 

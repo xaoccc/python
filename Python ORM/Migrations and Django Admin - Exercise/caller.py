@@ -53,4 +53,4 @@ def add_person():
     return "Person added to the database"
 
 # Create queries within functions
-print(add_person())
+# print(add_person())
