@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import EventRegistration, Movie, Student, Supplier, Course, Person
+
 @admin.register(EventRegistration)
 class EventRegistrationAdmin(admin.ModelAdmin):
     list_display = ["event_name", "participant_name", "registration_date" ]
