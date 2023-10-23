@@ -52,3 +52,53 @@ class Migration(migrations.Migration):
 # Repeat steps as described above
 # Do not migrate yet! First create functions in 0013_migrate_price_categories_smartphones.py as follows:
 
+def set_price_smartphones(apps, schema_editor):
+    Smartphone = apps.get_model("main_app", "Smartphone")
+    all_smartphones = Smartphone.objects.all()
+
+    for phone in all_smartphones:
+        phone.price = len(phone.brand) * 120
+        phone.save()
+
+def reset_price_smartphones(apps, schema_editor):
+    Smartphone = apps.get_model("main_app", "Smartphone")
+    all_smartphones = Smartphone.objects.all()
+
+    for phone in all_smartphones:
+        phone.price = 0
+        phone.save()
+
+# Ensure that you've applied the required migrations before proceeding to create the next function.
+
+
+def set_category_smartphones(apps, schema_editor):
+    Smartphone = apps.get_model("main_app", "Smartphone")
+    all_smartphones = Smartphone.objects.all()
+
+    for phone in all_smartphones:
+        if phone.price < 750:
+            phone.category = "Cheap"
+        else:
+            phone.category = "Expensive"
+        phone.save()
+
+
+def reset_category_smartphones(apps, schema_editor):
+    Smartphone = apps.get_model("main_app", "Smartphone")
+    all_smartphones = Smartphone.objects.all()
+
+    for phone in all_smartphones:
+        phone.category = "empty"
+        phone.save()
+
+
+class Migration(migrations.Migration):
+
+    dependencies = [
+        ('main_app', '0010_item'),
+    ]
+
+    operations = [
+        migrations.RunPython(set_price_smartphones, reverse_code=reset_price_smartphones),
+        # migrate, then add this operation: migrations.RunPython(set_category_smartphones, reverse_code=reset_category_smartphones)
+    ]
