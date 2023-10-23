@@ -95,7 +95,7 @@ def reset_category_smartphones(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('main_app', '0010_item'),
+        ('main_app', '0012_smartphone'),
     ]
 
     operations = [
