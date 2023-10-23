@@ -4,7 +4,6 @@ from django.db import migrations
 
 
 # In order to set age group, we need to fill al data in the table and then restart the whole migration 0009
-# Is there a way to set age group on input (maybe in models.py?)?
 def set_age_group(apps, schema_editor):
 
     Person = apps.get_model("main_app", "Person")
