@@ -58,5 +58,14 @@ def get_students_info():
 
     return result
 
+def update_students_emails():
+    for student in Student.objects.all():
+        student.email = student.email.replace("university.com", "uni-students.com")
+        student.save()
+
 # add_students()
-print(get_students_info())
+# print(get_students_info())
+
+update_students_emails()
+for student in Student.objects.all():
+    print(student.email)
