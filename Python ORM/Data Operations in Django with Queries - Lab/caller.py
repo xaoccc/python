@@ -63,9 +63,17 @@ def update_students_emails():
         student.email = student.email.replace("university.com", "uni-students.com")
         student.save()
 
+
+def truncate_students():
+    for student in Student.objects.all():
+        student.delete()
+
 # add_students()
 # print(get_students_info())
 
-update_students_emails()
-for student in Student.objects.all():
-    print(student.email)
+# update_students_emails()
+# for student in Student.objects.all():
+#     print(student.email)
+truncate_students()
+print(Student.objects.all())
+print(f"Number of students: {Student.objects.count()}")
