@@ -6,7 +6,7 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "orm_skeleton.settings")
 django.setup()
 
 # Import your models here
-from main_app.models import Pet, Artifact, Location, Car
+from main_app.models import Pet, Artifact, Location, Car, Task
 
 
 # Create queries within functions
@@ -131,29 +131,32 @@ def delete_last_car():
 # delete_last_car()
 
 # 5. Task
-# def show_unfinished_tasks():
-#     unfinished_tasks = Task.objects.filter(is_finished=False)
-#     result = ""
-#     for task in unfinished_tasks:
-#         result += f"Task - {task.title} needs to be done until {task.due_date}!\n"
-#     return result
-#
-#
-# def complete_odd_tasks():
-#     for task in Task.objects.all():
-#         if task.id % 2 != 0:
-#             task.is_finished = True
-#             task.save()
+def show_unfinished_tasks():
+    unfinished_tasks = Task.objects.filter(is_finished=False)
+    result = []
+    for task in unfinished_tasks:
+        result.append(f"Task - {task.title} needs to be done until {task.due_date}!")
+    return "\n".join(result)
 
+# test code:
+# print(show_unfinished_tasks())
 
-# def encode_and_replace(text: str, task_title: str):
-#     decoded_new_task = ""
-#     for char in text:
-#         decoded_new_task += chr(ord(char)-3)
-#
-#     for task in Task.objects.filter(title=task_title):
-#         task.description = decoded_new_task
-#         task.save()
+def complete_odd_tasks():
+    for task in Task.objects.all():
+        if task.id % 2 != 0:
+            task.is_finished = True
+            task.save()
+# test code:
+# complete_odd_tasks()
+
+def encode_and_replace(text: str, task_title: str):
+    decoded_new_task = ""
+    for char in text:
+        decoded_new_task += chr(ord(char) - 3)
+
+    for task in Task.objects.filter(title=task_title):
+        task.description = decoded_new_task
+        task.save()
 
 
 # test code:
