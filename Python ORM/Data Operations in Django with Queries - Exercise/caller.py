@@ -6,7 +6,8 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "orm_skeleton.settings")
 django.setup()
 
 # Import your models here
-from main_app.models import Pet, Artifact, Location, Car
+from main_app.models import Pet, Artifact, Location, Car, Task
+
 
 # Create queries within functions
 
@@ -27,12 +28,12 @@ def create_pet(name, species):
 
 
 def create_artifact(name: str, origin: str, age: int, description: str, is_magical: bool):
-    artifact = Artifact (
-        name = name,
-        origin = origin,
-        age = age,
-        description = description,
-        is_magical = is_magical
+    artifact = Artifact(
+        name=name,
+        origin=origin,
+        age=age,
+        description=description,
+        is_magical=is_magical
     )
     artifact.save()
     return f"The artifact {name} is {age} years old!"
@@ -40,6 +41,7 @@ def create_artifact(name: str, origin: str, age: int, description: str, is_magic
 
 def delete_all_artifacts():
     Artifact.objects.all().delete()
+
 
 # test code
 # print(create_artifact('Ancient Sword', 'Lost Kingdom', 500, 'A legendary sword with a rich history', True))
@@ -50,13 +52,16 @@ def delete_all_artifacts():
 # 3. Location
 
 # Populate table (comment code after first execution):
-city1 = Location(name="Sofia", region="Sofia Region", population=1329000, description="The capital of Bulgaria and the largest city in the country", is_capital=False)
+city1 = Location(name="Sofia", region="Sofia Region", population=1329000,
+                 description="The capital of Bulgaria and the largest city in the country", is_capital=False)
 city1.save()
 
-city2 = Location(name="Plovdiv", region="Plovdiv Region", population=346942, description="The second-largest city in Bulgaria with a rich historical heritage", is_capital=False)
+city2 = Location(name="Plovdiv", region="Plovdiv Region", population=346942,
+                 description="The second-largest city in Bulgaria with a rich historical heritage", is_capital=False)
 city2.save()
 
-city3 = Location(name="Varna", region="Varna Region", population=330486, description="A city known for its sea breeze and beautiful beaches on the Black Sea", is_capital=False)
+city3 = Location(name="Varna", region="Varna Region", population=330486,
+                 description="A city known for its sea breeze and beautiful beaches on the Black Sea", is_capital=False)
 city3.save()
 
 
@@ -75,7 +80,7 @@ print(show_all_locations())
 def new_capital():
     locations = Location.objects.all()
     locations.first().capital = True
-    locations.save()
+    locations.first().save()
 
 
 # Test code:
@@ -105,7 +110,7 @@ def apply_discount():
     for car in all_cars:
         discount = sum(int(digit) for digit in str(car.year))
         all_cars.price_with_discount = all_cars.price - discount
-        all_cars.save()
+        car.save()
 
 
 # Test code:
@@ -119,11 +124,38 @@ def get_recent_cars():
 # Test code:
 print(get_recent_cars())
 
+
 def delete_last_car():
     Car.objects.last().delete()
 
 
+# 5. Task
+def show_unfinished_tasks():
+    unfinished_tasks = Task.objects.filter(is_finished=False)
+    result = ""
+    for task in unfinished_tasks:
+        result += f"Task - {task.title} needs to be done until {task.due_date}!\n"
+    return result
 
 
+def complete_odd_tasks():
+    for task in Task.objects.all():
+        if task.id % 2 != 0:
+            task.is_finished = True
+            task.save()
 
+
+def encode_and_replace(text: str, task_title: str):
+    decoded_new_task = ""
+    for char in text:
+        decoded_new_task += chr(ord(char)-3)
+
+    for task in Task.objects.filter(title=task_title):
+        task.description = decoded_new_task
+        task.save()
+
+
+# test code:
+encode_and_replace("Zdvk#wkh#glvkhv$", "Simple Task")
+print(Task.objects.get(title ='Simple Task').description)
 
