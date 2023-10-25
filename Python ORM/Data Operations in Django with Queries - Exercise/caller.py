@@ -6,7 +6,7 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "orm_skeleton.settings")
 django.setup()
 
 # Import your models here
-from main_app.models import Pet, Artifact, Location
+from main_app.models import Pet, Artifact, Location, Car
 
 # Create queries within functions
 
@@ -47,6 +47,7 @@ def delete_all_artifacts():
 # delete_all_artifacts()
 
 # Migrate before test:
+# 3. Location
 
 # Populate table (comment code after first execution):
 city1 = Location(name="Sofia", region="Sofia Region", population=1329000, description="The capital of Bulgaria and the largest city in the country", is_capital=False)
@@ -90,9 +91,39 @@ print(get_capitals())
 
 
 def delete_first_location():
-    Location.objects.all().first().delete()
+    Location.objects.first().delete()
 
 
 # Test code:
 delete_first_location()
 print(show_all_locations())
+
+
+# 4. Car
+def apply_discount():
+    all_cars = Car.objects.all()
+    for car in all_cars:
+        discount = sum(int(digit) for digit in str(car.year))
+        all_cars.price_with_discount = all_cars.price - discount
+        all_cars.save()
+
+
+# Test code:
+apply_discount()
+
+
+def get_recent_cars():
+    return Car.objects.filter(year__gt=2020).values('model', 'price_with_discount')
+
+
+# Test code:
+print(get_recent_cars())
+
+def delete_last_car():
+    Car.objects.last().delete()
+
+
+
+
+
+
