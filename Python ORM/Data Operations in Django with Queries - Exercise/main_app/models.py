@@ -35,3 +35,18 @@ class Task(models.Model):
     description = models.TextField()
     due_date = models.DateField()
     is_finished = models.BooleanField(default=False)
+
+
+class HotelRoom(models.Model):
+    ROOMS_TYPES = (
+        ("ST", "Standard"),
+        ("D", "Deluxe"),
+        ("SU", "Suite")
+    )
+
+    room_number = models.PositiveIntegerField()
+    room_type = models.Choices(ROOMS_TYPES)
+    capacity = models.PositiveIntegerField()
+    amenities = models.TextField()
+    price_per_night = models.DecimalField(max_digits=8, decimal_places=2)
+    is_reserved = models.BooleanField(default=False)

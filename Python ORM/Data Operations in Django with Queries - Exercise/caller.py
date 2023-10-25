@@ -6,7 +6,7 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "orm_skeleton.settings")
 django.setup()
 
 # Import your models here
-from main_app.models import Pet, Artifact, Location, Car, Task
+from main_app.models import Pet, Artifact, Location, Car, Task, HotelRoom
 
 
 # Create queries within functions
@@ -74,7 +74,7 @@ def show_all_locations():
 
 
 # Test code:
-print(show_all_locations())
+# print(show_all_locations())
 
 
 def new_capital():
@@ -84,7 +84,7 @@ def new_capital():
 
 
 # Test code:
-print(new_capital())
+# print(new_capital())
 
 
 def get_capitals():
@@ -92,7 +92,7 @@ def get_capitals():
 
 
 # Test code:
-print(get_capitals())
+# print(get_capitals())
 
 
 def delete_first_location():
@@ -100,8 +100,8 @@ def delete_first_location():
 
 
 # Test code:
-delete_first_location()
-print(show_all_locations())
+# delete_first_location()
+# print(show_all_locations())
 
 
 # 4. Car
@@ -114,7 +114,7 @@ def apply_discount():
 
 
 # Test code:
-apply_discount()
+# apply_discount()
 
 
 def get_recent_cars():
@@ -122,7 +122,7 @@ def get_recent_cars():
 
 
 # Test code:
-print(get_recent_cars())
+# print(get_recent_cars())
 
 
 def delete_last_car():
@@ -156,6 +156,40 @@ def encode_and_replace(text: str, task_title: str):
 
 
 # test code:
-encode_and_replace("Zdvk#wkh#glvkhv$", "Simple Task")
-print(Task.objects.get(title ='Simple Task').description)
+# encode_and_replace("Zdvk#wkh#glvkhv$", "Simple Task")
+# print(Task.objects.get(title ='Simple Task').description)
+
+# 6. Hotel Room
+def get_deluxe_rooms():
+    even_id_rooms = HotelRoom.objects.filter(id__mod=2)
+    result = ""
+    for room in even_id_rooms:
+        result += f"Deluxe room with number {room.room_number} costs {room.price_per_night}$ per night!\n"
+
+    return result
+
+def increase_room_capacity():
+    rooms = HotelRoom.objects.values('id', 'capacity', 'is_reserved')
+    for room in rooms:
+        if room.id == HotelRoom.objects.first().id and room.is_reserved:
+            room.capacity += room.id
+
+        previous_capacity = room.capacity
+
+        if room.id != HotelRoom.objects.first().id and room.is_reserved:
+            room.capacity += previous_capacity
+
+        room.save()
+
+
+def reserve_first_room():
+    HotelRoom.objects.first().is_reserved = True
+
+def delete_last_room():
+    HotelRoom.objects.last().delete()
+
+# test code:
+# print(get_deluxe_rooms())
+# reserve_first_room()
+# print(HotelRoom.objects.get(room_number=101).is_reserved)
 
