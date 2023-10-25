@@ -6,7 +6,7 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "orm_skeleton.settings")
 django.setup()
 
 # Import your models here
-from main_app.models import Pet, Artifact, Location, Car, Task, HotelRoom
+from main_app.models import Pet, Artifact, Location, Car
 
 
 # Create queries within functions
@@ -52,25 +52,25 @@ def delete_all_artifacts():
 # 3. Location
 
 # Populate table (comment code after first execution):
-city1 = Location(name="Sofia", region="Sofia Region", population=1329000,
-                 description="The capital of Bulgaria and the largest city in the country", is_capital=False)
-city1.save()
-
-city2 = Location(name="Plovdiv", region="Plovdiv Region", population=346942,
-                 description="The second-largest city in Bulgaria with a rich historical heritage", is_capital=False)
-city2.save()
-
-city3 = Location(name="Varna", region="Varna Region", population=330486,
-                 description="A city known for its sea breeze and beautiful beaches on the Black Sea", is_capital=False)
-city3.save()
+# city1 = Location(name="Sofia", region="Sofia Region", population=1329000,
+#                  description="The capital of Bulgaria and the largest city in the country", is_capital=False)
+# city1.save()
+#
+# city2 = Location(name="Plovdiv", region="Plovdiv Region", population=346942,
+#                  description="The second-largest city in Bulgaria with a rich historical heritage", is_capital=False)
+# city2.save()
+#
+# city3 = Location(name="Varna", region="Varna Region", population=330486,
+#                  description="A city known for its sea breeze and beautiful beaches on the Black Sea", is_capital=False)
+# city3.save()
 
 
 def show_all_locations():
-    locations = Location.objects.all().order_by("id")
-    result = ""
+    locations = Location.objects.all().order_by("-id")
+    result = []
     for loc in locations:
-        result += f"{loc.name} has a population of {loc.population}!\n"
-    return result
+        result.append(f"{loc.name} has a population of {loc.population}!")
+    return "\n".join(result)
 
 
 # Test code:
@@ -78,9 +78,9 @@ def show_all_locations():
 
 
 def new_capital():
-    locations = Location.objects.all()
-    locations.first().capital = True
-    locations.first().save()
+    first_location = Location.objects.all().first()
+    first_location.is_capital = True
+    first_location.save()
 
 
 # Test code:
@@ -88,7 +88,7 @@ def new_capital():
 
 
 def get_capitals():
-    return Location.objects.filter(is_capital=True).values_list('name', flat=True)
+    return Location.objects.filter(is_capital=True).values('name')
 
 
 # Test code:
@@ -109,7 +109,7 @@ def apply_discount():
     all_cars = Car.objects.all()
     for car in all_cars:
         discount = sum(int(digit) for digit in str(car.year))
-        all_cars.price_with_discount = all_cars.price - discount
+        car.price_with_discount = car.price * (100 - discount) / 100
         car.save()
 
 
@@ -128,31 +128,32 @@ def get_recent_cars():
 def delete_last_car():
     Car.objects.last().delete()
 
+# delete_last_car()
 
 # 5. Task
-def show_unfinished_tasks():
-    unfinished_tasks = Task.objects.filter(is_finished=False)
-    result = ""
-    for task in unfinished_tasks:
-        result += f"Task - {task.title} needs to be done until {task.due_date}!\n"
-    return result
+# def show_unfinished_tasks():
+#     unfinished_tasks = Task.objects.filter(is_finished=False)
+#     result = ""
+#     for task in unfinished_tasks:
+#         result += f"Task - {task.title} needs to be done until {task.due_date}!\n"
+#     return result
+#
+#
+# def complete_odd_tasks():
+#     for task in Task.objects.all():
+#         if task.id % 2 != 0:
+#             task.is_finished = True
+#             task.save()
 
 
-def complete_odd_tasks():
-    for task in Task.objects.all():
-        if task.id % 2 != 0:
-            task.is_finished = True
-            task.save()
-
-
-def encode_and_replace(text: str, task_title: str):
-    decoded_new_task = ""
-    for char in text:
-        decoded_new_task += chr(ord(char)-3)
-
-    for task in Task.objects.filter(title=task_title):
-        task.description = decoded_new_task
-        task.save()
+# def encode_and_replace(text: str, task_title: str):
+#     decoded_new_task = ""
+#     for char in text:
+#         decoded_new_task += chr(ord(char)-3)
+#
+#     for task in Task.objects.filter(title=task_title):
+#         task.description = decoded_new_task
+#         task.save()
 
 
 # test code:
@@ -160,33 +161,33 @@ def encode_and_replace(text: str, task_title: str):
 # print(Task.objects.get(title ='Simple Task').description)
 
 # 6. Hotel Room
-def get_deluxe_rooms():
-    even_id_rooms = HotelRoom.objects.filter(id__mod=2)
-    result = ""
-    for room in even_id_rooms:
-        result += f"Deluxe room with number {room.room_number} costs {room.price_per_night}$ per night!\n"
+# def get_deluxe_rooms():
+#     even_id_rooms = HotelRoom.objects.filter(id__mod=2)
+#     result = ""
+#     for room in even_id_rooms:
+#         result += f"Deluxe room with number {room.room_number} costs {room.price_per_night}$ per night!\n"
+#
+#     return result
 
-    return result
-
-def increase_room_capacity():
-    rooms = HotelRoom.objects.values('id', 'capacity', 'is_reserved')
-    for room in rooms:
-        if room.id == HotelRoom.objects.first().id and room.is_reserved:
-            room.capacity += room.id
-
-        previous_capacity = room.capacity
-
-        if room.id != HotelRoom.objects.first().id and room.is_reserved:
-            room.capacity += previous_capacity
-
-        room.save()
-
-
-def reserve_first_room():
-    HotelRoom.objects.first().is_reserved = True
-
-def delete_last_room():
-    HotelRoom.objects.last().delete()
+# def increase_room_capacity():
+#     rooms = HotelRoom.objects.values('id', 'capacity', 'is_reserved')
+#     for room in rooms:
+#         if room.id == HotelRoom.objects.first().id and room.is_reserved:
+#             room.capacity += room.id
+#
+#         previous_capacity = room.capacity
+#
+#         if room.id != HotelRoom.objects.first().id and room.is_reserved:
+#             room.capacity += previous_capacity
+#
+#         room.save()
+#
+#
+# def reserve_first_room():
+#     HotelRoom.objects.first().is_reserved = True
+#
+# def delete_last_room():
+#     HotelRoom.objects.last().delete()
 
 # test code:
 # print(get_deluxe_rooms())
