@@ -68,12 +68,16 @@ def truncate_students():
     for student in Student.objects.all():
         student.delete()
 
+# test code 1
 # add_students()
 # print(get_students_info())
 
+# test code 2
 # update_students_emails()
 # for student in Student.objects.all():
 #     print(student.email)
-truncate_students()
-print(Student.objects.all())
-print(f"Number of students: {Student.objects.count()}")
+
+# test code 3
+# truncate_students()
+# print(Student.objects.all())
+# print(f"Number of students: {Student.objects.count()}")
