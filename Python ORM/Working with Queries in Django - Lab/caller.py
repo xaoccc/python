@@ -108,15 +108,6 @@ def filter_authors_by_birth_year(year1, year2):
         result.append(f"{author.birth_date}: {author.first_name} {author.last_name}")
     return "\n".join(result)
 
-print("Authors born between 1980 and 2000:")
-print(filter_authors_by_birth_year(1980, 2000))
-print()
-print("Authors born between 1950 and 1960:")
-print(filter_authors_by_birth_year(1950, 1960))
-print()
-print("Authors born between 2000 and 2010:")
-print(filter_authors_by_birth_year(2000, 2010))
-
 
 def change_reviewer_name(rev_name, new_name):
     reviews = Review.objects.all().filter(reviewer_name=rev_name)
