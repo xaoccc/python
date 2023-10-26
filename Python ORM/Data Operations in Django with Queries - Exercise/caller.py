@@ -6,8 +6,9 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "orm_skeleton.settings")
 django.setup()
 
 # Import your models here
-from main_app.models import Pet, Artifact, Location, Car, Task, HotelRoom
-from django.db.models import Q
+from main_app.models import Pet, Artifact, Location, Car, Task, HotelRoom, Character
+from django.db.models import Q, F
+
 
 # Create queries within functions
 
@@ -198,19 +199,9 @@ def delete_last_room():
 # 7. Character
 
 def update_characters():
-    mages = Character.objects.filter(class_name="Mage")
-    warriors = Character.objects.filter(class_name="Warrior")
-    other = Character.objects.filter(Q(class_name="Assassin") | Q(class_name="Scout"))
-    for m in mages:
-        m.level += 3
-        m.intelligence -= 7
-
-    for w in warriors:
-        w.hit_points //= 2
-        w.dexterity += 4
-
-    for o in other:
-        o.inventory = "The inventory is empty"
+    Character.objects.filter(class_name="Mage").update(level=F("level")+3, intelligence=F("intelligence")-7)
+    Character.objects.filter(class_name="Warrior").update(hit_points=F("hit_points") / 2, dexterity=F("dexterity") + 4)
+    Character.objects.filter(Q(class_name="Assassin") | Q(class_name="Scout")).update(inventory="The inventory is empty")
 
 def fuse_characters(first_character, second_character):
 
@@ -230,27 +221,17 @@ def fuse_characters(first_character, second_character):
 
 
 def grand_dexterity():
-    all_chars = Character.objects.all()
-    for char in all_chars:
-        char.dexterity = 30
-        char.save()
+    Character.objects.all().update(dexterity=30)
 
 
 def grand_intelligence():
-    all_chars = Character.objects.all()
-    for char in all_chars:
-        char.intelligence = 40
-        char.save()
+    Character.objects.all().update(intelligence=40)
 
 
 def grand_strength():
-    all_chars = Character.objects.all()
-    for char in all_chars:
-        char.strength = 50
-        char.save()
-
+    Character.objects.all().update(strength=50)
 
 def delete_characters():
-    all_chars = Character.objects.filter(inventory="The inventory is empty").delete()
+    Character.objects.filter(inventory="The inventory is empty").delete()
 
 
