@@ -6,7 +6,7 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "orm_skeleton.settings")
 django.setup()
 
 # Import your models here
-from main_app.models import Pet, Artifact, Location, Car, Task, HotelRoom, Character
+from main_app.models import Pet, Artifact, Location, Car, Task, HotelRoom
 from django.db.models import Q
 
 # Create queries within functions
@@ -157,7 +157,7 @@ def get_deluxe_rooms():
     result = []
     for room in all_deluxe_rooms:
         if room.id % 2 == 0:
-            result.append(f"Deluxe room with number {room.room_number} costs {room.price_per_night}$ per night!")
+            result.append(str(room))
 
     return "\n".join(result)
 
@@ -181,7 +181,9 @@ def increase_room_capacity():
 
 # increase_room_capacity()
 def reserve_first_room():
-    HotelRoom.objects.first().is_reserved = True
+    first_room = HotelRoom.objects.first()
+    first_room.is_reserved = True
+    first_room.save()
 
 def delete_last_room():
     if HotelRoom.objects.last().is_reserved:
