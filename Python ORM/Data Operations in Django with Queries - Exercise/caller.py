@@ -6,7 +6,7 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "orm_skeleton.settings")
 django.setup()
 
 # Import your models here
-from main_app.models import Pet, Artifact, Location, Car, Task, HotelRoom
+from main_app.models import Pet, Artifact, Location, Car, Task, HotelRoom, Character
 
 
 # Create queries within functions
@@ -50,19 +50,6 @@ def delete_all_artifacts():
 
 # Migrate before test:
 # 3. Location
-
-# Populate table (comment code after first execution):
-# city1 = Location(name="Sofia", region="Sofia Region", population=1329000,
-#                  description="The capital of Bulgaria and the largest city in the country", is_capital=False)
-# city1.save()
-#
-# city2 = Location(name="Plovdiv", region="Plovdiv Region", population=346942,
-#                  description="The second-largest city in Bulgaria with a rich historical heritage", is_capital=False)
-# city2.save()
-#
-# city3 = Location(name="Varna", region="Varna Region", population=330486,
-#                  description="A city known for its sea breeze and beautiful beaches on the Black Sea", is_capital=False)
-# city3.save()
 
 
 def show_all_locations():
@@ -205,4 +192,65 @@ def delete_last_room():
 # reserve_first_room()
 # print(HotelRoom.objects.get(room_number=101).is_reserved)
 # delete_last_room()
+
+# 7. Character
+
+def update_characters():
+    all_chars = Character.objects.all()
+
+    for char in all_chars:
+        if char.class_name == "Mage":
+            char.level += 3
+            char.intelligence -= 7
+
+        elif char.class_name == "Warrior":
+            char.hit_points //= 2
+            char.dexterity += 4
+
+        else:
+            char.inventory = "The inventory is empty"
+
+def fuse_characters(first_character, second_character):
+
+    char = Character(
+        name=f"{first_character.name} {second_character.name}",
+        class_name="Fusion",
+        level=(first_character.level + second_character.level)//2,
+        strength=(first_character.strength + second_character.strength) * 1.2,
+        dexterity=(first_character.dexterity + second_character.dexterity) * 1.4,
+        intelligence=(first_character.intelligence + second_character.intelligence) * 1.5,
+        hit_points=first_character.hit_points + second_character.hit_points,
+        inventory="Bow of the Elven Lords, Amulet of Eternal Wisdom" if first_character.class_name in ["Mage", "Scout"] else "Dragon Scale Armor, Excalibur"
+    )
+    char.save()
+    first_character.delete()
+    second_character.delete()
+
+
+def grand_dexterity():
+    all_chars = Character.objects.all()
+    for char in all_chars:
+        char.dexterity = 30
+        char.save()
+
+
+def grand_intelligence():
+    all_chars = Character.objects.all()
+    for char in all_chars:
+        char.intelligence = 40
+        char.save()
+
+
+def grand_strength():
+    all_chars = Character.objects.all()
+    for char in all_chars:
+        char.strength = 50
+        char.save()
+
+
+def delete_characters():
+    all_chars = Character.objects.all()
+    for char in all_chars:
+        if char.inventory == "The inventory is empty":
+            char.delete()
 
