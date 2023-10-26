@@ -65,7 +65,7 @@ def show_all_locations():
 
 
 def new_capital():
-    first_location = Location.objects.all().first()
+    first_location = Location.objects.first()
     first_location.is_capital = True
     first_location.save()
 
