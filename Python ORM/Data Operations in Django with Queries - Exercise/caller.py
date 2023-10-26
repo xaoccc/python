@@ -7,7 +7,7 @@ django.setup()
 
 # Import your models here
 from main_app.models import Pet, Artifact, Location, Car, Task, HotelRoom, Character
-
+from django.db.models import Q
 
 # Create queries within functions
 
@@ -196,19 +196,19 @@ def delete_last_room():
 # 7. Character
 
 def update_characters():
-    all_chars = Character.objects.all()
+    mages = Character.objects.filter(class_name="Mage")
+    warriors = Character.objects.filter(class_name="Warrior")
+    other = Character.objects.filter(Q(class_name="Assassin") | Q(class_name="Scout"))
+    for m in mages:
+        m.level += 3
+        m.intelligence -= 7
 
-    for char in all_chars:
-        if char.class_name == "Mage":
-            char.level += 3
-            char.intelligence -= 7
+    for w in warriors:
+        w.hit_points //= 2
+        w.dexterity += 4
 
-        elif char.class_name == "Warrior":
-            char.hit_points //= 2
-            char.dexterity += 4
-
-        else:
-            char.inventory = "The inventory is empty"
+    for o in other:
+        o.inventory = "The inventory is empty"
 
 def fuse_characters(first_character, second_character):
 
@@ -249,8 +249,6 @@ def grand_strength():
 
 
 def delete_characters():
-    all_chars = Character.objects.all()
-    for char in all_chars:
-        if char.inventory == "The inventory is empty":
-            char.delete()
+    all_chars = Character.objects.filter(inventory="The inventory is empty").delete()
+
 
