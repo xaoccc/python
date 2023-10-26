@@ -75,7 +75,7 @@ def find_authors_nationalities():
 
 
 def order_books_by_year():
-    books = Book.objects.all().order_by("publication_year")
+    books = Book.objects.all().order_by("publication_year", "title")
     result = []
     for book in books:
         result.append(f"{book.publication_year} year: {book.title} by {book.author}")
@@ -83,10 +83,11 @@ def order_books_by_year():
 
 
 def delete_review_by_id(rev_id):
-    review = Review.objects.all().filter(id=rev_id)
-    del_msg = f"Review by {review.reviewer_name} was deleted"
-    review.delete()
-    return del_msg
+    rev = Review.objects.filter(id=rev_id)
+    for r in rev:
+        result = r
+    Review.objects.filter(id=rev_id).delete()
+    return f"{result} was deleted"
 
 
 def filter_authors_by_nationalities(nationality):
@@ -101,11 +102,20 @@ def filter_authors_by_nationalities(nationality):
 
 
 def filter_authors_by_birth_year(year1, year2):
-    authors = Author.objects.filter(Q(birth_date__gte=year1) & Q(birth_date__lte=year2)).order_by("-birth_date")
+    authors = Author.objects.filter(Q(birth_date__gte=str(year1)+"-01-01") & Q(birth_date__lte=str(year2)+"-12-31")).order_by("-birth_date")
     result = []
     for author in authors:
         result.append(f"{author.birth_date}: {author.first_name} {author.last_name}")
     return "\n".join(result)
+
+print("Authors born between 1980 and 2000:")
+print(filter_authors_by_birth_year(1980, 2000))
+print()
+print("Authors born between 1950 and 1960:")
+print(filter_authors_by_birth_year(1950, 1960))
+print()
+print("Authors born between 2000 and 2010:")
+print(filter_authors_by_birth_year(2000, 2010))
 
 
 def change_reviewer_name(rev_name, new_name):
