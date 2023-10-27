@@ -110,9 +110,6 @@ def filter_authors_by_birth_year(year1, year2):
 
 
 def change_reviewer_name(rev_name, new_name):
-    reviews = Review.objects.all().filter(reviewer_name=rev_name)
-    for review in reviews:
-        review.reviewer_name = new_name
-        review.save()
+    Review.objects.all().filter(reviewer_name=rev_name).update(reviewer_name=new_name)
     return Review.objects.all()
 
