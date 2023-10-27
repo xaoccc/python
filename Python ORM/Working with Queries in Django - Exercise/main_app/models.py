@@ -93,3 +93,6 @@ class Laptop(models.Model):
     storage = models.PositiveIntegerField(help_text="Storage in GB")
     operation_system = models.CharField(max_length=20, choices=OPERATING_SYSTEMS)
     price = models.DecimalField(max_digits=10, decimal_places=2)
+
+    def __str__(self):
+        return f"{self.brand} is the most expensive laptop available for {self.price}$!"
