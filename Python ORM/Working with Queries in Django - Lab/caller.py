@@ -75,7 +75,7 @@ def find_authors_nationalities():
 
 
 def order_books_by_year():
-    books = Book.objects.all().order_by("publication_year", "title")
+    books = Book.objects.order_by("publication_year", "title")
     result = []
     for book in books:
         result.append(f"{book.publication_year} year: {book.title} by {book.author}")
