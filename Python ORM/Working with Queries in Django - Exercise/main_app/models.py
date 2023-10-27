@@ -1,7 +1,6 @@
 from django.db import models
 
 
-# Create your models here.
 
 class ChessPlayer(models.Model):
     username = models.CharField(max_length=100, unique=True)
@@ -68,9 +67,6 @@ class ArtworkGallery(models.Model):
     rating = models.IntegerField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
 
-    def __str__(self):
-        return f"{self.art_name} is the highest rated art with {self.rating} rating!"
-
 
 class Laptop(models.Model):
     LAPTOP_BRANDS = (
@@ -94,5 +90,4 @@ class Laptop(models.Model):
     operation_system = models.CharField(max_length=20, choices=OPERATING_SYSTEMS)
     price = models.DecimalField(max_digits=10, decimal_places=2)
 
-    def __str__(self):
-        return f"{self.brand} is the most expensive laptop available for {self.price}$!"
+
