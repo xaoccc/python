@@ -53,4 +53,9 @@ class StudentEnrollment(models.Model):
     enrollment_date = models.DateField(auto_now_add=True, default=date.today())
     grade = models.CharField(max_length=1, choices=GRADES)
 
-# Change the migtration file
+# Change the migration file
+class LecturerProfile(models.Model):
+    lecturer = models.ForeignKey(Lecturer, on_delete=models.CASCADE)
+    email = models.EmailField(unique=True)
+    bio = models.TextField(null=True, blank=True)
+    office_location = models.CharField(max_length=100, null=True, blank=True)
