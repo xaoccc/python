@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import date
 
 
 class Lecturer(models.Model):
@@ -16,8 +17,40 @@ class Subject(models.Model):
         Lecturer,
         on_delete=models.SET_NULL,
         null=True,
-        blank=True,
+        blank=True
     )
 
     def __str__(self):
         return self.name
+
+# Migrate, test and submit before continue!
+
+
+class Student(models.Model):
+    student_id = models.CharField(primary_key=True, max_length=10)
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    birth_date = models.DateField()
+    email = models.EmailField(unique=True)
+    subjects = models.ForeignKey(
+        Subject,
+        null=True,
+        blank=True
+    )
+
+
+class StudentEnrollment(models.Model):
+    GRADES = (
+        ("A", "A"),
+        ("B", "B"),
+        ("C", "C"),
+        ("D", "D"),
+        ("F", "F")
+    )
+
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
+    enrollment_date = models.DateField(auto_now_add=True, default=date.today())
+    grade = models.CharField(max_length=1, choices=GRADES)
+
+# Change the migtration file
