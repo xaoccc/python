@@ -1,12 +1,13 @@
 import os
 import django
-from django.db.models import Q
+
 
 # Set up Django
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "orm_skeleton.settings")
 django.setup()
 
 from main_app.models import ArtworkGallery, Laptop, ChessPlayer, Meal, Dungeon, Workout
+from django.db.models import Q, When, Case, Value
 
 
 # Import your models
@@ -45,10 +46,14 @@ def update_to_16_GB_memory():
 
 
 def update_operation_systems():
-    Laptop.objects.filter(brand="Asus").update(operation_system="Windows")
-    Laptop.objects.filter(brand="Apple").update(operation_system="MacOS")
-    Laptop.objects.filter(brand__in=["Dell", "Acer"]).update(operation_system="Linux")
-    Laptop.objects.filter(brand="Lenovo").update(operation_system="Chrome OS")
+    Laptop.objects.update(
+        operation_system=Case(
+            When(brand="Asus", then=Value("Windows")),
+            When(brand="Apple", then=Value("MacOS")),
+            When(brand__in=["Dell", "Acer"], then=Value("Linux")),
+            When(brand="Lenovo", then=Value("Chrome OS"))
+        )
+    )
 
 def delete_inexpensive_laptops():
     Laptop.objects.filter(price__lt=1200).delete()
