@@ -1,5 +1,5 @@
 from django.db import models
-from datetime import date
+from django.utils.timezone import now
 
 
 class Lecturer(models.Model):
@@ -23,7 +23,6 @@ class Subject(models.Model):
     def __str__(self):
         return self.name
 
-# Migrate, test and submit before continue!
 
 
 class Student(models.Model):
@@ -32,11 +31,7 @@ class Student(models.Model):
     last_name = models.CharField(max_length=100)
     birth_date = models.DateField()
     email = models.EmailField(unique=True)
-    subjects = models.ForeignKey(
-        Subject,
-        null=True,
-        blank=True
-    )
+    subjects = models.ManyToManyField(Subject)
 
 
 class StudentEnrollment(models.Model):
@@ -50,12 +45,12 @@ class StudentEnrollment(models.Model):
 
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
-    enrollment_date = models.DateField(auto_now_add=True, default=date.today())
+    enrollment_date = models.DateField(auto_now_add=now)
     grade = models.CharField(max_length=1, choices=GRADES)
-
-# Change the migration file
-class LecturerProfile(models.Model):
-    lecturer = models.ForeignKey(Lecturer, on_delete=models.CASCADE)
-    email = models.EmailField(unique=True)
-    bio = models.TextField(null=True, blank=True)
-    office_location = models.CharField(max_length=100, null=True, blank=True)
+#
+# # Change the migration file
+# class LecturerProfile(models.Model):
+#     lecturer = models.ForeignKey(Lecturer, on_delete=models.CASCADE)
+#     email = models.EmailField(unique=True)
+#     bio = models.TextField(null=True, blank=True)
+#     office_location = models.CharField(max_length=100, null=True, blank=True)
