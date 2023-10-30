@@ -120,17 +120,25 @@ def grand_chess_title_regular_player():
 # grand_chess_title_regular_player()
 
 def set_new_chefs():
-    Meal.objects.filter(meal_type="Breakfast").update(chef="Gordon Ramsay")
-    Meal.objects.filter(meal_type="Lunch").update(chef="Julia Child")
-    Meal.objects.filter(meal_type="Dinner").update(chef="Jamie Oliver")
-    Meal.objects.filter(meal_type="Snack").update(chef="Thomas Keller")
+    Meal.objects.update(
+        chef=Case(
+            When(meal_type="Breakfast", then=Value("Gordon Ramsay")),
+            When(meal_type="Lunch", then=Value("Julia Child")),
+            When(meal_type="Dinner", then=Value("Jamie Oliver")),
+            When(meal_type="Snack", then=Value("Thomas Keller"))
+        )
+    )
 
 
 def set_new_preparation_times():
-    Meal.objects.filter(meal_type="Breakfast").update(preparation_time="10 minutes")
-    Meal.objects.filter(meal_type="Lunch").update(preparation_time="12 minutes")
-    Meal.objects.filter(meal_type="Dinner").update(preparation_time="15 minutes")
-    Meal.objects.filter(meal_type="Snack").update(preparation_time="5 minutes")
+    Meal.objects.update(
+        preparation_time=Case(
+            When(meal_type="Breakfast", then=Value("10 minutes")),
+            When(meal_type="Lunch", then=Value("12 minutes")),
+            When(meal_type="Dinner", then=Value("15 minutes")),
+            When(meal_type="Snack", then=Value("5 minutes"))
+        )
+    )
 
 def update_low_calorie_meals():
     Meal.objects.filter(Q(meal_type="Breakfast") | Q(meal_type="Dinner")).update(calories=400)
@@ -180,28 +188,45 @@ def show_hard_dungeons():
 
 
 def update_dungeon_names():
-    Dungeon.objects.filter(difficulty="Easy").update(name="The Erased Thombs")
-    Dungeon.objects.filter(difficulty="Medium").update(name="The Coral Labyrinth")
-    Dungeon.objects.filter(difficulty="Hard").update(name="The Lost Haunt")
+    Dungeon.objects.update(
+        name=Case(
+            When(difficulty="Easy", then=Value("The Erased Thombs")),
+            When(difficulty="Medium", then=Value("The Coral Labyrinth")),
+            When(difficulty="Hard", then=Value("The Lost Haunt"))
+        )
+    )
+
 
 def update_dungeon_bosses_health():
     Dungeon.objects.exclude(difficulty="Easy").update(boss_health=500)
 
 def update_dungeon_recommended_levels():
-    Dungeon.objects.filter(difficulty="Easy").update(recommended_level=25)
-    Dungeon.objects.filter(difficulty="Medium").update(recommended_level=50)
-    Dungeon.objects.filter(difficulty="Hard").update(recommended_level=75)
+    Dungeon.objects.update(
+        recommended_level=Case(
+            When(difficulty="Easy", then=Value(25)),
+            When(difficulty="Medium", then=Value(50)),
+            When(difficulty="Hard", then=Value(75))
+        )
+    )
 
 
 def update_dungeon_rewards():
-    Dungeon.objects.filter(boss_health=500).update(reward="1000 Gold")
-    Dungeon.objects.filter(location__startswith="E").update(reward="New dungeon unlocked")
-    Dungeon.objects.filter(location__endswith="s").update(reward="Dragonheart Amulet")
+    Dungeon.objects.update(
+        reward=Case(
+            When(boss_health=500, then=Value("1000 Gold")),
+            When(location__startswith="E", then=Value("New dungeon unlocked")),
+            When(location__endswith="s", then=Value("Dragonheart Amulet"))
+        )
+    )
 
 def set_new_locations():
-    Dungeon.objects.filter(recommended_level=25).update(location="Enchanted Maze")
-    Dungeon.objects.filter(recommended_level=50).update(location="Grimstone Mines")
-    Dungeon.objects.filter(recommended_level=75).update(location="Shadowed Abyss")
+    Dungeon.objects.update(
+        location=Case(
+            When(recommended_level=25, then=Value("Enchanted Maze")),
+            When(recommended_level=50, then=Value("Grimstone Mines")),
+            When(recommended_level=75, then=Value("Shadowed Abyss")),
+        )
+    )
 
 dungeon1 = Dungeon(
     name="Dungeon 1",
@@ -243,18 +268,26 @@ def get_high_difficulty_cardio_workouts():
     return  Workout.objects.filter(Q(workout_type="Cardio") & Q(difficulty="High")).order_by("instructor")
 
 def set_new_instructors():
-    Workout.objects.filter(workout_type="Cardio").update(instructor="John Smith")
-    Workout.objects.filter(workout_type="Strength").update(instructor="Michael Williams")
-    Workout.objects.filter(workout_type="Yoga").update(instructor="Emily Johnson")
-    Workout.objects.filter(workout_type="CrossFit").update(instructor="Sarah Davis")
-    Workout.objects.filter(workout_type="Calisthenics").update(instructor="Chris Heria")
+    Workout.objects.update(
+        instructor=Case(
+            When(workout_type="Cardio", then=Value("John Smith")),
+            When(workout_type="Strength", then=Value("Michael Williams")),
+            When(workout_type="Yoga", then=Value("Emily Johnson")),
+            When(workout_type="CrossFit", then=Value("Sarah Davis")),
+            When(workout_type="Calisthenics", then=Value("Chris Heria"))
+        )
+    )
 
 def set_new_duration_times():
-    Workout.objects.filter(instructor="John Smith").update(duration="15 minutes")
-    Workout.objects.filter(instructor="Sarah Davis").update(duration="30 minutes")
-    Workout.objects.filter(instructor="Chris Heria").update(duration="45 minutes")
-    Workout.objects.filter(instructor="Michael Williams").update(duration="1 hour")
-    Workout.objects.filter(instructor="Emily Johnson").update(duration="1 hour and 30 minutes")
+    Workout.objects.update(
+        duration=Case(
+            When(instructor="John Smith", then=Value("15 minutes")),
+            When(instructor="Sarah Davis", then=Value("30 minutes")),
+            When(instructor="Chris Heria", then=Value("45 minutes")),
+            When(instructor="Michael Williams", then=Value("1 hour")),
+            When(instructor="Emily Johnson", then=Value("1 hour and 30 minutes")),
+        )
+    )
 
 def delete_workouts():
     Workout.objects.exclude(workout_type__in=["Strength", "Calisthenics"]).delete()
