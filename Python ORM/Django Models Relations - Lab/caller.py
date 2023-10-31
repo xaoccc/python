@@ -8,7 +8,7 @@ django.setup()
 # Import your models
 # Create and check models
 # Run and print your queries
-# from main_app.models import Lecturer, Subject, Student
+from main_app.models import Lecturer, Subject, Student, LecturerProfile
 
 # 01. The Lecturer
 # Test code
@@ -59,9 +59,9 @@ django.setup()
 
 # 04. Lecturer Profile
 # test code
-# lecturer = Lecturer.objects.get(first_name='John', last_name="Doe")
-# lecturer_profile = LecturerProfile.objects.create(lecturer=lecturer, email="john.doe@university.lecturers.com", bio="A skilled and passionate math lecturer", office_location="Sofia, Al. Stamobolyiski Str, Faculty of Mathematics and Computer Science, Room 101")
-#
-# lecturer_profile_from_db = LecturerProfile.objects.get(email='john.doe@university.lecturers.com')
-#
+lecturer = Lecturer.objects.get(first_name='John', last_name="Doe")
+lecturer_profile = LecturerProfile.objects.create(lecturer=lecturer, email="john.doe@university.lecturers.com", bio="A skilled and passionate math lecturer", office_location="Sofia, Al. Stamobolyiski Str, Faculty of Mathematics and Computer Science, Room 101")
+
+lecturer_profile_from_db = LecturerProfile.objects.get(email='john.doe@university.lecturers.com')
+
 # print(f"{lecturer_profile_from_db.lecturer.first_name} {lecturer_profile_from_db.lecturer.last_name} has a profile.")

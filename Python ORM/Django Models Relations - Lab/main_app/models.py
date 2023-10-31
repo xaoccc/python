@@ -47,10 +47,9 @@ class StudentEnrollment(models.Model):
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
     enrollment_date = models.DateField(default=date.today)
     grade = models.CharField(max_length=1, choices=GRADES, null=True, blank=True)
-#
-# # Change the migration file
-# class LecturerProfile(models.Model):
-#     lecturer = models.ForeignKey(Lecturer, on_delete=models.CASCADE)
-#     email = models.EmailField(unique=True)
-#     bio = models.TextField(null=True, blank=True)
-#     office_location = models.CharField(max_length=100, null=True, blank=True)
+
+class LecturerProfile(models.Model):
+    lecturer = models.OneToOneField(Lecturer, on_delete=models.CASCADE)
+    email = models.EmailField(unique=True)
+    bio = models.TextField(null=True, blank=True)
+    office_location = models.CharField(max_length=100, null=True, blank=True)
