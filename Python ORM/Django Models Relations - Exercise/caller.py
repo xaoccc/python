@@ -1,12 +1,13 @@
 import os
 import django
 from django.core.exceptions import ObjectDoesNotExist
+from django.db.models import Avg
 
 # Set up Django
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "orm_skeleton.settings")
 django.setup()
 
-from main_app.models import Author, Book, Song, Artist
+from main_app.models import Author, Book, Song, Artist, Product, Review
 
 # Import your models here
 
@@ -132,5 +133,40 @@ def remove_song_from_artist(artist_name: str, song_title: str):
 #     print(f"Songs by Daniel Di Angelo after removal: {song.title}")
 
 
+# 03. Shop
+def calculate_average_rating_for_product_by_name(product_name: str):
+    product = Product.objects.get(name=product_name)
+    return Review.objects.filter(product=product).aggregate(Avg("rating"))["rating__avg"]
 
+def get_reviews_with_high_ratings(threshold: int):
+    return Review.objects.filter(rating__gt=threshold)
 
+def get_products_with_no_reviews():
+    reviews_products_id = Review.objects.values_list("product", flat=True)
+    products = Product.objects.exclude(id__in=reviews_products_id).order_by("-name")
+    return products
+
+def delete_products_without_reviews():
+    reviews_products_id = Review.objects.values_list("product", flat=True)
+    for product in Product.objects.exclude(id__in=reviews_products_id).order_by("-name"):
+        product.delete()
+
+# Create some products
+# product1 = Product.objects.create(name="Laptop")
+# product2 = Product.objects.create(name="Smartphone")
+# product3 = Product.objects.create(name="Headphones")
+# product4 = Product.objects.create(name="PlayStation 5")
+
+# Create some reviews for products
+# review1 = Review.objects.create(description="Great laptop!", rating=5, product=product1)
+# review2 = Review.objects.create(description="The laptop is slow!", rating=2, product=product1)
+# review3 = Review.objects.create(description="Awesome smartphone!", rating=5, product=product2)
+
+# products_without_reviews = get_products_with_no_reviews()
+# print(f"Products without reviews: {', '.join([p.name for p in products_without_reviews])}")
+#
+# print(calculate_average_rating_for_product_by_name("Laptop"))
+#
+# delete_products_without_reviews()
+# print(f"Products left: {Product.objects.count()}")
+# print(get_reviews_with_high_ratings(1))
