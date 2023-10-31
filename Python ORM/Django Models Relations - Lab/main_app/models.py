@@ -1,5 +1,5 @@
 from django.db import models
-from django.utils.timezone import now
+from django.utils.datetime_safe import date
 
 
 class Lecturer(models.Model):
@@ -31,7 +31,7 @@ class Student(models.Model):
     last_name = models.CharField(max_length=100)
     birth_date = models.DateField()
     email = models.EmailField(unique=True)
-    subjects = models.ManyToManyField(Subject)
+    subjects = models.ManyToManyField(to="Subject", through="StudentEnrollment")
 
 
 class StudentEnrollment(models.Model):
@@ -45,8 +45,8 @@ class StudentEnrollment(models.Model):
 
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
-    enrollment_date = models.DateField(auto_now_add=now)
-    grade = models.CharField(max_length=1, choices=GRADES)
+    enrollment_date = models.DateField(default=date.today)
+    grade = models.CharField(max_length=1, choices=GRADES, null=True, blank=True)
 #
 # # Change the migration file
 # class LecturerProfile(models.Model):
