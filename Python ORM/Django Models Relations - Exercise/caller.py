@@ -6,7 +6,7 @@ from django.core.exceptions import ObjectDoesNotExist
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "orm_skeleton.settings")
 django.setup()
 
-from main_app.models import Author, Book
+from main_app.models import Author, Book, Song, Artist
 
 # Import your models here
 
@@ -62,38 +62,75 @@ def delete_all_authors_without_books():
 # print(Author.objects.count())
 
 # 02. Music App
-# def add_song_to_artist(artist_name: str, song_title: str):
-#     # Because get() raises and exception if number of returned objects are not exactly 1, we might want to catch it:
-#     try:
-#         artist = Artist.objects.get(name=artist_name)
-#     except ObjectDoesNotExist:
-#         print(f"Artist '{artist_name}' does not exist.")
-#         return
+def add_song_to_artist(artist_name: str, song_title: str):
+    # Because get() raises and exception if number of returned objects are not exactly 1, we might want to catch it:
+    try:
+        artist = Artist.objects.get(name=artist_name)
+    except ObjectDoesNotExist:
+        print(f"Artist '{artist_name}' does not exist.")
+        return
+
+    try:
+        song, created = Song.objects.get_or_create(title=song_title)
+        artist.songs.add(song)
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+def get_songs_by_artist(artist_name: str):
+    current_artist = Artist.objects.get(name=artist_name)
+    return Song.objects.filter(artists=current_artist).order_by("-id")
+
+def remove_song_from_artist(artist_name: str, song_title: str):
+    try:
+        artist = Artist.objects.get(name=artist_name)
+    except ObjectDoesNotExist:
+        print(f"Artist '{artist_name}' does not exist.")
+
+    try:
+        song = Song.objects.get(title=song_title)
+    except ObjectDoesNotExist:
+        print(f"Song '{song_title}' does not exist.")
+
+    try:
+        artist.songs.remove(song)
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+# test code
+
+# Create artists
+# artist1 = Artist.objects.get(name="Daniel Di Angelo")
+# artist2 = Artist.objects.get(name="Indila")
+
+# Create songs
+# song1 = Song.objects.get(title="Lose Face")
+# song2 = Song.objects.get(title="Tourner Dans Le Vide")
+# song3 = Song.objects.get(title="Loyalty")
+
+# Add a song to an artist
+# add_song_to_artist("Daniel Di Angelo", "Lose Face")
+# add_song_to_artist("Daniel Di Angelo", "Loyalty")
+# add_song_to_artist("Indila", "Tourner Dans Le Vide")
+
+# Get all songs by a specific artist
+# songs = get_songs_by_artist("Daniel Di Angelo")
+# for song in songs:
+#     print(f"Daniel Di Angelo: {song.title}")
+
+# Get all songs by a specific artist
+# songs = get_songs_by_artist("Indila")
+# for song in songs:
+#     print(f"Indila: {song.title}")
+
+# Remove a song from an artist
+# remove_song_from_artist("Daniel Di Angelo", "Lose Face")
+
+# Check if the song is removed
+# songs = get_songs_by_artist("Daniel Di Angelo")
 #
-#     try:
-#         song, created = Song.objects.get_or_create(title=song_title)
-#         artist.songs.add(song)
-#     except Exception as e:
-#         print(f"An error occurred: {e}")
-#
-# def get_songs_by_artist(artist_name: str):
-#     return Artist.objects.filter(name=artist_name).value("songs")
-#
-# def remove_song_from_artist(artist_name: str, song_title: str):
-#     try:
-#         artist = Artist.objects.get(name=artist_name)
-#     except ObjectDoesNotExist:
-#         print(f"Artist '{artist_name}' does not exist.")
-#
-#     try:
-#         song = Song.objects.get(title=song_title)
-#     except ObjectDoesNotExist:
-#         print(f"Song '{song_title}' does not exist.")
-#
-#     try:
-#         artist.songs.remove(song)
-#     except Exception as e:
-#         print(f"An error occurred: {e}")
+# for song in songs:
+#     print(f"Songs by Daniel Di Angelo after removal: {song.title}")
+
 
 
 
