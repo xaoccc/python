@@ -139,7 +139,7 @@ def calculate_average_rating_for_product_by_name(product_name: str):
     return Review.objects.filter(product=product).aggregate(Avg("rating"))["rating__avg"]
 
 def get_reviews_with_high_ratings(threshold: int):
-    return Review.objects.filter(rating__gt=threshold)
+    return Review.objects.filter(rating__gte=threshold)
 
 def get_products_with_no_reviews():
     reviews_products_id = Review.objects.values_list("product", flat=True)
@@ -148,7 +148,7 @@ def get_products_with_no_reviews():
 
 def delete_products_without_reviews():
     reviews_products_id = Review.objects.values_list("product", flat=True)
-    for product in Product.objects.exclude(id__in=reviews_products_id).order_by("-name"):
+    for product in Product.objects.exclude(id__in=reviews_products_id):
         product.delete()
 
 # Create some products
@@ -169,7 +169,7 @@ def delete_products_without_reviews():
 #
 # delete_products_without_reviews()
 # print(f"Products left: {Product.objects.count()}")
-# print(get_reviews_with_high_ratings(1))
+# print(get_reviews_with_high_ratings(3))
 
 
 def calculate_licenses_expiration_dates():
