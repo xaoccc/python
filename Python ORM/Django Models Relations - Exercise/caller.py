@@ -170,3 +170,15 @@ def delete_products_without_reviews():
 # delete_products_without_reviews()
 # print(f"Products left: {Product.objects.count()}")
 # print(get_reviews_with_high_ratings(1))
+
+
+def calculate_licenses_expiration_dates():
+    pass
+
+
+def get_drivers_with_expired_licenses(due_date):
+    pass
+
+
+def register_car_by_owner(owner: object):
+    pass
