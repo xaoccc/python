@@ -28,10 +28,7 @@ def show_all_authors_with_their_books():
     return "\n".join(result)
 
 def delete_all_authors_without_books():
-    authors = Author.objects.all()
-    for author in authors:
-        if not Book.objects.filter(author=author).values_list("title", flat=True):
-            author.delete()
+    Author.objects.filter(book__isnull=True).delete()
 
 
 
