@@ -1,13 +1,16 @@
 import os
+from datetime import timedelta
+
 import django
 from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import Avg
+from django.utils.datetime_safe import date
 
 # Set up Django
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "orm_skeleton.settings")
 django.setup()
 
-from main_app.models import Author, Book, Song, Artist, Product, Review
+from main_app.models import Author, Book, Song, Artist, Product, Review, DrivingLicense, Driver
 
 # Import your models here
 
@@ -135,50 +138,72 @@ def remove_song_from_artist(artist_name: str, song_title: str):
 
 # 03. Shop
 def calculate_average_rating_for_product_by_name(product_name: str):
-    product = Product.objects.get(name=product_name)
-    return Review.objects.filter(product=product).aggregate(Avg("rating"))["rating__avg"]
+    try:
+        product = Product.objects.get(name=product_name)
+        return Review.objects.filter(product=product).aggregate(Avg("rating"))["rating__avg"]
+    except Product.objects.model.DoesNotExist:
+        return "Product does not exist!"
 
 def get_reviews_with_high_ratings(threshold: int):
-    return Review.objects.filter(rating__gt=threshold)
+    return Review.objects.filter(rating__gte=threshold)
 
 def get_products_with_no_reviews():
     reviews_products_id = Review.objects.values_list("product", flat=True)
-    products = Product.objects.exclude(id__in=reviews_products_id).order_by("-name")
-    return products
+    return Product.objects.exclude(id__in=reviews_products_id).order_by("-name")
 
 def delete_products_without_reviews():
     reviews_products_id = Review.objects.values_list("product", flat=True)
-    for product in Product.objects.exclude(id__in=reviews_products_id).order_by("-name"):
+    for product in Product.objects.exclude(id__in=reviews_products_id):
         product.delete()
 
-# Create some products
-# product1 = Product.objects.create(name="Laptop")
-# product2 = Product.objects.create(name="Smartphone")
-# product3 = Product.objects.create(name="Headphones")
-# product4 = Product.objects.create(name="PlayStation 5")
-
-# Create some reviews for products
-# review1 = Review.objects.create(description="Great laptop!", rating=5, product=product1)
-# review2 = Review.objects.create(description="The laptop is slow!", rating=2, product=product1)
-# review3 = Review.objects.create(description="Awesome smartphone!", rating=5, product=product2)
-
+# print(get_products_with_no_reviews())
 # products_without_reviews = get_products_with_no_reviews()
 # print(f"Products without reviews: {', '.join([p.name for p in products_without_reviews])}")
-#
+
 # print(calculate_average_rating_for_product_by_name("Laptop"))
-#
+
+# before_deletion = Product.objects.count()
+# print(f"Products before deletion: {before_deletion}")
 # delete_products_without_reviews()
+# print(f"Products deleted: {before_deletion - Product.objects.count()}")
 # print(f"Products left: {Product.objects.count()}")
-# print(get_reviews_with_high_ratings(1))
+
+# high_rating_reviews = get_reviews_with_high_ratings(3)
+# for review in high_rating_reviews:
+#     print(f"Rating: {review.rating}, Description: {review.description}")
 
 
 def calculate_licenses_expiration_dates():
-    pass
-
+    all_licenses = DrivingLicense.objects.all().order_by("-license_number")
+    result = []
+    for ex_date in all_licenses:
+        result.append(f"License with id: {ex_date.license_number} expires on {ex_date.issue_date + timedelta(days=365)}!")
+    return "\n".join(result)
 
 def get_drivers_with_expired_licenses(due_date):
-    pass
+    all_licenses = DrivingLicense.objects.filter(issue_date__gte=due_date - timedelta(days=364))
+    result = []
+    for driver in all_licenses:
+        result.append(driver.driver)
+    return result
 
 
-def register_car_by_owner(owner: object):
-    pass
+# test code
+# Create drivers
+# driver1 = Driver.objects.create(id=53, first_name="Tanyo", last_name="Petrov")
+# driver2 = Driver.objects.create(id=54, first_name="Ivana", last_name="Yordanova")
+# Create licenses associated with drivers
+# license1 = DrivingLicense.objects.create(id=10, license_number="123", issue_date=date(2022, 10, 6), driver=driver1)
+# license2 = DrivingLicense.objects.create(id=11, license_number="456", issue_date=date(2022, 1, 1), driver=driver2)
+
+# print(calculate_licenses_expiration_dates())
+#
+#
+drivers_with_expired_licenses = get_drivers_with_expired_licenses(date(2024, 4, 24))
+for driver in drivers_with_expired_licenses:
+    print(f"{driver.first_name} {driver.last_name} has to renew their driving license!")
+
+
+
+# def register_car_by_owner(owner: object):
+#     pass
