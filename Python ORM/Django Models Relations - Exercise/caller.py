@@ -199,13 +199,15 @@ def get_drivers_with_expired_licenses(due_date):
 
 def register_car_by_owner(owner: object):
     first_available_registration = Registration.objects.filter(car__isnull=True).first()
-    first_car_with_no_registration_and_no_owner = Car.objects.filter(owner__isnull=True).first()
+    first_car_with_no_registration_and_no_owner = Car.objects.exclude(owner=owner).first()
 
     first_available_registration.registration_date = date.today()
-    first_available_registration.car = first_car_with_no_registration_and_no_owner
-    first_car_with_no_registration_and_no_owner.owner = owner
-
     first_available_registration.save()
+
+    first_available_registration.car = first_car_with_no_registration_and_no_owner
+    first_available_registration.save()
+
+    first_car_with_no_registration_and_no_owner.owner = owner
     first_car_with_no_registration_and_no_owner.save()
 
     return f"Successfully registered {first_car_with_no_registration_and_no_owner.model} to {owner.name} with registration number {first_available_registration.registration_number}."
