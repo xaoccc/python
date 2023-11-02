@@ -168,9 +168,13 @@ def delete_products_without_reviews():
 # print(f"Products deleted: {before_deletion - Product.objects.count()}")
 # print(f"Products left: {Product.objects.count()}")
 
+
 # high_rating_reviews = get_reviews_with_high_ratings(3)
 # for review in high_rating_reviews:
 #     print(f"Rating: {review.rating}, Description: {review.description}")
+
+# print(get_reviews_with_high_ratings(3))
+
 
 
 def calculate_licenses_expiration_dates():
@@ -189,19 +193,13 @@ def get_drivers_with_expired_licenses(due_date):
 
 
 # test code
-# Create drivers
-# driver1 = Driver.objects.create(id=53, first_name="Tanyo", last_name="Petrov")
-# driver2 = Driver.objects.create(id=54, first_name="Ivana", last_name="Yordanova")
-# Create licenses associated with drivers
-# license1 = DrivingLicense.objects.create(id=10, license_number="123", issue_date=date(2022, 10, 6), driver=driver1)
-# license2 = DrivingLicense.objects.create(id=11, license_number="456", issue_date=date(2022, 1, 1), driver=driver2)
 
 # print(calculate_licenses_expiration_dates())
 #
 #
-drivers_with_expired_licenses = get_drivers_with_expired_licenses(date(2024, 4, 24))
-for driver in drivers_with_expired_licenses:
-    print(f"{driver.first_name} {driver.last_name} has to renew their driving license!")
+# drivers_with_expired_licenses = get_drivers_with_expired_licenses(date(2024, 4, 24))
+# for driver in drivers_with_expired_licenses:
+#     print(f"{driver.first_name} {driver.last_name} has to renew their driving license!")
 
 
 
