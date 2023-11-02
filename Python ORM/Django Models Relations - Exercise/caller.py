@@ -4,13 +4,14 @@ from datetime import timedelta
 import django
 from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import Avg
-from django.utils.datetime_safe import date
+from datetime import date
 
 # Set up Django
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "orm_skeleton.settings")
 django.setup()
 
-from main_app.models import Author, Book, Song, Artist, Product, Review, DrivingLicense, Driver
+from main_app.models import Author, Book, Song, Artist, Product, Review, DrivingLicense, Driver, Owner, Car, Registration
+
 
 # Import your models here
 
@@ -196,8 +197,31 @@ def get_drivers_with_expired_licenses(due_date):
 # for driver in drivers_with_expired_licenses:
 #     print(f"{driver.first_name} {driver.last_name} has to renew their driving license!")
 
+def register_car_by_owner(owner: object):
+    first_available_registration = Registration.objects.filter(car__isnull=True).first()
+    first_car_with_no_registration_and_no_owner = Car.objects.filter(owner__isnull=True).first()
 
+    first_available_registration.registration_date = date.today()
+    first_available_registration.car = first_car_with_no_registration_and_no_owner
+    first_car_with_no_registration_and_no_owner.owner = owner
 
-# def register_car_by_owner(owner: object):
-#     pass
+    first_available_registration.save()
+    first_car_with_no_registration_and_no_owner.save()
 
+    return f"Successfully registered {first_car_with_no_registration_and_no_owner.model} to {owner.name} with registration number {first_available_registration.registration_number}."
+
+# test code:
+
+# owner1 = Owner.objects.get(name='Ivelin Milchev')
+# owner2 = Owner.objects.get(name='Alice Smith')
+#
+# car1 = Car.objects.get(model='Citroen C5', year=2004)
+# car2 = Car.objects.get(model='Honda Civic', year=2021)
+#
+# registration1 = Registration.objects.get(registration_number='TX0044XA')
+# registration2 = Registration.objects.get(registration_number='XYZ789')
+#
+# print(register_car_by_owner(owner1))
+# print(registration1.registration_date)
+# print(registration1.car.model)
+# print(car1.owner.name)
