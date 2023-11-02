@@ -3,7 +3,7 @@ from datetime import timedelta
 
 import django
 from django.core.exceptions import ObjectDoesNotExist
-from django.db.models import Avg
+from django.db.models import Avg, Sum, Count
 from datetime import date
 
 # Set up Django
@@ -71,7 +71,6 @@ def add_song_to_artist(artist_name: str, song_title: str):
     except ObjectDoesNotExist:
         print(f"Artist '{artist_name}' does not exist.")
         return
-
     try:
         song = Song.objects.get(title=song_title)
         artist.songs.add(song)
@@ -135,23 +134,36 @@ def remove_song_from_artist(artist_name: str, song_title: str):
 
 # 03. Shop
 def calculate_average_rating_for_product_by_name(product_name: str):
-    try:
-        product = Product.objects.get(name=product_name)
-        return Review.objects.filter(product=product).aggregate(Avg("rating"))["rating__avg"]
-    except Product.objects.model.DoesNotExist:
-        return "Product does not exist!"
+    product = Product.objects.get(name=product_name)
+    reviews = product.reviews.all()
+
+    total_rating = sum(r.rating for r in reviews)
+    average_rating = total_rating / len(reviews)
+    return average_rating
+
+    # Optimized solution:
+    # Product.objects.annotate(
+    #     total_ratings=Sum("review__rating"),
+    #     num_reviews=Count("review")
+    # ).get(name=product_name)
+    # return product.total_ratings / product.num_reviews
+
+    # My solution:
+    # try:
+    #     product = Product.objects.get(name=product_name)
+    #     return Review.objects.filter(product=product).aggregate(Avg("rating"))["rating__avg"]
+    # except Product.objects.model.DoesNotExist:
+    #     return "Product does not exist!"
 
 def get_reviews_with_high_ratings(threshold: int):
     return Review.objects.filter(rating__gte=threshold)
 
 def get_products_with_no_reviews():
-    reviews_products_id = Review.objects.values_list("product", flat=True)
-    return Product.objects.exclude(id__in=reviews_products_id).order_by("-name")
+    return Product.objects.filter(reviews__isnull=True).order_by("-name")
 
 def delete_products_without_reviews():
-    reviews_products_id = Review.objects.values_list("product", flat=True)
-    for product in Product.objects.exclude(id__in=reviews_products_id):
-        product.delete()
+    get_products_with_no_reviews().delete()
+
 
 # print(get_products_with_no_reviews())
 # products_without_reviews = get_products_with_no_reviews()

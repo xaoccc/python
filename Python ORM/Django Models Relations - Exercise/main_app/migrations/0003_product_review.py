@@ -24,7 +24,7 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('description', models.TextField(max_length=200)),
                 ('rating', models.PositiveIntegerField()),
-                ('product', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='main_app.product')),
+                ('product', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='main_app.product', related_name="reviews")),
             ],
         ),
     ]
