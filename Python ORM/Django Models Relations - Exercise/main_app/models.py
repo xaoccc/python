@@ -28,6 +28,18 @@ class Review(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, blank=True, null=True)
 
 
+class Driver(models.Model):
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+
+
+class DrivingLicense(models.Model):
+    license_number = models.CharField(max_length=10, unique=True)
+    issue_date = models.DateField()
+    driver = models.OneToOneField(Driver, on_delete=models.CASCADE)
+
+
+
 # class Driver(models.Model):
 #     first_name = models.CharField(max_length=50)
 #     last_name = models.CharField(max_length=50)
@@ -39,6 +51,7 @@ class Review(models.Model):
 #     driver = models.OneToOneField(Driver, on_delete=models.CASCADE)
 #
 #
+
 # class Owner(models.Model):
 #     name = models.CharField(max_length=50)
 #
