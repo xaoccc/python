@@ -135,7 +135,6 @@ def remove_song_from_artist(artist_name: str, song_title: str):
 # for song in songs:
 #     print(f"Songs by Daniel Di Angelo after removal: {song.title}")
 
-
 # 03. Shop
 def calculate_average_rating_for_product_by_name(product_name: str):
     try:
@@ -168,15 +167,13 @@ def delete_products_without_reviews():
 # print(f"Products deleted: {before_deletion - Product.objects.count()}")
 # print(f"Products left: {Product.objects.count()}")
 
-
 # high_rating_reviews = get_reviews_with_high_ratings(3)
 # for review in high_rating_reviews:
 #     print(f"Rating: {review.rating}, Description: {review.description}")
 
 # print(get_reviews_with_high_ratings(3))
 
-
-
+# 04. License
 def calculate_licenses_expiration_dates():
     all_licenses = DrivingLicense.objects.all().order_by("-license_number")
     result = []
@@ -191,11 +188,9 @@ def get_drivers_with_expired_licenses(due_date):
         result.append(driver.driver)
     return result
 
-
 # test code
 
 # print(calculate_licenses_expiration_dates())
-#
 #
 # drivers_with_expired_licenses = get_drivers_with_expired_licenses(date(2024, 4, 24))
 # for driver in drivers_with_expired_licenses:
@@ -204,8 +199,5 @@ def get_drivers_with_expired_licenses(due_date):
 
 
 # def register_car_by_owner(owner: object):
-<<<<<<< HEAD
 #     pass
-=======
-#     pass
->>>>>>> 171b5e68c47ac6996cb2676a3f86ab76d02f7de9
+
