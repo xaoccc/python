@@ -187,8 +187,8 @@ def delete_products_without_reviews():
 def calculate_licenses_expiration_dates():
     all_licenses = DrivingLicense.objects.all().order_by("-license_number")
     result = []
-    for ex_date in all_licenses:
-        result.append(f"License with id: {ex_date.license_number} expires on {ex_date.issue_date + timedelta(days=365)}!")
+    for dr_license in all_licenses:
+        result.append(f"License with id: {dr_license.license_number} expires on {dr_license.issue_date + timedelta(days=365)}!")
     return "\n".join(result)
 
 def get_drivers_with_expired_licenses(due_date):
