@@ -204,4 +204,8 @@ def get_drivers_with_expired_licenses(due_date):
 
 
 # def register_car_by_owner(owner: object):
+<<<<<<< HEAD
 #     pass
+=======
+#     pass
+>>>>>>> 171b5e68c47ac6996cb2676a3f86ab76d02f7de9
