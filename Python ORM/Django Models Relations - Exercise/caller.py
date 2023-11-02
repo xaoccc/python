@@ -17,7 +17,7 @@ from main_app.models import Author, Book, Song, Artist, Product, Review, Driving
 
 # Create queries within functions
 def show_all_authors_with_their_books():
-    authors = Author.objects.all()
+    authors = Author.objects.all().order_by("id")
     result = []
 
     for author in authors:
