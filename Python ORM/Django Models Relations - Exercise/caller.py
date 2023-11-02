@@ -73,7 +73,7 @@ def add_song_to_artist(artist_name: str, song_title: str):
         return
 
     try:
-        song, created = Song.objects.get_or_create(title=song_title)
+        song = Song.objects.get(title=song_title)
         artist.songs.add(song)
     except Exception as e:
         print(f"An error occurred: {e}")
