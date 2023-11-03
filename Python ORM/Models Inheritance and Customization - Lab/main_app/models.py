@@ -1,3 +1,4 @@
+from django.core.exceptions import ValidationError
 from django.db import models
 
 # Create your models here.
@@ -38,6 +39,15 @@ class ZooKeeper(Employee):
 
     specialty = models.CharField(max_length=10, choices=SPECIALIZATIONS)
     managed_animals = models.ManyToManyField(Animal)
+
+    def clean(self):
+        # Check if the "specialty" field value is in the list of valid choices
+        if self.specialty not in dict(self.SPECIALIZATIONS).keys():
+            raise ValidationError("Specialty must be a valid choice.")
+
+    def save(self, *args, **kwargs):
+        self.full_clean()
+        super(ZooKeeper, self).save(*args, **kwargs)
 
 
 class Veterinarian(Employee):

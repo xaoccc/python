@@ -37,10 +37,17 @@ from main_app.models import ZooKeeper, Veterinarian
 
 from main_app.models import ZooDisplayAnimal
 
-is_proxy = ZooDisplayAnimal._meta.proxy
+# is_proxy = ZooDisplayAnimal._meta.proxy
+#
+# if is_proxy:
+#     print("ZooDisplayAnimal is a proxy model.")
+# else:
+#     print("ZooDisplayAnimal is not a proxy model.")
 
-if is_proxy:
-    print("ZooDisplayAnimal is a proxy model.")
-else:
-    print("ZooDisplayAnimal is not a proxy model.")
+from main_app.models import ZooKeeper
+
+# zookeeper = ZooKeeper(first_name="John", last_name="Doe", phone_number="0123456789", specialty="Fishes")
+# zookeeper.full_clean()
+# zookeeper.save()
+
 
