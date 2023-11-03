@@ -50,4 +50,11 @@ from main_app.models import ZooKeeper
 # zookeeper.full_clean()
 # zookeeper.save()
 
+# all_animals_info = ZooDisplayAnimal.objects.all()
+# for a in all_animals_info:
+#     print(a.display_info())
+#     print(a.is_endangered())
+
+
+
 

@@ -8,6 +8,24 @@ class Animal(models.Model):
     birth_date = models.DateField()
     sound = models.CharField(max_length=100)
 
+    def display_info(self):
+        extra_info = ''
+
+        if hasattr(self, 'mammal'):
+            extra_info = f" Its fur color is {self.mammal.fur_color}."
+        if hasattr(self, 'bird'):
+            extra_info = f" Its wingspan is {self.bird.wing_span} cm."
+        if hasattr(self, 'reptile'):
+            extra_info = f" Its scale type is {self.reptile.scale_type}."
+
+        output = f"Meet {self.name}! It's {self.species} and it's born {self.birth_date}. It makes a noise like '{self.sound}'!{extra_info}"
+
+        return output
+
+    def is_endangered(self):
+        return True if self.species in ["Cross River Gorilla",
+                                        "Orangutan", "Green Turtle"] else False
+
 class Mammal(Animal):
     fur_color = models.CharField(max_length=50)
 
