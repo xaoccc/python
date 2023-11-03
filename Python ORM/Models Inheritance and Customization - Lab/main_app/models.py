@@ -1,3 +1,5 @@
+from datetime import date, timedelta
+
 from django.core.exceptions import ValidationError
 from django.db import models
 
@@ -7,6 +9,10 @@ class Animal(models.Model):
     species = models.CharField(max_length=100)
     birth_date = models.DateField()
     sound = models.CharField(max_length=100)
+
+    @property
+    def age(self):
+        return date.today().year - self.birth_date.year
 
     def display_info(self):
         extra_info = ''
