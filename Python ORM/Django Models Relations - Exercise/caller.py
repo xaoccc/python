@@ -207,19 +207,16 @@ def get_drivers_with_expired_licenses(due_date):
 #     print(f"{driver.first_name} {driver.last_name} has to renew their driving license!")
 
 def register_car_by_owner(owner: object):
-    first_available_registration = Registration.objects.filter(car__isnull=True).first()
-    first_car_with_no_registration_and_no_owner = Car.objects.exclude(owner=owner).first()
 
-    first_available_registration.registration_date = date.today()
-    first_available_registration.save()
+    first_free_car = Car.objects.filter(registration__isnull=True, owner=owner).first()
+    first_free_car.owner = owner
+    first_free_car.save()
 
-    first_available_registration.car = first_car_with_no_registration_and_no_owner
-    first_available_registration.save()
+    first_available_reg = Registration.objects.filter(car__isnull=True).first()
+    first_available_reg.registration_date, first_available_reg.car = date.today(), first_free_car
+    first_available_reg.save()
 
-    first_car_with_no_registration_and_no_owner.owner = owner
-    first_car_with_no_registration_and_no_owner.save()
-
-    return f"Successfully registered {first_car_with_no_registration_and_no_owner.model} to {owner.name} with registration number {first_available_registration.registration_number}."
+    return f"Successfully registered {first_free_car.model} to {owner.name} with registration number {first_available_reg.registration_number}."
 
 # test code:
 
@@ -232,7 +229,6 @@ def register_car_by_owner(owner: object):
 # registration1 = Registration.objects.get(registration_number='TX0044XA')
 # registration2 = Registration.objects.get(registration_number='XYZ789')
 #
-# print(register_car_by_owner(owner1))
-# print(registration1.registration_date)
-# print(registration1.car.model)
-# print(car1.owner.name)
+# print(register_car_by_owner(owner2))
+
+

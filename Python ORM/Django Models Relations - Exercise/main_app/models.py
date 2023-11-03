@@ -45,7 +45,7 @@ class Owner(models.Model):
 class Car(models.Model):
     model = models.CharField(max_length=50)
     year = models.PositiveIntegerField()
-    owner = models.ForeignKey(Owner, on_delete=models.CASCADE, null=True, blank=True)
+    owner = models.ForeignKey(Owner, on_delete=models.CASCADE, null=True, blank=True, related_name="cars")
 
 class Registration(models.Model):
     registration_number = models.CharField(max_length=10)
