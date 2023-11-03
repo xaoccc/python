@@ -44,3 +44,8 @@ class Veterinarian(Employee):
     license_number = models.CharField(max_length=10)
 
 
+class ZooDisplayAnimal(Animal):
+
+    class Meta:
+        proxy = True
+
