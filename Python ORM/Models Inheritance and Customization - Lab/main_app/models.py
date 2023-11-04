@@ -12,7 +12,8 @@ class Animal(models.Model):
 
     @property
     def age(self):
-        return date.today().year - self.birth_date.year
+        today = date.today()
+        return today.year - self.birth_date.year - ((today.month, today.day) < (self.birth_date.month, self.birth_date.day))
 
     def display_info(self):
         extra_info = ''
