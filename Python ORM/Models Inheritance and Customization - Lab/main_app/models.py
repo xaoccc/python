@@ -74,9 +74,12 @@ class ZooKeeper(Employee):
         self.full_clean()
         super(ZooKeeper, self).save(*args, **kwargs)
 
+class BooleanChoiceField(models.BooleanField):
+    pass
 
 class Veterinarian(Employee):
     license_number = models.CharField(max_length=10)
+    availability = models.BooleanChoiceField(is_available=True)
 
 
 class ZooDisplayAnimal(Animal):
