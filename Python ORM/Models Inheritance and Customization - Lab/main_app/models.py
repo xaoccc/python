@@ -10,7 +10,7 @@ class BooleanChoiceField(models.BooleanField):
             (False, "Not Available")
         )
         kwargs["default"] = True
-        super().__init__()
+        super().__init__(*args, **kwargs)
 
 # Create your models here.
 class Animal(models.Model):
@@ -89,7 +89,10 @@ class ZooKeeper(Employee):
 
 class Veterinarian(Employee):
     license_number = models.CharField(max_length=10)
-    availability = models.BooleanChoiceField(is_available=True)
+    availability = BooleanChoiceField()
+
+    def is_available(self):
+        return self.availability
 
 
 class ZooDisplayAnimal(Animal):
