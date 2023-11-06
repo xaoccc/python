@@ -3,6 +3,13 @@ from datetime import date, timedelta
 from django.core.exceptions import ValidationError
 from django.db import models
 
+class BooleanChoiceField(models.BooleanField):
+    def __init__(self, *args, **kwargs):
+        kwargs["choices"] = (
+            (True, "Available"),
+            (False, "Not Available")
+        )
+
 # Create your models here.
 class Animal(models.Model):
     name = models.CharField(max_length=100)
@@ -74,8 +81,9 @@ class ZooKeeper(Employee):
         self.full_clean()
         super(ZooKeeper, self).save(*args, **kwargs)
 
-class BooleanChoiceField(models.BooleanField):
-    pass
+
+
+
 
 class Veterinarian(Employee):
     license_number = models.CharField(max_length=10)
