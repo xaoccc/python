@@ -9,6 +9,8 @@ class BooleanChoiceField(models.BooleanField):
             (True, "Available"),
             (False, "Not Available")
         )
+        kwargs["default"] = True
+        super().__init__()
 
 # Create your models here.
 class Animal(models.Model):
