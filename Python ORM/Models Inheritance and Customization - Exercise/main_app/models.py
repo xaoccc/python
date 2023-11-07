@@ -99,6 +99,14 @@ class Student(models.Model):
 
 
 class MaskedCreditCardField(models.CharField):
+    # To override max_length:
+    # def __init__(self, *args, **kwargs):
+
+    # Here we set the parameter and its value in the custom field
+    #     kwargs["max_length"] = 20
+
+    # Here we override the init method and so our custom field MaskedCreditCardField will always have max_length=20
+    #     super().__init__(kwargs)
     def to_python(self, card_number):
         if not isinstance(card_number, str):
             raise ValidationError("The card number must be a string")
@@ -109,13 +117,10 @@ class MaskedCreditCardField(models.CharField):
 
         return f"****-****-****-{card_number[12:16]}"
 
-
-
-
-
 class CreditCard(models.Model):
     card_owner = models.CharField(max_length=100)
     card_number = MaskedCreditCardField(max_length=20)
+    # max_length could be overridden and not given here
 
 
 
