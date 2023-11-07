@@ -9,6 +9,10 @@ from django.db import models
 # abstract = True - each model which inherits ModelName will have its fields, but no table ModelName will be created
 # proxy = True - table ModelName will be created, models which inherit ModelName cannot add fields, but only methods
 
+
+
+
+
 class BaseCharacter(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
@@ -83,4 +87,16 @@ class Message(models.Model):
 
     def forward_message(self, sender, receiver):
         return Message(sender=sender, receiver=receiver, content=self.content)
+
+
+class StudentIDField(models.PositiveIntegerField):
+    def to_python(self, value):
+        pass
+
+class Student(models.Model):
+    name = models.CharField(max_length=100)
+    student_id = StudentIDField()
+
+
+
 
