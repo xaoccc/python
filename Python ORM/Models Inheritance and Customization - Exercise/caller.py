@@ -6,16 +6,11 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "orm_skeleton.settings")
 django.setup()
 
 # Import your models here
-from main_app.models import Student
+from main_app.models import CreditCard
+
+credit_card1 = CreditCard.objects.create(card_owner="Krasimir", card_number="1234567890123450")
+
+credit_card1.save()
 
 
-
-# Retrieving student IDs from the database
-retrieved_student1 = Student.objects.get(name="John")
-retrieved_student2 = Student.objects.get(name="Alice")
-retrieved_student3 = Student.objects.get(name="Bob")
-
-print(retrieved_student1.student_id)
-print(retrieved_student2.student_id)
-print(retrieved_student3.student_id)
 

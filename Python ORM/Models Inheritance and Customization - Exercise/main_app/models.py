@@ -1,3 +1,4 @@
+from django.core.exceptions import ValidationError
 from django.db import models
 
 # Create your models here.
@@ -90,12 +91,32 @@ class Message(models.Model):
 
 
 class StudentIDField(models.PositiveIntegerField):
-    def to_python(self, value):
-        pass
+    pass
 
 class Student(models.Model):
     name = models.CharField(max_length=100)
     student_id = StudentIDField()
+
+
+class MaskedCreditCardField(models.CharField):
+    def to_python(self, card_number):
+        if not isinstance(card_number, str):
+            raise ValidationError("The card number must be a string")
+        elif not card_number.isdigit():
+            raise ValidationError("The card number must contain only digits")
+        elif len(card_number) != 16:
+            raise ValidationError("The card number must be exactly 16 characters long")
+
+        return f"****-****-****-{card_number[12:16]}"
+
+
+
+
+
+class CreditCard(models.Model):
+    card_owner = models.CharField(max_length=100)
+    card_number = MaskedCreditCardField(max_length=20)
+
 
 
 
