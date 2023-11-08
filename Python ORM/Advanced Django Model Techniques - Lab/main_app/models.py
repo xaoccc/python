@@ -24,6 +24,9 @@ class Restaurant(models.Model):
                     MaxValueValidator(5, "Rating cannot exceed 5.00.")]
     )
 
+    class Meta:
+        pass
+
 
 class Menu(models.Model):
     name = models.CharField(max_length=100)
@@ -31,4 +34,14 @@ class Menu(models.Model):
     restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE)
 
 
+class RestaurantReview(models.Model):
+    reviewer_name = models.CharField(max_length=100)
+    restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE)
+    review_content = models.TextField()
+    rating = models.PositiveIntegerField(validators=[MaxValueValidator(limit_value=5)])
 
+    class Meta:
+        ordering = ["-rating"]
+        verbose_name = "Restaurant Review"
+        verbose_name_plural = "Restaurant Reviews"
+        unique_together = ["reviewer_name", "restaurant"]
