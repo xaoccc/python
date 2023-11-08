@@ -6,4 +6,4 @@ def validate_menu_categories(value):
 
     for category in categories:
         if category.lower() not in value.lower():
-            raise ValidationError('The menu must include each of the categories "Appetizers", "Main Course", "Desserts"')
+            raise ValidationError('The menu must include each of the categories "Appetizers", "Main Course", "Desserts".')

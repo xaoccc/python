@@ -1,3 +1,4 @@
+from django.core.exceptions import ValidationError
 from django.db import models
 from django.core.validators import MinLengthValidator, MaxLengthValidator, MinValueValidator, MaxValueValidator
 from main_app.validators import validate_menu_categories
@@ -22,6 +23,7 @@ class Restaurant(models.Model):
         validators=[MinValueValidator(0, "Rating must be at least 0.00."),
                     MaxValueValidator(5, "Rating cannot exceed 5.00.")]
     )
+
 
 class Menu(models.Model):
     name = models.CharField(max_length=100)
