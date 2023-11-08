@@ -1,4 +1,4 @@
-from django.core.validators import MinValueValidator, EmailValidator, URLValidator
+from django.core.validators import MinValueValidator
 from django.db import models
 from main_app.validators import validate_name, validate_phone
 
