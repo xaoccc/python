@@ -162,21 +162,53 @@ class BaseReservation(models.Model):
 
     def calculate_total_cost(self):
         total_cost = self.reservation_period() * self.room.price_per_night
-        return f"{total_cost:1f}"
+        return round(total_cost, 1)
 
     @property
     def is_available(self):
+        reservations = self.__class__.objects.filter(
+            room=self.room,
+            end_date__gte=self.start_date,
+            start_date__lte=self.end_date,
+        )
+        return not reservations.exists()
+
+    def clean(self):
         if self.start_date > self.end_date:
             raise ValidationError("Start date cannot be after or in the same end date")
 
+        if not self.is_available:
+            raise ValidationError(f"Room {self.room.number} cannot be reserved)")
 
 
 class RegularReservation(BaseReservation):
-    pass
+    def save(self, *args, **kwargs):
+        super().clean()
+        super().save(*args, **kwargs)
+        return f"Regular reservation for room {self.room.number}"
 
 
 class SpecialReservation(BaseReservation):
-    pass
+    def save(self, *args, **kwargs):
+        super().clean()
+        super().save(*args, **kwargs)
+        return f"Special reservation for room {self.room.number}"
+
+    def extend_reservation(self, days):
+        reservations = self.__class__.objects.filter(
+            room=self.room,
+            end_date__gte=self.start_date,
+            start_date__lte=self.end_date + timedelta(days=days),
+        )
+
+        if reservations:
+            raise ValidationError("Error during extending reservation")
+
+        self.end_date += timedelta(days=days)
+        super().save()
+
+        return f"Extended reservation for room {self.room.number} with {days} days"
+
 
 
 
