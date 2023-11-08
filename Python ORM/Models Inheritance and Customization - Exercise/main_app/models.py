@@ -171,7 +171,6 @@ class BaseReservation(models.Model):
 
 
 
-
 class RegularReservation(BaseReservation):
     pass
 
