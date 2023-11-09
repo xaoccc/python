@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Count, Sum
 
 
 class Category(models.Model):
@@ -10,6 +11,13 @@ class ProductManager(models.Manager):
 
     def available_products_in_category(self, category_name):
         return self.filter(is_available=True, category__name=category_name)
+
+def product_quantity_ordered():
+    ordered_products = Product.objects.annotate(total_ordered_quantity=Sum("orderproduct__quantity")).exclude(orderproduct__quantity=None).order_by("-total_ordered_quantity")
+    result = []
+    for product in ordered_products:
+        result.append(f'Quantity ordered of {product.name}: {product.total_ordered_quantity}')
+    return "\n".join(result)
 
 class Product(models.Model):
     name = models.CharField(max_length=100)
