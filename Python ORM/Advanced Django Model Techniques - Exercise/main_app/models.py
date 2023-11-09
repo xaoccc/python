@@ -109,6 +109,7 @@ class SpiderHero(Hero):
     def swing_from_buildings(self):
         self.energy -= 80
         if self.energy <= 0:
+            self.save()
             return f"{self.name} as Spider Hero is out of web shooter fluid"
         return f"{self.name} as Spider Hero swings from buildings using web shooters"
 
@@ -119,6 +120,7 @@ class FlashHero(Hero):
     def run_at_super_speed(self):
         self.energy -= 65
         if self.energy <= 0:
+            self.save()
             return f"{self.name} as Flash Hero needs to recharge the speed force"
         return f"{self.name} as Flash Hero runs at lightning speed, saving the day"
 
