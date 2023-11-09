@@ -6,7 +6,8 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "orm_skeleton.settings")
 django.setup()
 
 # Import your models
-from main_app.models import Product, Category, Customer, Order, OrderProduct, product_quantity_ordered
+from main_app.models import Product, Category, Customer, Order, OrderProduct, product_quantity_ordered, \
+    ordered_products_per_customer
 
 # Create and check models
 # def add_records_to_database():
@@ -60,3 +61,4 @@ from main_app.models import Product, Category, Customer, Order, OrderProduct, pr
 # Run and print your queries
 # print(add_records_to_database())
 # print(product_quantity_ordered())
+print(ordered_products_per_customer())

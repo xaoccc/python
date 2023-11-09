@@ -19,6 +19,18 @@ def product_quantity_ordered():
         result.append(f'Quantity ordered of {product.name}: {product.total_ordered_quantity}')
     return "\n".join(result)
 
+def ordered_products_per_customer():
+    all_orders = Order.objects.prefetch_related("orderproduct_set__product__category").order_by("id")
+    result = []
+    for order in all_orders:
+        result.append(f"Order ID: {order.id}, Customer: {order.customer.username}")
+        print(order.products)
+        for item in order.orderproduct_set.all():
+            result.append(f"- Product: {item.product.name}, Category: {item.product.category.name}")
+    return "\n".join(result)
+
+
+
 class Product(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(null=True, blank=True)
