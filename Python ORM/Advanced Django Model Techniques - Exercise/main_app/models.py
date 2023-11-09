@@ -61,10 +61,11 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
 
     def calculate_tax(self):
-        pass
+        price = Product.objects.get(pk=self.pk).price
+        return price * 0.08
 
     def calculate_shipping_cost(self, weight):
-        pass
+        return weight * 2
 
     def format_product_name(self):
         return f"Product: {self.name}"
@@ -75,13 +76,15 @@ class DiscountedProduct(Product):
         proxy = True
 
     def calculate_price_without_discount(self):
-        pass
+        price = Product.objects.get(pk=self.pk).price
+        return price / 1.2
 
     def calculate_tax(self):
-        pass
+        price = Product.objects.get(pk=self.pk).price
+        return price * 0.05
 
     def calculate_shipping_cost(self, weight):
-        pass
+        return weight * 1.5
 
 
     def format_product_name(self):

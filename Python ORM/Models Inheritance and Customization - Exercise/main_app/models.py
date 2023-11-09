@@ -131,7 +131,7 @@ class Hotel(models.Model):
 
 
 class Room(models.Model):
-    hotel = models.ForeignKey(Hotel, on_delete=models.CASCADE)
+    hotel = models.ForeignKey(to=Hotel, on_delete=models.CASCADE)
     number = models.CharField(max_length=100, unique=True)
     capacity = models.PositiveIntegerField()
     total_guests = models.PositiveIntegerField()
@@ -150,12 +150,15 @@ class Room(models.Model):
 
 
 class BaseReservation(models.Model):
+
+    class Meta:
+        abstract = True
+
     room = models.ForeignKey(to=Room, on_delete=models.CASCADE)
     start_date = models.DateField()
     end_date = models.DateField()
 
-    class Meta:
-        abstract = True
+
 
     def reservation_period(self):
         return (self.end_date - self.start_date).days
@@ -174,11 +177,11 @@ class BaseReservation(models.Model):
         return not reservations.exists()
 
     def clean(self):
-        if self.start_date > self.end_date:
+        if self.start_date >= self.end_date:
             raise ValidationError("Start date cannot be after or in the same end date")
 
         if not self.is_available:
-            raise ValidationError(f"Room {self.room.number} cannot be reserved)")
+            raise ValidationError(f"Room {self.room.number} cannot be reserved")
 
 
 class RegularReservation(BaseReservation):
@@ -195,7 +198,7 @@ class SpecialReservation(BaseReservation):
         return f"Special reservation for room {self.room.number}"
 
     def extend_reservation(self, days):
-        reservations = self.__class__.objects.filter(
+        reservations = SpecialReservation.objects.filter(
             room=self.room,
             end_date__gte=self.start_date,
             start_date__lte=self.end_date + timedelta(days=days),
@@ -208,7 +211,6 @@ class SpecialReservation(BaseReservation):
         super().save()
 
         return f"Extended reservation for room {self.room.number} with {days} days"
-
 
 
 
