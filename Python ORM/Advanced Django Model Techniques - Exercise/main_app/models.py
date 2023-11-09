@@ -1,6 +1,9 @@
+from _decimal import Decimal
 from django.core.validators import MinValueValidator, MinLengthValidator
 from django.db import models
 from main_app.validators import validate_name, validate_phone
+
+
 
 # Create your models here.
 class Customer(models.Model):
@@ -61,11 +64,10 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
 
     def calculate_tax(self):
-        price = Product.objects.get(pk=self.pk).price
-        return price * 0.08
+        return self.price * Decimal("0.08")
 
     def calculate_shipping_cost(self, weight):
-        return weight * 2
+        return weight * Decimal("2.00")
 
     def format_product_name(self):
         return f"Product: {self.name}"
@@ -76,16 +78,13 @@ class DiscountedProduct(Product):
         proxy = True
 
     def calculate_price_without_discount(self):
-        price = Product.objects.get(pk=self.pk).price
-        return price / 1.2
+        return self.price * Decimal("1.2")
 
     def calculate_tax(self):
-        price = Product.objects.get(pk=self.pk).price
-        return price * 0.05
+        return self.price * Decimal("0.05")
 
     def calculate_shipping_cost(self, weight):
-        return weight * 1.5
-
+        return weight * Decimal("1.50")
 
     def format_product_name(self):
         return f"Discounted Product: {self.name}"
