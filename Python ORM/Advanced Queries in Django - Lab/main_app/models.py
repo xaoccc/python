@@ -1,5 +1,5 @@
 from django.db import models
-from django.db.models import Count, Sum
+from django.db.models import Count, Sum, Q
 
 
 class Category(models.Model):
@@ -19,17 +19,23 @@ def product_quantity_ordered():
         result.append(f'Quantity ordered of {product.name}: {product.total_ordered_quantity}')
     return "\n".join(result)
 
+
 def ordered_products_per_customer():
-    all_orders = Order.objects.prefetch_related("orderproduct_set__product__category").order_by("id")
+    # Fetch all objects from model Order and model OrderProduct, this able to access all object from model Products
+    prefetched_orders = Order.objects.prefetch_related("orderproduct_set").order_by("id")
     result = []
-    for order in all_orders:
+    for order in prefetched_orders:
         result.append(f"Order ID: {order.id}, Customer: {order.customer.username}")
-        print(order.products)
         for item in order.orderproduct_set.all():
             result.append(f"- Product: {item.product.name}, Category: {item.product.category.name}")
     return "\n".join(result)
 
-
+def filter_products():
+    all_products = Product.objects.filter(Q(price__gt=3) & Q(is_available=True)).order_by("-price", "name")
+    result = []
+    for product in all_products:
+        result.append(f"{product.name}: {product.price}lv.")
+    return "\n".join(result)
 
 class Product(models.Model):
     name = models.CharField(max_length=100)
@@ -43,17 +49,17 @@ class Product(models.Model):
     def __str__(self):
         return f"{self.category.name}: {self.name}"
 
-
 class Customer(models.Model):
     username = models.CharField(max_length=50, unique=True)
-
 
 class Order(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
     products = models.ManyToManyField(Product, through='OrderProduct')
 
-
 class OrderProduct(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField()
+
+
+
