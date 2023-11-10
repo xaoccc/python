@@ -7,7 +7,7 @@ django.setup()
 
 # Import your models
 from main_app.models import Product, Category, Customer, Order, OrderProduct, product_quantity_ordered, \
-    ordered_products_per_customer, filter_products
+    ordered_products_per_customer, filter_products, give_discount
 
 # Create and check models
 # def add_records_to_database():
@@ -63,3 +63,4 @@ from main_app.models import Product, Category, Customer, Order, OrderProduct, pr
 # print(product_quantity_ordered())
 # print(ordered_products_per_customer())
 # print(filter_products())
+# print(give_discount())
