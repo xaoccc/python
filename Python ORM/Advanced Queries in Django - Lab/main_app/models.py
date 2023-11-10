@@ -1,6 +1,6 @@
 from _decimal import Decimal
 from django.db import models
-from django.db.models import Count, Sum, Q
+from django.db.models import Count, Sum, Q, F
 
 
 class Category(models.Model):
@@ -39,14 +39,9 @@ def filter_products():
     return "\n".join(result)
 
 def give_discount():
-    all_available_products_discount = Product.objects.filter(Q(price__gt=3) & Q(is_available=True))
+    Product.objects.filter(Q(price__gt=3) & Q(is_available=True)).update(price=F('price') * 0.7)
     result = []
-    for product in all_available_products_discount:
-        product.price -= (product.price * Decimal(0.3))
-        product.save()
-
-    all_available_products = Product.objects.filter(is_available=True).order_by("-price", "name")
-    for product in all_available_products:
+    for product in Product.objects.filter(is_available=True).order_by("-price", "name"):
         result.append(f"{product.name}: {round(product.price, 2)}lv.")
     return "\n".join(result)
 
