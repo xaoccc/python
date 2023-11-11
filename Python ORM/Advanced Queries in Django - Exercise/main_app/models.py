@@ -1,6 +1,9 @@
+from _pydecimal import Decimal
+
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.db.models import Q, Count, Sum
-from django.db.models.aggregates import Count
+from django.db.models.aggregates import Count, Avg
 
 
 class RealEstateListingManager(models.Manager):
@@ -21,6 +24,34 @@ class RealEstateListingManager(models.Manager):
             .annotate(location_count=Count("location"))
             .order_by("location_count", "id")
         )[0:2]
+
+
+
+class VideoGameManager(models.Manager):
+    def games_by_genre(self, genre):
+        return VideoGame.objects.filter(genre=genre)
+
+    def recently_released_games(self, year):
+        return VideoGame.objects.filter(release_year__gte=year)
+
+
+    def highest_rated_game(self):
+        return VideoGame.objects.values("title").order_by("-rating")[0]["title"]
+
+
+    def lowest_rated_game(self):
+        return VideoGame.objects.values("title").order_by("rating")[0]["title"]
+
+
+    def average_rating(self):
+        # This should be working!!!
+        # return VideoGame.objects.annotate(Avg('rating')).values("rating")
+        result = 0
+        all_ratings = VideoGame.objects.values_list("rating")
+        for rating in all_ratings:
+            result += rating[0]
+
+        return round(result / len(all_ratings), 1)
 # Create your models here.
 
 
@@ -52,8 +83,18 @@ class VideoGame(models.Model):
 
     title = models.CharField(max_length=100)
     genre = models.CharField(max_length=100, choices=GENRE_CHOICES)
-    release_year = models.PositiveIntegerField()
-    rating = models.DecimalField(max_digits=2,decimal_places=1)
+    release_year = models.PositiveIntegerField(
+        validators=[
+            MinValueValidator(1990, "The release year must be between 1990 and 2023"),
+            MaxValueValidator(2023, "The release year must be between 1990 and 2023")
+        ]
+    )
+    rating = models.DecimalField(max_digits=2,decimal_places=1, validators=[
+            MinValueValidator(0.0, "The rating must be between 0.0 and 10.0"),
+            MaxValueValidator(10.0, "The rating must be between 0.0 and 10.0")
+    ])
+
+    objects = VideoGameManager()
 
     def __str__(self):
         return self.title

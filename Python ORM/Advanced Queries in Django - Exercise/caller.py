@@ -5,30 +5,30 @@ import django
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "orm_skeleton.settings")
 django.setup()
 
-from main_app.models import RealEstateListing
+from main_app.models import RealEstateListing, VideoGame
 
 # Import your models
 # Create and check models
 # Run and print your queries
 
-# house_listings = RealEstateListing.objects.by_property_type('House')
-# print("House listings:")
-# for listing in house_listings:
-#     print(f"- {listing.property_type} in {listing.location}")
+# Create instances of VideoGame with real data
 
-# affordable_listings = RealEstateListing.objects.in_price_range(75000.00, 120000.00)
-# print("Price in range listings:")
-# for listing in affordable_listings:
-#     print(f"- {listing.property_type} in {listing.location}")
+# Run the custom manager methods
+action_games = VideoGame.objects.games_by_genre('Action')
+recent_games = VideoGame.objects.recently_released_games(2019)
 
-# two_bedroom_listings = RealEstateListing.objects.with_bedrooms(2)
-# print("Two-bedroom listings:")
-# for listing in two_bedroom_listings:
-#     print(f"- {listing.property_type} in {listing.location}")
+highest_rated = VideoGame.objects.highest_rated_game()
+lowest_rated = VideoGame.objects.lowest_rated_game()
 
-# popular_locations = RealEstateListing.objects.popular_locations()
-# print("Popular locations:")
-#
-# for location in popular_locations:
-#     print(f"- {location['location']}")
+average_rating = VideoGame.objects.average_rating()
+
+# Print the results
+print(action_games)
+print(recent_games)
+
+print(highest_rated)
+print(lowest_rated)
+
+print(average_rating)
+
 
