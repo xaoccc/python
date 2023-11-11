@@ -1,6 +1,26 @@
 from django.db import models
+from django.db.models import Q, Count, Sum
+from django.db.models.aggregates import Count
 
 
+class RealEstateListingManager(models.Manager):
+    def by_property_type(self, property_type):
+        return RealEstateListing.objects.filter(property_type=property_type)
+
+    def in_price_range(self, min_price, max_price):
+        return RealEstateListing.objects.filter(Q(price__gte=min_price) & Q(price__lte=max_price))
+
+    def with_bedrooms(self, bedrooms_count):
+        return RealEstateListing.objects.filter(bedrooms=bedrooms_count)
+
+
+    def popular_locations(self):
+        return (
+            RealEstateListing.objects
+            .values("location")
+            .annotate(location_count=Count("location"))
+            .order_by("location_count", "id")
+        )[0:2]
 # Create your models here.
 
 
@@ -17,6 +37,8 @@ class RealEstateListing(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
     bedrooms = models.PositiveIntegerField()
     location = models.CharField(max_length=100)
+
+    objects = RealEstateListingManager()
 
 
 class VideoGame(models.Model):
