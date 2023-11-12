@@ -71,7 +71,6 @@ class RealEstateListing(models.Model):
 
     objects = RealEstateListingManager()
 
-
 class VideoGame(models.Model):
     GENRE_CHOICES = [
         ('Action', 'Action'),
