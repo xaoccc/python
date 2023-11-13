@@ -2,7 +2,7 @@ from _pydecimal import Decimal
 
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
-from django.db.models import Q, Count, Sum
+from django.db.models import Q, Count, Sum, F
 from django.db.models.aggregates import Count, Avg
 
 
@@ -161,6 +161,22 @@ class Task(models.Model):
     creation_date = models.DateField()
     completion_date = models.DateField()
 
+    @staticmethod
+    def overdue_high_priority_tasks():
+        return Task.objects.filter(Q(priority="High") & Q(is_completed=False) & Q(completion_date__gt=F("creation_date")))
+
+    @staticmethod
+    def completed_mid_priority_tasks():
+        return Task.objects.filter(Q(priority="Medium") & Q(is_completed=True))
+
+    @staticmethod
+    def search_tasks(query):
+        return Task.objects.filter(Q(title__contains=query) | Q(description__contains=query))
+
+    @staticmethod
+    def recent_completed_tasks(days):
+        return Task.objects.filter(Q(is_completed=True) & Q(completion_date__gte=F("creation_date") - days))
+
 
 class Exercise(models.Model):
     name = models.CharField(max_length=100)
@@ -168,3 +184,19 @@ class Exercise(models.Model):
     difficulty_level = models.PositiveIntegerField()
     duration_minutes = models.PositiveIntegerField()
     repetitions = models.PositiveIntegerField()
+
+    @staticmethod
+    def get_long_and_hard_exercises():
+        return Exercise.objects.filter(Q(duration_minutes__gt=30) & Q(difficulty_level__gte=10))
+
+    @staticmethod
+    def get_short_and_easy_exercises():
+        return Exercise.objects.filter(Q(duration_minutes__lt=15) & Q(difficulty_level__lt=5))
+
+    @staticmethod
+    def get_exercises_within_duration(min_duration: int, max_duration: int):
+        return Exercise.objects.filter(Q(duration_minutes__gte=min_duration) & Q(duration_minutes__lte=max_duration))
+
+    @staticmethod
+    def get_exercises_with_difficulty_and_repetitions(min_difficulty: int, min_repetitions: int):
+        return Exercise.objects.filter(Q(difficulty_level__gte=min_difficulty) & Q(repetitions__gte=min_repetitions))
