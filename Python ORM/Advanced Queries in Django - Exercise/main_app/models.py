@@ -162,7 +162,7 @@ class Task(models.Model):
 
     @staticmethod
     def search_tasks(query):
-        return Task.objects.filter(Q(title__contains=query) | Q(description__contains=query))
+        return Task.objects.filter(Q(title__icontains=query) | Q(description__icontains=query))
 
     @staticmethod
     def recent_completed_tasks(days):
