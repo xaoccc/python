@@ -165,9 +165,9 @@ class Task(models.Model):
     def search_tasks(query):
         return Task.objects.filter(Q(title__icontains=query) | Q(description__icontains=query))
 
-    @staticmethod
-    def recent_completed_tasks(days):
-        return Task.objects.filter(Q(is_completed=True) & Q(completion_date__gte=F("creation_date") - days))
+
+    def recent_completed_tasks(self, days):
+        return Task.objects.filter(Q(is_completed=True) & Q(completion_date__gte=self.creation_date - timedelta(days=days)))
 
 
 class Exercise(models.Model):
