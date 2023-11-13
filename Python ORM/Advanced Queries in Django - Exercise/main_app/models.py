@@ -44,16 +44,7 @@ class VideoGameManager(models.Manager):
 
 
     def average_rating(self):
-        # This should be working!!!
-        # return VideoGame.objects.annotate(Avg('rating')).values("rating")
-        result = 0
-        all_ratings = VideoGame.objects.values_list("rating")
-        for rating in all_ratings:
-            result += rating[0]
-
-        return round(result / len(all_ratings), 1)
-
-
+        return round(VideoGame.objects.aggregate(Avg('rating'))["rating__avg"], 1)
 
 # Create your models here.
 
