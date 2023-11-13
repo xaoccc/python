@@ -1,4 +1,5 @@
 from _pydecimal import Decimal
+from datetime import timedelta
 
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
@@ -166,7 +167,7 @@ class Task(models.Model):
 
     @staticmethod
     def recent_completed_tasks(days):
-        return Task.objects.filter(Q(is_completed=True) & Q(completion_date__gte=F("creation_date") - days))
+        return Task.objects.filter(Q(is_completed=True) & Q(completion_date__gte=F("creation_date") - timedelta(days=days)))
 
 
 class Exercise(models.Model):
