@@ -5,7 +5,7 @@ import django
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "orm_skeleton.settings")
 django.setup()
 
-# from main_app.models import BillingInfo, Invoice
+from main_app.models import Technology, Project, Programmer
 
 # Import your models
 # Create and check models
@@ -14,6 +14,12 @@ django.setup()
 # Create instances of VideoGame with real data
 
 # Run the custom manager methods
+
+
+
+
+
+
 
 
 

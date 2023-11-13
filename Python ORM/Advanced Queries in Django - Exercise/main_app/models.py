@@ -133,10 +133,18 @@ class Project(models.Model):
     description = models.TextField()
     technologies_used = models.ManyToManyField(Technology, related_name='projects')
 
+    @classmethod
+    def get_programmers_with_technologies(cls):
+        return Programmer.objects.prefetch_related("projects__technologies_used")
+
 
 class Programmer(models.Model):
     name = models.CharField(max_length=100)
     projects = models.ManyToManyField(Project, related_name='programmers')
+
+    @classmethod
+    def get_projects_with_technologies(cls):
+        return Project.objects.prefetch_related("programmers")
 
 
 class Task(models.Model):
