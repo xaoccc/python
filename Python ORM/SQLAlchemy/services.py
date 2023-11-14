@@ -1,7 +1,7 @@
 # Here we will put queries and interactions with the database.
 # Here we will write functions to perform various database operations
 
-from models import User
+from models import User, Order
 from main import Session
 
 with Session() as session:
@@ -12,15 +12,23 @@ with Session() as session:
     #     session.commit()
 
     #   1.1. CREATE many users:
-        many_users = [
-            User(username="john_doe", email="john.doe@example.com"),
-            User(username="sarah_smith", email="sarah.smith@gmail.com"),
-            User(username="mike_jones", email="mike.jones@company.com"),
-            User(username="emma_wilson", email="emma.wilson@domain.net"),
-            User(username="david_brown", email="david.brown@email.org"),
-        ]
-        session.add_all(many_users)
-        session.commit()
+    #     many_users = [
+    #         User(username="john_doe", email="john.doe@example.com"),
+    #         User(username="sarah_smith", email="sarah.smith@gmail.com"),
+    #         User(username="mike_jones", email="mike.jones@company.com"),
+    #         User(username="emma_wilson", email="emma.wilson@domain.net"),
+    #         User(username="david_brown", email="david.brown@email.org"),
+    #     ]
+    #     session.add_all(many_users)
+    #     session.commit()
+    # 1.2. CREATE many orders:
+    #     many_orders = [
+    #         Order(user_id=13),
+    #         Order(user_id=14),
+    #         Order(user_id=15)
+    #     ]
+    #     session.add_all(many_orders)
+    #     session.commit()
 
     #   2. SEARCH. Retrieve data from db table users, model name User
     #     users = session.query(User).all()
@@ -62,3 +70,14 @@ with Session() as session:
     #
     # finally:
     #     session.close()
+
+    # 6. Queries
+    orders = session.query(Order).filter_by(is_completed=False)
+
+    if not orders:
+        print("No orders available")
+    else:
+        for order in orders:
+            order.is_completed = True
+            session.commit()
+        print("Completed all orders")
