@@ -1,10 +1,9 @@
-<<<<<<< HEAD
+
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.db.models import Q, F
 from main_app.managers import RealEstateListingManager, VideoGameManager
-=======
-from _pydecimal import Decimal
+
 from datetime import timedelta
 
 from django.core.validators import MaxValueValidator, MinValueValidator
@@ -52,7 +51,6 @@ class VideoGameManager(models.Manager):
 
     def average_rating(self):
         return round(VideoGame.objects.aggregate(Avg('rating'))["rating__avg"], 1)
->>>>>>> 2612d65dbbdbae37fe6c7d2416e9931467a47563
 
 # Create your models here.
 
