@@ -1,50 +1,7 @@
-from _pydecimal import Decimal
-
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
-from django.db.models import Q, Count, Sum, F
-from django.db.models.aggregates import Count, Avg
-
-
-class RealEstateListingManager(models.Manager):
-    def by_property_type(self, property_type):
-        return RealEstateListing.objects.filter(property_type=property_type)
-
-    def in_price_range(self, min_price, max_price):
-        return RealEstateListing.objects.filter(Q(price__gte=min_price) & Q(price__lte=max_price))
-
-    def with_bedrooms(self, bedrooms_count):
-        return RealEstateListing.objects.filter(bedrooms=bedrooms_count)
-
-
-    def popular_locations(self):
-        return (
-            RealEstateListing.objects
-            .values("location")
-            .annotate(location_count=Count("location"))
-            .order_by("location_count", "id")
-        )[0:2]
-
-
-
-class VideoGameManager(models.Manager):
-    def games_by_genre(self, genre):
-        return VideoGame.objects.filter(genre=genre)
-
-    def recently_released_games(self, year):
-        return VideoGame.objects.filter(release_year__gte=year)
-
-
-    def highest_rated_game(self):
-        return VideoGame.objects.values("title").order_by("-rating")[0]["title"]
-
-
-    def lowest_rated_game(self):
-        return VideoGame.objects.values("title").order_by("rating")[0]["title"]
-
-
-    def average_rating(self):
-        return round(VideoGame.objects.aggregate(Avg('rating'))["rating__avg"], 1)
+from django.db.models import Q, F
+from main_app.managers import RealEstateListingManager, VideoGameManager
 
 # Create your models here.
 
