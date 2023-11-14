@@ -1,7 +1,58 @@
+<<<<<<< HEAD
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.db.models import Q, F
 from main_app.managers import RealEstateListingManager, VideoGameManager
+=======
+from _pydecimal import Decimal
+from datetime import timedelta
+
+from django.core.validators import MaxValueValidator, MinValueValidator
+from django.db import models
+from django.db.models import Q, Count, Sum, F
+from django.db.models.aggregates import Count, Avg
+
+
+class RealEstateListingManager(models.Manager):
+    def by_property_type(self, property_type):
+        return RealEstateListing.objects.filter(property_type=property_type)
+
+    def in_price_range(self, min_price, max_price):
+        return RealEstateListing.objects.filter(price__range=(min_price,max_price))
+
+    def with_bedrooms(self, bedrooms_count):
+        return RealEstateListing.objects.filter(bedrooms=bedrooms_count)
+
+
+    def popular_locations(self):
+        return (
+            RealEstateListing.objects
+            .values("location")
+            .annotate(location_count=Count("location"))
+            .order_by("location_count", "id")
+        )[0:2]
+
+
+
+class VideoGameManager(models.Manager):
+    def games_by_genre(self, genre):
+        return VideoGame.objects.filter(genre=genre)
+
+    def recently_released_games(self, year):
+        return VideoGame.objects.filter(release_year__gte=year)
+
+
+    def highest_rated_game(self):
+        return VideoGame.objects.values("title").order_by("-rating")[0]["title"]
+
+
+    def lowest_rated_game(self):
+        return VideoGame.objects.values("title").order_by("rating")[0]["title"]
+
+
+    def average_rating(self):
+        return round(VideoGame.objects.aggregate(Avg('rating'))["rating__avg"], 1)
+>>>>>>> 2612d65dbbdbae37fe6c7d2416e9931467a47563
 
 # Create your models here.
 
@@ -81,8 +132,8 @@ class Project(models.Model):
     description = models.TextField()
     technologies_used = models.ManyToManyField(Technology, related_name='projects')
 
-    @classmethod
-    def get_programmers_with_technologies(cls):
+    @staticmethod
+    def get_programmers_with_technologies():
         return Programmer.objects.prefetch_related("projects__technologies_used")
 
 
@@ -90,8 +141,8 @@ class Programmer(models.Model):
     name = models.CharField(max_length=100)
     projects = models.ManyToManyField(Project, related_name='programmers')
 
-    @classmethod
-    def get_projects_with_technologies(cls):
+    @staticmethod
+    def get_projects_with_technologies():
         return Project.objects.prefetch_related("programmers")
 
 
@@ -119,11 +170,11 @@ class Task(models.Model):
 
     @staticmethod
     def search_tasks(query):
-        return Task.objects.filter(Q(title__contains=query) | Q(description__contains=query))
+        return Task.objects.filter(Q(title__icontains=query) | Q(description__icontains=query))
 
-    @staticmethod
-    def recent_completed_tasks(days):
-        return Task.objects.filter(Q(is_completed=True) & Q(completion_date__gte=F("creation_date") - days))
+
+    def recent_completed_tasks(self, days):
+        return Task.objects.filter(Q(is_completed=True) & Q(completion_date__gte=self.creation_date - timedelta(days=days)))
 
 
 class Exercise(models.Model):
