@@ -1,14 +1,7 @@
-
+from datetime import timedelta
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.db.models import Q, F
-from main_app.managers import RealEstateListingManager, VideoGameManager
-
-from datetime import timedelta
-
-from django.core.validators import MaxValueValidator, MinValueValidator
-from django.db import models
-from django.db.models import Q, Count, Sum, F
 from django.db.models.aggregates import Count, Avg
 
 
