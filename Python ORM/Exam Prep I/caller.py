@@ -60,7 +60,6 @@ def get_actors_by_movies_count():
     return "\n".join(result)
 
 def get_top_rated_awarded_movie():
-     # Zashto se pishe tova select_related('starring_actor').prefetch_related("actors")???
     top_movie = Movie.objects.select_related('starring_actor').prefetch_related("actors").filter(is_awarded=True).order_by("-rating", "title").first()
     if top_movie is None:
         return ""
