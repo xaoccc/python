@@ -48,6 +48,15 @@ def get_top_actor():
 
     return f"Top Actor: {top_actor.full_name}, starring in movies: {', '.join(movies_titles)}, movies average rating: {average_rating:.1f}"
 
+def get_actors_by_movies_count():
+    top_actors = Actor.objects.prefetch_related("movie_set").annotate(movies_num=Count("movie")).order_by("-movies_num", "full_name")[:3]
+    result = []
+    for actor in top_actors:
+        result.append(f"{actor.full_name}, participated in {actor.movies_num} movies")
+    return "\n".join(result)
+
 # print(get_directors(search_name=None, search_nationality="B"))
 # print(get_top_director())
 # print(get_top_actor())
+
+# print(get_actors_by_movies_count())
