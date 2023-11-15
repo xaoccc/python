@@ -20,6 +20,7 @@ class Actor(Person):
     is_awarded = models.BooleanField(default=False)
     last_updated = models.DateTimeField(auto_now=True)
 
+
 class Movie(models.Model):
     MOVIE_GENRES = (
         ('Action', 'Action'),

@@ -1,5 +1,6 @@
 import os
 import django
+from django.db.models import Q, Count, Avg
 
 # Set up Django
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "orm_skeleton.settings")
@@ -7,6 +8,46 @@ django.setup()
 
 # Import your models here
 # Create and run your queries within functions
-from main_app.models import Director
+from main_app.models import Director, Actor, Movie
+
+
 # Create your tests here.
-print(Director.objects.get_directors_by_movies_count())
+def get_directors(search_name=None, search_nationality=None):
+    result = []
+
+    if not search_name:
+        search_name = "%%%"
+
+    if not search_nationality:
+        search_nationality = "%%%"
+
+    # elif search_nationality and search_name:
+    found_directors = Director.objects.filter(Q(full_name__icontains=search_name) | Q(nationality__icontains=search_nationality)).order_by("full_name")
+    for director in found_directors:
+        result.append(f"Director: {director.full_name}, nationality: {director.nationality}, experience: {director.years_of_experience}")
+    return "\n".join(result)
+
+def get_top_director():
+    top_director = Director.objects.get_directors_by_movies_count().first()
+    if not top_director:
+        return ""
+    return f"Top Director: {top_director.full_name}, movies: {top_director.movies_num}."
+
+def get_top_actor():
+    top_actor = Actor.objects.prefetch_related("movie_set").annotate(movies_num=Count("movie")).order_by("-movies_num", "full_name").first()
+    if not top_actor:
+        return ""
+    movies = top_actor._prefetched_objects_cache["movie_set"]
+    if not movies:
+        return ""
+
+    average_rating = movies.aggregate(Avg("rating"))["rating__avg"]
+    movies_titles = []
+    for movie in movies:
+        movies_titles.append(movie.title)
+
+    return f"Top Actor: {top_actor.full_name}, starring in movies: {', '.join(movies_titles)}, movies average rating: {average_rating:.1f}"
+
+# print(get_directors(search_name=None, search_nationality="B"))
+# print(get_top_director())
+# print(get_top_actor())
