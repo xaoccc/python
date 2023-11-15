@@ -13,7 +13,6 @@ class Person(models.Model):
         abstract = True
 class Director(Person):
     years_of_experience = models.SmallIntegerField(validators=[MinValueValidator(0)], default=0)
-
     objects = DirectorManager()
 
 class Actor(Person):
