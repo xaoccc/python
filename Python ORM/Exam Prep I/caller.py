@@ -137,3 +137,5 @@ for actor in all_actors_with_their_movies:
         print(f"Actor {actor.full_name} is playing in the following movies:")
         for movie in current_actor_movies:
             print(f"{movie.title, movie.release_date}")
+
+print(Actor.objects.prefetch_related("movie_set"))
