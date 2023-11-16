@@ -30,13 +30,13 @@ def get_directors(search_name=None, search_nationality=None):
 
 def get_top_director():
     top_director = Director.objects.get_directors_by_movies_count().first()
-    if not top_director:
-        return ""
-    return f"Top Director: {top_director.full_name}, movies: {top_director.movies_num}."
+    if top_director.exists():
+        return f"Top Director: {top_director.full_name}, movies: {top_director.movies_num}."
+    return ""
 
 def get_top_actor():
     top_actor = Actor.objects.prefetch_related("movie_set").annotate(movies_num=Count("movie")).order_by("-movies_num", "full_name").first()
-    if not top_actor or not top_actor.movies_num:
+    if not top_actor.exists() or not top_actor.movies_num:
         return ""
 
     movies = top_actor._prefetched_objects_cache["movie_set"]
@@ -72,11 +72,12 @@ def get_top_rated_awarded_movie():
 
 def increase_rating():
     classic_movies = Movie.objects.filter(is_classic=True, rating__lt=9.9)
-    if not classic_movies:
-        return "No ratings increased."
-    num_of_updated_movies = classic_movies.update(rating=F("rating") + 0.1)
 
-    return f"Rating increased for {num_of_updated_movies} movies."
+    if classic_movies.exists():
+        num_of_updated_movies = classic_movies.update(rating=F("rating") + 0.1)
+        return f"Rating increased for {num_of_updated_movies} movies."
+
+    return "No ratings increased."
 
 # print(get_directors(search_name=None, search_nationality="B"))
 # print(get_top_director())
