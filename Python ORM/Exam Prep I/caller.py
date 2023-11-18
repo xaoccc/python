@@ -1,6 +1,5 @@
 import os
 import django
-from _decimal import Decimal
 from django.db.models import Q, Count, Avg, F
 
 # Set up Django
@@ -16,35 +15,40 @@ from main_app.models import Director, Actor, Movie
 def get_directors(search_name=None, search_nationality=None):
     result = []
 
-    if not search_name:
-        search_name = "%%%"
+    if search_name is None and search_nationality is None:
+        return ""
 
-    if not search_nationality:
-        search_nationality = "%%%"
+    if search_name is None:
+        found_directors = Director.objects.filter(nationality__icontains=search_nationality).order_by("full_name")
 
-    # elif search_nationality and search_name:
-    found_directors = Director.objects.filter(Q(full_name__icontains=search_name) | Q(nationality__icontains=search_nationality)).order_by("full_name")
+    elif search_nationality is None:
+        found_directors = Director.objects.filter(full_name__icontains=search_name).order_by("full_name")
+
+    else:
+        found_directors = Director.objects.filter(full_name__icontains=search_name, nationality__icontains=search_nationality).order_by("full_name")
+
+    if not found_directors:
+        return ""
+
     for director in found_directors:
         result.append(f"Director: {director.full_name}, nationality: {director.nationality}, experience: {director.years_of_experience}")
     return "\n".join(result)
 
 def get_top_director():
     top_director = Director.objects.get_directors_by_movies_count().first()
-    if top_director.exists():
+    if top_director:
         return f"Top Director: {top_director.full_name}, movies: {top_director.movies_num}."
     return ""
 
 def get_top_actor():
     top_actor = Actor.objects.prefetch_related("movie_set").annotate(movies_num=Count("movie")).order_by("-movies_num", "full_name").first()
-    if not top_actor.exists() or not top_actor.movies_num:
-        return ""
 
-    movies = top_actor._prefetched_objects_cache["movie_set"]
+    if not top_actor or not top_actor.movies_num:
+        return ""
+    movies = top_actor.movie_set.all()
 
     average_rating = movies.aggregate(Avg("rating"))["rating__avg"]
-    movies_titles = []
-    for movie in movies:
-        movies_titles.append(movie.title)
+    movies_titles = [movie.title for movie in movies]
 
     return f"Top Actor: {top_actor.full_name}, starring in movies: {', '.join(movies_titles)}, movies average rating: {average_rating:.1f}"
 
@@ -81,6 +85,8 @@ def increase_rating():
 
 # print(get_directors(search_name=None, search_nationality="B"))
 # print(get_top_director())
+
+# Actor.objects.create(full_name="Merilin Monro", birth_date="1934-10-10", nationality="American", is_awarded=True, last_updated="2003-11-11")
 # print(get_top_actor())
 
 # print(get_actors_by_movies_count())
@@ -88,54 +94,54 @@ def increase_rating():
 # print(increase_rating())
 
 
-# access every RELATED object in the prefetch related table:
-all_movies = Movie.objects.all()
+# # access every RELATED object in the prefetch related table:
+# all_movies = Movie.objects.all()
+#
+# # If we look at the first Movie object, we can see that, we can access directly the ForeignKey objects Actor and Director,
+# # but we cannot access directly the ManyToMany objects Actors!
+# first_movie_details = Movie.objects.first().__dict__
+# print(first_movie_details)
+# print(Movie.objects.first().starring_actor.full_name)
+#
+# all_movies_with_their_actors = Movie.objects.prefetch_related("actors")
 
-# If we look at the first Movie object, we can see that, we can access directly the ForeignKey objects Actor and Director,
-# but we cannot access directly the ManyToMany objects Actors!
-first_movie_details = Movie.objects.first().__dict__
-print(first_movie_details)
-print(Movie.objects.first().starring_actor.full_name)
-
-all_movies_with_their_actors = Movie.objects.prefetch_related("actors")
-
-for movie in all_movies_with_their_actors:
-    # Here we can select all() actors,
-    current_movie_actors = movie.actors.all()
-    # or we can filter() them
-    # Using Filter we can:
-    # 1. See all movies an actor is participating, searcing by full name
-    current_movie_actors = movie.actors.filter(full_name="Stefan Danailov")
-
-    # or by id
-    current_movie_actors = movie.actors.filter(id=1)
-
-    # 2. See movies with youngest/oldest actors
-    current_movie_actors = movie.actors.filter(birth_date__gte="1970-01-01")
-
-    # 3. Search actors and movies by actor name or part of the name
-    current_movie_actors = movie.actors.filter(full_name__contains="test")
-
-    # and much, much more: order, update, delete, etc...
-    if current_movie_actors:
-        print(f"Movie {movie.title, movie.release_date} cast:")
-        # create, update, delete:
-        # current_movie_actors.update(full_name="test test")
-        # current_movie_actors.delete()
-        # current_movie_actors.create(id=1, full_name="Stefan Danailov", birth_date="1942-12-09", nationality="Bulgarian", is_awarded=True, last_updated="1998-05-05")
-        for actor in current_movie_actors:
-            print(actor.id, actor.full_name)
+# for movie in all_movies_with_their_actors:
+#     # Here we can select all() actors,
+#     current_movie_actors = movie.actors.all()
+#     # or we can filter() them
+#     # Using Filter we can:
+#     # 1. See all movies an actor is participating, searcing by full name
+#     current_movie_actors = movie.actors.filter(full_name="Stefan Danailov")
+#
+#     # or by id
+#     current_movie_actors = movie.actors.filter(id=1)
+#
+#     # 2. See movies with youngest/oldest actors
+#     current_movie_actors = movie.actors.filter(birth_date__gte="1970-01-01")
+#
+#     # 3. Search actors and movies by actor name or part of the name
+#     current_movie_actors = movie.actors.filter(full_name__contains="test")
+#
+#     # and much, much more: order, update, delete, etc...
+#     if current_movie_actors:
+#         print(f"Movie {movie.title, movie.release_date} cast:")
+#         # create, update, delete:
+#         # current_movie_actors.update(full_name="test test")
+#         # current_movie_actors.delete()
+#         # current_movie_actors.create(id=1, full_name="Stefan Danailov", birth_date="1942-12-09", nationality="Bulgarian", is_awarded=True, last_updated="1998-05-05")
+#         for actor in current_movie_actors:
+#             print(actor.id, actor.full_name)
 
 
 # We can do the reverse search and find all movies from Actor model:
-all_actors_with_their_movies = Actor.objects.prefetch_related("movie_set")
-print(all_actors_with_their_movies)
-
-for actor in all_actors_with_their_movies:
-    current_actor_movies = actor.movie_set.all()
-    if current_actor_movies:
-        print(f"Actor {actor.full_name} is playing in the following movies:")
-        for movie in current_actor_movies:
-            print(f"{movie.title, movie.release_date}")
-
-print(Actor.objects.prefetch_related("movie_set"))
+# all_actors_with_their_movies = Actor.objects.prefetch_related("movie_set")
+# print(all_actors_with_their_movies)
+#
+# for actor in all_actors_with_their_movies:
+#     current_actor_movies = actor.movie_set.all()
+#     if current_actor_movies:
+#         print(f"Actor {actor.full_name} is playing in the following movies:")
+#         for movie in current_actor_movies:
+#             print(f"{movie.title, movie.release_date}")
+#
+# print(Actor.objects.prefetch_related("movie_set"))
