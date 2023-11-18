@@ -7,3 +7,7 @@ django.setup()
 
 # Import your models here
 # Create and run your queries within functions
+
+from main_app.models import Product, Order, Profile
+
+print(Profile.objects.all())
