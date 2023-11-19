@@ -10,4 +10,4 @@ django.setup()
 
 from main_app.models import Product, Order, Profile
 
-print(Profile.objects.all())
+# print(Profile.objects.get_regular_customers())

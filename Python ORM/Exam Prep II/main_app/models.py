@@ -2,6 +2,7 @@ from django.db import models
 from django.core.validators import MinLengthValidator, MinValueValidator
 
 from main_app.model_mixins import CreatedMixin
+from main_app.managers import ProfileManager
 
 
 # Create your models here.
@@ -11,6 +12,8 @@ class Profile(CreatedMixin):
     phone_number = models.CharField(max_length=15)
     address = models.TextField()
     is_active = models.BooleanField(default=True)
+
+    objects = ProfileManager()
 
 
 class Product(CreatedMixin):
