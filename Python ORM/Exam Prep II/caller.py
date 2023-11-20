@@ -65,6 +65,18 @@ def apply_discounts():
     orders = Order.objects.prefetch_related("products").annotate(p_num=Count("products")).filter(p_num__gt=2, is_completed=False)
     return f"Discount applied to {orders.update(total_price=F('total_price') * 0.9)} orders."
 
+def complete_order():
+    order_to_complete = Order.objects.prefetch_related("products").filter(is_completed=False).first()
+    if not order_to_complete or not order_to_complete.products.all():
+        return ""
+    order_to_complete.is_completed=True
+    order_to_complete.save()
+
+    order_to_complete.products.filter(in_stock__gt=0).update(in_stock=F("in_stock") - 1)
+    order_to_complete.products.filter(in_stock=0).update(is_available=False)
+
+    return "Order has been completed!"
+
 # Test code
 # print(Profile.objects.get_regular_customers())
 
@@ -74,3 +86,4 @@ def apply_discounts():
 
 # print(get_top_products())
 # print(apply_discounts())
+# print(complete_order())
