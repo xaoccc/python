@@ -1,6 +1,6 @@
 import os
 import django
-from django.db.models import Q, Count
+from django.db.models import Q, Count, F
 
 # Set up Django
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "orm_skeleton.settings")
@@ -49,9 +49,28 @@ def get_last_sold_products():
 
     return f"Last sold products: {', '.join(products_list)}"
 
+def get_top_products():
+    products = Product.objects.prefetch_related("products_order").annotate(p_num=Count("products_order")).filter(p_num__gt=0).order_by("-p_num", "name")[:5]
+
+    if not products:
+        return ""
+
+    result = ["Top products:"]
+    for p in products:
+        result.append(f"{p.name}, sold {p.p_num} times")
+
+    return "\n".join(result)
+
+def apply_discounts():
+    orders = Order.objects.prefetch_related("products").annotate(p_num=Count("products")).filter(p_num__gt=2, is_completed=False)
+    return f"Discount applied to {orders.update(total_price=F('total_price') * 0.9)} orders."
 
 # Test code
 # print(Profile.objects.get_regular_customers())
+
 # print(get_profiles("V"))
 # print(get_loyal_profiles())
 # print(get_last_sold_products())
+
+# print(get_top_products())
+# print(apply_discounts())
