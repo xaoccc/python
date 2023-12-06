@@ -63,10 +63,9 @@ We do this recursively in direction left -> head -> right, starting from the lef
 If we add node with data=17, the result will be: 3, 5, 7, 17
 ```
 def inOrderPrint(root):
+    print(root.data)
     if root.left is not None:
         inOrderPrint(root.left)
-    if root.data is not None:
-        print(root.data)
     if root.right is not None:
         inOrderPrint(root.right)
 
