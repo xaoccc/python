@@ -59,7 +59,20 @@ Notes about binary trees:
    ![image](https://github.com/xaoccc/python/assets/114498517/1a3561eb-5499-41e5-8958-b87ed34a730e)
    
 7.  InOrder Traversal of a Binary Tree
-We do this in direction left -> head -> right, starting from the leftmost, lowest tree node. In our example, it will be: 3, 5, 7
+We do this recursively in direction left -> head -> right, starting from the leftmost, lowest tree node. In our example, it will be: 3, 5, 7
+If we add node with data=17, the result will be: 3, 5, 7, 17
+```
+def inOrderPrint(root):
+    if root.left is not None:
+        inOrderPrint(root.left)
+    if root.data is not None:
+        print(root.data)
+    if root.right is not None:
+        inOrderPrint(root.right)
 
+
+inOrderPrint(root)
+```
+ 
    
        
