@@ -12,32 +12,22 @@ Notes about binary trees:
     ```
 5. Create a node. We use the word 'create', not 'insert', because of CRUD
    ```
-       def create(self, data):
-   ```
-   
-        If head has no data, we insert current data  
-   
-   ```
+    def create(self, data):
+        # if head has no data, we insert current data
         if self.data is None:
             self.data = data
-   ```
-       Then check left branch  
-   ```
+
+        # then check left branch
         elif data < self.data:
-   ```
-            If empty, populate it with data  
-   ```
+            # if empty, populate it with data
             if self.left is None:
                 self.left = Node(data)
-   ```
-            If the branch has data, it becomes the head of a new branch, and we create the new branch.  
-            Recursively we search for an empty branch on the left until we find one
-   ```
+            # if the branch has data, it becomes the head of a new branch, and we create the new branch.
+            # recursively we search for an empty branch on the left until we find one
             else:
                 self.left.create(self, data)
-   ```
-        Repeat the same check for the right branch
-   ```
+
+        # repeat the same check for the right branch
         elif data > self.data:
             if self.right is None:
                 self.right = Node(data)
