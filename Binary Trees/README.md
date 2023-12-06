@@ -15,17 +15,17 @@ Notes about binary trees:
        def create(self, data):
    ```
    
-        If head has no data, we insert current data
+        If head has no data, we insert current data  
    
    ```
         if self.data is None:
             self.data = data
    ```
-       Then check left branch
+       Then check left branch  
    ```
         elif data < self.data:
    ```
-            If empty, populate it with data
+            If empty, populate it with data  
    ```
             if self.left is None:
                 self.left = Node(data)
