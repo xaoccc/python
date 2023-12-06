@@ -1,3 +1,6 @@
+from collections import deque
+
+
 class Node:
     def __init__(self, data):
         # left tree branch
@@ -62,12 +65,57 @@ def post_order_print(root):
 
 
 def draw_tree(root):
-    queue = []
-    queue.append(root.data)
+    tree = []
+    tree.append(root.data)
     if root.left is not None:
-        queue.append(draw_tree(root.left))
+        tree.append(draw_tree(root.left))
 
     if root.right is not None:
-        queue.append(draw_tree(root.right))
+        tree.append(draw_tree(root.right))
 
-    return queue
+    return tree
+
+# def bfs(root):
+#     queue = {}
+#     queue[root.data] = []
+#     if root.left is not None:
+#         queue[root.data].append(root.left.data)
+#         bfs(root.left)
+#
+#     if root.right is not None:
+#         queue[root.data].append(root.right.data)
+#         bfs(root.right)
+#
+#     return queue
+
+dict = {}
+def bfs(root):
+    if root is None:
+        return
+
+    dict[root.data] = []
+    bfs(root.left)
+    bfs(root.right)
+
+    if root.left is not None:
+        dict[root.data].append(root.left.data)
+
+    if root.right is not None:
+        dict[root.data].append(root.right.data)
+
+    return dict
+
+
+print(bfs(root))
+
+
+def make_bfs_list(bfs):
+    bfs_list = []
+    for key, value in bfs.items():
+        if key not in bfs_list:
+            bfs_list.append(key)
+            bfs_list += value
+    return bfs_list
+
+
+print(make_bfs_list(bfs(root)))
