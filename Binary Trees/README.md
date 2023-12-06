@@ -4,7 +4,10 @@ Notes about binary trees:
 3. A Node is a tree
 4. Define a tree  
 `class Node:
-    def __init__(self, data):  
-        self.left = None  
-        self.right = None  
+    def __init__(self, data):
+   
+        self.left = None
+   
+        self.right = None
+   
         self.data = data`
