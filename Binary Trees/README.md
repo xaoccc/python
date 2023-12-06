@@ -14,7 +14,9 @@ Notes about binary trees:
    ```
        def create(self, data):
    ```
+   
         If head has no data, we insert current data
+   
    ```
         if self.data is None:
             self.data = data
