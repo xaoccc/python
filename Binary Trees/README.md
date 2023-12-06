@@ -25,14 +25,14 @@ Notes about binary trees:
             # if the branch has data, it becomes the head of a new branch, and we create the new branch.
             # recursively we search for an empty branch on the left until we find one
             else:
-                self.left.create(self, data)
+                self.left.create(data)
 
         # repeat the same check for the right branch
         elif data > self.data:
             if self.right is None:
                 self.right = Node(data)
             else:
-                self.right.create(self, data)
+                self.right.create(data)
    ```
    
 6. Insert Data Into the Binary Tree
@@ -59,6 +59,7 @@ Notes about binary trees:
    ![image](https://github.com/xaoccc/python/assets/114498517/1a3561eb-5499-41e5-8958-b87ed34a730e)
    
 7.  InOrder Traversal of a Binary Tree
+We do this in direction left -> head -> right, starting from the leftmost, lowest tree node. In our example, it will be: 3, 5, 7
 
    
        
