@@ -3,8 +3,10 @@ Notes about binary trees:
 2. Left child is always smaller than right child\
 3. A Node is a tree
 4. Define a tree  
-```class Node:
+    ```
+    class Node:
     def __init__(self, data):   
         self.left = None   
         self.right = None   
-        self.data = data```
+        self.data = data
+    ```
