@@ -62,16 +62,47 @@ Notes about binary trees:
 We do this recursively in direction left -> head -> right, starting from the leftmost, lowest tree node. In our example, it will be: 3, 5, 7
 If we add node with data=17, the result will be: 3, 5, 7, 17
 ```
-def inOrderPrint(root):
+def InOrderPrint(root):
+    if root.left is not None:
+        InOrderPrint(root.left)
+    print(root.data)
+    if root.right is not None:
+        InOrderPrint(root.right)
+
+
+InOrderPrint(root)
+```
+8. PreOrder Traversal of a Binary Tree
+We do this recursively in direction head -> left -> right
+You see that we simply excahnged the places of head and left in the function
+```
+def PreOrderPrint(root):
     print(root.data)
     if root.left is not None:
-        inOrderPrint(root.left)
+        PreOrderPrint(root.left)    
     if root.right is not None:
-        inOrderPrint(root.right)
+        PreOrderPrint(root.right)
 
 
-inOrderPrint(root)
+PreOrderPrint(root)
 ```
+9. PostOrder Traversal of a Binary Tree
+We do this recursively in direction left -> right -> head
+As you see, we can change the order in which we traverse a binary tree. There are 2 more possible traversals, but they are not very popular:
+- right -> head -> left
+- right -> left -> head
+```
+def PostOrderPrint(root):    
+    if root.left is not None:
+        PostOrderPrint(root.left)    
+    if root.right is not None:
+        PostOrderPrint(root.right)
+    print(root.data)
+
+
+PostOrderPrint(root)
+```
+
  
    
        
