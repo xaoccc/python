@@ -55,6 +55,7 @@ Notes about binary trees:
    
    You can see, that we have a small binary tree, which looks like this:  
    ![image](https://github.com/xaoccc/python/assets/114498517/1a3561eb-5499-41e5-8958-b87ed34a730e)
+   
    7. Print all nodes in a binary tree
 
    
