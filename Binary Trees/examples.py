@@ -1,3 +1,4 @@
+
 from collections import deque
 
 
@@ -32,12 +33,12 @@ class Node:
             else:
                 self.right.create(data)
 
-root = Node(5)
-root.create(7)
-root.create(3)
-root.create(9)
-root.create(23)
+root = Node(4)
+root.create(8)
+root.create(5)
+root.create(0)
 root.create(1)
+root.create(6)
 
 
 def in_order_print(root):
@@ -75,27 +76,17 @@ def draw_tree(root):
 
     return tree
 
-# def bfs(root):
-#     queue = {}
-#     queue[root.data] = []
-#     if root.left is not None:
-#         queue[root.data].append(root.left.data)
-#         bfs(root.left)
-#
-#     if root.right is not None:
-#         queue[root.data].append(root.right.data)
-#         bfs(root.right)
-#
-#     return queue
+print(draw_tree(root))
+
 
 dict = {}
-def bfs(root):
+def tree_dict(root):
     if root is None:
         return
 
     dict[root.data] = []
-    bfs(root.left)
-    bfs(root.right)
+    tree_dict(root.left)
+    tree_dict(root.right)
 
     if root.left is not None:
         dict[root.data].append(root.left.data)
@@ -106,16 +97,29 @@ def bfs(root):
     return dict
 
 
-print(bfs(root))
+print(tree_dict(root))
+print(list(tree_dict(root).keys()))
+
+def bfs(td):
+    queue = deque([4])
+    # here we can store all nodes as a list
+    visited = []
+    # here we can store all nodes in bfs in dict
+    nodes = {}
+
+    while queue:
+        node = queue.popleft()
+        nodes[node] = [x for x in td[node]]
+        visited.append(node)
+        [queue.append(x) for x in td[node]]
+    return nodes
 
 
-def make_bfs_list(bfs):
-    bfs_list = []
-    for key, value in bfs.items():
-        if key not in bfs_list:
-            bfs_list.append(key)
-            bfs_list += value
-    return bfs_list
+print(bfs(tree_dict(root)))
 
 
-print(make_bfs_list(bfs(root)))
+
+
+
+
+
