@@ -3,7 +3,7 @@ from collections import deque
 
 def bfs(node, graph, visited):
     # If the node(key) in dict graph is in the set visited, we return
-    if node in visited:
+    if node in visited or node is None:
         return
     # Else - we create a queue with this node and add it to visited set
     queue = deque([node])
@@ -26,7 +26,7 @@ def bfs(node, graph, visited):
 # For unordered graph we use a dictionary with keys the nodes and values the childs of each node
 graph = {
     1: [19, 21, 14],
-    19: [7, 12, 31, 21],
+    19: [12, 7, 31, 21],
     7: [1],
     12: [],
     31: [21],
