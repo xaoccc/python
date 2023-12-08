@@ -76,7 +76,7 @@ def draw_tree(root):
 
     return tree
 
-print(draw_tree(root))
+# print(draw_tree(root))
 
 
 dict = {}
@@ -98,28 +98,83 @@ def tree_dict(root):
 
 
 print(tree_dict(root))
-print(list(tree_dict(root).keys()))
+# print(list(tree_dict(root).keys()))
 
 def bfs(td):
-    queue = deque([4])
-    # here we can store all nodes as a list
-    visited = []
-    # here we can store all nodes in bfs in dict
-    nodes = {}
+    # the first node is the root. We add it to the queue.
+    queue = deque([root.data])
+    # here we can store all nodes in bfs in a dictionary for better visualization
+    visited = {}
 
     while queue:
+        # We remove each first node, starting from the root.
         node = queue.popleft()
-        nodes[node] = [x for x in td[node]]
-        visited.append(node)
+        # We add the node with its children in the dictionary
+        visited[node] = [x for x in td[node]]
+        # Then we add the children of the current node in the queue
+        # Using the method of queue + append, ensures the bfs, in other words, we add nodes layer by layer
         [queue.append(x) for x in td[node]]
-    return nodes
-
+    return visited
 
 print(bfs(tree_dict(root)))
 
+nodes_sums = []
 
+def find_sums_of_each_subtree(node):
+    if node is None:
+        return
 
+    left, right = 0, 0
+    if node.left:
+        left = find_sums_of_each_subtree(node.left)
 
+    if node.right:
+        right = find_sums_of_each_subtree(node.right)
 
+    print(left, right, node.data)
+    nodes_sum = left + right + node.data
+    nodes_sums.append(nodes_sum)
 
+    return node.data
+
+# print(find_sums_of_each_subtree(root))
+# print(nodes_sums)
+
+# dfs method is different from bfs basically with the fact we use stack, instead of queue
+def dfs(td):
+    stack = [root.data]
+    nodes = {}
+    while stack:
+        # We remove each LAST node, starting from the root.
+        # Thus, if the last node is lower level,
+        #  - we use it as current node
+        #  - remove it from the stack
+        #  - continue moving down, until we find a node with no children
+        #  - when find such node, we go up and look for unvisited nodes and check their children as well
+        node = stack.pop()
+
+        # here we have a condition, where we check if the node is visited,
+        # so we do not add a node twice, while returning
+        if node not in nodes:
+            nodes[node] = [x for x in td[node]]
+            stack += [x for x in td[node]]
+
+    return nodes
+print(dfs(tree_dict(root)))
+
+def tree__dict(root):
+    if root is None:
+        return
+
+    dict[root.data] = []
+    tree_dict(root.left)
+    tree_dict(root.right)
+
+    if root.left is not None:
+        dict[root.data].append(root.left.data)
+
+    if root.right is not None:
+        dict[root.data].append(root.right.data)
+
+    return dict
 
