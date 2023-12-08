@@ -97,8 +97,8 @@ def tree_dict(root):
     return dict
 
 
-print(tree_dict(root))
-# print(list(tree_dict(root).keys()))
+# print(tree_dict(root))
+
 
 def bfs(td):
     # the first node is the root. We add it to the queue.
@@ -116,7 +116,7 @@ def bfs(td):
         [queue.append(x) for x in td[node]]
     return visited
 
-print(bfs(tree_dict(root)))
+# print(bfs(tree_dict(root)))
 
 nodes_sums = []
 
@@ -143,7 +143,7 @@ def find_sums_of_each_subtree(node):
 # dfs method is different from bfs basically with the fact we use stack, instead of queue
 def dfs(td):
     stack = [root.data]
-    nodes = {}
+    visited = {}
     while stack:
         # We remove each LAST node, starting from the root.
         # Thus, if the last node is lower level,
@@ -155,26 +155,70 @@ def dfs(td):
 
         # here we have a condition, where we check if the node is visited,
         # so we do not add a node twice, while returning
-        if node not in nodes:
-            nodes[node] = [x for x in td[node]]
+        if node not in visited:
+            visited[node] = [x for x in td[node]]
             stack += [x for x in td[node]]
 
-    return nodes
-print(dfs(tree_dict(root)))
+    return visited
+# print(dfs(tree_dict(root)))
 
-def tree__dict(root):
-    if root is None:
+
+# Breadth First Search taking just the root node as an argument
+binary_tree_bfs = {}
+def bfs_root(node):
+    if node is None:
         return
 
-    dict[root.data] = []
-    tree_dict(root.left)
-    tree_dict(root.right)
+    binary_tree_bfs[node.data] = []
+    bfs_root(node.left)
+    bfs_root(node.right)
 
-    if root.left is not None:
-        dict[root.data].append(root.left.data)
+    if node.left is not None:
+        binary_tree_bfs[node.data].append(node.left.data)
 
-    if root.right is not None:
-        dict[root.data].append(root.right.data)
+    if node.right is not None:
+        binary_tree_bfs[node.data].append(node.right.data)
 
-    return dict
+    queue = deque([root.data])
+    visited = {}
 
+    while queue:
+        node_to_check = queue.popleft()
+        visited[node_to_check] = [x for x in binary_tree_bfs[node_to_check]]
+        [queue.append(x) for x in binary_tree_bfs[node_to_check]]
+
+    return visited
+
+print(bfs_root(root))
+
+binary_tree_dfs = {}
+
+# Depth First Search taking just the root node as an argument
+def dfs_root(node):
+    if node is None:
+        return
+
+    binary_tree_dfs[node.data] = []
+    dfs_root(node.left)
+    dfs_root(node.right)
+
+    if node.left is not None:
+        binary_tree_dfs[node.data].append(node.left.data)
+
+    if node.right is not None:
+        binary_tree_dfs[node.data].append(node.right.data)
+
+    stack = [root.data]
+    visited = {}
+
+    while stack:
+
+        node_to_check = stack.pop()
+
+        if node_to_check not in visited:
+            visited[node_to_check] = [x for x in binary_tree_dfs[node_to_check]]
+            stack += [x for x in binary_tree_dfs[node_to_check]]
+
+    return visited
+
+print(dfs_root(root))
