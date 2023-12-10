@@ -102,11 +102,11 @@ def PostOrderPrint(root):
 
 PostOrderPrint(root)
 ```
-10. Breadth First Search (using root as an argument)
-10.1. create dictionary to store all data in format {node: [child1, child2, ...], ...}
-10.2. define the only base condition: check if there is a node, if not return
-10.3. traverse through the left and the right in width and depth, recursively and fill the data into the dictionary
-10.4. at this point we have all data from our binary tree and using a queue and another dictionary, we reformat the data into the new dictionary
+10. Breadth First Search (using root as an argument)  
+10.1. create dictionary to store all data in format {node: [child1, child2, ...], ...}  
+10.2. define the only base condition: check if there is a node, if not return  
+10.3. traverse through the left and the right in width and depth, recursively and fill the data into the dictionary  
+10.4. at this point we have all data from our binary tree and using a queue and another dictionary, we reformat the data into the new dictionary  
 11. Depth First Search (using root as an argument)
 Here we do as in BFS, except here we use a stack instead of queue and check for visited nodes.
 
