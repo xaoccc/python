@@ -131,7 +131,6 @@ def find_sums_of_each_subtree(node):
     if node.right:
         right = find_sums_of_each_subtree(node.right)
 
-    print(left, right, node.data)
     nodes_sum = left + right + node.data
     nodes_sums.append(nodes_sum)
 
