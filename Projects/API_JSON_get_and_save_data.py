@@ -46,7 +46,7 @@ else:
 
     # Here we insert the data into our workbook
     for row in all_data:
-        worksheet.append(tuple(row.values())[:-5])
+        worksheet.append(tuple(row.values()))
 
     # Save the file, and we're ready to go :)
     workbook.save('My data.xlsx')
