@@ -13,14 +13,14 @@ data = {'parameter_1': 'value_1',
 # Initiate post request
 API_post = requests.post('https://some.web.address.for.the.post.request', headers=headers, data=data)
 
-# Get the access token from the post request
+# Get the authorization data
 for key, value in API_post.__dict__.items():
     if key == "_content":
-        token = json.loads(value.decode('utf-8'))['access_token']
+        password = json.loads(value.decode('utf-8'))['authorization']
 
 # Enter get request parameters and authorization data
 headers = {'Content-Type': 'Application/json',
-           'parameter_1': 'value_1',
+           'Authorization': password,
            'parameter_2': 'value_2',
            'parameter_3': 'value_3'}
 params = {'parameter_1': 'value_1', 'parameter_2': 'value_2'}
