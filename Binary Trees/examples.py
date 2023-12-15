@@ -221,3 +221,40 @@ def dfs_root(node):
     return visited
 
 print(dfs_root(root))
+
+
+# This function allows us not only to find the sum of deepest level nodes
+# But also to see the sum/number of each level nodes
+def deepest_nodes_sum(root_list):
+
+    if root_list is None:
+        return []
+    level = 1
+    queue = [root_list]
+    deepest_leaves = []
+
+    #  Number of loops are exactly as much as the number of tree levels.
+    #  The last loop contains the deepest level nodes, then we exit the loop.
+    while queue:
+        print(f"Level {level}")
+        level += 1
+        print(f"Nodes: {(queue[0].__dict__, queue[1].__dict__) if len(queue)==2 else queue[0].__dict__  }")
+        nodes_num_at_current_level = len(queue)
+        level_nodes = []
+
+        for node in range(nodes_num_at_current_level):
+            node = queue.pop(0)
+            level_nodes.append(node.data)
+
+            if node.left:
+                queue.append(node.left)
+            if node.right:
+                queue.append(node.right)
+        #  In each iteration, it essentially stores the values of the nodes at the deepest level encountered so far.
+        print(f"Nodes num: {len(level_nodes)}")
+        print(f"Nodes sum: {sum(level_nodes)}")
+        deepest_leaves = level_nodes
+
+    return sum(deepest_leaves)
+
+print(deepest_nodes_sum(root))
