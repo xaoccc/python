@@ -31,9 +31,7 @@ class Solution:
         #         head = head.next
 
         while head.next:
-
             if head.val != 0:
-
                 if previous:
                     new_listnode.next = head
                 else:
