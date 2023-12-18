@@ -1,54 +1,34 @@
 # Definition for singly-linked list.
-# class ListNode:
+# class ListNode(object):
 #     def __init__(self, val=0, next=None):
 #         self.val = val
 #         self.next = next
-class Solution:
-    def mergeNodes(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        result = []
+class Solution(object):
+    def mergeNodes(self, head):
+        """
+        :type head: Optional[ListNode]
+        :rtype: Optional[ListNode]
+        """
         nodes = []
-        new_listnode = ListNode()
-        previous = False
+        nodes_sum = 0
 
-        # while head.next:
-
-        #     if head.val != 0:
-        #         if previous == True:
-        #             result[-1] += head.val
-        #         else:
-        #             result.append(head.val)
-
-        #         if head.next.val != 0:
-        #             result[-1] += head.next.val
-        #             head = head.next.next
-
-        #         else:
-        #             head = head.next
-        #         previous = True
-
-        #     else:
-        #         previous = False
-        #         head = head.next
-
-        while head.next:
+        while head.next is not None:
             if head.val != 0:
-                if previous:
-                    new_listnode.next = head
-                else:
-                    new_listnode.val = head.val
+                nodes_sum += head.val
 
-                if head.next.val != 0:
-                    new_listnode.val += head.next.val
-                    head = head.next.next
+            elif head.val == 0 and nodes_sum != 0:
+                nodes.append(nodes_sum)
+                nodes_sum = 0
 
-                else:
-                    head = head.next
-                previous = True
-                new_listnode.next = ListNode()
-
-            else:
-
-                previous = False
+            if head is not None:
                 head = head.next
+        if nodes_sum != 0:
+            nodes.append(nodes_sum)
 
-        return new_listnode
+        result = ListNode()
+        tmp = result
+        for n in nodes:
+            tmp.next = ListNode(n)
+            tmp = tmp.next
+
+        return result.next
