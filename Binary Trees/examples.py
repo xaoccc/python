@@ -1,7 +1,8 @@
 
 from collections import deque
 
-
+# The name of the first node can be root, head or data
+# 1. Define and create a Tree Node
 class Node:
     def __init__(self, data):
         # left tree branch
