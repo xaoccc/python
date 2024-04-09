@@ -12,3 +12,4 @@ class Solution:
         if result > 2 ** 31 - 1:
             return 0
         return result
+
