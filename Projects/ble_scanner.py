@@ -19,6 +19,27 @@ async def main():
             print("RSSI:", device.rssi)
             print("repr:", device.__repr__())
 
+    device_index = int(input("Select a device by its index: "))
+    selected_device = devices[device_index]
+    address = selected_device.address
+
+    # Step 2: Connect to the selected device
+    async with BleakClient(address) as client:
+        print(f"Connected to {selected_device.name} [{address}]")
+
+        # Step 3: Interact with the device's services and characteristics
+        services = await client.get_services()
+        print("Available Services:")
+        for service in services:
+            print(f"[Service] {service.uuid}: {service.description}")
+            for char in service.characteristics:
+                print(f"  [Characteristic] {char.uuid}: {char.description}")
+
+                # Read characteristic value (if readable)
+                if 'read' in char.properties:
+                    value = await client.read_gatt_char(char.uuid)
+                    print(f"    Value: {value}")
+
 async def connect_to_device():
     device_address = "42:A8:A4:E1:BB:36"  # Replace with the address of your BLE device
 
