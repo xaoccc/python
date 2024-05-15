@@ -15,7 +15,7 @@ async def main():
     devices = await scan_for_devices()
     print("Discovered devices:")
     for device in devices:
-        if device.address == my_devices["button"]:
+        if device.address == my_devices["relay"]:
             selected_device = device
             print(dir(device))
             print("Name:", device.name)
@@ -26,7 +26,7 @@ async def main():
 
 
     print(f"Selected device: {selected_device.name} [{selected_device.address}]")
-    address = my_devices["button"]
+    address = my_devices["relay"]
 
     # Step 2: Connect to the selected device
     async with BleakClient(address) as client:
