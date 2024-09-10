@@ -2,7 +2,8 @@ import pandas as pd
 
 
 df = pd.read_csv('csv_data.csv')
-df.columns = ['a', 'b', 'kur', 'bira']
+test = None
+
 
 print(df)
-print(df.index)
+print(df.loc[(df['Pulse'] < 100) & (df['Calories'] > 300)])

@@ -33,3 +33,6 @@ filtered_data = df.loc([['b', 'c']])
 `df.dropna(how='all')` - removes data if all the values is missing  
 `df.dropna(thresh=n)` - n is an integer showing how many values should be non-empty in order to remove data. Cannot be used with how=  
 
+### Filter Data
+`df.loc[(df['Pulse'] < 100) & (df['Calories'] > 300)]` - using loc[], data can be filtered by rows and columns values very easily, using logical operators
+
