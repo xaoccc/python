@@ -18,6 +18,10 @@ filtered_data = df.loc([['b', 'c']])
 `pd.read_csv('data.csv')` - reads csv data
 `pd.read_json('data.json')` - reads json data
 
+### Export 
+`df.to_csv()` - converts df to csv
+`df.to_json()` - converts df to json
+
 ### Analyzing DataFrames
 `df.head()` - first 5 rows if not specified  
 `df.tail()` - last 5 rows if not specified  
@@ -36,3 +40,5 @@ filtered_data = df.loc([['b', 'c']])
 ### Filter Data
 `df.loc[(df['Pulse'] < 100) & (df['Calories'] > 300)]` - using loc[], data can be filtered by rows and columns values very easily, using logical operators
 
+### Transpose DataFrames
+`df.T`

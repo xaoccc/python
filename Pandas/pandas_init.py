@@ -1,9 +1,14 @@
 import pandas as pd
+import numpy as np
 
 
+dates = pd.date_range('20240505', periods=10)
+
+
+# df = pd.DataFrame(np.random.randn(10, 6), index=dates, columns=list('ABCDEF'))
 df = pd.read_csv('csv_data.csv')
-test = None
+df = df.loc[df.Maxpulse.duplicated(), :]
 
 
 print(df)
-print(df.loc[(df['Pulse'] < 100) & (df['Calories'] > 300)])
+
