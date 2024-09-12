@@ -1,14 +1,9 @@
 import pandas as pd
-import numpy as np
+dates = pd.date_range('2015-01-15', periods=2)
+weather = pd.DataFrame({'id': list('12'), 'recordDate': ['2015-01-16', '2015-01-14'], 'temperature': [3,-1]})
+def rising_temperature(weather: pd.DataFrame) -> pd.DataFrame:
+    weather = weather.sort_values(by='recordDate', ascending=True)
+    return weather.loc[(weather['temperature'] > weather['temperature'].shift(1)) & (pd.to_datetime(weather['recordDate']) == pd.to_datetime(weather['recordDate'].shift(1)) + pd.Timedelta(days=1) ), ['id']]
 
 
-dates = pd.date_range('20240505', periods=10)
-
-
-# df = pd.DataFrame(np.random.randn(10, 6), index=dates, columns=list('ABCDEF'))
-df = pd.read_csv('csv_data.csv')
-df = df.loc[df.Maxpulse.duplicated(), :]
-
-
-print(df)
 
