@@ -40,5 +40,18 @@ filtered_data = df.loc([['b', 'c']])
 ### Filter Data
 `df.loc[(df['Pulse'] < 100) & (df['Calories'] > 300)]` - using loc[], data can be filtered by rows and columns values very easily, using logical operators
 
-### Transpose DataFrames
-`df.T`
+### Merge Data
+`pd.concat([df1, df2])` - merges two data frames. By default, it merges by rows. If axis=1 is given, it merges by columns
+`df1.merge(df2, on='employee_id')` - merges two data frames by a common column. Identical to SQL join.
+
+### Group Data
+`df.groupby('column_name')` - groups data by a column. For example, we have a column 'age' and we want to group data by age values.
+
+### Rename Columns
+`df.rename(columns={'old_name': 'new_name'})` - renames a column. If inplace=True is given, it updates the existing df
+
+### Round and Format Data
+`df['column_name'].round(2)` - rounds all data to 2 decimal points
+`df['column_name'].round({column_56: 2})` - formats the data of column_56 to 2 decimal points
+`df.map('{:.Nf}'.format)` - formats all data to N decimal points
+`df['column_56'] = df['column_56'].map('{:.Nf}'.format)` - formats the data of column_56 to N decimal points
