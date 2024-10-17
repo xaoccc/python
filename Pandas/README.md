@@ -1,6 +1,11 @@
 ## Pandas notes
 ### Data Types
-- pd.DataFrame(dict) - converts python dictionary to data frame (table)
+
+##### Creating a DataFrame:
+- pd.DataFrame(list or dict) - converts python list to data frame (table)
+- df = pd.DataFrame(list, columns=['student_id', 'age']) - gives names to the columns
+- df = pd.DataFrame(list, index=['mon', 'tue', 'wen']) - gives names(custom indexes) to the rows
+
 - pd.Series(string, list or dict) - converts python data to series (column)
 - when dict is given, df dict values must be lists, series accept everything
 - series is one column, dict key is the index, dict value is the value in the column
