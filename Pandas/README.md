@@ -1,6 +1,5 @@
-## Pandas notes
+## Pandas cheat sheet
 ### Data Types
-
 ##### Creating a DataFrame:
 - pd.DataFrame(list or dict) - converts python list to data frame (table)
 - df = pd.DataFrame(list, columns=['student_id', 'age']) - gives names to the columns
@@ -32,6 +31,8 @@ filtered_data = df.loc([['b', 'c']])
 `df.tail()` - last 5 rows if not specified  
 `df.info()` - detailed info about the df  
 `df.size` - shows the total number of cells
+`players.count().count()` - shows the number of columns with non-empty values
+`players.shape` - returns a tuple with the number of rows and columns
 
 ### Data Cleaning
 `df.dropna()` - converts missing values to NaN. Creates a new df  
@@ -41,6 +42,9 @@ filtered_data = df.loc([['b', 'c']])
 `df.dropna(how='any')` - removes data if any of the values is missing  
 `df.dropna(how='all')` - removes data if all the values is missing  
 `df.dropna(thresh=n)` - n is an integer showing how many values should be non-empty in order to remove data. Cannot be used with how=  
+`drop_duplicates()` - removes duplicate rows. Default is to keep the first row (keep='first')
+`drop_duplicates(keep='last')` - keeps the last row
+`drop_duplicates(keep=False)` - removes all duplicates
 
 ### Filter Data
 `df.loc[(df['Pulse'] < 100) & (df['Calories'] > 300)]` - using loc[], data can be filtered by rows and columns values very easily, using logical operators
@@ -54,6 +58,9 @@ filtered_data = df.loc([['b', 'c']])
 
 ### Rename Columns
 `df.rename(columns={'old_name': 'new_name'})` - renames a column. If inplace=True is given, it updates the existing df
+
+### Add Columns
+`df['new_column'] = df['column_1'] + df['column_2']` - adds a new column to the df. The new column is the sum of column_1 and column_2
 
 ### Round and Format Data
 `df['column_name'].round(2)` - rounds all data to 2 decimal points
