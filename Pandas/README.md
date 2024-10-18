@@ -42,6 +42,7 @@ filtered_data = df.loc([['b', 'c']])
 `df.dropna(how='any')` - removes data if any of the values is missing  
 `df.dropna(how='all')` - removes data if all the values is missing  
 `df.dropna(thresh=n)` - n is an integer showing how many values should be non-empty in order to remove data. Cannot be used with how=  
+`df.dropna(subset=['column_name'])` - removes data if the column has missing values
 `drop_duplicates()` - removes duplicate rows. Default is to keep the first row (keep='first')
 `drop_duplicates(keep='last')` - keeps the last row
 `drop_duplicates(keep=False)` - removes all duplicates
@@ -49,9 +50,17 @@ filtered_data = df.loc([['b', 'c']])
 ### Filter Data
 `df.loc[(df['Pulse'] < 100) & (df['Calories'] > 300)]` - using loc[], data can be filtered by rows and columns values very easily, using logical operators
 
+### Replace Data
+`df.replace(value, new_value)` - replaces a value with a new value
+`df.replace([value1, value2], [new_value1, new_value2])` - replaces multiple values with multiple new values
+`df.replace({'column_name': value}, new_value)` - replaces a value in a specific column with a new value
+
 ### Merge Data
 `pd.concat([df1, df2])` - merges two data frames. By default, it merges by rows. If axis=1 is given, it merges by columns
 `df1.merge(df2, on='employee_id')` - merges two data frames by a common column. Identical to SQL join.
+
+### Change Data Type
+`df['column_name'] = df['column_name'].astype('int')` - changes the data type of a column. 
 
 ### Group Data
 `df.groupby('column_name')` - groups data by a column. For example, we have a column 'age' and we want to group data by age values.
@@ -67,3 +76,9 @@ filtered_data = df.loc([['b', 'c']])
 `df['column_name'].round({column_56: 2})` - formats the data of column_56 to 2 decimal points
 `df.map('{:.Nf}'.format)` - formats all data to N decimal points
 `df['column_56'] = df['column_56'].map('{:.Nf}'.format)` - formats the data of column_56 to N decimal points
+
+### Pivot and Melt Data
+`df.pivot(index='column_1', columns='column_2', values='column_3')` - creates a pivot table. The index is the row, columns are the columns, and values are the values in the table
+`df.melt(id_vars='column_1', value_vars=['column_2', 'column_3'], var_name='var_col_name', value_name="value_col_name")` - creates a melted table. The id_vars are the columns that will not be melted, value_vars are the columns that will be melted
+If we don't specify the value_vars, all columns except the id_vars will be melted. 
+If we don't specify the var_name and value_name, the default names are 'variable' and 'value'
