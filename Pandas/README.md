@@ -31,8 +31,8 @@ filtered_data = df.loc([['b', 'c']])
 `df.tail()` - last 5 rows if not specified  
 `df.info()` - detailed info about the df  
 `df.size` - shows the total number of cells
-`players.count().count()` - shows the number of columns with non-empty values
-`players.shape` - returns a tuple with the number of rows and columns
+`df.count().count()` - shows the number of columns with non-empty values
+`df.shape` - returns a tuple with the number of rows and columns
 
 ### Data Cleaning
 `df.dropna()` - converts missing values to NaN. Creates a new df  
@@ -82,3 +82,15 @@ filtered_data = df.loc([['b', 'c']])
 `df.melt(id_vars='column_1', value_vars=['column_2', 'column_3'], var_name='var_col_name', value_name="value_col_name")` - creates a melted table. The id_vars are the columns that will not be melted, value_vars are the columns that will be melted
 If we don't specify the value_vars, all columns except the id_vars will be melted. 
 If we don't specify the var_name and value_name, the default names are 'variable' and 'value'
+
+### Aggregate Data
+```
+df.groupby('column_name').agg(
+        odd_sum=('amount', lambda x: x[x % 2 != 0].sum()),
+        even_sum=('amount', lambda x: x[x % 2 == 0].sum())
+    ).reset_index()
+```
+- Groups data by column_name and aggregates the data. The odd_sum is the sum of the odd numbers in the 'amount' column, and the even_sum is the sum of the even numbers in the 'amount' column.
+- Here we have the freedom to create many different aggregations. 
+- The lambda function is used to filter the data(odd, even, greater than, less than, etc.) 
+- Filtered data can be aggregated in many ways: sum, mean, median, etc.
