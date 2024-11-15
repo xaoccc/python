@@ -88,43 +88,53 @@ class LinkedList:
             return self.prepend(value)
         if index == self.length:
             return self.append(value)
-
         new_node = Node(value)
-        prev_node = self.get(index - 1)
+        temp = self.get(index - 1)
+        new_node.next = temp.next
+        temp.next = new_node
+        self.length += 1   
+        return True  
 
-        new_node.next = prev_node.next
-        prev_node.next = new_node
-        self.length += 1
-        return True
+    def remove(self, index):
+        if index < 0 or index >= self.length:
+            return None
+        if index == self.length - 1:
+            return self.pop()
+        if index == 0:
+            return self.pop_first()
 
-
+        prev = self.get(index - 1)
+        node_to_remove = prev.next
+        prev.next = node_to_remove.next
+        node_to_remove.next = None
+        self.length -= 1
+        return node_to_remove
   
 
 
 
 my_linked_list = LinkedList(1)
+my_linked_list.append(2)
 my_linked_list.append(3)
+my_linked_list.append(4)
+my_linked_list.append(5)
 
-
-print('LL before insert():')
+print('LL before remove():')
 my_linked_list.print_list()
 
-
-my_linked_list.insert(1,2)
-
-print('\nLL after insert(2) in middle:')
+print('\nRemoved node:')
+print(my_linked_list.remove(2).value)
+print('LL after remove() in middle:')
 my_linked_list.print_list()
 
-
-my_linked_list.insert(0,0)
-
-print('\nLL after insert(0) at beginning:')
+print('\nRemoved node:')
+print(my_linked_list.remove(0).value)
+print('LL after remove() of first node:')
 my_linked_list.print_list()
 
-
-my_linked_list.insert(4,4)
-
-print('\nLL after insert(4) at end:')
+print('\nRemoved node:')
+print(my_linked_list.remove(2).value)
+print('LL after remove() of last node:')
 my_linked_list.print_list()
 
 
@@ -132,26 +142,33 @@ my_linked_list.print_list()
 """
     EXPECTED OUTPUT:
     ----------------
-    LL before insert():
-    1
-    3
-
-    LL after insert(2) in middle:
-    1
-    2
-    3
-
-    LL after insert(0) at beginning:
-    0
-    1
-    2
-    3
-
-    LL after insert(4) at end:
-    0
+    LL before remove():
     1
     2
     3
     4
+    5
+
+    Removed node:
+    3
+    LL after remove() in middle:
+    1
+    2
+    4
+    5
+
+    Removed node:
+    1
+    LL after remove() of first node:
+    2
+    4
+    5
+
+    Removed node:
+    5
+    LL after remove() of last node:
+    2
+    4
 
 """
+

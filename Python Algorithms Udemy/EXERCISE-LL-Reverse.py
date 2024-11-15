@@ -88,14 +88,41 @@ class LinkedList:
             return self.prepend(value)
         if index == self.length:
             return self.append(value)
-
         new_node = Node(value)
-        prev_node = self.get(index - 1)
+        temp = self.get(index - 1)
+        new_node.next = temp.next
+        temp.next = new_node
+        self.length += 1   
+        return True  
 
-        new_node.next = prev_node.next
-        prev_node.next = new_node
-        self.length += 1
-        return True
+    def remove(self, index):
+        if index < 0 or index >= self.length:
+            return None
+        if index == 0:
+            return self.pop_first()
+        if index == self.length - 1:
+            return self.pop()
+        pre = self.get(index - 1)
+        temp = pre.next
+        pre.next = temp.next
+        temp.next = None
+        self.length -= 1
+        return temp
+
+    def reverse(self):
+        temp = self.head
+        self.head = self.tail
+        self.tail = temp
+
+        after = temp.next
+        before = None
+
+        for _ in range(self.length):
+            after = temp.next
+            temp.next = before
+            before = temp
+            temp = after
+
 
 
   
@@ -103,28 +130,16 @@ class LinkedList:
 
 
 my_linked_list = LinkedList(1)
+my_linked_list.append(2)
 my_linked_list.append(3)
+my_linked_list.append(4)
 
-
-print('LL before insert():')
+print('LL before reverse():')
 my_linked_list.print_list()
 
+my_linked_list.reverse()
 
-my_linked_list.insert(1,2)
-
-print('\nLL after insert(2) in middle:')
-my_linked_list.print_list()
-
-
-my_linked_list.insert(0,0)
-
-print('\nLL after insert(0) at beginning:')
-my_linked_list.print_list()
-
-
-my_linked_list.insert(4,4)
-
-print('\nLL after insert(4) at end:')
+print('\nLL after reverse():')
 my_linked_list.print_list()
 
 
@@ -132,26 +147,16 @@ my_linked_list.print_list()
 """
     EXPECTED OUTPUT:
     ----------------
-    LL before insert():
-    1
-    3
-
-    LL after insert(2) in middle:
-    1
-    2
-    3
-
-    LL after insert(0) at beginning:
-    0
-    1
-    2
-    3
-
-    LL after insert(4) at end:
-    0
+    LL before reverse():
     1
     2
     3
     4
 
+    LL after reverse():
+    4
+    3
+    2
+    1
+    
 """
