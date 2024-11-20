@@ -36,24 +36,32 @@ class DoublyLinkedList:
         if self.length <= 1:
             return
 
-
         dummy = Node(0)
+        # Creating a dummy and a previous separately is because dummy will stay here, but previous node will be changed
         dummy.next = self.head
         previous = dummy
 
         while self.head and self.head.next:
             first_node = self.head
             second_node = self.head.next
-
+            # Main logic
+            # Point the dummy node to the second node (the new first node)
             previous.next = second_node
+            # Point the first node to the third node (second_node.next) (previously it pointed to the second node)
             first_node.next = second_node.next
+            # Point the second node to the first node (previously it pointed to the third node)
             second_node.next = first_node
+            # Point the second node to the previous (which equals dummy only at the first iteration)
             second_node.prev = previous
+            # Point the first node to the second but not as next, but as previous, e.g. first is now after second
             first_node.prev = second_node
 
+            # Check if we've reached the last pair
             if first_node.next:
                 first_node.next.prev = first_node
+            # Update the head pointer on each iteration, so that first_node and second_node are the nodes of the new pair
             self.head = first_node.next
+            # Update previous pointer as well, but dummy still points to the head
             previous = first_node
         self.head = dummy.next
         if self.head:
