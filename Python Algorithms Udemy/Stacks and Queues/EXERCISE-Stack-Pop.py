@@ -26,12 +26,17 @@ class Stack:
         self.height += 1
         return True
 
-    ### WRITE POP METHOD HERE ###
-    #                           #
-    #                           #
-    #                           #
-    #                           #
-    #############################
+    def pop(self):
+        if self.height == 0:
+            return None
+        self.height -= 1
+        node_to_remove = self.top
+        if self.height == 0:
+            self.top = None
+        else:
+            self.top = node_to_remove.next
+            node_to_remove.next = None
+        return node_to_remove
     
 
     
