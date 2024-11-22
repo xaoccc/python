@@ -30,16 +30,15 @@ class Stack:
 print(len(''))
 
 def is_balanced_parentheses(text):
-    if len(text) % 2 != 0:
-        return False
-    else:
-        text = list(text)
-        while text:
-            first, last = text.pop(), text.pop(0)
-            if first == last or (first == ")" and last =="("):
+    stack = Stack()
+    for char in text:
+        if char == "(":
+            stack.push(char)
+        elif char == ")":
+            if stack.is_empty() or stack.pop() != '(':
                 return False
 
-        return True
+    return stack.is_empty()
 
 
 
@@ -58,7 +57,7 @@ def test_is_balanced_parentheses():
         print('Test case 2 failed')
 
     try:
-        assert is_balanced_parentheses(')((()))(') == True
+        assert is_balanced_parentheses('((()))') == True
         print('Test case 3 passed')
     except AssertionError:
         print('Test case 3 failed')
@@ -82,7 +81,7 @@ def test_is_balanced_parentheses():
         print('Test case 6 failed')
 
     try:
-        assert is_balanced_parentheses('') == True
+        assert is_balanced_parentheses(')(()()') == False
         print('Test case 7 passed')
     except AssertionError:
         print('Test case 7 failed')
