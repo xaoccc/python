@@ -19,24 +19,38 @@ class BinarySearchTree:
                 if current.value > value:
                     if not current.left:
                         current.left = new_node
-                        break
+                        return True
                     current = current.left
                 elif current.value < value:
                     if not current.right:
                         current.right = new_node
-                        break
+                        return True
                     current = current.right
                 else:
                     return False
-        return True
+
+    def in_order_print(self, root):
+        if root is None:
+            return
+        self.in_order_print(root.left)
+        print(root.value)
+        self.in_order_print(root.right)
+
 
 
 
 
 my_tree = BinarySearchTree()
+my_tree.insert(15)
+my_tree.insert(13)
+my_tree.insert(23)
+my_tree.insert(12)
+my_tree.insert(45)
+my_tree.insert(345)
 my_tree.insert(2)
-my_tree.insert(1)
-my_tree.insert(3)
+my_tree.insert(79)
+
+my_tree.in_order_print(my_tree.root)
 
 """
     THE LINES ABOVE CREATE THIS TREE:
