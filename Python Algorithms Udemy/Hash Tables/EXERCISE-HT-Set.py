@@ -7,17 +7,19 @@ class HashTable:
             print(i, ": ", val)
       
     def __hash(self, key):
+        if isinstance(key, int):
+            return key % len(self.data_map)
         my_hash = 0
         for letter in key:
             my_hash = (my_hash + ord(letter) * 23) % len(self.data_map)
         return my_hash  
-    
-    ## WRITE SET_ITEM METHOD HERE ##
-    #                              #
-    #                              #
-    #                              #
-    #                              #
-    ################################
+
+    # Collision handled by chaining
+    def set_item(self, key, value):
+        current_key = self.__hash(key)
+        if not self.data_map[current_key]:
+            self.data_map[current_key] = []
+        self.data_map[current_key].append([key, value])
     
         
 
@@ -27,6 +29,7 @@ my_hash_table = HashTable()
 my_hash_table.set_item('bolts', 1400)
 my_hash_table.set_item('washers', 50)
 my_hash_table.set_item('lumber', 70)
+my_hash_table.set_item(152, 'kur')
 
 my_hash_table.print_table()
 

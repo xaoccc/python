@@ -4,6 +4,8 @@ class HashTable:
         self.data_map = [None] * size
       
     def __hash(self, key):
+        if isinstance(key, int):
+            return key % len(self.data_map)
         my_hash = 0
         for letter in key:
             my_hash = (my_hash + ord(letter) * self.PRIME_NUMBER) % len(self.data_map)
