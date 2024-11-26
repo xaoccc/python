@@ -35,8 +35,8 @@ class Graph:
                 if vertex in edges:
                     edges.remove(vertex)
             self.adj_list.pop(vertex)
-            return vertex
-        return
+            return True
+        return False
 
 
 
