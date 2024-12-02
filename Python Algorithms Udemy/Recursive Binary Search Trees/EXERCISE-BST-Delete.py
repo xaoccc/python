@@ -78,12 +78,30 @@ class BinarySearchTree:
             current_node = current_node.left
         return current_node.value 
 
-    ## WRITE DELETE_NODE METHODS HERE ##
-    #                                  #
-    #                                  #
-    #                                  #
-    #                                  #
-    ####################################
+    def __delete_node(self, current_node, value):
+        if not self.r_contains(value):
+            return
+        if current_node.value > value:
+            current_node.left = self.__delete_node(current_node.left, value)
+        if current_node.value < value:
+            current_node.right = self.__delete_node(current_node.right, value)
+        else:
+            if not current_node == None:
+                return None
+            elif not current_node.left:
+                current_node = current_node.right
+            elif not current_node.right:
+                current_node = current_node.left
+            else:
+                sub_tree_min = self.min_value(current_node.right)
+                current_node.value = sub_tree_min
+                current_node.right = self.__delete_node(current_node.right, sub_tree_min)
+        return current_node
+
+    def delete_node(self, value):
+        if not self.root:
+            return None
+        return self.__delete_node(self.root, value)
 
 
 
@@ -100,7 +118,7 @@ my_tree.r_insert(3)
 """
 
 print("root:", my_tree.root.value)
-print("root.left =", my_tree.root.left.value)
+print("root.left =", my_tree.root.left)
 print("root.right =", my_tree.root.right.value)
 
 
@@ -114,7 +132,7 @@ my_tree.delete_node(2)
 
 
 print("\nroot:", my_tree.root.value)
-print("root.left =", my_tree.root.left.value)
+print("root.left =", my_tree.root.left)
 print("root.right =", my_tree.root.right)
 
 
