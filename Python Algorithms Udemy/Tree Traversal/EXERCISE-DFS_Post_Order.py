@@ -57,35 +57,23 @@ class BinarySearchTree:
                 queue.append(current_node.right)
         return results
     
-    def dfs_pre_order(self):
-        results = []
+
+
+    def dfs_post_order(self):
+
+        visited = []
         def traverse(current_node):
-            results.append(current_node.value)
-            if current_node.left is not None:
-                traverse(current_node.left)
-            if current_node.right is not None:
-                traverse(current_node.right)
-        traverse(self.root)
-        return results
-
-    def __dfs_post_order(self, visited, queue,  current_node):
-        if not current_node:
-            return
-
-        queue.append(current_node)
-        while queue:
-            current_node = queue.pop()
-            visited.append(current_node.value)
             if current_node.left:
-                queue.append(current_node.left)
-
+                traverse(current_node.left)
             if current_node.right:
-                queue.append(current_node.right)
+                traverse(current_node.right)
+            visited.append(current_node.value)
+
+        traverse(self.root)
 
         return visited
 
-    def dfs_post_order(self):
-        return self.__dfs_post_order([], [], self.root)[::-1]
+
 
 
 

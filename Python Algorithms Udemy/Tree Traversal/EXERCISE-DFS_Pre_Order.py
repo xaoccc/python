@@ -69,8 +69,21 @@ class BinarySearchTree:
         return visited
 
     def dfs_pre_order(self):
-        return self.__dfs_pre_order([], self.root)
+        # Solution 1:
+        # return self.__dfs_pre_order([], self.root)
 
+        # Solution 2:
+        visited = []
+        def traverse(current_node):
+            visited.append(current_node.value)
+            if current_node.left:
+                traverse(current_node.left)
+            if current_node.right:
+                traverse(current_node.right)
+
+        traverse(self.root)
+
+        return visited
 
 
 

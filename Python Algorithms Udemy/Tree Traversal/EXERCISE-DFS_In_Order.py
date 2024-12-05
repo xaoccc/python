@@ -84,18 +84,18 @@ class BinarySearchTree:
         traverse(self.root)
         return results
 
-    def __dfs_in_order(self, visited, current_node):
-        if not current_node:
-            return
-        visited.append(current_node.value)
+    def dfs_in_order(self):
+        visited = []
+        def traverse(current_node):
+            if current_node.left:
+                traverse(current_node.left)
+            visited.append(current_node.value)
+            if current_node.right:
+                traverse(current_node.right)
 
-        self.__dfs_in_order(visited, current_node.left)
-        self.__dfs_in_order(visited, current_node.right)
+        traverse(self.root)
 
         return visited
-    def dfs_in_order(self):
-        return sorted(self.__dfs_in_order([], self.root))
-        
 
 
 
