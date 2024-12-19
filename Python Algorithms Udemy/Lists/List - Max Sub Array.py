@@ -1,11 +1,12 @@
 def max_subarray(input):
     if not input:
         return 0
-    max_sum = -1000
-    for i in range(len(input) + 1):
-        for j in range(len(input) + 1):
-            if i != j and len(input[i:j]) > 0 and sum(input[i:j]) > max_sum:
-                max_sum = sum(input[i:j])
+
+    max_sum = current_sum = input[0]
+
+    for num in input[1:]:
+        current_sum = max(num, current_sum + num)
+        max_sum = max(max_sum, current_sum)
 
     return max_sum
 
