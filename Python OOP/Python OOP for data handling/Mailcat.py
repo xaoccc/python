@@ -37,7 +37,7 @@ class create_catalog():
 
     def serialize_Mailcat_objects(self):
         response = []
-        header = ["Name", "mail_adress", "integer1", "float1", "integer2", "float2", "string1", "string2", "string3", "string4"]
+        header = ["UserID", "Name", "Email", "string1", "string2", "string3", "string4", "string5", "string6", "string7", "string8"]
         response.append(header)
         for mail_obj in self.data.Mailcat.values():
             response.append([str(mail_obj.user_id), mail_obj.name, mail_obj.email, *[str(i) for i in mail_obj.list_items]])
