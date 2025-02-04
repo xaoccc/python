@@ -40,3 +40,6 @@ print(Cars_new)
 # Save the data to excel and csv. We create a new csv file, so we can have a clean input data each time we run this code
 Cars.to_csv('cars_db.csv')
 Cars.to_excel('cars_db.xlsx')
+
+# Delete a DataFrame
+del(Cars_new)
