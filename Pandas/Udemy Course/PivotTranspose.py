@@ -47,3 +47,8 @@ Carsales_Pivot.reset_index(inplace=True)
 Carsales_Melt = pd.melt(Carsales_Pivot, id_vars=["Target"], value_vars=["high", "low", "med."], value_name="Mercedes")
 print(Carsales_Melt, f'\n{150*"-"}\n')
 # As we can see, the original DataFrame could be restored by many operation, so better keep it if you will need it again
+
+Carsales_Pivot1 = Carsales_Pivot.copy()
+print(type(Carsales_Pivot))
+print(id(Carsales_Pivot))
+print(id(Carsales_Pivot1))
