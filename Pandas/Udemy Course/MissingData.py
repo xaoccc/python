@@ -5,6 +5,8 @@ import seaborn as sns
 # Scikit-learns liner_model will be used for regression imputation
 from sklearn import linear_model
 
+# Using functions dropna(), isna(), fillna(), sum(), mean()
+
 # The Carsales dataframe will be modified with missing values
 Cardata = { "Mercedes": [2, 4, None, 4, 0, 3], "Ford": [3, 0, 0, 1, 6, 12], "Tata":[9, 3, 4, 1, 0, 0], "Renault":[12, 1, None, None, 3, 1]}
 Carsales_mv = pd.DataFrame(Cardata)
@@ -33,7 +35,9 @@ Carsales_zfill = Carsales_mv.fillna(0, inplace=False)
 print(Carsales_zfill, f'\n{150*"-"}\n')
 
 # Imputation: Average/Means replace the missing values
+# Carsales_mean is a Pandas Series, containing the mean for each column by columns
 Carsales_mean = Carsales_mv.mean()  # Pandas mean() don't include null values in its calculation (it divides by 5 not 6).
+
 Carsales_mfill = Carsales_mv.fillna(Carsales_mean, inplace=False)
 print(Carsales_mfill, f'\n{150*"-"}\n')
 
