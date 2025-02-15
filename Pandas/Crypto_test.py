@@ -10,9 +10,9 @@ api_key = os.getenv('API_KEY')
 # Fetch historical data for Bitcoin (BTC) from CoinGecko
 url = "https://pro-api.coinmarketcap.com/v4/dex/spot-pairs/latest"
 params = {
-    "timeStart": "1704067200",
-    "timeEnd": "1706745600",
-    "interval": "daily",
+    # "timeStart": "1704067200",
+    # "timeEnd": "1706745600",
+    # "interval": "daily",
     "limit": 100,
     "network_id": "1"
 }
