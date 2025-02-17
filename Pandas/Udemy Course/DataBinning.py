@@ -45,3 +45,6 @@ sns.histplot(data=geyser, x='duration', bins=25, ax=sel_cut2, hue='sel_cut_dur_2
 sns.histplot(data=geyser, x='duration', bins=25, ax=sel_cut3, hue='sel_cut_dur_3', palette="coolwarm", edgecolor='white')
 
 plt.show()
+
+# This can be used in image recognition
+# bins can be defined easily using prediction models, so the bins distribution data can be authomatically filled in
