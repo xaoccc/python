@@ -1,4 +1,4 @@
-class  reverse_iter:
+class Reverse_Iter:
     def __init__(self, nums):
         self.nums = nums
         self.start = len(self.nums)
@@ -13,3 +13,8 @@ class  reverse_iter:
             return self.nums[self.start]
         else:
             raise StopIteration
+
+# test
+ri = Reverse_Iter([1, 3, 5, 7])
+for num in ri:
+    print(num)
