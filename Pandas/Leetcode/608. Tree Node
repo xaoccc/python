@@ -1,0 +1,19 @@
+import pandas as pd
+
+def tree_node(tree: pd.DataFrame) -> pd.DataFrame:
+    def check_leaves(y):
+        if y in tree['p_id'].values:
+            return 'Inner'
+        else:
+            return 'Leaf'
+
+    def check_root(x):
+        if pd.isna(x):
+            return 'Root'
+
+    tree['root'] = tree['p_id'].apply(check_root)
+    tree['leaves'] = tree['id'].apply(check_leaves)
+    tree['type'] = tree['root'].fillna(tree['leaves'])
+    return tree[['id', 'type']]
+
+
