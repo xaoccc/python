@@ -71,7 +71,7 @@ geyser2["waiting"] = geyser2["waiting"].interpolate(method="linear")
 fig, ax = plt.subplots()
 geyser2.plot.scatter(x="duration", y="waiting", color = "Blue", marker="x", ax=ax)
 geyser.plot.scatter(x="duration", y="waiting", color = "Red", marker="+", ax=ax)
-plt.show()
+# plt.show()
 # The plot shows an example of that "point-click-n-forget" imputation with models may cause arbitrary results and careful
 # study of data is needed for useful imputation.
 
@@ -103,3 +103,4 @@ fig, ax = plt.subplots()
 geyser3.plot.scatter(x="duration", y="waiting", color = "Blue", marker="x", ax=ax)
 geyser.plot.scatter(x="duration", y="waiting", color = "Red", marker="+", ax=ax)
 plt.show()
+
