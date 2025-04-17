@@ -13,9 +13,11 @@ def find_next_list(data):
     # Fit a linear regression model
     model = smf.ols('y ~ x', data=df).fit()
 
+    print(model.params)
+
     # Get the coefficients
-    intercept = model.params[0]
-    slope = model.params[1]
+    intercept = model.params.iloc[0]
+    slope = model.params.iloc[1]
 
     # Predict the next y value for x=10
     next_x = data[-1][0] + 1
@@ -23,4 +25,4 @@ def find_next_list(data):
 
     return next_y
 
-print(find_next_list(data1))
+print(find_next_list(data2))
