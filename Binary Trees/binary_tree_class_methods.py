@@ -69,13 +69,29 @@ class BinaryTree:
             steps += 1
             if current.root == data:
                 print(f'steps: {steps}')
-                return True
+                return current
             elif current.root > data:
                 current = current.left
             elif current.root < data:
                 current = current.right
         print(f'steps: {steps}')
         return False
+
+    def sum_subtree(self, data):
+        subtree = self.find_node(data)
+        def sum_subtree_values(node):
+            sum_values = node.root
+            if node.left:
+                sum_values += sum_subtree_values(node.left)
+            if node.right:
+                sum_values += sum_subtree_values(node.right)
+            return sum_values
+        return sum_subtree_values(subtree)
+
+
+
+
+
 
 
 
@@ -121,3 +137,4 @@ binary_tree.create(204)
 binary_tree.print_in_order()
 print(binary_tree.find_node(4))
 binary_tree.reversed_print()
+print(binary_tree.sum_subtree(17))
