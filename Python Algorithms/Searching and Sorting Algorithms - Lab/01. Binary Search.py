@@ -25,4 +25,4 @@ def index_binary_search(elements, target):
     return -1
 
 
-print(index_binary_search([1, 2, 3, 4, 5], 2))
+print(index_binary_search([1, 2, 3, 4, 5, 6], 6))
